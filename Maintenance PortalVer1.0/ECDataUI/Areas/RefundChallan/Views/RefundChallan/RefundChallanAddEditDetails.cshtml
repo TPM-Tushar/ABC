@@ -1,0 +1,311 @@
+﻿@model CustomModels.Models.RefundChallan.RefundChallanViewModel
+
+@using ECDataUI.Helper
+
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .panel-body {
+        padding: unset !important;
+    }
+
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+
+
+
+    input#ssn::-ms-clear,
+    input#ssn::-ms-reveal {
+        display: none;
+    }
+
+    body {
+        margin: 40px !important;
+    }
+
+
+    #idRefundChallanPurpose {
+        height: 1000px;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+
+    .fa-pull-right {
+        float: right;
+        margin-right: 7px;
+        margin-top: 7px;
+    }
+
+    
+</style>
+
+
+<script src="~/Areas/RefundChallan/Scripts/RefundChallanAddEditDetails.js"></script>
+
+<div class="panel panel-default" id="panelAddEditOrderDetails" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;border: none;">
+
+    <span id="closeRefundChallanEntryDetailsForm"><i class="fa fa-times-circle text-danger removeIcon fa-pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>
+
+    
+    <form id="RefundChallanDetailForm">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="panel-body">
+            <div class='row well-custom' style="height: 35px; padding-top: 10px;border-top-left-radius: 0px;">
+                <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                <span class="" style="color: #FFF; font-size: 120%;">
+                    Add Refund Challan Details
+                </span>
+            </div>
+
+            
+
+            <div style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+
+
+                @Html.HiddenFor(model => model.RowId, new { @id = "idRowId" })
+                @Html.HiddenFor(model => model.IsOrderInEditMode, new { @id = "idIsOrderInEditMode" })
+
+
+                <div class='row' style="text-align:center; margin-top:2rem;">
+                    <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.PartyName, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.PartyName, new { @class = "form-control", id = "idPartyName", tabindex = 1 })
+                                @Html.ValidationMessageFor(model => model.PartyName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.PartyMobileNumber, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.PartyMobileNumber, new { @class = "form-control", @id = "idPartyMobileNumber", @autocomplete = "off", @maxlength = "10", tabindex = 2 })
+                                @Html.ValidationMessageFor(model => model.PartyMobileNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class='row' style="text-align:center; margin-top:1rem;">
+                    <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+
+                        @if (@Model.IsOrderInEditMode && Model.IsFinalized == false)
+                        {
+                            <div class="col-md-4">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.InstrumentNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.InstrumentNumber, new { @class = "form-control", id = "idChallanNumber", onclick = "ChangeInstrumentNoType()", onkeydown = "ChangeInstrumentNoType()", @autocomplete="off",  onpaste = "return false",  @maxlength = "18",
+                                    @tabindex = 3
+                                })
+                                    @Html.ValidationMessageFor(model => model.ReEnterInstrumentNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-4">
+                                <div class="col-md-6">
+                                    @Html.LabelFor(model => model.InstrumentNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.PasswordFor(model => model.InstrumentNumber, new { @class = "form-control", id = "idChallanNumber", @autocomplete= "new-password",  onpaste = "return false",  @maxlength = "18",
+                                    @tabindex = 3
+                                })
+                                    @Html.ValidationMessageFor(model => model.InstrumentNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        }
+
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.ReEnterInstrumentNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ReEnterInstrumentNumber, new { @class = "form-control", id = "idReEnterChallanNumber", onpaste = "return false",  @maxlength = "18",
+                                @autocomplete = "off",
+                                @tabindex = 4
+                            })
+                                @Html.ValidationMessageFor(model => model.ReEnterInstrumentNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.InstrumentDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-6">
+                                <div class="date" id="divInstrumentDate" style="display: table; width: 102%; cursor: pointer;">
+                                    @Html.TextBoxFor(model => model.InstrumentDate, new { @class = "form-control", @id = "idChallanDate", @placeholder = "dd/mm/yyyy", @title = "Order Date", @maxlength = 10, tabindex = 5 })
+                                    @Html.ValidationMessageFor(model => model.InstrumentDate, "", new { @class = "text-danger" })
+                                    <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class='row' style="text-align:center; margin-top:1rem;">
+                    <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.ChallanAmount, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+
+                            @if (@Model.IsOrderInEditMode)
+                            {
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.ChallanAmount, new { @class = "form-control", id = "idChallanAmount", tabindex = 6 })
+                                    @Html.ValidationMessageFor(model => model.ChallanAmount, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.ChallanAmount, new { @class = "form-control", id = "idChallanAmount", tabindex = 6, Value = "" })
+                                    @Html.ValidationMessageFor(model => model.ChallanAmount, "", new { @class = "text-danger" })
+                                </div>
+                            }
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.RefundAmount, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+                            @if (@Model.IsOrderInEditMode)
+                            {
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.RefundAmount, new { @class = "form-control", id = "idRefundAmount", tabindex = 7 })
+                                    @Html.ValidationMessageFor(model => model.RefundAmount, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.RefundAmount, new { @class = "form-control", id = "idRefundAmount", tabindex = 7, Value = "" })
+                                    @Html.ValidationMessageFor(model => model.RefundAmount, "", new { @class = "text-danger" })
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                </div>
+
+                <div class='row' style="text-align:center; margin-top:1rem;">
+                    <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.ApplicationDateTime, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-6">
+                                <div class="date" id="divApplicationDate" style="display: table; width: 102%; cursor: pointer;">
+                                    @Html.TextBoxFor(model => model.ApplicationDateTime, new { @class = "form-control", id = "idApplicationDate", @placeholder = "dd/mm/yyyy", @title = "Application Date", @maxlength = 10, tabindex = 8 })
+                                    @Html.ValidationMessageFor(model => model.ApplicationDateTime, "", new { @class = "text-danger" })
+                                    <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.ChallanPurposeId, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-6">
+                                <div style="display:flex; width: 102%; cursor: pointer;">
+                                    @Html.ListBoxFor(model => model.ChallanPurposeId, @Model.ChallanPurposeList, new { @class = "form-control", @id = "idRefundChallanPurpose", tabindex = 9 })
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4"> </div>
+                </div>
+
+
+            </div>
+        </div>
+    </form>
+
+
+</div>
+
+<div class="row" style="margin-top: 2rem;">
+    <div class="col-md-12">
+
+        @if (@Model.IsOrderInEditMode && Model.IsFinalized == false)
+        {
+            <div class='BTNwrapper' style="margin-top:2%;">
+                <button type="button" class="btn btn-group-md btn-success" id="UpdateRefundChallanDetailsBtn" tabindex="10">Update</button>
+                <button id="FinalizeRefundChallanDetailsBtn" class="btn btn-info" tabindex="11">Finalize</button>
+            </div>
+        }
+        else
+        {
+            <div class='BTNwrapper' style="margin-top:2%; text-align: center">
+                <button type="button" class="btn btn-group-md btn-success" id="SaveRefundChallanDetailsBtn" tabindex="10">Save</button>
+            </div>
+        }
+
+        <style>
+            
+        </style>
+
+    </div>
+    <div class=" col-md-5"></div>
+</div>
+
+@*</div>*@

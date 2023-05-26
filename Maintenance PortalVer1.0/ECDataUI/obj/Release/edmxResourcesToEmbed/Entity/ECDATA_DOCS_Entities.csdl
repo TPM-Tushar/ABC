@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ECDATA_DOCSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+    <Key>
+      <PropertyRef Name="DETAIL_ID" />
+    </Key>
+    <Property Name="DETAIL_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FUNCTIONALITY_ID" Type="Int32" Nullable="false" />
+    <Property Name="LOG_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CLASSNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="METHODNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_MASTER" Relationship="Self.FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_DEBUG_LOG" ToRole="ECLOG_FUNCTIONALITY_MASTER" />
+  </EntityType>
+  <EntityType Name="ECLOG_FUNCTIONALITY_MASTER">
+    <Key>
+      <PropertyRef Name="FUNCTIONALITY_ID" />
+    </Key>
+    <Property Name="FUNCTIONALITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FUNCTIONALITY_NAME" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FUNCTIONALITY_DESC" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="LEVEL_ID" Type="Int32" Nullable="false" />
+    <Property Name="PARENT_FUNCTIONALITY_ID" Type="Int32" />
+    <Property Name="STATUS" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_DEBUG_LOG" Relationship="Self.FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_MASTER" ToRole="ECLOG_FUNCTIONALITY_DEBUG_LOG" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_MASTER1" Relationship="Self.FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_MASTER" ToRole="ECLOG_FUNCTIONALITY_MASTER1" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_MASTER2" Relationship="Self.FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_MASTER1" ToRole="ECLOG_FUNCTIONALITY_MASTER" />
+  </EntityType>
+  <Association Name="FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER">
+    <End Role="ECLOG_FUNCTIONALITY_MASTER" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="1" />
+    <End Role="ECLOG_FUNCTIONALITY_DEBUG_LOG" Type="Self.ECLOG_FUNCTIONALITY_DEBUG_LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ECLOG_FUNCTIONALITY_MASTER">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Principal>
+      <Dependent Role="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER">
+    <End Role="ECLOG_FUNCTIONALITY_MASTER" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="0..1" />
+    <End Role="ECLOG_FUNCTIONALITY_MASTER1" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ECLOG_FUNCTIONALITY_MASTER">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Principal>
+      <Dependent Role="ECLOG_FUNCTIONALITY_MASTER1">
+        <PropertyRef Name="PARENT_FUNCTIONALITY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ECDATA_DOCS_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ECLOG_FUNCTIONALITY_DEBUG_LOG" EntityType="Self.ECLOG_FUNCTIONALITY_DEBUG_LOG" />
+    <EntitySet Name="ECLOG_FUNCTIONALITY_MASTER" EntityType="Self.ECLOG_FUNCTIONALITY_MASTER" />
+    <AssociationSet Name="FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER" Association="Self.FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER">
+      <End Role="ECLOG_FUNCTIONALITY_MASTER" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+      <End Role="ECLOG_FUNCTIONALITY_DEBUG_LOG" EntitySet="ECLOG_FUNCTIONALITY_DEBUG_LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER" Association="Self.FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER">
+      <End Role="ECLOG_FUNCTIONALITY_MASTER" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+      <End Role="ECLOG_FUNCTIONALITY_MASTER1" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

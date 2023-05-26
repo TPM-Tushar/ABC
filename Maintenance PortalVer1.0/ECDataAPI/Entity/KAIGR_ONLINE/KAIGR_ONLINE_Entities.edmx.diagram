@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a66a8e9d7631459bb94b3d8b90338290" Name="Diagram1">
+        <EntityTypeShape EntityType="KAIGR_ONLINEModel.MAS_Hoblis" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KAIGR_ONLINEModel.MAS_OfficeMaster" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="KAIGR_ONLINEModel.MAS_Villages" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="KAIGR_ONLINEModel.FK_MAS_Villages_MAS_Hoblis" ManuallyRouted="false" />
+        <AssociationConnector Association="KAIGR_ONLINEModel.FK_MAS_OfficeMaster_MAS_OfficeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="KAIGR_ONLINEModel.FK_MAS_Villages_MAS_OfficeMaster" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

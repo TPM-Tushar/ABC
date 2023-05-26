@@ -1,0 +1,272 @@
+﻿@using CustomModels.Models.UserManagement
+@using CaptchaLib
+@using ECDataUI.Helper;
+
+@model ECDataUI.Models.UserRegistration.UserViewModel
+
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+
+@{
+    int iTabIndex = 1;
+
+}
+
+@*<script src="~/Scripts/UserRegistration/UserRegistration.js"></script>*@
+<script src="~/Scripts/UserRegistration/UserRegistration.min.js"></script>
+<script src="~/Scripts/CommonJS/md5.min.js"></script>
+<script src="~/Scripts/CommonJS/sha512.min.js"></script>
+
+<!-- bootbox center align code shrinivas -->
+
+<style>
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    /*img {
+        width: 60%;
+    }*/
+</style>
+
+<br />      <br />
+<div class="container">
+    <div class="" style="width:80%; margin:0 auto;">
+        <div class="">
+            <div class="row">
+
+
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4;">
+
+                    <div class="panel-body">
+                        <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                            <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                            <span class="" id="panelHeadingForForm" style="color: #FFF;font-size: 123%;font-weight: bold;">User Registration</span>
+
+                            <form method="POST" id="RegistrationFormId">
+
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+
+                                <div class="col-md-12">
+
+                                    <br><br>
+
+                                    <div style="border: solid 1px #d1d1d1;border-radius:5px;">
+                                        <br>
+
+                                        <fieldset>
+                                            @*<legend style="border-bottom-color: black; font-size: large;">Personal Details</legend>*@
+                                            <legend style="border-bottom-color: #d1d1d1; font-size: medium;">&nbsp;&nbsp;&nbsp;User Details</legend>
+
+
+
+                                            <div class='row'>
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.FirstName, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+
+                                                <div class='col-md-3'>
+
+                                                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control ", @id = "FirstName", @placeholder = "First Name", @maxlength = 50, @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                                                </div>
+
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.LastName, new { @class = "PaddingTop10" }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control ", @id = "LastName", @placeholder = "Last Name", @maxlength = 50, @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+
+                                            <br />
+                                            <br />
+
+
+                                            <div class='row'>
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.Address1, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.TextAreaFor(model => model.Address1, new { @class = "form-control ", @id = "Address", @placeholder = "Address", @maxlength = 100, @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.Pincode, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.TextBoxFor(model => model.Pincode, new { @class = "form-control AllowOnlyNumber", @id = "PinCode", @placeholder = "Pin Code", @maxlength = 6, @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
+
+                                            <div class='row'>
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(x => x.IDProofID, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.DropDownListFor(x => x.IDProofID, @Model.IdProofsTypeDropDown, new { @class = "form-control dropdown-toggle minimal", @id = "ddlIDProof", @title = "IDProof", @placeholder = "IDProof", @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(x => x.IDProofID, "", new { @class = "text-danger" })
+                                                </div>
+
+
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(x => x.IDProofNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.TextBoxFor(x => x.IDProofNumber, new { @class = "form-control", @id = "IDProofNumber", @title = "IDProof Number", @placeholder = "IDProof Number", @tabindex = @iTabIndex++, @maxlength = 20 })
+                                                    @Html.ValidationMessageFor(x => x.IDProofNumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
+
+                                            <div class='row'>
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.CountryID, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.DropDownListFor(m => m.CountryID, Model.CountryDropDown, new { @class = "form-control ", @id = "Country", @placeholder = "Country", @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+                                                </div>
+
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.MobileNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control AllowOnlyNumber", @id = "MobileNo", @placeholder = "Mobile Number", @maxlength = 10, @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br />
+                                            <br />
+
+
+
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <br>
+                                    <br>
+                                </div>
+                                <div class="col-md-12">
+
+
+                                    <div style="border: solid 1px #d1d1d1;border-radius:5px;">
+                                        <br>
+                                        <fieldset>
+                                            <legend style="border-bottom-color: #d1d1d1; font-size: medium;">&nbsp;&nbsp;&nbsp;Credential Details</legend>
+
+
+
+                                            <div class='row'>
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.Email, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control ", @id = "txtUserName", @placeholder = "abc@example.com", @maxlength = 50, @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                </div>
+
+
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.Password, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.PasswordFor(model => model.Password, new { @class = "form-control ", @id = "txtPassword", @placeholder = "Password", @maxlength = 20, autocomplete = "off", @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="row" style="display: none; margin-left:26%;margin-top:2%;" id="InValidUserNameID">
+                                                <span class="label label-danger" style="font-size:100%;">User name alredy exists</span>
+
+                                            </div>
+                                            <br />
+                                            <br />
+
+
+                                            <div class='row'>
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(model => model.ConfirmPassword, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control ", @id = "txtConfirmPassword", @placeholder = "Confirm Password", autocomplete = "off", @maxlength = 20, @tabindex = @iTabIndex++ })
+                                                    @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                </div>
+
+
+                                                <div class='col-md-3'>
+                                                    @Html.LabelFor(x => x.Captcha, new { @class = "PaddingTop10" }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    @Html.CaptchaFor(x => x.Captcha, "GetCaptchaImage", "Account", null, "Try Another Image? Click Here", new { @title = "Enter the text you see in the image", @class = "captcha-registration", @id = "txtCaptcha", @style = "text-align:center;", @tabindex = @iTabIndex++, autocomplete = "off" })<br>
+                                                    @Html.ValidationMessageFor(x => x.Captcha, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                        </fieldset>
+                                    </div>
+
+                                    <br>
+                                    <div class="row">
+
+                                        <div class="col-md-6 col-md-offset-5">
+                                            <button type="button" class="btn btn-group-sm btn-primary" id="btnGotoLoginPage" title="Back to login" style="padding:1%;">Back</button>
+                                            &nbsp; &nbsp;
+                                            <button type="button" class="btn btn-group-sm btn-success" id="btnSubmit" title="Register" style="padding:1%;">Register</button>
+                                            &nbsp; &nbsp;
+                                            <button type="reset" class="btn btn-group-sm btn-primary" id="btnReset" title="Reset" style="padding:1%;">Reset</button>
+                                        </div>
+                                    </div>
+
+
+                                    <br>
+                                    <br>
+
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div id="divViewOTPValidationModal" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+    <div class="modal-dialog" style="margin-top:80px; width:45%; margin:10% auto !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button"  class="close" id="btnCloseOTPModal" data-dissmiss="modal">&times;</button>*@
+                <i class="fa fa-times-circle text-danger removeIcon pull-right" id="btnCloseOTPModal" style="cursor: pointer; font-size: 150%;" title="Close"></i>
+                <h4 class="modal-title">
+                    <span class="" style="color: #5F6F81; font-size:100%;">Verify OTP</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="divLoadOTPValidationView" style="margin-left:10%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

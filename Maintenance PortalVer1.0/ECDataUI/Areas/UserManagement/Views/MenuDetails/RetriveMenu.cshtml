@@ -1,0 +1,139 @@
+﻿
+
+<style>
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+
+   
+</style>
+
+
+
+<script src="~/areas/usermanagement/scripts/menudetails/retrivemenu.js"></script>
+@*<script src="~/Areas/UserManagement/Scripts/MenuDetails/RetriveMenu.min.js"></script>*@
+
+<body>
+
+    <div class="container-fluid" id="mainFormID">
+        <div class="col-md-offset-0">
+            <div class="panel panel-default" style="width: 100%;margin-left:0px;margin-right:0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+
+                <div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;margin-left:0px;margin-right:0px;">
+                        <span id='menuDetailsListCollapse' data-toggle="collapse" data-target="#collapsemenuDetailsList" aria-expanded="false" aria-controls="collapsemenuDetailsList" style="cursor:pointer;margin-bottom:20px;">
+                            <span id="ToggleIconID" class="fa fa-minus-square-o fa-pull-left" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+                        </span>
+                        <span class="" style="color: #fff;font-size:120%;">Existing Menu Details</span>
+
+                    </div>
+                    <div id="collapsemenuDetailsList" class="collapse" style="text-align: center;margin-left:0px; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+                        <div class="container-fluid">
+                            <div class="data-table-wrapper table-responsive col-md-12" style="max-height:inherit;">
+                                <table id="menuDetailsListTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="overflow: hidden;background-color: aliceblue;border: solid; text-align:center; width:100%">
+                                    @*<table id="menuDetailsListTable" class="datatable full-width table  table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid;" width="90" cellspacing="0">*@
+                                    <thead style="text-align:center;">
+                                        <tr>
+                                            <th>Sr No.</th>
+                                            <th>Menu Name</th>
+                                            @*<th>Menu Name R</th>*@
+                                            <th>Parent Menu</th>
+                                            <th>Sequence</th>
+                                            <th>Vertical Level</th>
+                                            <th>Horizontal Sequence</th>
+                                            <th>Active Status</th>
+                                            @*<th>IsActiveString</th>*@
+                                            <th>Level Group Code</th>
+                                            <th>Menu ID Parameter Status</th>
+                                            <th>Horizontal Menu Status</th>
+                                            <th>Map/Unmap Menu to action</th>
+                                            <th>Edit</th>
+                                            <th>Action Assigned</th>
+                                            @*<th>Delete</th>*@
+                                        </tr>
+                                    </thead>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="panel panel-default" id="panelMenuDetailsForm" style="width: 100%;margin-left:0px;margin-right:0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+
+                <div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;margin-left:0px;margin-right:0px;">
+                        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                        <span class="" id="addMenuHeadingId" style="color: #FFF;font-size:120%;">Add Menu Details</span>
+                        <span class="" id="editMenuHeadingId" style="color: #FFF;font-size:120%;">Edit Menu Details</span>
+                        <span class="" id="menuActionMappingHeadingId" style="color: #FFF;font-size:120%;">Menu Action Mapping</span>
+                        <span id="closeMenuDetailsForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>
+                    </div>
+
+                    <div id="addEditDivId">
+                    </div>
+
+                    @*<div id="createPartialViewId">
+                        </div>
+                        <div id="editPartialViewId">
+                        </div>*@
+                </div>
+            </div>
+
+           <div class="panel panel-default" id="ShowAddMenuFormID" style="width: 100%;margin-left:0px;margin-right:0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                <div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;margin-left:0px;margin-right:0px;">
+                        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                        <span class="" id="addMenuHeadingId" style="color: #FFF;font-size:120%;">Add Menu Details</span>
+                    </div>
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+                        <div class="row">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-6" id="" style="cursor: pointer;">
+
+                                <div class="row" id="buttonToOpenAddMenuForm" style="border: 1px solid #ECF0F1; box-shadow: 2px 2px 2px #dadada; background-color: #73a9d9  !important; border-radius: 15px;">
+                                    <div class="col-md-2">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <h3>
+                                            <span class="" style="color: white; vertical-align: super;">
+                                                Add Menu Details
+                                            </span>
+                                        </h3>
+                                    </div>
+                                    <div class="col-md-2">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                            </div>
+                            <br />
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+

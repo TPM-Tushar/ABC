@@ -1,0 +1,26 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+
+<script>
+    sessionStorage.clear();
+</script>
+
+
+@{
+    ECDataUI.Session.KaveriSession.Current.EndSession();
+    new ECDataUI.Common.CommonFunctions().RegenerateSessionId();
+    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+}
+<div class="alert alert-danger alert-error" style="width:100%;font-size:120%;margin-bottom:34%;">
+    <strong>Error : </strong> Page Not Found.
+    <br />
+    <strong>Url : </strong>  @( (Model == null || Model.ControllerName == null) ? "Error" : Model.ControllerName ) <b>/</b> @( (Model == null || Model.ActionName == null) ? "Index" : Model.ActionName )
+    <br />
+    <strong>Message : </strong>
+    Error occurred while processing your request.  Please  @Html.ActionLink("Sign in Again", "UserLogin", "Login", new object(), new { style = "color:red" })
+</div>
+

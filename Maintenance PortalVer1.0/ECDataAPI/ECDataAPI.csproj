@@ -1,0 +1,2077 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ECDataAPI</RootNamespace>
+    <AssemblyName>ECDataAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CaptchaLib">
+      <HintPath>..\..\..\..\..\GauriOnline\GauriOnline\ECDataUI\bin\CaptchaLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>..\..\..\ECDATA\ECDataAPI\bin\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\..\..\..\..\..\..\TFS\Kaveri\1. Source Code\Maintenance Portal\ECDataAPI\bin\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.7.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.7.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\itextsharp.xmlworker.dll</HintPath>
+    </Reference>
+    <Reference Include="knbfaNet">
+      <HintPath>C:\Users\mayankw\Desktop\DLL\knbfaNet.dll</HintPath>
+    </Reference>
+    <Reference Include="knbfraNet">
+      <HintPath>C:\Users\mayankw\Desktop\DLL\knbfraNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NetISMAPI">
+      <HintPath>C:\Users\mayankw\Desktop\DLL\NetISMAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.4\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.1\lib\net40\System.Web.Optimization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Alerts\Views\web.config" />
+    <Content Include="Areas\Dashboard\Views\web.config" />
+    <Content Include="Areas\DataEntryCorrection\Views\web.config" />
+    <Content Include="Areas\LogAnalysis\Views\web.config" />
+    <Content Include="Areas\AnywhereEC\Views\web.config" />
+    <Content Include="Areas\IntegrationDashboard\Views\web.config" />
+    <Content Include="Areas\Remittance\Views\web.config" />
+    <Content Include="Areas\TicketTracing\Views\web.config" />
+    <Content Include="Areas\MISReports\Views\web.config" />
+    <Content Include="Areas\KavariSupport\Views\web.config" />
+    <Content Include="Areas\SupportEnclosure\Views\web.config" />
+    <Content Include="Areas\Utilities\Views\web.config" />
+    <Content Include="Areas\XELFiles\Views\web.config" />
+    <Content Include="Areas\KaveriIntegration\Views\web.config" />
+    <Content Include="Areas\SROScriptManager\Views\web.config" />
+    <Content Include="Areas\DynamicDataReader\Views\web.config" />
+    <Content Include="Areas\Blockchain\Views\web.config" />
+    <Content Include="Areas\BhoomiMapping\Views\web.config" />
+    <Content Include="Areas\RefundChallan\Views\web.config" />
+    <Content Include="Areas\ChallanNoDataEntryCorrection\Views\web.config" />
+    <None Include="Connected Services\FileDownloadUploadService\DownloadUploadFiles.wsdl" />
+    <None Include="Connected Services\FileDownloadUploadService\DownloadUploadFiles.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FileDownloadUploadService\DownloadUploadFiles1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\FileDownloadUploadService\DownloadUploadFiles2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\FileDownloadUploadService\ECDataAPI.FileDownloadUploadService.UploadFirmSupportingDocumentWithVirtualPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FileDownloadUploadService\ECDataAPI.FileDownloadUploadService.UploadImageWithVirtualPathsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FileDownloadUploadService\ECDataAPI.FileDownloadUploadService.UploadWithVirtualPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\FileDownloadUploadService\ECDataAPI.FileDownloadUploadService.UploadFirmSupportingDocumentWithVirtualPathResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\PaymentGatewayReference\service.disco" />
+    <None Include="Connected Services\PaymentGatewayReference\configuration91.svcinfo" />
+    <None Include="Connected Services\PaymentGatewayReference\configuration.svcinfo" />
+    <None Include="Connected Services\PaymentGatewayReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\FileDownloadUploadService\DownloadUploadFiles.disco" />
+    <None Include="Connected Services\FileDownloadUploadService\configuration91.svcinfo" />
+    <None Include="Connected Services\FileDownloadUploadService\configuration.svcinfo" />
+    <None Include="Connected Services\FileDownloadUploadService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Entity\ECDATADOCS\ECDATA_DOCS_Entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ECDATA_DOCS_Entities.edmx</DependentUpon>
+      <LastGenOutput>ECDATA_DOCS_Entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\ECDATADOCS\ECDATA_DOCS_Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ECDATA_DOCS_Entities.edmx</DependentUpon>
+      <LastGenOutput>ECDATA_DOCS_Entities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\ECDATA_PENDOCS\ECDATA_PENDOCS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ECDATA_PENDOCS.edmx</DependentUpon>
+      <LastGenOutput>ECDATA_PENDOCS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\ECDATA_PENDOCS\ECDATA_PENDOCS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ECDATA_PENDOCS.edmx</DependentUpon>
+      <LastGenOutput>ECDATA_PENDOCS.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\KaigrSearchDB\KaigrSearchDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KaigrSearchDB.edmx</DependentUpon>
+      <LastGenOutput>KaigrSearchDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\KaigrSearchDB\KaigrSearchDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KaigrSearchDB.edmx</DependentUpon>
+      <LastGenOutput>KaigrSearchDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\KAIGR_ONLINE\KAIGR_ONLINE_Entities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KAIGR_ONLINE_Entities.edmx</DependentUpon>
+      <LastGenOutput>KAIGR_ONLINE_Entities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\KAIGR_ONLINE\KAIGR_ONLINE_Entities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KAIGR_ONLINE_Entities.edmx</DependentUpon>
+      <LastGenOutput>KAIGR_ONLINE_Entities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\KaveriEntities\KaveriEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KaveriEntities.edmx</DependentUpon>
+      <LastGenOutput>KaveriEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\KaveriEntities\KaveriEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>KaveriEntities.edmx</DependentUpon>
+      <LastGenOutput>KaveriEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Connected Services\PaymentGatewayReference\service.wsdl" />
+    <Content Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <Content Include="Content\NOTARY.KEY" />
+    <EntityDeploy Include="Entity\ECDATADOCS\ECDATA_DOCS_Entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ECDATA_DOCS_Entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\ECDATADOCS\ECDATA_DOCS_Entities.edmx.diagram">
+      <DependentUpon>ECDATA_DOCS_Entities.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Entity\KaigrSearchDB\KaigrSearchDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KaigrSearchDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\KaigrSearchDB\KaigrSearchDB.edmx.diagram">
+      <DependentUpon>KaigrSearchDB.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Entity\KaveriEntities\KaveriEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KaveriEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\KaveriEntities\KaveriEntities.edmx.diagram">
+      <DependentUpon>KaveriEntities.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Entity\ECDATA_PENDOCS\ECDATA_PENDOCS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ECDATA_PENDOCS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\ECDATA_PENDOCS\ECDATA_PENDOCS.edmx.diagram">
+      <DependentUpon>ECDATA_PENDOCS.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Entity\KAIGR_ONLINE\KAIGR_ONLINE_Entities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>KAIGR_ONLINE_Entities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\KAIGR_ONLINE\KAIGR_ONLINE_Entities.edmx.diagram">
+      <DependentUpon>KAIGR_ONLINE_Entities.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\APIPublish.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Web References\AnywhereCCService\PreRegCCService.wsdl" />
+    <None Include="Web References\AnywhereCCService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\AnyWhereECApplicationServices\AnyWhereECApplicationServices.wsdl" />
+    <Content Include="Web References\AnyWhereECApplicationServices\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\EcDataService\ECDataService.wsdl">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\EcDataService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\PreRegApplicationDetailsService\PreRegApplicationDetailsService.disco" />
+    <None Include="Web References\EcDataService\ECDataService.disco" />
+    <None Include="Web References\AnywhereCCService\PreRegCCService.disco" />
+    <None Include="Web References\SRToCentralComService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SRToCentralComService\SRToCentralComService.disco" />
+    <None Include="Web References\AnyWhereECApplicationServices\AnyWhereECApplicationServices.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Alerts\AlertsAreaRegistration.cs" />
+    <Compile Include="Areas\Alerts\BAL\SendSMSDetailsBAL.cs" />
+    <Compile Include="Areas\Alerts\Controllers\SendSMSDetailsAPIController.cs" />
+    <Compile Include="Areas\Alerts\DAL\SendSMSDetailsDAL.cs" />
+    <Compile Include="Areas\Alerts\Interfaces\ISendSMSDetails.cs" />
+    <Compile Include="Areas\AnywhereEC\AnywhereECAreaRegistration.cs" />
+    <Compile Include="Areas\AnywhereEC\BAL\AnywhereECForgotPasswordBAL.cs" />
+    <Compile Include="Areas\AnywhereEC\Controllers\AnywhereECForgotPasswordApiController.cs" />
+    <Compile Include="Areas\AnywhereEC\DAL\AnywhereECForgotPasswordDAL.cs" />
+    <Compile Include="Areas\AnywhereEC\Interface\IAnywhereECForgotPassword.cs" />
+    <Compile Include="Areas\BhoomiMapping\BAL\BhoomiMappingBAL.cs" />
+    <Compile Include="Areas\BhoomiMapping\BAL\BhoomiMappingDetailsBAL.cs" />
+    <Compile Include="Areas\BhoomiMapping\BAL\IsVillageMatchingBAL.cs" />
+    <Compile Include="Areas\BhoomiMapping\BhoomiMappingAreaRegistration.cs" />
+    <Compile Include="Areas\BhoomiMapping\Controllers\BhoomiMappingAPIController.cs" />
+    <Compile Include="Areas\BhoomiMapping\Controllers\BhoomiMappingDetailsAPIController.cs" />
+    <Compile Include="Areas\BhoomiMapping\Controllers\IsVillageMatchingAPIController.cs" />
+    <Compile Include="Areas\BhoomiMapping\DAL\BhoomiMappingDAL.cs" />
+    <Compile Include="Areas\BhoomiMapping\DAL\BhoomiMappingDetailsDAL.cs" />
+    <Compile Include="Areas\BhoomiMapping\DAL\IsVillageMatchingDAL.cs" />
+    <Compile Include="Areas\BhoomiMapping\Interface\IBhoomiMapping.cs" />
+    <Compile Include="Areas\BhoomiMapping\Interface\IBhoomiMappingDetails.cs" />
+    <Compile Include="Areas\BhoomiMapping\Interface\IIsVillageMatching.cs" />
+    <Compile Include="Areas\Blockchain\BAL\BlockchainApprovalListBAL.cs" />
+    <Compile Include="Areas\Blockchain\BAL\BlockchainBAL.cs" />
+    <Compile Include="Areas\Blockchain\BlockchainAreaRegistration.cs" />
+    <Compile Include="Areas\Blockchain\Controllers\BlockchainAPIController.cs" />
+    <Compile Include="Areas\Blockchain\Controllers\BlockchainApprovalListAPIController.cs" />
+    <Compile Include="Areas\Blockchain\DAL\BlockchainApprovalListDAL.cs" />
+    <Compile Include="Areas\Blockchain\DAL\BlockchainDAL.cs" />
+    <Compile Include="Areas\Blockchain\Interface\IBlockchain.cs" />
+    <Compile Include="Areas\Blockchain\Interface\IBlockchainApprovalList.cs" />
+    <Compile Include="Areas\ChallanNoDataEntryCorrection\BAL\ChallanNoDataEntryCorrectionBAL.cs" />
+    <Compile Include="Areas\ChallanNoDataEntryCorrection\ChallanNoDataEntryCorrectionAreaRegistration.cs" />
+    <Compile Include="Areas\ChallanNoDataEntryCorrection\Controllers\ChallanNoDataEntryCorrectionAPIController.cs" />
+    <Compile Include="Areas\ChallanNoDataEntryCorrection\DAL\ChallanNoDataEntryCorrectionDAL.cs" />
+    <Compile Include="Areas\ChallanNoDataEntryCorrection\Interface\IChallanNoDataEntryCorrection.cs" />
+    <Compile Include="Areas\Dashboard\BAL\DashboardBAL.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\DashboardAPIController.cs" />
+    <Compile Include="Areas\Dashboard\DAL\DashboardDAL.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\Dashboard\Interface\IDashboard.cs" />
+    <Compile Include="Areas\DataEntryCorrection\BAL\DataEntryCorrectionBAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\BAL\PartyDetailsBAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\BAL\PropertyNumberDetailsBAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\BAL\ReScanningApplicationBAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\BAL\SelectDocumentBAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Controllers\DataEntryCorrectionAPIController.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Controllers\PartyDetailsAPIController.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Controllers\PropertyNumberDetailsAPIController.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Controllers\ReScanningApplicationAPIController.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Controllers\SelectDocumentAPIController.cs" />
+    <Compile Include="Areas\DataEntryCorrection\DAL\DataEntryCorrectionDAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\DAL\PartyDetailsDAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\DAL\PropertyNumberDetailsDAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\DAL\ReScanningApplicationDAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\DAL\SelectDocumentDAL.cs" />
+    <Compile Include="Areas\DataEntryCorrection\DataEntryCorrectionAreaRegistration.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Interface\IDataEntryCorrection.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Interface\IPartyDetails.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Interface\IPropertyNumberDetails.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Interface\IReScanningApplication.cs" />
+    <Compile Include="Areas\DataEntryCorrection\Interface\ISelectDocument.cs" />
+    <Compile Include="Areas\DisableKaveri\BAL\DisableKaveriBAL.cs" />
+    <Compile Include="Areas\DisableKaveri\Controllers\DisableKaveriAPIController.cs" />
+    <Compile Include="Areas\DisableKaveri\DAL\DisableKaveriDAL.cs" />
+    <Compile Include="Areas\DisableKaveri\DisableKaveriAreaRegistration.cs" />
+    <Compile Include="Areas\DisableKaveri\Interface\IDisableKaveri.cs" />
+    <Compile Include="Areas\DynamicDataReader\BAL\DataReadingHistoryBAL.cs" />
+    <Compile Include="Areas\DynamicDataReader\BAL\ReadNewDataBAL.cs" />
+    <Compile Include="Areas\DynamicDataReader\Controllers\DataReadingHistoryAPIController.cs" />
+    <Compile Include="Areas\DynamicDataReader\Controllers\ReadNewDataAPIController.cs" />
+    <Compile Include="Areas\DynamicDataReader\DAL\DataReadingHistoryDAL.cs" />
+    <Compile Include="Areas\DynamicDataReader\DAL\ReadNewDataDAL.cs" />
+    <Compile Include="Areas\DynamicDataReader\DynamicDataReaderAreaRegistration.cs" />
+    <Compile Include="Areas\DynamicDataReader\Interface\IDataReadingHistory.cs" />
+    <Compile Include="Areas\DynamicDataReader\Interface\IReadNewData.cs" />
+    <Compile Include="Areas\IntegrationDashboard\IntegrationDashboardAreaRegistration.cs" />
+    <Compile Include="Areas\KavariSupport\BAL\KaveriSupportBAL.cs" />
+    <Compile Include="Areas\KavariSupport\Controllers\KaveriSupportApiController.cs" />
+    <Compile Include="Areas\KavariSupport\Interface\IKaveriSupport.cs" />
+    <Compile Include="Areas\KavariSupport\KavariSupportAreaRegistration.cs" />
+    <Compile Include="Areas\KaveriIntegration\BAL\KaveriIntegrationBAL.cs" />
+    <Compile Include="Areas\KaveriIntegration\Controllers\KaveriIntegrationAPIController.cs" />
+    <Compile Include="Areas\KaveriIntegration\DAL\KaveriIntegrationDAL.cs" />
+    <Compile Include="Areas\KaveriIntegration\Interface\IKaveriIntegration.cs" />
+    <Compile Include="Areas\KaveriIntegration\KaveriIntegrationAreaRegistration.cs" />
+    <Compile Include="Areas\LogAnalysis\BAL\ECDataAuditDetails.cs" />
+    <Compile Include="Areas\LogAnalysis\BAL\ValuationDifferenceReportBAL.cs" />
+    <Compile Include="Areas\LogAnalysis\Controllers\ECDataAuditDetailsApiController.cs" />
+    <Compile Include="Areas\LogAnalysis\Controllers\ValuationDifferenceReportAPIController.cs" />
+    <Compile Include="Areas\LogAnalysis\DAL\ECDataAuditDetailsDAL.cs" />
+    <Compile Include="Areas\LogAnalysis\DAL\ValuationDifferenceReportDAL.cs" />
+    <Compile Include="Areas\LogAnalysis\Interface\IECDataAuditDetails.cs" />
+    <Compile Include="Areas\LogAnalysis\Interface\IValuationDifferenceReport.cs" />
+    <Compile Include="Areas\LogAnalysis\LogAnalysisAreaRegistration.cs" />
+    <Compile Include="Areas\MISReports\BAL\AnywhereECLogBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\AnywhereRegistrationStatisticsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ARegisterBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ARegisterGenerationDetailsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\BhoomiFileUploadReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\CDWrittenReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\CourtOrderDetailsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DailyReceiptDetailsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DailyRevenueBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DataRestorationReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DataTransmissionDetailsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DigilockerStatisticsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DiskUtilizationBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DocCentralizationStatusBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DocumentReferencesBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\DocumentScanAndDeliveryBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ECCCSearchStatisticsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ECDailyReceiptReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ESignConsumptionReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ExemptionDocumentBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\FirmCentralizationReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\FRUITSIntegrationBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\HighValuePropertiesBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\IncomeTaxReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\IndexIIReportsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\JSlipUploadReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\JurisdictionalWiseBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\KOSPaymentStatusReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\OtherDepartmentImportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\OtherDepartmentStatusBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\PaymmentModeWiseCollectionSummaryBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\PendingDocumentsSummaryBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\PropertyWthoutImportBypassRDPRBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\RegistrationSummaryBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ReScanningDetailsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SAKALAUpload_PendencyReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SaleDeedRevCollectionBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ScannedFileUploadStatusReportBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ScanningStatisticsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ScanningStatisticsConsolidatedBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\ServicePackStatusBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SevaSindhuApplicationDetailsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SevaSindhuStatisticsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SROChallanCollectionBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SroDD_POCollectionBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SRODocCashCollectionBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\SurchargeCessDetailsBAL.cs" />
+    <Compile Include="Areas\MISReports\BAL\TodaysDocumentsRegisteredBAL.cs" />
+    <Compile Include="Areas\MISReports\Controllers\AnywhereECLogAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\AnywhereRegistrationStatisticsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ARegisterAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ARegisterGenerationDetailsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\BhoomiFileUploadReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\CDWrittenReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\CourtOrderDetailsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DailyReceiptDetailsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DailyRevenueAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DataRestorationReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DataTransmissionDetailsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DigilockerStatisticsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DiskUtilizationAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DocCentralizationStatusAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DocumentReferencesAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\DocumentScanAndDeliveryAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ECCCSearchStatisticsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ECDailyReceiptReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ESignConsumptionReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ExemptionDocumentAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\FirmCentralizationReportApiController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\FRUITSIntegrationAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\HighValuePropertiesAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\IDocCentralizationStatus.cs" />
+    <Compile Include="Areas\MISReports\Controllers\IncomeTaxReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\IndexIIReportsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\JSlipUploadReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\JurisdictionalWiseAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\KOSPaymentStatusReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\OtherDepartmentImportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\OtherDepartmentStatusAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\PaymmentModeWiseCollectionSummaryAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\PendingDocumentsSummaryAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\PropertyWthoutImportBypassRDPRAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\RegistrationSummaryAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ReScanningDetailsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SAKALAUpload_PendencyReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SaleDeedRevCollectionAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ScannedFileUploadStatusReportAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ScanningStatisticsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ScanningStatisticsConsolidatedAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\ServicePackStatusAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SevaSindhuApplicationDetailsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SevaSindhuStatisticsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SROChallanCollectionAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SroDD_POCollectionAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SRODocCashCollectionAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\SurchargeCessDetailsAPIController.cs" />
+    <Compile Include="Areas\MISReports\Controllers\TodaysDocumentsRegisteredAPIController.cs" />
+    <Compile Include="Areas\MISReports\DAL\AnywhereECLogDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\AnywhereRegistrationStatisticsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ARegisterDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ARegisterGenerationDetailsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\BhoomiFileUploadReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\CDWrittenReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\CourtOrderDetailsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DailyReceiptDetailsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DailyRevenueDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DataRestorationReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DataTransmissionDetailsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DigilockerStatisticsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DiskUtilizationDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DocCentralizationStatusDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DocumentReferencesDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\DocumentScanAndDeliveryDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ECCCSearchStatisticsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ECDailyReceiptReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ESignConsumptionReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ExemptionDocumentDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\FirmCentralizationReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\FRUITSIntegrationDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\HighValuePropertiesDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\IncomeTaxReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\IndexIIReportsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\JSlipUploadReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\JurisdictionalWiseDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\KOSPaymentStatusReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\OtherDepartmentImportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\OtherDepartmentStatusDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\PaymmentModeWiseCollectionSummaryDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\PendingDocumentsSummaryDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\PropertyWthoutImportBypassRDPRDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\RegistrationSummaryDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ReScanningDetailsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SAKALAUpload_PendencyReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SaleDeedRevCollectionDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ScannedFileUploadStatusReportDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ScanningStatisticsConsolidatedDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ScanningStatisticsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\ServicePackStatusDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SevaSindhuApplicationDetailsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SevaSindhuStatisticsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SROChallanCollectionDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SroDD_POCollectionDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SRODocCashCollectionDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\SurchargeCessDetailsDAL.cs" />
+    <Compile Include="Areas\MISReports\DAL\TodaysDocumentsRegisteredDAL.cs" />
+    <Compile Include="Areas\MISReports\Interface\IAnywhereECLog.cs" />
+    <Compile Include="Areas\MISReports\Interface\IAnywhereRegistrationStatistics.cs" />
+    <Compile Include="Areas\MISReports\Interface\IARegister.cs" />
+    <Compile Include="Areas\MISReports\Interface\IBhoomiFileUploadReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\ICDWrittenReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\ICourtOrderDetails.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDailyReceiptDetails.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDailyRevenue.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDataRestorationReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDataTransmissionDetails.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDigilockerStatistics.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDiskUtilization.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDocCentralizationStatus.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDocumentReferences.cs" />
+    <Compile Include="Areas\MISReports\Interface\IDocumentScanAndDelivery.cs" />
+    <Compile Include="Areas\MISReports\Interface\IECCCSearchStatistics.cs" />
+    <Compile Include="Areas\MISReports\Interface\IECDailyReceiptReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IESignConsumptionReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IExemptionDocument.cs" />
+    <Compile Include="Areas\MISReports\Interface\IFirmCentralizationReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IFRUITSIntegration.cs" />
+    <Compile Include="Areas\MISReports\Interface\IHighValueProperties.cs" />
+    <Compile Include="Areas\MISReports\Interface\IIncomeTaxReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IIndexIIReports.cs" />
+    <Compile Include="Areas\MISReports\Interface\IJSlipUploadReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IJurisdictionalWise.cs" />
+    <Compile Include="Areas\MISReports\Interface\IKOSPaymentStatusReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IOtherDepartmentImport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IOtherDepartmentStatus.cs" />
+    <Compile Include="Areas\MISReports\Interface\IPaymentModeWiseCollectionSummary.cs" />
+    <Compile Include="Areas\MISReports\Interface\IPendingDocsSummary.cs" />
+    <Compile Include="Areas\MISReports\Interface\IPropertyWthoutImportBypassRDPR.cs" />
+    <Compile Include="Areas\MISReports\Interface\IRegistrationSummary.cs" />
+    <Compile Include="Areas\MISReports\Interface\IReScanningDetails.cs" />
+    <Compile Include="Areas\MISReports\Interface\ISaleDeedRevCollection.cs" />
+    <Compile Include="Areas\MISReports\Interface\IScannedFileUploadStatusReport.cs" />
+    <Compile Include="Areas\MISReports\Interface\IScanningStatistics.cs" />
+    <Compile Include="Areas\MISReports\Interface\IScanningStatisticsConsolidated.cs" />
+    <Compile Include="Areas\MISReports\Interface\IServicePackStatus.cs" />
+    <Compile Include="Areas\MISReports\Interface\ISevaSindhuApplicationDetails.cs" />
+    <Compile Include="Areas\MISReports\Interface\ISevaSindhuStatistics.cs" />
+    <Compile Include="Areas\MISReports\Interface\ISROChallanCollection.cs" />
+    <Compile Include="Areas\MISReports\Interface\ISRODocCashCollection.cs" />
+    <Compile Include="Areas\MISReports\Interface\ISurchargeCessDetails.cs" />
+    <Compile Include="Areas\MISReports\Interface\ITodaysDocumentsRegistered.cs" />
+    <Compile Include="Areas\MISReports\Interface\ISAKALAUpload_PendencyReport.cs" />
+    <Compile Include="Areas\MISReports\MISReportsAreaRegistration.cs" />
+    <Compile Include="Areas\PendingDocuments\BAL\PendingDocumentsBAL.cs" />
+    <Compile Include="Areas\PendingDocuments\Controller\PendingDocumentsAPIController.cs" />
+    <Compile Include="Areas\PendingDocuments\DAL\PendingDocumentsDAL.cs" />
+    <Compile Include="Areas\PendingDocuments\Interface\IPendingDocuments.cs" />
+    <Compile Include="Areas\PhotoThumb\BAL\PhotoThumbBAL.cs" />
+    <Compile Include="Areas\PhotoThumb\BAL\PhotoThumbFailedBAL.cs" />
+    <Compile Include="Areas\PhotoThumb\Controllers\PhotoThumbAPIController.cs" />
+    <Compile Include="Areas\PhotoThumb\Controllers\PhotoThumbFailedAPIController.cs" />
+    <Compile Include="Areas\PhotoThumb\DAL\PhotoThumbDAL.cs" />
+    <Compile Include="Areas\PhotoThumb\DAL\PhotoThumbFailedDAL.cs" />
+    <Compile Include="Areas\PhotoThumb\Interface\IPhotoThumb.cs" />
+    <Compile Include="Areas\PhotoThumb\Interface\IPhotoThumbFailed.cs" />
+    <Compile Include="Areas\PhotoThumb\PhotoThumbAreaRegistration.cs" />
+    <Compile Include="Areas\RefundChallan\BAL\RefundChallanApproveBAL.cs" />
+    <Compile Include="Areas\RefundChallan\BAL\RefundChallanBAL.cs" />
+    <Compile Include="Areas\RefundChallan\Controllers\RefundChallanAPIController.cs" />
+    <Compile Include="Areas\RefundChallan\Controllers\RefundChallanApproveAPIController.cs" />
+    <Compile Include="Areas\RefundChallan\DAL\RefundChallanApproveDAL.cs" />
+    <Compile Include="Areas\RefundChallan\DAL\RefundChallanDAL.cs" />
+    <Compile Include="Areas\RefundChallan\Interface\IRefundChallan.cs" />
+    <Compile Include="Areas\RefundChallan\Interface\IRefundChallanApprove.cs" />
+    <Compile Include="Areas\RefundChallan\RefundChallanAreaRegistration.cs" />
+    <Compile Include="Areas\Remittance\BAL\ARegisterAnalysisReportBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\BatchCompletionDetailsBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\BlockingProcessesbAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\BlockingProcessesForKOSBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\CCConversionLogBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\ChallanDataEntryCorrectionDetailsBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\ChallanDetailsBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\ChallanMatrixXMLLogBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\DblVerificationXMLLogBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\DiagnosticDataForGivenRegistrationBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\ErrorLogFilesBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\FirmCentralizationBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\IntegrationCallExceptionsBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\MarriageAnalysisReportBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\MasterDataBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\MissingScanDocumentBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\NotReadableDocBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\OfficeWiseDiagnosticStatusBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\QueryExecutionStatusReportBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\RegistrationNoVerificationDetailsBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\RegistrationNoVerificationSummaryReportBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\RegistrationScanningDetailsBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\REMDaignosticsBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\REMDaignosticsSummaryBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\RemittanceXMLLogBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\ScheduleAllocationAnalysisBAL.cs" />
+    <Compile Include="Areas\Remittance\BAL\XELFileStorageDetailsBAL.cs" />
+    <Compile Include="Areas\Remittance\Controllers\ARegisterAnalysisReportAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\BatchCompletionDetailsAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\BlockingProcessesAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\BlockingProcessesForKOSAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\CCConversionLogAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\ChallanDataEntryCorrectionDetailsAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\ChallanDetailsAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\ChallanMatrixXMLLogApiController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\DblVerificationXMLLogApiController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\DiagnosticDataForGivenRegistrationAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\ErrorLogFilesApiController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\FirmCentralizationAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\IntegrationCallExceptionsApiController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\MarriageAnalysisReportAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\MasterDataAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\MissingScanDocumentAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\NotReadableDocAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\OfficeWiseDiagnosticStatusAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\QueryExecutionStatusReportAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\RegistrationNoVerificationDetailsAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\RegistrationNoVerificationSummaryReportAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\RegistrationScanningDetailsAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\REMDaignosticsApiController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\REMDaignosticsSummaryApiController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\RemittanceXMLLogApiController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\ScheduleAllocationAnalysisAPIController.cs" />
+    <Compile Include="Areas\Remittance\Controllers\XELFileStorageDetailsAPIController.cs" />
+    <Compile Include="Areas\Remittance\DAL\AnyWhereECServiceDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ARegisterAnalysisReportDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\BatchCompletionDetailsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\BlockingProcessesDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\BlockingProcessesForKOSDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\CCConversionLogDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ChallanDataEntryCorrectionDetailsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ChallanDetailsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ChallanMatrixXMLLogDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\DblVerificationXMLLogDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\DiagnosticDataForGivenRegistrationDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ECDATAPortalDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ECDATAServiceDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ErrorDetailsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ErrorLogFilesDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\FirmCentralizationDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\IntegrationCallExceptionsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\MarriageAnalysisReportDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\MasterDataDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\MissingScanDocumentDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\NotReadableDocDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\OfficeWiseDiagnosticStatusDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\PreRegServiceDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\QueryExecutionStatusReportDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\RegistrationNoVerificationDetailsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\RegistrationNoVerificationSummaryReportDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\RegistrationScanningDetailsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\REMDaignosticsDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\REMDaignosticsSummaryDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\RemittanceXMLLogDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\ScheduleAllocationAnalysisDAL.cs" />
+    <Compile Include="Areas\Remittance\DAL\XELFileStorageDetailsDAL.cs" />
+    <Compile Include="Areas\Remittance\Interface\IARegisterAnalysisReport.cs" />
+    <Compile Include="Areas\Remittance\Interface\IBatchCompletionDetails.cs" />
+    <Compile Include="Areas\Remittance\Interface\IBlockingProcesses.cs" />
+    <Compile Include="Areas\Remittance\Interface\IBlockingProcessesForKOS.cs" />
+    <Compile Include="Areas\Remittance\Interface\ICCConversionLog.cs" />
+    <Compile Include="Areas\Remittance\Interface\IChallanDataEntryCorrectionDetails.cs" />
+    <Compile Include="Areas\Remittance\Interface\IChallanDetails.cs" />
+    <Compile Include="Areas\Remittance\Interface\IChallanMatrixXMLLog.cs" />
+    <Compile Include="Areas\Remittance\Interface\IDblVerificationXMLLog.cs" />
+    <Compile Include="Areas\Remittance\Interface\IDiagnosticDataForGivenRegistration.cs" />
+    <Compile Include="Areas\Remittance\Interface\IErrorLogFiles.cs" />
+    <Compile Include="Areas\Remittance\Interface\IFirmCentralization.cs" />
+    <Compile Include="Areas\Remittance\Interface\IIntegrationCallExceptions.cs" />
+    <Compile Include="Areas\Remittance\Interface\IMarriageAnalysisReport.cs" />
+    <Compile Include="Areas\Remittance\Interface\IMasterData.cs" />
+    <Compile Include="Areas\Remittance\Interface\IMissingScanDocument.cs" />
+    <Compile Include="Areas\Remittance\Interface\INotReadableDoc.cs" />
+    <Compile Include="Areas\Remittance\Interface\IOfficeWiseDiagnosticStatus.cs" />
+    <Compile Include="Areas\Remittance\Interface\IQueryExecutionStatusReport.cs" />
+    <Compile Include="Areas\Remittance\Interface\IRegistrationNoVerificationDetails.cs" />
+    <Compile Include="Areas\Remittance\Interface\IRegistrationNoVerificationSummaryReport.cs" />
+    <Compile Include="Areas\Remittance\Interface\IRegistrationScanningDetails.cs" />
+    <Compile Include="Areas\Remittance\Interface\IREMDaignostics.cs" />
+    <Compile Include="Areas\Remittance\Interface\IREMDaignosticsSummary.cs" />
+    <Compile Include="Areas\Remittance\Interface\IRemittanceXMLLog.cs" />
+    <Compile Include="Areas\Remittance\Interface\IScheduleAllocationAnalysis.cs" />
+    <Compile Include="Areas\Remittance\Interface\IXELFileStorageDetails.cs" />
+    <Compile Include="Areas\Remittance\RemittanceAreaRegistration.cs" />
+    <Compile Include="Areas\Reports\BAL\DiagnosticReports\SROModificationDetailsBAL.cs" />
+    <Compile Include="Areas\Reports\DAL\DiagnosticReports\SROModificationDetailsDAL.cs" />
+    <Compile Include="Areas\Reports\ReportsAreaRegistration.cs" />
+    <Compile Include="Areas\ServicePack\BAL\ServicepackBAL.cs" />
+    <Compile Include="Areas\ServicePack\Controller\ServicePackApiController.cs" />
+    <Compile Include="Areas\ServicePack\DAL\ServicePackDAL.cs" />
+    <Compile Include="Areas\ServicePack\Interface\IServicePack.cs" />
+    <Compile Include="Areas\SROScriptManager\BAL\ScriptManagerBAL.cs" />
+    <Compile Include="Areas\SROScriptManager\Controllers\SROScriptManagerAPIController.cs" />
+    <Compile Include="Areas\SROScriptManager\DAL\ScriptManagerDAL.cs" />
+    <Compile Include="Areas\SROScriptManager\Interface\IScriptManager.cs" />
+    <Compile Include="Areas\SROScriptManager\SROScriptManagerAreaRegistration.cs" />
+    <Compile Include="Areas\SupportEnclosure\BAL\SupportEnclosureDetailsBAL.cs" />
+    <Compile Include="Areas\SupportEnclosure\Controllers\SupportEnclosureDetailsAPIController.cs" />
+    <Compile Include="Areas\SupportEnclosure\DAL\SupportEnclosureDetailsDAL.cs" />
+    <Compile Include="Areas\SupportEnclosure\Interface\ISupportEnclosureDetails.cs" />
+    <Compile Include="Areas\SupportEnclosure\SupportEnclosureAreaRegistration.cs" />
+    <Compile Include="Areas\TicketTracing\TicketTracingAreaRegistration.cs" />
+    <Compile Include="Areas\UserManagement\BAL\ControllerActionBAL.cs" />
+    <Compile Include="Areas\UserManagement\BAL\MenuDetailsBAL.cs" />
+    <Compile Include="Areas\UserManagement\BAL\OfficeUserDetailsBAL.cs" />
+    <Compile Include="Areas\UserManagement\BAL\RoleDetailsBAL.cs" />
+    <Compile Include="Areas\UserManagement\BAL\UserDetailBAL.cs" />
+    <Compile Include="Areas\UserManagement\BAL\UserProfileDetailsBAL.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\ActionDetailsApiController.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\LoginApiController.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\MenuDetailsApiController.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\OfficeUserDetailsApiController.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\RoleDetailsApiController.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\UserProfileDetailsApiController.cs" />
+    <Compile Include="Areas\UserManagement\Controllers\UserRegistrationApiController.cs" />
+    <Compile Include="Areas\UserManagement\DAL\ControllerActionDAL.cs" />
+    <Compile Include="Areas\UserManagement\DAL\MenuDetailsDAL.cs" />
+    <Compile Include="Areas\UserManagement\DAL\OfficeUserDetailsDAL.cs" />
+    <Compile Include="Areas\UserManagement\DAL\RoleDetailsDAL.cs" />
+    <Compile Include="Areas\UserManagement\DAL\UserDetailDAL.cs" />
+    <Compile Include="Areas\UserManagement\DAL\UserProfileDetailsDAL.cs" />
+    <Compile Include="Areas\UserManagement\Interface\IControllerActionDetails.cs" />
+    <Compile Include="Areas\UserManagement\Interface\IMenuDetails.cs" />
+    <Compile Include="Areas\UserManagement\Interface\IOfficeUser.cs" />
+    <Compile Include="Areas\UserManagement\Interface\IRoleDetails.cs" />
+    <Compile Include="Areas\UserManagement\Interface\IUserDetail.cs" />
+    <Compile Include="Areas\UserManagement\UserManagementAreaRegistration.cs" />
+    <Compile Include="Areas\Utilities\BAL\ScannedFileDownloadBAL.cs" />
+    <Compile Include="Areas\Utilities\Controllers\IScannedFileDownload.cs" />
+    <Compile Include="Areas\Utilities\Controllers\ScannedFileDownloadAPIController.cs" />
+    <Compile Include="Areas\Utilities\DAL\ScannedFileDownloadDAL.cs" />
+    <Compile Include="Areas\Utilities\Interface\IScannedFileDownload.cs" />
+    <Compile Include="Areas\Utilities\UtilitiesAreaRegistration.cs" />
+    <Compile Include="Areas\XELFiles\BAL\XELFilesDetailsBAL.cs" />
+    <Compile Include="Areas\XELFiles\Controllers\XELFilesDetailsAPIController.cs" />
+    <Compile Include="Areas\XELFiles\DAL\XELFilesDetailsDAL.cs" />
+    <Compile Include="Areas\XELFiles\Interface\IXELFilesDetails.cs" />
+    <Compile Include="Areas\XELFiles\XELFilesAreaRegistration.cs" />
+    <Compile Include="BAL\CommonBAL.cs" />
+    <Compile Include="BAL\HomePageBAL.cs" />
+    <Compile Include="BAL\MenuHelperBAL.cs" />
+    <Compile Include="Common\ApiCommonFunctions.cs" />
+    <Compile Include="Common\ApiCommonEnum.cs" />
+    <Compile Include="Common\ApiExceptionLogs.cs" />
+    <Compile Include="Common\DownloadCCModel.cs" />
+    <Compile Include="Common\DownloadUploadFile.cs" />
+    <Compile Include="Common\ExtensionMethods.cs" />
+    <Compile Include="Common\IsFocConverter.cs" />
+    <Compile Include="Connected Services\FileDownloadUploadService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\PaymentGatewayReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AccountApiController.cs" />
+    <Compile Include="Controllers\AuthorizationApiController.cs" />
+    <Compile Include="Controllers\CommonsApiController.cs" />
+    <Compile Include="Controllers\HomeApiController.cs" />
+    <Compile Include="Controllers\MenuHelperApiController.cs" />
+    <Compile Include="DAL\CommonDAL.cs" />
+    <Compile Include="DAL\HomePageDAL.cs" />
+    <Compile Include="DAL\MenuHelperDAL.cs" />
+    <Compile Include="DAL\ScanningDAL.cs" />
+    <Compile Include="Entity\ECDATADOCS\ECDATA_DOCS_Entities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECDATA_DOCS_Entities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\ECDATA_DOCS_Entities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\ECDATA_DOCS_Entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECDATA_DOCS_Entities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\ECLOG_FUNCTIONALITY_DEBUG_LOG.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\ECLOG_FUNCTIONALITY_MASTER.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\MAS_SchedulerMaster.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\SROCentralTransSchedularRuntimeDetails.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\USP_XEL_EXCEPTION_LOG_Result.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\USP_XEL_FILE_COUNT_OFFICEWISE_Result.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\USP_XEL_FILE_LIST_OFFICEWISE_Result.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\USP_XEL_TRANSMISSION_LOG_Result.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\XELAuditSpecificationDetail.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\XELReadJobDetails.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\XELSchedulersExceptionLog.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATADOCS\XELTransmissionLog.cs">
+      <DependentUpon>ECDATA_DOCS_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\DocPendingHistory_PENDOCS.cs">
+      <DependentUpon>ECDATA_PENDOCS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\DocumentMaster_PENDOCS.cs">
+      <DependentUpon>ECDATA_PENDOCS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\ECDATA_PENDOCS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECDATA_PENDOCS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\ECDATA_PENDOCS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECDATA_PENDOCS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\ECDATA_PENDOCS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ECDATA_PENDOCS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\NoticeMaster_PENDOCS.cs">
+      <DependentUpon>ECDATA_PENDOCS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\PendingReasonMaster_PENDOCS.cs">
+      <DependentUpon>ECDATA_PENDOCS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ECDATA_PENDOCS\SROMaster_PENDOCS.cs">
+      <DependentUpon>ECDATA_PENDOCS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\FN_MONTHYEAR_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\KaigrSearchDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KaigrSearchDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\KaigrSearchDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\KaigrSearchDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KaigrSearchDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\RPT_ProcessingIterationMaster.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\UPS_DB_GET_TARGET_ACHIEVED_FYWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_ARTICLELIST_TOP10WISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_CURRENT_REVENUE_DETAILS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_CURRENT_REVENUE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_CURRENT_STATUS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_FYWISE_PROGRESS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_Get_HIGHLIGHTS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_MONTHWISE_PROGRESS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_OFFICESTARTTIME_DETAILS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_OFFICESTARTTIME_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SALES_STASTICS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SUMMARY_TABLE_DAYWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SUMMARY_TABLE_FYEARWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SUMMARY_TABLE_MONTHWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SUMMARY_TABLE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SUMMARY_TABLE_UPTODATE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_SURCHARGE_CESS_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_TARGET_ACHIEVED_FYWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_TARGET_LINE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_DB_HIGHVALUE_SUMMARY_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_DAILY_REVENUE_DAYWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_DAILY_REVENUE_DOCUMENTWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_DAILY_REVENUE_MONTHWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_DAILY_REVENUE_RANGEWISE_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_HIGHVALUE_PROPERTIES_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_JurisdictionalWiseDetail_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_SALEDEED_REGISTERED_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaigrSearchDB\USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED_Result.cs">
+      <DependentUpon>KaigrSearchDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KAIGR_ONLINE\KAIGR_ONLINE_Entities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KAIGR_ONLINE_Entities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KAIGR_ONLINE\KAIGR_ONLINE_Entities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KAIGR_ONLINE_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KAIGR_ONLINE\KAIGR_ONLINE_Entities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KAIGR_ONLINE_Entities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KAIGR_ONLINE\MAS_Hoblis.cs">
+      <DependentUpon>KAIGR_ONLINE_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KAIGR_ONLINE\MAS_OfficeMaster.cs">
+      <DependentUpon>KAIGR_ONLINE_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KAIGR_ONLINE\MAS_Villages.cs">
+      <DependentUpon>KAIGR_ONLINE_Entities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_BankInstrumentNumberDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_BankTransactionAmountDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_ChallanMatrixDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_ChallanMatrixTransDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_RefundChallanDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_RefundChallanUsageDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_REG_KhajaneExceptionLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_REG_PaymentDblVerificationLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_REG_PaymentTransDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AMS_Remittance_Office_Status.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\AppVersion.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ARegisterFileDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ARegisterGenerationDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\BhoomiMappingDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\BlockchainReasonDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\BlockchainRequestDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\BookTypeMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\CDMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ChallanNumberDataEntryCorrection.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\CMN_AuditApiLoging.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\CMN_AuditMvcEventLoging.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\CMN_System_User_ActivityLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_ACTIONS.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_ACTIONS_MASTER.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_ACTIVATION_KEY_OTP.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_INITIATE_MASTER.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_INSERT_SCRIPT_DETAILS.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_SERVICE_COMM_DETAILS.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_TABLEWISE_COUNT.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DB_RES_TABLE_MASTER.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DEC_DROrderMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DEC_DRPNDNote.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DiagnosticActionMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DiagnosticDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DiagnosticMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DistrictMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DocumentMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DocumentRescanDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DocumentScanDocVerifyLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\DROScriptManager.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ECMIS_ScannedPageCountDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ECNameSearchKeyValues.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ECPropertySearchKeyValues.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\FeesRuleMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\FirmDataCentralizationDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\FirmMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\FRUITSXML.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\FRUITS_DATA_RECV_DETAILS.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\GetDocumentRegistrationStatistics_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\GetECDailyReceiptDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\GetECUserLog_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\HobliMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\IntegrationDepartment.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\INT_SEVASINDHU_MAR_DATA_RECV_DETAILS.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\Kaveri2Pilot.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\KaveriEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KaveriEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\KaveriEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\KaveriEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>KaveriEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\LBPASXML.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MarriageRegistration.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MarriageRescanDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MarriageScanDocVerifyLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_ActivityType.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Countries.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Districts.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_EnclosureDownloadReasons.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Gender.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_IDProofTypes.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_MaritalStatus.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Modules.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Nationality.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_OfficeMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_OfficeMaster_DisableInfo.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_OfficeTypes.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Profession.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_RelationTypes.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_ServiceMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_ServicePackChangeType.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_States.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Talukas.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Titles.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MAS_Villages.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\MojaniXML.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\NoticeMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\NoticeScanDocVerifyLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\OnlineReceipts.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PartyInfo.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PartyTypeMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PhotoThumbCD_Failed.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PhotoThumbCD_Success.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PhotoThumbUploadDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PhotoThumbUploadLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PhotoThumbUploadStatus.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PropertyMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PropertyNoTypeMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\PropertySchedules.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\QueryAnalyserDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RDPRXML.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ReceiptMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ReceiptPaymentDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ReferenceMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RegistrationArticles.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\REG_EC_KaveriPortal_UserMapping.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\REG_LogTypes.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\REG_Users.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_ARegister_AnywhereEC_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_ARegister_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_DocReg_DateDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_DocReg_NoCLBatchDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_DocReg_NoCLDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_DocumentsNotRegisteredNotPendingDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_GetInstrumentDetails_For_ChallanNoDataEntryCorrection_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_GetInstrumentDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_PendingDocumentsDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_PendingDocumentsSummary_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_PendingLaterFinalizedDocumentsDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\RPT_PropertyAreaDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\SAKALA_UploadFileDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ScanMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ScannedFileDownloadLog.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ScannedFileUploadDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ScriptManager.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ServicePackChangesDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ServicePackDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ServicePackMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\ServicePackReleaseDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\SocietyFirmCDMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\SocietyFirmScanmaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\SoftwareReleaseType.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\SROBifurcationTriLetterDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\SROMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\StampDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\STORAGE_SERVERDETAILS.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\STORAGE_SERVERMASTER.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_API_Users.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_ControllerActionDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_ControllerActionDetails_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_LevelDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_MenuActionAuthorizationMapping.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_MenuActionMapping.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_MenuActionMapping_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_MenuDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_MenuDetails_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_OTP_VerificationDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_PasswordHistory.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_RoleActionAuth.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_RoleActionAuth_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_RoleDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_RoleDetails_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_RoleLevelMapping.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_RoleMenuMapping.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_RoleMenuMapping_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_UserDetails.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_UserDetails_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_UserProfile.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UMG_UserProfile_Log.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\UPORXML.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_ActionWiseDiagnoticsDetails_ByTile_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_AMS_CHECK_InstrumentDetails_Exists_Refund_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_AMS_RefundChallanDetails_LIST_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_AREGISTER_ReportGenerationDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_BLOCKING_PROCESSES_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DB_RES_INITIATE_MASTER_DETAILS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_DeleteNoteFromSRO_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_GetDOCParameters_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_GETECREPORT_Finalized_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_GETECREPORT_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_GETNote_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_GET_NameSearchKeyValues_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_GET_PROPERTYSearchKeyValues_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_INDEX2_DETAILS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_ORDER_LIST_GIVENProperty_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_ORDER_LIST_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DEC_RescanApp_OrderList_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DiagDetail_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_DiagSummary_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_ECDATA_MODIFICATION_DETAILS_COVER_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_ECDATA_MODIFICATION_INFO_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_ECDATA_MODIFICATION_OCCURANCES_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_ECDATA_MODIFICATION_PROGRAM_NAMES_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_FINANCIAL_YEAR_FROM_GIVEN_YEAR_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_FINANCIAL_YEAR_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_GET_ROWCOUNT_OF_TABLE_WRAPPER_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_GET_VILLAGE_FROM_DOCUMENTID_FRUITS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_INDEX2_DETAILS_AUDIT_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_INDEX2_DETAILS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_MENU_TO_HIGHLIGHT_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_PopulateControllerActionDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_PopulateMenuActionDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_PopulateMenus_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_POPULATE_OFC_USER_DETAILS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_Populate_RoleDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_REM_BankTransactionDetailList_DRO_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_REM_BankTransactionDetailList_SRO_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_REM_RemittanceDetailsSROOfficeWiseSummary_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_REM_RemittanceDetialsDROOfficeWiseSummary_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_BhoomiFileUploadReport_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_CDWrittenReport_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_CHALLAN_COLLECTION_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_DailyReceiptDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_DDPO_COLLECTION_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_DocumentReference_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_DocumentScanAndDelivery_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_ECCCCOUNT_OTH_DETAIL_DAYWISE_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_ECCCCOUNT_OTH_DETAIL_MONTHWISE_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_ECCCCOUNT_OTH_DETAIL_OFFICEWISE_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_ExemptedDocumentsDetail_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_FRUITS_IMPORT_STATUS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_GetSupportEnclosureDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_IMPORT_STATUS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_INCOMETAX_REPORT_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_JSlipUploadReport_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_JURISDICTIONAL_SRO_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KaveriIntegrationReportDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KI_Bhoomi_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KI_EAsthi_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KI_ESwathu_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KI_Mojani_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KI_Total_Properties_Registered_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KI_Total_Properties_Regi_Without_Importing_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_KI_UPOR_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_Mojini_IMPORT_STATUS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_RECEIPT_COLLECTION_SUMMARY_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_REGISTRATION_STATUS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_RescanningDetails_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_SAKALAUpoadReport_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_ScannedFileUploadStatusReport_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_SCANNING_CONSOLIDATED_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_SERVICEPACK_DETAILS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_SERVICEPACK_STATUS_DETAILS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_SRO_CASH_COLLECTION_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_SURCHARGE_CESS_DETAILS_BIFURCATED_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_SURCHARGE_CESS_DETAILS_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_TotalPropertiesRegiWithoutImporting_Bypass_RDPR_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_UNDERVALUATION_DETAILS_AGRICULTURE_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_UNDERVALUATION_DETAILS_APARTMENT_A_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_UNDERVALUATION_DETAILS_OPENBUILTRATE_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\USP_RPT_UNDERVALUATION_SUMMARY_V2_Result.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\VillageMaster.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\KaveriEntities\VillageMasterVillagesMergingMapping.cs">
+      <DependentUpon>KaveriEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Filters\AuthenticationAttribute.cs" />
+    <Compile Include="Filters\EventApiAuditLogFilter.cs" />
+    <Compile Include="Filters\ExceptionFilter.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\ICommonInterface.cs" />
+    <Compile Include="Interface\IHomePage.cs" />
+    <Compile Include="Interface\IMenuHelper.cs" />
+    <Compile Include="Interface\IScanningInterface.cs" />
+    <Compile Include="Models\ClientAuthenticationModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Security\CryptographyMethods.cs" />
+    <Compile Include="Security\URLEncrypt.cs" />
+    <Compile Include="Web References\AnywhereCCService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\AnyWhereECApplicationServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\EcDataService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\PreRegApplicationDetailsService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SRToCentralComService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\web.config" />
+    <None Include="Web References\PreRegApplicationDetailsService\PreRegApplicationDetailsService.wsdl" />
+    <None Include="Web References\PreRegApplicationDetailsService\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\SRToCentralComService\SRToCentralComService.wsdl" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Alerts\Models\" />
+    <Folder Include="Areas\Alerts\Views\Shared\" />
+    <Folder Include="Areas\AnywhereEC\Models\" />
+    <Folder Include="Areas\AnywhereEC\Views\Shared\" />
+    <Folder Include="Areas\BhoomiMapping\Models\" />
+    <Folder Include="Areas\BhoomiMapping\Views\Shared\" />
+    <Folder Include="Areas\Blockchain\Models\" />
+    <Folder Include="Areas\Blockchain\Views\SelectDocumentAPI\" />
+    <Folder Include="Areas\Blockchain\Views\Shared\" />
+    <Folder Include="Areas\Blockchain\Views\SupportEnclosureDetailsBAL\" />
+    <Folder Include="Areas\ChallanNoDataEntryCorrection\Models\" />
+    <Folder Include="Areas\ChallanNoDataEntryCorrection\Views\Shared\" />
+    <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="Areas\Dashboard\Views\Shared\" />
+    <Folder Include="Areas\DataEntryCorrection\Models\" />
+    <Folder Include="Areas\DataEntryCorrection\Views\SelectDocumentAPI\" />
+    <Folder Include="Areas\DataEntryCorrection\Views\Shared\" />
+    <Folder Include="Areas\DataEntryCorrection\Views\SupportEnclosureDetailsBAL\" />
+    <Folder Include="Areas\DisableKaveri\Views\DisableKaveriAPI\" />
+    <Folder Include="Areas\DynamicDataReader\Models\" />
+    <Folder Include="Areas\DynamicDataReader\Views\Shared\" />
+    <Folder Include="Areas\IntegrationDashboard\BAL\" />
+    <Folder Include="Areas\IntegrationDashboard\Controllers\" />
+    <Folder Include="Areas\IntegrationDashboard\DAL\" />
+    <Folder Include="Areas\IntegrationDashboard\Interface\" />
+    <Folder Include="Areas\IntegrationDashboard\Models\" />
+    <Folder Include="Areas\IntegrationDashboard\Views\Shared\" />
+    <Folder Include="Areas\KavariSupport\Models\" />
+    <Folder Include="Areas\KavariSupport\Views\Shared\" />
+    <Folder Include="Areas\KaveriIntegration\Models\" />
+    <Folder Include="Areas\KaveriIntegration\Views\Shared\" />
+    <Folder Include="Areas\LogAnalysis\Models\" />
+    <Folder Include="Areas\LogAnalysis\Views\Shared\" />
+    <Folder Include="Areas\MISReports\Models\" />
+    <Folder Include="Areas\MISReports\Views\DigilockerStatisticsAPI\" />
+    <Folder Include="Areas\MISReports\Views\Shared\" />
+    <Folder Include="Areas\RefundChallan\Models\" />
+    <Folder Include="Areas\RefundChallan\Views\Shared\" />
+    <Folder Include="Areas\Remittance\Models\" />
+    <Folder Include="Areas\Remittance\Views\ScheduleAllocationAnalysisAPI\" />
+    <Folder Include="Areas\Remittance\Views\Shared\" />
+    <Folder Include="Areas\Reports\Controllers\" />
+    <Folder Include="Areas\Reports\Interface\DiagnosticReports\" />
+    <Folder Include="Areas\SROScriptManager\Models\" />
+    <Folder Include="Areas\SROScriptManager\Views\Shared\" />
+    <Folder Include="Areas\SupportEnclosure\Models\" />
+    <Folder Include="Areas\SupportEnclosure\Views\Shared\" />
+    <Folder Include="Areas\SupportEnclosure\Views\SupportEnclosureDetailsBAL\" />
+    <Folder Include="Areas\TicketTracing\BAL\" />
+    <Folder Include="Areas\TicketTracing\Controllers\" />
+    <Folder Include="Areas\TicketTracing\DAL\" />
+    <Folder Include="Areas\TicketTracing\Interface\" />
+    <Folder Include="Areas\TicketTracing\Models\" />
+    <Folder Include="Areas\TicketTracing\Views\Shared\" />
+    <Folder Include="Areas\UserManagement\Models\" />
+    <Folder Include="Areas\Utilities\Models\" />
+    <Folder Include="Areas\Utilities\Views\ScannedFileDownloadAPI\" />
+    <Folder Include="Areas\Utilities\Views\Shared\" />
+    <Folder Include="Areas\XELFiles\Models\" />
+    <Folder Include="Areas\XELFiles\Views\Shared\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CustomModels\CustomModels.csproj">
+      <Project>{e146153c-343f-4b18-bf4b-f738d208bf1f}</Project>
+      <Name>CustomModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ECDataUI\ECDataUI.csproj">
+      <Project>{3747739F-1FF3-4FEA-BEDE-F83216C49934}</Project>
+      <Name>ECDataUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\FileDownloadUploadService\" />
+    <WCFMetadataStorage Include="Connected Services\PaymentGatewayReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://10.208.34.186:8855/AnyWhereECApplicationServices.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AnyWhereECApplicationServices\</RelPath>
+      <UpdateFromURL>http://10.208.34.186:8855/AnyWhereECApplicationServices.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ECDataAPI_AnyWhereECApplicationServices_AnyWhereECApplicationServices</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:59045/PreRegCCService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\AnywhereCCService\</RelPath>
+      <UpdateFromURL>http://localhost:59045/PreRegCCService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ECDataAPI_AnywhereCCService_PreRegCCService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:12345/PreRegApplicationDetailsService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\PreRegApplicationDetailsService\</RelPath>
+      <UpdateFromURL>http://localhost:12345/PreRegApplicationDetailsService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ECDataAPI_PreRegApplicationDetailsService_ApplicationDetailsService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:57137/ECDataService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\EcDataService\</RelPath>
+      <UpdateFromURL>http://localhost:57137/ECDataService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ECDataAPI_EcDataService_ECDataService</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost:7652/SRToCentralComService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SRToCentralComService\</RelPath>
+      <UpdateFromURL>http://localhost:7652/SRToCentralComService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ECDataAPI_SRToCentralComService_SRToCentralComService</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="CheckSum">
+      <Guid>{DAFC8A0A-F6F3-4A06-9FB8-492B49BF299B}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:50145/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

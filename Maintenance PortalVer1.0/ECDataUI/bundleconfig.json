@@ -1,0 +1,566 @@
+[
+  {
+    "outputFileName": "Scripts/ForgotPassword/ForgotPassword.min.js",
+    "inputFiles": [
+      "Scripts/ForgotPassword/ForgotPassword.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/ForgotPassword/ForgotPasswordByLink.min.js",
+    "inputFiles": [
+      "Scripts/ForgotPassword/ForgotPasswordByLink.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/UserRegistration/UserRegistration.min.js",
+    "inputFiles": [
+      "Scripts/UserRegistration/UserRegistration.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Index/Index.min.js",
+    "inputFiles": [
+      "Scripts/Index/Index.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Login/UserLogin.min.js",
+    "inputFiles": [
+      "Scripts/Login/UserLogin.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CommonJS/Captcha.min.js",
+    "inputFiles": [
+      "Scripts/CommonJS/Captcha.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CommonJS/md5.min.js",
+    "inputFiles": [
+      "Scripts/CommonJS/md5.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CommonJS/sha512.min.js",
+    "inputFiles": [
+      "Scripts/CommonJS/sha512.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CommonJS/jquery.blockUI.min.js",
+    "inputFiles": [
+      "Scripts/CommonJS/jquery.blockUI.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CommonJS/bootstrap-typeahead.min.js",
+    "inputFiles": [
+      "Scripts/CommonJS/bootstrap-typeahead.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CommonJS/jquery.validate.unobtrusive.min.js",
+    "inputFiles": [
+      "Scripts/CommonJS/jquery.validate.unobtrusive.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/website.min.css",
+    "inputFiles": [
+      "Content/website.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/DataTables/Js_New/jquery-3.3.1.min.js",
+    "inputFiles": [
+      "Content/DataTables/Js_New/jquery-3.3.1.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/js/index.min.js",
+    "inputFiles": [
+      "Content/js/index.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/js/isloading.min.js",
+    "inputFiles": [
+      "Content/js/isloading.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/HomePage/css/Admin-LTE-Fonts.min.css",
+    "inputFiles": [
+      "Content/HomePage/css/Admin-LTE-Fonts.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/HomePage/dist/js/adminlte.min.js",
+    "inputFiles": [
+      "Content/HomePage/dist/js/adminlte.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/effects.min.css",
+    "inputFiles": [
+      "Content/effects.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Layout/Layout.min.js",
+    "inputFiles": [
+      "Scripts/Layout/Layout.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Alerts/Scripts/OTPValidation.min.js",
+    "inputFiles": [
+      "Areas/Alerts/Scripts/OTPValidation.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/HomePage/HomePage.min.js",
+    "inputFiles": [
+      "Scripts/HomePage/HomePage.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/SearchCertificate/LoadCertificate.min.js",
+    "inputFiles": [
+      "Scripts/SearchCertificate/LoadCertificate.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/SearchCertificate/SearchCertificate.min.js",
+    "inputFiles": [
+      "Scripts/SearchCertificate/SearchCertificate.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/DataTables/js/dataTables.bootstrap.min.js",
+    "inputFiles": [
+      "Content/DataTables/js/dataTables.bootstrap.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/DataTables/js/jquery.dataTables.min.js",
+    "inputFiles": [
+      "Content/DataTables/js/jquery.dataTables.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/DataTables/css/dataTables.bootstrap.min.css",
+    "inputFiles": [
+      "Content/DataTables/css/dataTables.bootstrap.css"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/ControllerAction/addUpdateControllerAction.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/ControllerAction/addUpdateControllerAction.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/ControllerAction/ControlleActionGrid.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/ControllerAction/ControlleActionGrid.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/Office/CreateOffice.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/Office/CreateOffice.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/Office/Office.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/Office/Office.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/OfficeUser/CreateOfficeUser.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/OfficeUser/CreateOfficeUser.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/OfficeUser/OfficeUserDetails.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/OfficeUser/OfficeUserDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/RoleDetails/AddEditRoleDetails.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/RoleDetails/AddEditRoleDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/RoleDetails/RoleDetailsList.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/RoleDetails/RoleDetailsList.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/RoleDetails/RoleMenuMapping.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/RoleDetails/RoleMenuMapping.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/ChangePassword.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/ChangePassword.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/EditUserProfileDetails.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/EditUserProfileDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/ViewUserProfileDetails.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/ViewUserProfileDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/WorkFlowAction/CreateWorkFlowAction.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/WorkFlowAction/CreateWorkFlowAction.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/WorkFlowAction/WorkFlowAction.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/WorkFlowAction/WorkFlowAction.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/WorkFlowConfiguration/CreateUpdateWorkFlowConfiguration.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/WorkFlowConfiguration/CreateUpdateWorkFlowConfiguration.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/WorkFlowConfiguration/WorkFlowConfigurationDetails.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/WorkFlowConfiguration/WorkFlowConfigurationDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/DashBoard/Scripts/DashBoard.min.js",
+    "inputFiles": [
+      "Areas/DashBoard/Scripts/DashBoard.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/LogAnalysis/Scripts/ECDataAuditDetails/ECDataAuditDetails.min.js",
+    "inputFiles": [
+      "Areas/LogAnalysis/Scripts/ECDataAuditDetails/ECDataAuditDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/DailyRevenue/DailyRevenueReport.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/DailyRevenue/DailyRevenueReport.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/HighValueProperties/GetHighValuePropertyDetails.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/HighValueProperties/GetHighValuePropertyDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/HighValueProperties/HighValueProperties.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/HighValueProperties/HighValueProperties.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/IndexIIeports/IndexIIReportsView.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/IndexIIeports/IndexIIReportsView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/SaleDeedRevCollection/SaleDeedRevCollection.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/SaleDeedRevCollection/SaleDeedRevCollection.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/SroDD_POCollection/SroDD_POCollection.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/SroDD_POCollection/SroDD_POCollection.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/SRODocCashCollection/SRODocCashCollection.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/SRODocCashCollection/SRODocCashCollection.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/TodaysDocumentsRegistered/GetTodaysTotalDocumentsRegisteredDetails.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/TodaysDocumentsRegistered/GetTodaysTotalDocumentsRegisteredDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/TodaysDocumentsRegistered/TodaysDocumentsRegisteredView.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/TodaysDocumentsRegistered/TodaysDocumentsRegisteredView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/ChallanMatrixXMLLog/ChallanMatrixXMLLog.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/ChallanMatrixXMLLog/ChallanMatrixXMLLog.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/DblVerificationXMLLog/DblVerificationXMLLog.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/DblVerificationXMLLog/DblVerificationXMLLog.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/ErrorLogFiles/ErrorLogFiles.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/ErrorLogFiles/ErrorLogFiles.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/IntegrationCallExceptions/IntegrationCallExceptions.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/IntegrationCallExceptions/IntegrationCallExceptions.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/REMDiagnostics/GetOfficeListSummary.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/REMDiagnostics/GetOfficeListSummary.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/REMDiagnostics/RemittanceDiagnosticsDetailsView.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/REMDiagnostics/RemittanceDiagnosticsDetailsView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/RemittanceXMLLog/RemittanceXMLLog.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/RemittanceXMLLog/RemittanceXMLLog.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/MenuDetails/MenuActionMapping.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/MenuDetails/MenuActionMapping.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/MenuDetails/RetriveMenu.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/MenuDetails/RetriveMenu.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/PViewUserProfileDetails.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/PViewUserProfileDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/LogAnalysis/CSS/ECAuditDataTableStyles.min.css",
+    "inputFiles": [
+      "Areas/LogAnalysis/CSS/ECAuditDataTableStyles.css"
+    ]
+  },
+  {
+    "outputFileName": "Areas/UserManagement/Scripts/UserManagement/UserManagementHome.min.js",
+    "inputFiles": [
+      "Areas/UserManagement/Scripts/UserManagement/UserManagementHome.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/KaveriSupport/Scripts/KaveriSupport.min.js",
+    "inputFiles": [
+      "Areas/KaveriSupport/Scripts/KaveriSupport.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/KaveriSupport/Scripts/TicketDetailsList.min.js",
+    "inputFiles": [
+      "Areas/KaveriSupport/Scripts/TicketDetailsList.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/JurisdictionalWise/JurisdictionalWise.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/JurisdictionalWise/JurisdictionalWise.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/SurchargeCessDetails/SurchargeCessDetails.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/SurchargeCessDetails/SurchargeCessDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/DailyReceiptDetails/DailyReceiptDetails.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/DailyReceiptDetails/DailyReceiptDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/ReScanningDetails/ReScanningDetails.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/ReScanningDetails/ReScanningDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/ExemptionDocument/ExemptionDocument.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/ExemptionDocument/ExemptionDocument.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/ServicePack/Scripts/AddServicePackDetails.min.js",
+    "inputFiles": [
+      "Areas/ServicePack/Scripts/AddServicePackDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/ServicePack/Scripts/ApproveServicePackDetails.min.js",
+    "inputFiles": [
+      "Areas/ServicePack/Scripts/ApproveServicePackDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/ServicePack/Scripts/EditServicePackDetails.min.js",
+    "inputFiles": [
+      "Areas/ServicePack/Scripts/EditServicePackDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/ServicePack/Scripts/ListReleasedServicePackDetails.min.js",
+    "inputFiles": [
+      "Areas/ServicePack/Scripts/ListReleasedServicePackDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/ServicePack/Scripts/ServicePackDetails.min.js",
+    "inputFiles": [
+      "Areas/ServicePack/Scripts/ServicePackDetails.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/ECDailyReceiptReport/ECDailyReceiptRptView.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/ECDailyReceiptReport/ECDailyReceiptRptView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/AnywhereRegistrationStatistics/AnywhereRegistrationStatistics.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/AnywhereRegistrationStatistics/AnywhereRegistrationStatistics.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/AnywhereRegistrationStatistics/LoadAnywhereRegStatTable.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/AnywhereRegistrationStatistics/LoadAnywhereRegStatTable.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/ScannedFileUploadStatusReport/LoadScannedFileUploadStatusReportTable.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/ScannedFileUploadStatusReport/LoadScannedFileUploadStatusReportTable.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/ScannedFileUploadStatusReport/ScannedFileUploadStatusReportView.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/ScannedFileUploadStatusReport/ScannedFileUploadStatusReportView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/AnywhereECLog/AnywhereECLogView.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/AnywhereECLog/AnywhereECLogView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/DocCentralizationStatus/DocCentralizationStatus.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/DocCentralizationStatus/DocCentralizationStatus.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/DocCentralizationStatus/LoadDocCentralizationDataTable.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/DocCentralizationStatus/LoadDocCentralizationDataTable.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Utilities/Scripts/ScannedFileDownload/ScannedFileDownloadView.min.js",
+    "inputFiles": [
+      "Areas/Utilities/Scripts/ScannedFileDownload/ScannedFileDownloadView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Dashboard/Scripts/DashBoardView.min.js",
+    "inputFiles": [
+      "Areas/Dashboard/Scripts/DashBoardView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Dashboard/Scripts/DashboardSummaryView.min.js",
+    "inputFiles": [
+      "Areas/Dashboard/Scripts/DashboardSummaryView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/MISReports/Scripts/DocumentScanAndDelivery/DocumentScanAndDeliveryView.min.js",
+    "inputFiles": [
+      "Areas/MISReports/Scripts/DocumentScanAndDelivery/DocumentScanAndDeliveryView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/LogAnalysis/Scripts/ValuationDifferenceReport/ValuationDifferenceView.min.js",
+    "inputFiles": [
+      "Areas/LogAnalysis/Scripts/ValuationDifferenceReport/ValuationDifferenceView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Dashboard/Scripts/DashboardDetailsView.min.js",
+    "inputFiles": [
+      "Areas/Dashboard/Scripts/DashboardDetailsView.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/MarriageAnalysisReport/MarriageAnalysisReport.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/MarriageAnalysisReport/MarriageAnalysisReport.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/ARegisterAnalysisReport/ARegisterAnalysisReport.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/ARegisterAnalysisReport/ARegisterAnalysisReport.js"
+    ]
+  },
+  {
+    "outputFileName": "Areas/Remittance/Scripts/RegistrationNoVerificationDetails/RegistrationNoVerificationDetails.min.js",
+    "inputFiles": [
+      "Areas/Remittance/Scripts/RegistrationNoVerificationDetails/RegistrationNoVerificationDetails.js"
+    ]
+  }
+]

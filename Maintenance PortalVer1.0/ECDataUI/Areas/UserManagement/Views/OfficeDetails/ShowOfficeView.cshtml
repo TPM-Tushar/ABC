@@ -1,0 +1,93 @@
+﻿
+
+@*<script src="~/Areas/UserManagement/Scripts/Office/Office.js"></script>*@
+<script src="~/Areas/UserManagement/Scripts/Office/Office.min.js"></script>
+
+<style>
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+       
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+
+
+</style>
+
+<div class="container-fluid">
+    <div class="col-md-offset-0">
+
+        <div class="panel panel-default" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-right: 0px; margin-left: 0px;">
+                    @*Commented By Shubham Bhagat on 30-10-2018*@
+                    @*<span id="" style="margin-left: 0px;font-size:120%;padding-left:1%;"></span>*@
+                    <span id='officeListCollapse' data-toggle="collapse" data-target="#CollapsableOfficeList" aria-expanded="true" aria-controls="CollapsableOfficeList" style="cursor:pointer;margin-bottom:20px;">
+                        <span id="ToggleIconID" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px;font-size:120%;padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #FFF;font-size:120%;">Existing Office Details</span>
+                </div>
+                <div id="CollapsableOfficeList" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 0%; overflow-y: auto; max-height: 650px;">
+                    <div class="=container-fluid" style="padding-top:10px;">
+                        <div class="data-table-wrapper table-responsive col-md-12" style="max-height:550px ;width:100%">
+                            <div class="clsTblWrapper ">
+                                <table id="OfficeDetailsGrid" class="datatable full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; width:100%"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="DivOfficeDetailsWrapper"></div>
+        <div class="panel panel-default" id="panelNewOffice" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-right: 0px; margin-left: 0px;">
+                    <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                    <span class="" style="color: #FFF;font-size:120%;">
+                        New Office Details
+                    </span>
+                </div>
+                <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                        </div>
+                        <div class="col-md-6" id="btnAddOfficeDetails" style="cursor: pointer;">
+
+                            <div class="row" style="border: 1px solid #ECF0F1; box-shadow: 2px 2px 2px #dadada; background-color: #73a9d9  !important; border-radius: 15px;">
+                                <div class="col-md-2">
+                                </div>
+                                <div class="col-md-8">
+                                    <h3>
+                                        <span class="" style="color: white; vertical-align: super;">
+                                            Add New Office Details
+                                        </span>
+                                    </h3>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            <br />
+                        </div>
+
+                        <div class="col-md-2"></div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

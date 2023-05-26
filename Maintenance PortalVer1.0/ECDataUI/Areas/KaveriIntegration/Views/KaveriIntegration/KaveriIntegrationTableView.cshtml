@@ -1,0 +1,231 @@
+﻿
+@model CustomModels.Models.KaveriIntegration.KaveriIntegrationWrapperModel
+@using ECDataUI.Helper
+
+@{
+    //int RecordCount = 0;
+}
+<style>
+    /*.th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    table, td, tr {
+        word-break: break-all !important;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }*/
+
+    /* Hide the browser's default radio button */
+    /*.containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .td {
+        font-size: 50px;
+    }*/
+    /* Create a custom radio button */
+    /*.checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }*/
+
+    /* On mouse-over, add a grey background color */
+    /*.containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }*/
+
+    /* When the radio button is checked, add a blue background */
+    /*.containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }*/
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    /*.checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }*/
+
+    /* Show the indicator (dot/circle) when checked */
+    /*.containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }*/
+
+    /* Style the indicator (dot/circle) */
+    /*.containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }*/
+
+    /*thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    td {
+        word-wrap: break-word;
+    }
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        word-wrap: normal;
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }*/
+
+    /*.containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        width:35px;
+    }*/
+
+    /*tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important;
+    }*/
+
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }
+
+    /*.BTNwrapper {
+        text-align: center;
+    }*/
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+    /*Added By shubham bhagat because if we give background color in table style
+      so we have to tbody in foreach loop and if we give background-color to thead
+    so calender hed
+    */
+    /*thead {
+        background-color: #99CFF7;
+    }*/
+    .thead_Color {
+        background-color: #99CFF7;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+
+@*<script src="~/Areas/KaveriIntegration/Scripts/KaveriIntegrationView.js"></script>*@
+
+<table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="padding-top:1% ;vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+    <thead>
+        <tr>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">S. No.</th>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Sub-Registrar Office Name<br>(A)</th>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Total Properties Registered<br>(B)</th>
+            <th class="thead_Color" colspan="3" style="vertical-align:middle;">Total Properties imported from</th>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Total properties registered without importing<br>(F)</th>
+        </tr>
+        <tr>
+            <th class="thead_Color" style="vertical-align:middle;">Bhoomi<br>(C)</th>
+            <th class="thead_Color" style="vertical-align:middle;">E-Swathu<br>(D)</th>
+            <th class="thead_Color" style="vertical-align:middle;">UPOR<br>(E)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.KaveriIntegrationDetailList)
+        {
+            <tr>
+                <td><label>@item.SerialNo</label></td>
+                <td style="text-align:left;"><label>@item.SROName</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.TotalPropertiesRegistered)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.Bhoomi)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.E_Swathu)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.UPOR)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.Total_Properties_Registered_Without_Importing)</label></td>
+                @*<td style="text-align:right"><label>@item.str_RF</label></td>*@
+            </tr>
+        }
+    </tbody>
+</table>

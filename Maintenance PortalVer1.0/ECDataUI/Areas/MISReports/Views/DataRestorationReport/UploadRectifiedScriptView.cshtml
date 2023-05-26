@@ -1,0 +1,44 @@
+﻿@model  CustomModels.Models.MISReports.DataRestorationReport.UploadRectifiedScriptViewModel
+@using ECDataUI.Helper
+<script src="~/Areas/MISReports/Scripts/DataRestorationReport/UploadRectifiedScriptView.js"></script>
+
+<div>
+    <div class="row" style="padding-top:1%;padding-bottom:1%;">
+        <div class="col-md-12">
+            @Html.HiddenFor(m => m.INITID_STR, new { id = "INITID_STR_ForUpload_ID" })
+            @Html.HiddenFor(m => m.SCRIPT_ID_STR, new { id = "SCRIPT_ID_STR_ForUpload_ID" })
+            <fieldset style="text-align:left;">
+                <legend>Upload rectified file : </legend>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-6">
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col-md-6 PaddingTop10">
+                                        @Html.LabelFor(model => model.ScriptRectificationHistory, "Corrective action ", htmlAttributes: new { @class = "control-label" })
+                                        @*@Html.LabelFor(model => model.ScriptRectificationHistory, "Corrective action", htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.EditorFor(model => model.ScriptRectificationHistory, new { htmlAttributes = new { @class = "form-control", @id = "ScriptRectificationHistoryID" } })
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="col-md-6">
+                            <fieldset>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input class="PaddingTop10" type="file" id="FileUpload1" />                                       
+                                    </div>
+                                    <div class="col-md-6">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div><br/>
+                <div class="row" style="text-align:center;"> <input class="btn btn-primary" type="button" id="btnUpload" value="Upload File" /></div>
+            </fieldset>
+        </div>
+    </div>
+</div>

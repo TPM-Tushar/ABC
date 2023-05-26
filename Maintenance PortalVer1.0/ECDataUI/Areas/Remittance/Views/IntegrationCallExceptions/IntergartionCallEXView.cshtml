@@ -1,0 +1,197 @@
+﻿
+@model CustomModels.Models.Remittance.IntegrationCallExceptions.IntegrationCallExceptionsModel
+
+@using ECDataUI.Helper;
+
+@*<script src="~/Areas/Remittance/Scripts/IntegrationCallExceptions/IntegrationCallExceptions.js"></script>*@
+<script src="~/Areas/Remittance/Scripts/IntegrationCallExceptions/IntegrationCallExceptions.min.js"></script>
+<style>
+    /* The container */
+    .containerForRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default radio button */
+        .containerForRadio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom radio button */
+    .checkmarkForRadio {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        margin-left: 0%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerForRadio:hover input ~ .checkmarkForRadio {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerForRadio input:checked ~ .checkmarkForRadio {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkForRadio:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerForRadio input:checked ~ .checkmarkForRadio:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerForRadio .checkmarkForRadio:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    /*
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }*/
+</style>
+
+<div class="container">
+    <div class='row'>
+
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div>
+                <form>
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="row" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-4"> </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        @*<div class="col-md-6">*@
+                                        <label class="containerForRadio">
+                                            <span style="vertical-align: middle;font-size:14px;font-weight:300;font-family:Arial, Helvetica, sans-serif;">SR Office</span>
+                                            <input type="radio" name="OfficeTypeToGetDropDown" id="OfficeTypeToGetDropDown" value="SRO">
+                                            <span class="checkmarkForRadio"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        @*<div class="col-md-6">*@
+                                        <label class="containerForRadio">
+                                            <span style="vertical-align: middle;font-size:14px;font-weight:300;font-family:Arial, Helvetica, sans-serif;">DR Office</span>
+                                            <input type="radio" name="OfficeTypeToGetDropDown" id="OfficeTypeToGetDropDown" value="DRO">
+                                            <span class="checkmarkForRadio"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <div class="col-md-4"> </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4"> </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(x => x.OfficeTypeID, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(x => x.OfficeTypeID, Model.OfficeTypeList, new { @class = "form-control minimal", @Id = "OfficeTypeDropDownID" })
+                                        @Html.ValidationMessageFor(x => x.OfficeTypeID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4"> </div>
+                            </div>
+
+                            <div class="row" style="margin-top:1%;">
+                                <div class="col-md-4"> </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-group-md btn-primary" id="btnSearch">Search</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-group-md btn-warning" id="ResetID">Reset</button>
+                                </div>
+                                <div class="col-md-4"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default" style="width: 100%;margin-left:0px;margin-right:0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;margin-left:0px;margin-right:0px;">
+                    <span id='exceptionDetailsListCollapse' data-toggle="collapse" data-target="#collapseExceptionDetailsList" aria-expanded="false" aria-controls="collapseExceptionDetailsList" style="cursor:pointer;margin-bottom:20px;">
+                        <span id="ToggleIconID" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff;font-size:120%;">Exception Details List</span>
+                    @*<span id="closeExceptionDetailsList"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>*@
+                </div>
+                <div id="collapseExceptionDetailsList" class="collapse" style="text-align: center;margin-left:0px; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+                    <div class="container-fluid">
+                        <div class="data-table-wrapper table-responsive col-md-12" style="max-height:inherit;">
+                            <table id="exceptionDetailsListTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; text-align:center; width:100%">
+                                <thead style="text-align:center;">
+                                    <tr>
+                                        <th>SR No.</th>
+                                        <th>LogID</th>
+                                        <th>SROCODE</th>
+                                        <th>Exception Type</th>
+                                        <th>Inner Exception Message</th>
+                                        <th>Exception Message</th>
+                                        <th>Exception Stack Trace</th>
+                                        <th>ExceptionMethodName</th>
+                                        <th>LogDate</th>
+                                        <th>IsDRO</th>
+                                        <th>DRO</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,177 @@
+﻿@model CustomModels.Models.MISReports.DiskUtilization.DiskUtilizationREQModel
+
+@using ECDataUI.Helper;
+<style>
+    /* The container */
+    .containerForRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default radio button */
+        .containerForRadio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom radio button */
+    .checkmarkForRadio {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        margin-left: 0%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerForRadio:hover input ~ .checkmarkForRadio {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerForRadio input:checked ~ .checkmarkForRadio {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkForRadio:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerForRadio input:checked ~ .checkmarkForRadio:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerForRadio .checkmarkForRadio:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    /*.thead .th .td {
+        text-align: center;
+    }*/
+    table.center-all td, th {
+        text-align: center;
+    }
+</style>
+
+@*@{
+    //var counter = 0;
+    string PresentDirectory = Model.PresentDirectory;
+}*@
+@*<script>
+    var PATH = '@PresentDirectory';
+    var IsBackward = false;
+</script>*@
+
+
+<script src="~/Areas/MISReports/Scripts/DiskUtilization/DiskUtilization.js"></script>
+
+<div class="container">
+    <div class='row'>
+        <div class="panel panel-default" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <form id="ErrFormID">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <div class="panel panel-default" style="width: 100%; margin-left: 0px; margin-right: 0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+                    <div class="panel-body">
+                        <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-left: 0px; margin-right: 0px;">
+                            <span id='ServerInfoCollapse' data-toggle="collapse" data-target="#collapseServerInfo" aria-expanded="false" aria-controls="collapseServerInfo" style="cursor: pointer; margin-bottom: 20px;">
+                                <span id="ServerToggleIconID" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 120%; padding-top: 2px; color: #FFF"></span>
+                            </span>
+                            <span class="" style="color: #fff; font-size: 120%;">Server Information</span>
+                        </div>
+                        <div id="collapseServerInfo" class="collapse" style="text-align: center; margin-left: 0px; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+                            <div class="container-fluid">
+                                <div class="data-table-wrapper table-responsive col-md-12" style="max-height: inherit;">
+                                    <table id="ServerInfoTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; text-align: center; width: 100%">
+                                        <thead style="text-align: center;">
+                                            <tr>
+                                                <th>SrNo</th>
+                                                <th>Server Name</th>
+                                                <th>IPAddress</th>
+                                                <th>Description</th>
+                                                <th>Show Disk Utilization</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{
+                                                int cnt = 1;
+                                                foreach (var item in Model.ApplicationList)
+                                                {
+                                                <tr>
+                                                    <td>@cnt</td>
+                                                    <td style="display: none">@item.ServerID</td>
+                                                    <td>@item.ServerType</td>
+                                                    <td>@item.IPAddress</td>
+                                                    <td>@item.Description</td>
+                                                    <td><span class='fa fa-eye' style='cursor:pointer;font-size: x-large;color:blueviolet;' onclick= 'LoadServerDriveDetails(@item.ServerID)'></span></td>
+                                                </tr>
+                                                    cnt++;
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="panel panel-default" style="width: 100%; margin-left: 0px; margin-right: 0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-left: 0px; margin-right: 0px;">
+                    <span id='DtlsSearchParaListCollapse' data-toggle="collapse" data-target="#collapsedriveInfo" aria-expanded="false" aria-controls="collapsedriveInfo" style="cursor: pointer; margin-bottom: 20px;">
+                        <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 120%; padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">Drive Information</span>
+                </div>
+                <div id="collapsedriveInfo" class="collapse" style="text-align: center; margin-left: 0px; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+                    <div class="container-fluid">
+                        <div class="data-table-wrapper table-responsive col-md-12" style="max-height: inherit;">
+                            <table id="driveInfoTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; text-align: center; width: 100%">
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th>Sr No</th>
+                                        <th>Drive Name</th>
+                                        <th>Drive Type</th>
+                                        <th>File System</th>
+                                        <th>Total Space</th>
+                                        <th>Used Space</th>
+                                        <th>Free Space</th>
+                                        <th>Free Space Percentage</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

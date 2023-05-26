@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AnyWhereECApplicationServices_Test">
+        <s:complexType />
+      </s:element>
+      <s:element name="AnyWhereECApplicationServices_TestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AnyWhereECApplicationServices_TestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorDirectoryList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ApplicationName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorDirectoryListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetErrorDirectoryListResult" type="tns:ErrorDetailsResponseModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ErrorDetailsResponseModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DriveInfoModelList" type="tns:ArrayOfDriveInformationModel" />
+          <s:element minOccurs="1" maxOccurs="1" name="isError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="sErrorMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DirectoryNameArray" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileNameArray" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDirectoryList" type="tns:ArrayOfErrorDirectoryModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDriveInformationModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DriveInformationModel" nillable="true" type="tns:DriveInformationModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DriveInformationModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DriveName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FreeSpace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalSpace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileSystem" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FreeSpacePercentage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriveType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfErrorDirectoryModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ErrorDirectoryModel" nillable="true" type="tns:ErrorDirectoryModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErrorDirectoryModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Text" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetErrorFileDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetErrorFileDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetErrorFileDetailsResult" type="tns:ErrorDetailsResponseModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileContent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:FileContentRequestModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FileContentRequestModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="isZipRequired" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetFileContentResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFileContentResult" type="tns:FileContentResponseModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="FileContentResponseModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="isError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="sErrorMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DownloadFileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileContent" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AnyWhereECApplicationServices_TestSoapIn">
+    <wsdl:part name="parameters" element="tns:AnyWhereECApplicationServices_Test" />
+  </wsdl:message>
+  <wsdl:message name="AnyWhereECApplicationServices_TestSoapOut">
+    <wsdl:part name="parameters" element="tns:AnyWhereECApplicationServices_TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetErrorDirectoryListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetErrorDirectoryList" />
+  </wsdl:message>
+  <wsdl:message name="GetErrorDirectoryListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetErrorDirectoryListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetErrorFileDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetErrorFileDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetErrorFileDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetErrorFileDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileContentSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileContent" />
+  </wsdl:message>
+  <wsdl:message name="GetFileContentSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileContentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="AnyWhereECApplicationServicesSoap">
+    <wsdl:operation name="AnyWhereECApplicationServices_Test">
+      <wsdl:input message="tns:AnyWhereECApplicationServices_TestSoapIn" />
+      <wsdl:output message="tns:AnyWhereECApplicationServices_TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorDirectoryList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Error Directory List</wsdl:documentation>
+      <wsdl:input message="tns:GetErrorDirectoryListSoapIn" />
+      <wsdl:output message="tns:GetErrorDirectoryListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorFileDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get Error File Details</wsdl:documentation>
+      <wsdl:input message="tns:GetErrorFileDetailsSoapIn" />
+      <wsdl:output message="tns:GetErrorFileDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileContent">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get File Content</wsdl:documentation>
+      <wsdl:input message="tns:GetFileContentSoapIn" />
+      <wsdl:output message="tns:GetFileContentSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AnyWhereECApplicationServicesSoap" type="tns:AnyWhereECApplicationServicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AnyWhereECApplicationServices_Test">
+      <soap:operation soapAction="http://tempuri.org/AnyWhereECApplicationServices_Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorDirectoryList">
+      <soap:operation soapAction="http://tempuri.org/GetErrorDirectoryList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorFileDetails">
+      <soap:operation soapAction="http://tempuri.org/GetErrorFileDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileContent">
+      <soap:operation soapAction="http://tempuri.org/GetFileContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AnyWhereECApplicationServicesSoap12" type="tns:AnyWhereECApplicationServicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AnyWhereECApplicationServices_Test">
+      <soap12:operation soapAction="http://tempuri.org/AnyWhereECApplicationServices_Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorDirectoryList">
+      <soap12:operation soapAction="http://tempuri.org/GetErrorDirectoryList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetErrorFileDetails">
+      <soap12:operation soapAction="http://tempuri.org/GetErrorFileDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileContent">
+      <soap12:operation soapAction="http://tempuri.org/GetFileContent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AnyWhereECApplicationServices">
+    <wsdl:port name="AnyWhereECApplicationServicesSoap" binding="tns:AnyWhereECApplicationServicesSoap">
+      <soap:address location="http://10.208.34.186:8855/AnyWhereECApplicationServices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="AnyWhereECApplicationServicesSoap12" binding="tns:AnyWhereECApplicationServicesSoap12">
+      <soap12:address location="http://10.208.34.186:8855/AnyWhereECApplicationServices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

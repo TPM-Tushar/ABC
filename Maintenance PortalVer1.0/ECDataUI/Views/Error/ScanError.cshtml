@@ -1,0 +1,25 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+<script>
+    sessionStorage.clear();
+</script>
+
+
+<script>
+    sessionStorage.clear();
+</script>
+
+<div class="alert alert-danger alert-error">
+    <strong>Error : </strong> Page Not Found.
+    <br />
+    <strong>Url : </strong>  @( (Model == null || Model.ControllerName == null) ? "Error" : Model.ControllerName ) <b>/</b> @( (Model == null || Model.ActionName == null) ? "Index" : Model.ActionName )
+    <br />
+    <strong>Message : </strong>
+    Error occurred while processing your request.  Please  @Html.ActionLink("Sign in Again", "UserLogin", "Login", new object(), new { style="color:red" })
+</div>
+
+
+    

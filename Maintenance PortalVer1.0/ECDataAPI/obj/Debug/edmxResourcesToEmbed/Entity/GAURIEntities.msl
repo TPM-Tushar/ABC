@@ -1,0 +1,2522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GAURIEntitiesModelStoreContainer" CdmEntityContainer="GAURIEntities">
+    <EntitySetMapping Name="AMS_Challans">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_Challans">
+        <MappingFragment StoreEntitySet="AMS_Challans">
+          <ScalarProperty Name="ChallanID" ColumnName="ChallanID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="AccountHeadID" ColumnName="AccountHeadID" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="ChallanNumber" ColumnName="ChallanNumber" />
+          <ScalarProperty Name="GenerateDateTime" ColumnName="GenerateDateTime" />
+          <ScalarProperty Name="ReceiptDate" ColumnName="ReceiptDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ChallanTypeID" ColumnName="ChallanTypeID" />
+          <ScalarProperty Name="DepositorName" ColumnName="DepositorName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_ePayment_ChallanResponseDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_ePayment_ChallanResponseDetails">
+        <MappingFragment StoreEntitySet="AMS_ePayment_ChallanResponseDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="ChlnRefNum" ColumnName="ChlnRefNum" />
+          <ScalarProperty Name="ErrorFlag" ColumnName="ErrorFlag" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_ePayment_ReceiptResponseDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_ePayment_ReceiptResponseDetails">
+        <MappingFragment StoreEntitySet="AMS_ePayment_ReceiptResponseDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="ChlnRefNum" ColumnName="ChlnRefNum" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="ReceiptVirtualFilePath" ColumnName="ReceiptVirtualFilePath" />
+          <ScalarProperty Name="ReceiptPhysicalFilePath" ColumnName="ReceiptPhysicalFilePath" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_ePaymentAmtPayableDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_ePaymentAmtPayableDetails">
+        <MappingFragment StoreEntitySet="AMS_ePaymentAmtPayableDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="DeptPurposeId" ColumnName="DeptPurposeId" />
+          <ScalarProperty Name="FeeRuleID" ColumnName="FeeRuleID" />
+          <ScalarProperty Name="HeadOfAccount" ColumnName="HeadOfAccount" />
+          <ScalarProperty Name="AmountPaid" ColumnName="AmountPaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_ePaymentBankAckDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_ePaymentBankAckDetails">
+        <MappingFragment StoreEntitySet="AMS_ePaymentBankAckDetails">
+          <ScalarProperty Name="BankAckID" ColumnName="BankAckID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="ChallanNumber" ColumnName="ChallanNumber" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentDescription" ColumnName="PaymentDescription" />
+          <ScalarProperty Name="TransactionTimeStamp" ColumnName="TransactionTimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_ePaymentDblVerification">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_ePaymentDblVerification">
+        <MappingFragment StoreEntitySet="AMS_ePaymentDblVerification">
+          <ScalarProperty Name="DblVerificationID" ColumnName="DblVerificationID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="ChallanNumber" ColumnName="ChallanNumber" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="SBIReferenceNo" ColumnName="SBIReferenceNo" />
+          <ScalarProperty Name="BankReceiveDate" ColumnName="BankReceiveDate" />
+          <ScalarProperty Name="TreasuryReceiveDate" ColumnName="TreasuryReceiveDate" />
+          <ScalarProperty Name="DblVerificationStatusID" ColumnName="DblVerificationStatusID" />
+          <ScalarProperty Name="PaymentStatusDesc" ColumnName="PaymentStatusDesc" />
+          <ScalarProperty Name="TransactionTimeStamp" ColumnName="TransactionTimeStamp" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IPAdd" ColumnName="IPAdd" />
+          <ScalarProperty Name="IsError" ColumnName="IsError" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_ePaymentRemitterDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_ePaymentRemitterDetails">
+        <MappingFragment StoreEntitySet="AMS_ePaymentRemitterDetails">
+          <ScalarProperty Name="RemitterPartyID" ColumnName="RemitterPartyID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="Taluka" ColumnName="Taluka" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="OtherDetails" ColumnName="OtherDetails" />
+          <ScalarProperty Name="ReasonForRemittance" ColumnName="ReasonForRemittance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_ePaymentTransDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_ePaymentTransDetails">
+        <MappingFragment StoreEntitySet="AMS_ePaymentTransDetails">
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
+          <ScalarProperty Name="DeptDemandCode" ColumnName="DeptDemandCode" />
+          <ScalarProperty Name="TotalHeadCount" ColumnName="TotalHeadCount" />
+          <ScalarProperty Name="ChlnRefNum" ColumnName="ChlnRefNum" />
+          <ScalarProperty Name="PartyReferenceNumber" ColumnName="PartyReferenceNumber" />
+          <ScalarProperty Name="ChallanGenerationStatus" ColumnName="ChallanGenerationStatus" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="TransactionCompletionStatus" ColumnName="TransactionCompletionStatus" />
+          <ScalarProperty Name="TransactionDateTime" ColumnName="TransactionDateTime" />
+          <ScalarProperty Name="DoubleVerifyStatus" ColumnName="DoubleVerifyStatus" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="IPAdd" ColumnName="IPAdd" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="PaymentStatusCode" ColumnName="PaymentStatusCode" />
+          <ScalarProperty Name="CCApplicationID" ColumnName="CCApplicationID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_FeesPaymentDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_FeesPaymentDetails">
+        <MappingFragment StoreEntitySet="AMS_FeesPaymentDetails">
+          <ScalarProperty Name="FeesPaymentID" ColumnName="FeesPaymentID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
+          <ScalarProperty Name="FeeRuleID" ColumnName="FeeRuleID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="PaymentModeTypeID" ColumnName="PaymentModeTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="InstrumentNumber" ColumnName="InstrumentNumber" />
+          <ScalarProperty Name="InstrumentDate" ColumnName="InstrumentDate" />
+          <ScalarProperty Name="BankID" ColumnName="BankID" />
+          <ScalarProperty Name="DDMICRNO" ColumnName="DDMICRNO" />
+          <ScalarProperty Name="IsVerifiedWithTreasury" ColumnName="IsVerifiedWithTreasury" />
+          <ScalarProperty Name="ChallanID" ColumnName="ChallanID" />
+          <ScalarProperty Name="IsKaveri1Data" ColumnName="IsKaveri1Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_FRM_ePaymentTransactionID">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_FRM_ePaymentTransactionID">
+        <MappingFragment StoreEntitySet="AMS_FRM_ePaymentTransactionID">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_MAS_ePaymentStatus">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_MAS_ePaymentStatus">
+        <MappingFragment StoreEntitySet="AMS_MAS_ePaymentStatus">
+          <ScalarProperty Name="PaymentStatusCode" ColumnName="PaymentStatusCode" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentStatusDesc" ColumnName="PaymentStatusDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_PaymentDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_PaymentDetails">
+        <MappingFragment StoreEntitySet="AMS_PaymentDetails">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="DataEntryDate" ColumnName="DataEntryDate" />
+          <ScalarProperty Name="IsOther" ColumnName="IsOther" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+          <ScalarProperty Name="IsKaveri1Data" ColumnName="IsKaveri1Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AMS_Receipts">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.AMS_Receipts">
+        <MappingFragment StoreEntitySet="AMS_Receipts">
+          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="PartyName" ColumnName="PartyName" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="DateOfReceipt" ColumnName="DateOfReceipt" />
+          <ScalarProperty Name="DateOfDraftReceipt" ColumnName="DateOfDraftReceipt" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="CancellationDateTime" ColumnName="CancellationDateTime" />
+          <ScalarProperty Name="CancellationDesc" ColumnName="CancellationDesc" />
+          <ScalarProperty Name="IsFinalized" ColumnName="IsFinalized" />
+          <ScalarProperty Name="IsOther" ColumnName="IsOther" />
+          <ScalarProperty Name="PDFPath" ColumnName="PDFPath" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+          <ScalarProperty Name="IsKaveri1Data" ColumnName="IsKaveri1Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMN_AuditApiLoging">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.CMN_AuditApiLoging">
+        <MappingFragment StoreEntitySet="CMN_AuditApiLoging">
+          <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+          <ScalarProperty Name="ApiConsumerID" ColumnName="ApiConsumerID" />
+          <ScalarProperty Name="UrlAccessed" ColumnName="UrlAccessed" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AuditDateTime" ColumnName="AuditDateTime" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMN_AuditMvcEventLoging">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.CMN_AuditMvcEventLoging">
+        <MappingFragment StoreEntitySet="CMN_AuditMvcEventLoging">
+          <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UrlAccessed" ColumnName="UrlAccessed" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AuditDateTime" ColumnName="AuditDateTime" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CMN_System_User_ActivityLog">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.CMN_System_User_ActivityLog">
+        <MappingFragment StoreEntitySet="CMN_System_User_ActivityLog">
+          <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ActivityTypeID" ColumnName="ActivityTypeID" />
+          <ScalarProperty Name="LogDesc" ColumnName="LogDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CR_CrossReferencingMaster">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.CR_CrossReferencingMaster">
+        <MappingFragment StoreEntitySet="CR_CrossReferencingMaster">
+          <ScalarProperty Name="CrossRefID" ColumnName="CrossRefID" />
+          <ScalarProperty Name="CrossRefDate" ColumnName="CrossRefDate" />
+          <ScalarProperty Name="CrossRefThrough" ColumnName="CrossRefThrough" />
+          <ScalarProperty Name="CrossRefText" ColumnName="CrossRefText" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CourtIssuingAuthority" ColumnName="CourtIssuingAuthority" />
+          <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="DROrderNumber" ColumnName="DROrderNumber" />
+          <ScalarProperty Name="CrossRefFromModule" ColumnName="CrossRefFromModule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AddressChangeAmendmentLog">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AddressChangeAmendmentLog">
+        <MappingFragment StoreEntitySet="FRM_AddressChangeAmendmentLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="CurrentAddressID" ColumnName="CurrentAddressID" />
+          <ScalarProperty Name="OldAddressID" ColumnName="OldAddressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AddressDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AddressDetails">
+        <MappingFragment StoreEntitySet="FRM_AddressDetails">
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="PremiseNumber" ColumnName="PremiseNumber" />
+          <ScalarProperty Name="PremiseName" ColumnName="PremiseName" />
+          <ScalarProperty Name="WaddoName" ColumnName="WaddoName" />
+          <ScalarProperty Name="StreetSectorDetails" ColumnName="StreetSectorDetails" />
+          <ScalarProperty Name="AreaDetails" ColumnName="AreaDetails" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Village" ColumnName="Village" />
+          <ScalarProperty Name="SubDistrict" ColumnName="SubDistrict" />
+          <ScalarProperty Name="SubDistrictID" ColumnName="SubDistrictID" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="OtherCountryDetails" ColumnName="OtherCountryDetails" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="VillageID" ColumnName="VillageID" />
+          <ScalarProperty Name="PrintableAddress" ColumnName="PrintableAddress" />
+          <ScalarProperty Name="FloorNumber" ColumnName="FloorNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AmendmentCheckSlipsDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AmendmentCheckSlipsDetails">
+        <MappingFragment StoreEntitySet="FRM_AmendmentCheckSlipsDetails">
+          <ScalarProperty Name="CheckSlipDetailsID" ColumnName="CheckSlipDetailsID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="CheckSlipID" ColumnName="CheckSlipID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AmendmentDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AmendmentDetails">
+        <MappingFragment StoreEntitySet="FRM_AmendmentDetails">
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+          <ScalarProperty Name="AmendmentDateTime" ColumnName="AmendmentDateTime" />
+          <ScalarProperty Name="AmendmentNumber" ColumnName="AmendmentNumber" />
+          <ScalarProperty Name="DataEntryOfficeID" ColumnName="DataEntryOfficeID" />
+          <ScalarProperty Name="ApplyingPartyID" ColumnName="ApplyingPartyID" />
+          <ScalarProperty Name="AmendmentFillingDateTime" ColumnName="AmendmentFillingDateTime" />
+          <ScalarProperty Name="IsScanned" ColumnName="IsScanned" />
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="FinalAmendmentNumber" ColumnName="FinalAmendmentNumber" />
+          <ScalarProperty Name="RefusalOrderNumber" ColumnName="RefusalOrderNumber" />
+          <ScalarProperty Name="RefusalOrderDate" ColumnName="RefusalOrderDate" />
+          <ScalarProperty Name="RefusalEndorsementID" ColumnName="RefusalEndorsementID" />
+          <ScalarProperty Name="RefusalReasonID" ColumnName="RefusalReasonID" />
+          <ScalarProperty Name="RefusalRemarks" ColumnName="RefusalRemarks" />
+          <ScalarProperty Name="ParentAmendmentTypeID" ColumnName="ParentAmendmentTypeID" />
+          <ScalarProperty Name="IsCheckSlipFinalized" ColumnName="IsCheckSlipFinalized" />
+          <ScalarProperty Name="ApplicationUpdateDateTime" ColumnName="ApplicationUpdateDateTime" />
+          <ScalarProperty Name="RemarkBySR" ColumnName="RemarkBySR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AmendmentForwardDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AmendmentForwardDetails">
+        <MappingFragment StoreEntitySet="FRM_AmendmentForwardDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="ForwardedToRoleID" ColumnName="ForwardedToRoleID" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="ForwardedByRoleID" ColumnName="ForwardedByRoleID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AmendmentSupportedDocumentLogs">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AmendmentSupportedDocumentLogs">
+        <MappingFragment StoreEntitySet="FRM_AmendmentSupportedDocumentLogs">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="SupportDocumentID" ColumnName="SupportDocumentID" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+          <ScalarProperty Name="ActualUploadedFileName" ColumnName="ActualUploadedFileName" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="IsFileDeleted" ColumnName="IsFileDeleted" />
+          <ScalarProperty Name="UploadedDateTime" ColumnName="UploadedDateTime" />
+          <ScalarProperty Name="DeleteDateTime" ColumnName="DeleteDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AmendmentSupportedDocuments">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AmendmentSupportedDocuments">
+        <MappingFragment StoreEntitySet="FRM_AmendmentSupportedDocuments">
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="SupportDocumentID" ColumnName="SupportDocumentID" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+          <ScalarProperty Name="ActualUploadedFileName" ColumnName="ActualUploadedFileName" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="UploadedDateTime" ColumnName="UploadedDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AmendmentTypeCheckSlipMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AmendmentTypeCheckSlipMapping">
+        <MappingFragment StoreEntitySet="FRM_AmendmentTypeCheckSlipMapping">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AmendmentTypeID" ColumnName="AmendmentTypeID" />
+          <ScalarProperty Name="CheckSlipTypeID" ColumnName="CheckSlipTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_AmendmentTypeMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_AmendmentTypeMapping">
+        <MappingFragment StoreEntitySet="FRM_AmendmentTypeMapping">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="AmendmentTypeID" ColumnName="AmendmentTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_ApplicationForwardDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_ApplicationForwardDetails">
+        <MappingFragment StoreEntitySet="FRM_ApplicationForwardDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="ForwardedToRoleID" ColumnName="ForwardedToRoleID" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="ForwardedByRoleID" ColumnName="ForwardedByRoleID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_BranchAmendment">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_BranchAmendment">
+        <MappingFragment StoreEntitySet="FRM_BranchAmendment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="OpeningClosingDate" ColumnName="OpeningClosingDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsBranchClosing" ColumnName="IsBranchClosing" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_ChangeInConstitutionAmendment">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_ChangeInConstitutionAmendment">
+        <MappingFragment StoreEntitySet="FRM_ChangeInConstitutionAmendment">
+          <ScalarProperty Name="ConstitutionID" ColumnName="ConstitutionID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="CeaseDate" ColumnName="CeaseDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsOutgoing" ColumnName="IsOutgoing" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_CheckSlipsDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_CheckSlipsDetails">
+        <MappingFragment StoreEntitySet="FRM_CheckSlipsDetails">
+          <ScalarProperty Name="CheckSlipDetailsID" ColumnName="CheckSlipDetailsID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="CheckSlipID" ColumnName="CheckSlipID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_ConstitutionChangeAmendmentLog">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_ConstitutionChangeAmendmentLog">
+        <MappingFragment StoreEntitySet="FRM_ConstitutionChangeAmendmentLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="AddingCeasingDate" ColumnName="AddingCeasingDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsPartnerCeased" ColumnName="IsPartnerCeased" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_DissolutionCheckSlipsDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_DissolutionCheckSlipsDetails">
+        <MappingFragment StoreEntitySet="FRM_DissolutionCheckSlipsDetails">
+          <ScalarProperty Name="CheckSlipDetailsID" ColumnName="CheckSlipDetailsID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="CheckSlipID" ColumnName="CheckSlipID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsChecked" ColumnName="IsChecked" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_DissolutionForwardDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_DissolutionForwardDetails">
+        <MappingFragment StoreEntitySet="FRM_DissolutionForwardDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="ForwardedToRoleID" ColumnName="ForwardedToRoleID" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="ForwardedByRoleID" ColumnName="ForwardedByRoleID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_DissolutionSupportedDocuments">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_DissolutionSupportedDocuments">
+        <MappingFragment StoreEntitySet="FRM_DissolutionSupportedDocuments">
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="SupportDocumentID" ColumnName="SupportDocumentID" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+          <ScalarProperty Name="ActualUploadedFileName" ColumnName="ActualUploadedFileName" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="UploadedDateTime" ColumnName="UploadedDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_DissolutionSupportedDocumentsLogs">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_DissolutionSupportedDocumentsLogs">
+        <MappingFragment StoreEntitySet="FRM_DissolutionSupportedDocumentsLogs">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="SupportDocumentID" ColumnName="SupportDocumentID" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+          <ScalarProperty Name="ActualUploadedFileName" ColumnName="ActualUploadedFileName" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="IsFileDeleted" ColumnName="IsFileDeleted" />
+          <ScalarProperty Name="UploadedDateTime" ColumnName="UploadedDateTime" />
+          <ScalarProperty Name="DeleteDateTime" ColumnName="DeleteDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_EndorsementDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_EndorsementDetails">
+        <MappingFragment StoreEntitySet="FRM_EndorsementDetails">
+          <ScalarProperty Name="EndorsementID" ColumnName="EndorsementID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="EndorsementTypeID" ColumnName="EndorsementTypeID" />
+          <ScalarProperty Name="EndorsementNumber" ColumnName="EndorsementNumber" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="DateOfEndorsement" ColumnName="DateOfEndorsement" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="EndorsementFileID" ColumnName="EndorsementFileID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FeesRequired">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FeesRequired">
+        <MappingFragment StoreEntitySet="FRM_FeesRequired">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="FeeRuleID" ColumnName="FeeRuleID" />
+          <ScalarProperty Name="ApplicableAmount" ColumnName="ApplicableAmount" />
+          <ScalarProperty Name="ExemptedAmount" ColumnName="ExemptedAmount" />
+          <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="DateOfPayment" ColumnName="DateOfPayment" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FinalUploadedDocs">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FinalUploadedDocs">
+        <MappingFragment StoreEntitySet="FRM_FinalUploadedDocs">
+          <ScalarProperty Name="FinalUploadedDocID" ColumnName="FinalUploadedDocID" />
+          <ScalarProperty Name="ProcessMappingID" ColumnName="ProcessMappingID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="Pages" ColumnName="Pages" />
+          <ScalarProperty Name="FileUploadDate" ColumnName="FileUploadDate" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="UploadedByUserID" ColumnName="UploadedByUserID" />
+          <ScalarProperty Name="UploadedByResourceID" ColumnName="UploadedByResourceID" />
+          <ScalarProperty Name="CrossRefID" ColumnName="CrossRefID" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+          <ScalarProperty Name="IsDigitalSign" ColumnName="IsDigitalSign" />
+          <ScalarProperty Name="UploadDocTypeID" ColumnName="UploadDocTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmBranches">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmBranches">
+        <MappingFragment StoreEntitySet="FRM_FirmBranches">
+          <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+          <ScalarProperty Name="STDCode" ColumnName="STDCode" />
+          <ScalarProperty Name="BranchPhone" ColumnName="BranchPhone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="BranchOpeningDate" ColumnName="BranchOpeningDate" />
+          <ScalarProperty Name="BranchOpenCloseFiledDate" ColumnName="BranchOpenCloseFiledDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="BranchClosingDate" ColumnName="BranchClosingDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsAmendment" ColumnName="IsAmendment" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmDetails">
+        <MappingFragment StoreEntitySet="FRM_FirmDetails">
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+          <ScalarProperty Name="DateOfRegistration" ColumnName="DateOfRegistration" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="AtWill" ColumnName="AtWill" />
+          <ScalarProperty Name="STDCode" ColumnName="STDCode" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="EmaiID" ColumnName="EmaiID" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="EstablishmentDate" ColumnName="EstablishmentDate" />
+          <ScalarProperty Name="DurationInMonth" ColumnName="DurationInMonth" />
+          <ScalarProperty Name="HasBranches" ColumnName="HasBranches" />
+          <ScalarProperty Name="Pages" ColumnName="Pages" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsOld" ColumnName="IsOld" />
+          <ScalarProperty Name="IsScanned" ColumnName="IsScanned" />
+          <ScalarProperty Name="IsDissolved" ColumnName="IsDissolved" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="FirmNatureID" ColumnName="FirmNatureID" />
+          <ScalarProperty Name="FirmBusinessTypeID" ColumnName="FirmBusinessTypeID" />
+          <ScalarProperty Name="DateOfConstitutionOfFirm" ColumnName="DateOfConstitutionOfFirm" />
+          <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="ApplicationUpdateDateTime" ColumnName="ApplicationUpdateDateTime" />
+          <ScalarProperty Name="Gauri1RegistrationID" ColumnName="Gauri1RegistrationID" />
+          <ScalarProperty Name="DateOfMigration" ColumnName="DateOfMigration" />
+          <ScalarProperty Name="IsCheckSlipFinalized" ColumnName="IsCheckSlipFinalized" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="RemarkBySR" ColumnName="RemarkBySR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmDissolutionDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmDissolutionDetails">
+        <MappingFragment StoreEntitySet="FRM_FirmDissolutionDetails">
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="DissolutionTypeID" ColumnName="DissolutionTypeID" />
+          <ScalarProperty Name="DissolutionDateTime" ColumnName="DissolutionDateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ApplyingPartnerID" ColumnName="ApplyingPartnerID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+          <ScalarProperty Name="DissolutionNumber" ColumnName="DissolutionNumber" />
+          <ScalarProperty Name="FinalDissolutionNumber" ColumnName="FinalDissolutionNumber" />
+          <ScalarProperty Name="FinalDissolutionDateTime" ColumnName="FinalDissolutionDateTime" />
+          <ScalarProperty Name="IsScanned" ColumnName="IsScanned" />
+          <ScalarProperty Name="RefusalOrderNumber" ColumnName="RefusalOrderNumber" />
+          <ScalarProperty Name="RefusalOrderDate" ColumnName="RefusalOrderDate" />
+          <ScalarProperty Name="RefusalEndorsementID" ColumnName="RefusalEndorsementID" />
+          <ScalarProperty Name="RefusalReasonID" ColumnName="RefusalReasonID" />
+          <ScalarProperty Name="RefusalRemarks" ColumnName="RefusalRemarks" />
+          <ScalarProperty Name="IsCheckSlipFinalized" ColumnName="IsCheckSlipFinalized" />
+          <ScalarProperty Name="ApplicationUpdateDateTime" ColumnName="ApplicationUpdateDateTime" />
+          <ScalarProperty Name="RemarkBySR" ColumnName="RemarkBySR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmNameAmendmentLog">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmNameAmendmentLog">
+        <MappingFragment StoreEntitySet="FRM_FirmNameAmendmentLog">
+          <ScalarProperty Name="ChangeID" ColumnName="ChangeID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+          <ScalarProperty Name="CurrentName" ColumnName="CurrentName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmPaymentDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmPaymentDetails">
+        <MappingFragment StoreEntitySet="FRM_FirmPaymentDetails">
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmProcessForFee">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmProcessForFee">
+        <MappingFragment StoreEntitySet="FRM_FirmProcessForFee">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+          <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+          <ScalarProperty Name="IsFeeCalculated" ColumnName="IsFeeCalculated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmReceipts">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmReceipts">
+        <MappingFragment StoreEntitySet="FRM_FirmReceipts">
+          <ScalarProperty Name="ReceiptID" ColumnName="ReceiptID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="ReceiptTypeID" ColumnName="ReceiptTypeID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_FirmRefusalDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_FirmRefusalDetails">
+        <MappingFragment StoreEntitySet="FRM_FirmRefusalDetails">
+          <ScalarProperty Name="RefusalID" ColumnName="RefusalID" />
+          <ScalarProperty Name="RefusalNumber" ColumnName="RefusalNumber" />
+          <ScalarProperty Name="RefusalDate" ColumnName="RefusalDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="IsRevoked" ColumnName="IsRevoked" />
+          <ScalarProperty Name="ReasonID" ColumnName="ReasonID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="EndorsementID" ColumnName="EndorsementID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_OneTimeFRNGeneration">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_OneTimeFRNGeneration">
+        <MappingFragment StoreEntitySet="FRM_OneTimeFRNGeneration">
+          <ScalarProperty Name="RowId" ColumnName="RowId" />
+          <ScalarProperty Name="SroCode" ColumnName="SroCode" />
+          <ScalarProperty Name="OfficeId" ColumnName="OfficeId" />
+          <ScalarProperty Name="LastRegistrationNumber" ColumnName="LastRegistrationNumber" />
+          <ScalarProperty Name="CalenderYear" ColumnName="CalenderYear" />
+          <ScalarProperty Name="IsUsed" ColumnName="IsUsed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_PartnerAddressChangeAmendmentLog">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_PartnerAddressChangeAmendmentLog">
+        <MappingFragment StoreEntitySet="FRM_PartnerAddressChangeAmendmentLog">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="CurrentPresentAddressID" ColumnName="CurrentPresentAddressID" />
+          <ScalarProperty Name="OldPresentAddressID" ColumnName="OldPresentAddressID" />
+          <ScalarProperty Name="CurrentPremanentAddressID" ColumnName="CurrentPremanentAddressID" />
+          <ScalarProperty Name="OldPremanentAddressID" ColumnName="OldPremanentAddressID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_PartnerAttainingMajorAmendmentLog">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_PartnerAttainingMajorAmendmentLog">
+        <MappingFragment StoreEntitySet="FRM_PartnerAttainingMajorAmendmentLog">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="AlterationDate" ColumnName="AlterationDate" />
+          <ScalarProperty Name="IsMajor" ColumnName="IsMajor" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_PartnerDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_PartnerDetails">
+        <MappingFragment StoreEntitySet="FRM_PartnerDetails">
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="PresenterTypeID" ColumnName="PresenterTypeID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="PresentAddressID" ColumnName="PresentAddressID" />
+          <ScalarProperty Name="PermanentAddressID" ColumnName="PermanentAddressID" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="ProfessionID" ColumnName="ProfessionID" />
+          <ScalarProperty Name="MaritalStatusID" ColumnName="MaritalStatusID" />
+          <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+          <ScalarProperty Name="IDProofID" ColumnName="IDProofID" />
+          <ScalarProperty Name="IDProofNumber" ColumnName="IDProofNumber" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="EPIC" ColumnName="EPIC" />
+          <ScalarProperty Name="STDCode" ColumnName="STDCode" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="RelativeName" ColumnName="RelativeName" />
+          <ScalarProperty Name="RelationID" ColumnName="RelationID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsMajor" ColumnName="IsMajor" />
+          <ScalarProperty Name="IsCeased" ColumnName="IsCeased" />
+          <ScalarProperty Name="IsAmendment" ColumnName="IsAmendment" />
+          <ScalarProperty Name="PartnerCeasedDate" ColumnName="PartnerCeasedDate" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsPresenter" ColumnName="IsPresenter" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="IsBothAddressSame" ColumnName="IsBothAddressSame" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_PartnerDetailsAmendmentLog">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_PartnerDetailsAmendmentLog">
+        <MappingFragment StoreEntitySet="FRM_PartnerDetailsAmendmentLog">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="OldFirstName" ColumnName="OldFirstName" />
+          <ScalarProperty Name="OldMiddleName" ColumnName="OldMiddleName" />
+          <ScalarProperty Name="OldLastName" ColumnName="OldLastName" />
+          <ScalarProperty Name="OldProfessionID" ColumnName="OldProfessionID" />
+          <ScalarProperty Name="OldMaritalStatusID" ColumnName="OldMaritalStatusID" />
+          <ScalarProperty Name="OldPhoneNumber" ColumnName="OldPhoneNumber" />
+          <ScalarProperty Name="OldEmail" ColumnName="OldEmail" />
+          <ScalarProperty Name="CurrentFirstName" ColumnName="CurrentFirstName" />
+          <ScalarProperty Name="CurrentMiddleName" ColumnName="CurrentMiddleName" />
+          <ScalarProperty Name="CurrentLastName" ColumnName="CurrentLastName" />
+          <ScalarProperty Name="CurrentProfessionID" ColumnName="CurrentProfessionID" />
+          <ScalarProperty Name="CurrentMaritalStatusID" ColumnName="CurrentMaritalStatusID" />
+          <ScalarProperty Name="CurrentPhoneNumber" ColumnName="CurrentPhoneNumber" />
+          <ScalarProperty Name="CurrentEmail" ColumnName="CurrentEmail" />
+          <ScalarProperty Name="OldTitleID" ColumnName="OldTitleID" />
+          <ScalarProperty Name="NewTitleID" ColumnName="NewTitleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_SupportedDocuments">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_SupportedDocuments">
+        <MappingFragment StoreEntitySet="FRM_SupportedDocuments">
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="SupportDocumentID" ColumnName="SupportDocumentID" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="ActualUploadedFileName" ColumnName="ActualUploadedFileName" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="UploadedDateTime" ColumnName="UploadedDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FRM_SupportedDocuments_Log">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.FRM_SupportedDocuments_Log">
+        <MappingFragment StoreEntitySet="FRM_SupportedDocuments_Log">
+          <ScalarProperty Name="Log_ID" ColumnName="Log_ID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="SupportedDocumentID" ColumnName="SupportedDocumentID" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+          <ScalarProperty Name="ActualUploadedFileName" ColumnName="ActualUploadedFileName" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="UploadDateTime" ColumnName="UploadDateTime" />
+          <ScalarProperty Name="DeleteDateTime" ColumnName="DeleteDateTime" />
+          <ScalarProperty Name="IsFileDeleted" ColumnName="IsFileDeleted" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KSK_KioskTokenDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.KSK_KioskTokenDetails">
+        <MappingFragment StoreEntitySet="KSK_KioskTokenDetails">
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="KioskTokenNumber" ColumnName="KioskTokenNumber" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="TokenDateTime" ColumnName="TokenDateTime" />
+          <ScalarProperty Name="IsProcessed" ColumnName="IsProcessed" />
+          <ScalarProperty Name="IsRejected" ColumnName="IsRejected" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="OnlineApplicationID" ColumnName="OnlineApplicationID" />
+          <ScalarProperty Name="OnlineApplicationNumber" ColumnName="OnlineApplicationNumber" />
+          <ScalarProperty Name="PartyType" ColumnName="PartyType" />
+          <ScalarProperty Name="ThumbTemplate" ColumnName="ThumbTemplate" />
+          <ScalarProperty Name="ThumbMinutae" ColumnName="ThumbMinutae" />
+          <ScalarProperty Name="FingerID" ColumnName="FingerID" />
+          <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+          <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="IsProcessStarted" ColumnName="IsProcessStarted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_ActivityType">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_ActivityType">
+        <MappingFragment StoreEntitySet="MAS_ActivityType">
+          <ScalarProperty Name="ActivityTypeID" ColumnName="ActivityTypeID" />
+          <ScalarProperty Name="ActivityDesc" ColumnName="ActivityDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_AMS_AccountHeads">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_AMS_AccountHeads">
+        <MappingFragment StoreEntitySet="MAS_AMS_AccountHeads">
+          <ScalarProperty Name="DeptPurposeID" ColumnName="DeptPurposeID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NameR" ColumnName="NameR" />
+          <ScalarProperty Name="AccountCode" ColumnName="AccountCode" />
+          <ScalarProperty Name="TreasuryCode" ColumnName="TreasuryCode" />
+          <ScalarProperty Name="MajorHead" ColumnName="MajorHead" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_AMS_AccountHeadsFeeTypesMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_AMS_AccountHeadsFeeTypesMapping">
+        <MappingFragment StoreEntitySet="MAS_AMS_AccountHeadsFeeTypesMapping">
+          <ScalarProperty Name="MappingID" ColumnName="MappingID" />
+          <ScalarProperty Name="DeptPurposeId" ColumnName="DeptPurposeId" />
+          <ScalarProperty Name="FeeRuleID" ColumnName="FeeRuleID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_AMS_ePaymentDblVerificationStatus">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_AMS_ePaymentDblVerificationStatus">
+        <MappingFragment StoreEntitySet="MAS_AMS_ePaymentDblVerificationStatus">
+          <ScalarProperty Name="DblVerificationStatusID" ColumnName="DblVerificationStatusID" />
+          <ScalarProperty Name="StatusDescription" ColumnName="StatusDescription" />
+          <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_AMS_ePaymentStatus">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_AMS_ePaymentStatus">
+        <MappingFragment StoreEntitySet="MAS_AMS_ePaymentStatus">
+          <ScalarProperty Name="PaymentStatusCode" ColumnName="PaymentStatusCode" />
+          <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+          <ScalarProperty Name="PaymentStatusDesc" ColumnName="PaymentStatusDesc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_AMS_PaymentModeTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_AMS_PaymentModeTypes">
+        <MappingFragment StoreEntitySet="MAS_AMS_PaymentModeTypes">
+          <ScalarProperty Name="PaymentModeTypeID" ColumnName="PaymentModeTypeID" />
+          <ScalarProperty Name="ReceiptGenerationModeID" ColumnName="ReceiptGenerationModeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+          <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+          <ScalarProperty Name="IsSDPaymentMode" ColumnName="IsSDPaymentMode" />
+          <ScalarProperty Name="IsConsAmtPaymentMode" ColumnName="IsConsAmtPaymentMode" />
+          <ScalarProperty Name="IsReceiptRequired" ColumnName="IsReceiptRequired" />
+          <ScalarProperty Name="IsAllreadyPaid" ColumnName="IsAllreadyPaid" />
+          <ScalarProperty Name="IsRemittanceRequired" ColumnName="IsRemittanceRequired" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Countries">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Countries">
+        <MappingFragment StoreEntitySet="MAS_Countries">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryNameR" ColumnName="CountryNameR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Districts">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Districts">
+        <MappingFragment StoreEntitySet="MAS_Districts">
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="DistrictNameR" ColumnName="DistrictNameR" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ShortNameR" ColumnName="ShortNameR" />
+          <ScalarProperty Name="CensusCode" ColumnName="CensusCode" />
+          <ScalarProperty Name="IsRevenueDistrict" ColumnName="IsRevenueDistrict" />
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+          <ScalarProperty Name="TestDateTime" ColumnName="TestDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_DocumentStatusTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_DocumentStatusTypes">
+        <MappingFragment StoreEntitySet="MAS_DocumentStatusTypes">
+          <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FeeRules">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FeeRules">
+        <MappingFragment StoreEntitySet="MAS_FeeRules">
+          <ScalarProperty Name="FeeRuleID" ColumnName="FeeRuleID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DisplaySeqID" ColumnName="DisplaySeqID" />
+          <ScalarProperty Name="ReferOtherRule" ColumnName="ReferOtherRule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_AmendmentTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_AmendmentTypes">
+        <MappingFragment StoreEntitySet="MAS_FRM_AmendmentTypes">
+          <ScalarProperty Name="AmendmentTypeID" ColumnName="AmendmentTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ChildID" ColumnName="ChildID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_ApplicationTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_ApplicationTypes">
+        <MappingFragment StoreEntitySet="MAS_FRM_ApplicationTypes">
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_CheckSlipInfo">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_CheckSlipInfo">
+        <MappingFragment StoreEntitySet="MAS_FRM_CheckSlipInfo">
+          <ScalarProperty Name="CheckSlipID" ColumnName="CheckSlipID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CheckSlipTypeID" ColumnName="CheckSlipTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_CheckSlipTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_CheckSlipTypes">
+        <MappingFragment StoreEntitySet="MAS_FRM_CheckSlipTypes">
+          <ScalarProperty Name="CheckSlipTypeID" ColumnName="CheckSlipTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_FirmBusinessTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_FirmBusinessTypes">
+        <MappingFragment StoreEntitySet="MAS_FRM_FirmBusinessTypes">
+          <ScalarProperty Name="FirmBusinessTypeID" ColumnName="FirmBusinessTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_FirmDissolutionTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_FirmDissolutionTypes">
+        <MappingFragment StoreEntitySet="MAS_FRM_FirmDissolutionTypes">
+          <ScalarProperty Name="DissolutionTypeID" ColumnName="DissolutionTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_PresenterTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_PresenterTypes">
+        <MappingFragment StoreEntitySet="MAS_FRM_PresenterTypes">
+          <ScalarProperty Name="PresenterTypeID" ColumnName="PresenterTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_FRM_SupportDocuments">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_FRM_SupportDocuments">
+        <MappingFragment StoreEntitySet="MAS_FRM_SupportDocuments">
+          <ScalarProperty Name="SupportDocumentID" ColumnName="SupportDocumentID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+          <ScalarProperty Name="IsOptional" ColumnName="IsOptional" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Gender">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Gender">
+        <MappingFragment StoreEntitySet="MAS_Gender">
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_IDProofTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_IDProofTypes">
+        <MappingFragment StoreEntitySet="MAS_IDProofTypes">
+          <ScalarProperty Name="IDProofTypeID" ColumnName="IDProofTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_MaritalStatus">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_MaritalStatus">
+        <MappingFragment StoreEntitySet="MAS_MaritalStatus">
+          <ScalarProperty Name="MaritalStatusID" ColumnName="MaritalStatusID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Modules">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Modules">
+        <MappingFragment StoreEntitySet="MAS_Modules">
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="ModuleNameR" ColumnName="ModuleNameR" />
+          <ScalarProperty Name="ParentModuleID" ColumnName="ParentModuleID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Nationality">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Nationality">
+        <MappingFragment StoreEntitySet="MAS_Nationality">
+          <ScalarProperty Name="NationalityID" ColumnName="NationalityID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_ObjectionableWords">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_ObjectionableWords">
+        <MappingFragment StoreEntitySet="MAS_ObjectionableWords">
+          <ScalarProperty Name="ObjectionableWordID" ColumnName="ObjectionableWordID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DateOfObjectionEntry" ColumnName="DateOfObjectionEntry" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_OfficeMaster">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_OfficeMaster">
+        <MappingFragment StoreEntitySet="MAS_OfficeMaster">
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="OfficeTypeID" ColumnName="OfficeTypeID" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="OfficeNameR" ColumnName="OfficeNameR" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ShortNameR" ColumnName="ShortNameR" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="ParentOfficeID" ColumnName="ParentOfficeID" />
+          <ScalarProperty Name="GauriOfficeCode" ColumnName="GauriOfficeCode" />
+          <ScalarProperty Name="BhoomiCensusCode" ColumnName="BhoomiCensusCode" />
+          <ScalarProperty Name="AnyWhereRegEnabled" ColumnName="AnyWhereRegEnabled" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="TalukaID" ColumnName="TalukaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_OfficeMaster_Log">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_OfficeMaster_Log">
+        <MappingFragment StoreEntitySet="MAS_OfficeMaster_Log">
+          <ScalarProperty Name="UpdateID" ColumnName="UpdateID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="OfficeTypeID" ColumnName="OfficeTypeID" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="OfficeNameR" ColumnName="OfficeNameR" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ShortNameR" ColumnName="ShortNameR" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="ParentOfficeID" ColumnName="ParentOfficeID" />
+          <ScalarProperty Name="GauriOfficeCode" ColumnName="GauriOfficeCode" />
+          <ScalarProperty Name="BhoomiCensusCode" ColumnName="BhoomiCensusCode" />
+          <ScalarProperty Name="AnyWhereRegEnabled" ColumnName="AnyWhereRegEnabled" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="TalukaID" ColumnName="TalukaID" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_OfficeTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_OfficeTypes">
+        <MappingFragment StoreEntitySet="MAS_OfficeTypes">
+          <ScalarProperty Name="OfficeTypeID" ColumnName="OfficeTypeID" />
+          <ScalarProperty Name="OfficeTypeDesc" ColumnName="OfficeTypeDesc" />
+          <ScalarProperty Name="OfficeTypeDescR" ColumnName="OfficeTypeDescR" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ShortNameR" ColumnName="ShortNameR" />
+          <ScalarProperty Name="ParentOfficeTypeID" ColumnName="ParentOfficeTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_OTPTypeMaster">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_OTPTypeMaster">
+        <MappingFragment StoreEntitySet="MAS_OTPTypeMaster">
+          <ScalarProperty Name="OTPTypeId" ColumnName="OTPTypeId" />
+          <ScalarProperty Name="OtpTypeDescription" ColumnName="OtpTypeDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_PaymentModes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_PaymentModes">
+        <MappingFragment StoreEntitySet="MAS_PaymentModes">
+          <ScalarProperty Name="PaymentModeID" ColumnName="PaymentModeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="MinAmount" ColumnName="MinAmount" />
+          <ScalarProperty Name="MaxAmount" ColumnName="MaxAmount" />
+          <ScalarProperty Name="IsSDPaymentMode" ColumnName="IsSDPaymentMode" />
+          <ScalarProperty Name="IsConsAmtPaymentMode" ColumnName="IsConsAmtPaymentMode" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_ProcessFeeRuleMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_ProcessFeeRuleMapping">
+        <MappingFragment StoreEntitySet="MAS_ProcessFeeRuleMapping">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+          <ScalarProperty Name="FeeRuleID" ColumnName="FeeRuleID" />
+          <ScalarProperty Name="IsFeesRequired" ColumnName="IsFeesRequired" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Profession">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Profession">
+        <MappingFragment StoreEntitySet="MAS_Profession">
+          <ScalarProperty Name="ProfessionID" ColumnName="ProfessionID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_RegisteredResourcesMacAddress">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_RegisteredResourcesMacAddress">
+        <MappingFragment StoreEntitySet="MAS_RegisteredResourcesMacAddress">
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="MacID" ColumnName="MacID" />
+          <ScalarProperty Name="ModelNo" ColumnName="ModelNo" />
+          <ScalarProperty Name="ResourceTypeDetailID" ColumnName="ResourceTypeDetailID" />
+          <ScalarProperty Name="IsFinalized" ColumnName="IsFinalized" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsServer" ColumnName="IsServer" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_RelationTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_RelationTypes">
+        <MappingFragment StoreEntitySet="MAS_RelationTypes">
+          <ScalarProperty Name="RelationTypeID" ColumnName="RelationTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Services">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Services">
+        <MappingFragment StoreEntitySet="MAS_Services">
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="TriLetter" ColumnName="TriLetter" />
+          <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+          <ScalarProperty Name="ServiceNameR" ColumnName="ServiceNameR" />
+          <ScalarProperty Name="ServiceOpenTime" ColumnName="ServiceOpenTime" />
+          <ScalarProperty Name="ServiceCloseTime" ColumnName="ServiceCloseTime" />
+          <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+          <ScalarProperty Name="IsCCApplicable" ColumnName="IsCCApplicable" />
+          <ScalarProperty Name="IsCRApplicable" ColumnName="IsCRApplicable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_ServicesProcesses">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_ServicesProcesses">
+        <MappingFragment StoreEntitySet="MAS_ServicesProcesses">
+          <ScalarProperty Name="ProcessID" ColumnName="ProcessID" />
+          <ScalarProperty Name="ProcessDesc" ColumnName="ProcessDesc" />
+          <ScalarProperty Name="ProcessDescR" ColumnName="ProcessDescR" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="IsCrossReferrencingExists" ColumnName="IsCrossReferrencingExists" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_States">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_States">
+        <MappingFragment StoreEntitySet="MAS_States">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateNameR" ColumnName="StateNameR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Talukas">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Talukas">
+        <MappingFragment StoreEntitySet="MAS_Talukas">
+          <ScalarProperty Name="TalukaID" ColumnName="TalukaID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="TalukaName" ColumnName="TalukaName" />
+          <ScalarProperty Name="TalukaNameR" ColumnName="TalukaNameR" />
+          <ScalarProperty Name="CensusCode" ColumnName="CensusCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Titles">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Titles">
+        <MappingFragment StoreEntitySet="MAS_Titles">
+          <ScalarProperty Name="TitleID" ColumnName="TitleID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OrderingSequence" ColumnName="OrderingSequence" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_UMG_CompanyDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_UMG_CompanyDetails">
+        <MappingFragment StoreEntitySet="MAS_UMG_CompanyDetails">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="NameR" ColumnName="NameR" />
+          <ScalarProperty Name="ResourceTypeID" ColumnName="ResourceTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_UMG_ResourceTypeDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_UMG_ResourceTypeDetails">
+        <MappingFragment StoreEntitySet="MAS_UMG_ResourceTypeDetails">
+          <ScalarProperty Name="ResourceTypeDetailID" ColumnName="ResourceTypeDetailID" />
+          <ScalarProperty Name="ResourceTypeID" ColumnName="ResourceTypeID" />
+          <ScalarProperty Name="ModelName" ColumnName="ModelName" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_UMG_WorkFlowActions">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_UMG_WorkFlowActions">
+        <MappingFragment StoreEntitySet="MAS_UMG_WorkFlowActions">
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="StatusMessage" ColumnName="StatusMessage" />
+          <ScalarProperty Name="StatusMessageR" ColumnName="StatusMessageR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_UMG_WorkFlowConfigurations">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_UMG_WorkFlowConfigurations">
+        <MappingFragment StoreEntitySet="MAS_UMG_WorkFlowConfigurations">
+          <ScalarProperty Name="WorkFlowID" ColumnName="WorkFlowID" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+          <ScalarProperty Name="FromRoleID" ColumnName="FromRoleID" />
+          <ScalarProperty Name="ToRoleID" ColumnName="ToRoleID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_UMG_WorkFlowConfigurations_Log">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_UMG_WorkFlowConfigurations_Log">
+        <MappingFragment StoreEntitySet="MAS_UMG_WorkFlowConfigurations_Log">
+          <ScalarProperty Name="UpdateID" ColumnName="UpdateID" />
+          <ScalarProperty Name="WorkFlowID" ColumnName="WorkFlowID" />
+          <ScalarProperty Name="ActionID" ColumnName="ActionID" />
+          <ScalarProperty Name="FromRoleID" ColumnName="FromRoleID" />
+          <ScalarProperty Name="ToRoleID" ColumnName="ToRoleID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_UploadDocumentTypes">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_UploadDocumentTypes">
+        <MappingFragment StoreEntitySet="MAS_UploadDocumentTypes">
+          <ScalarProperty Name="UploadDocTypeID" ColumnName="UploadDocTypeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Villages">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_Villages">
+        <MappingFragment StoreEntitySet="MAS_Villages">
+          <ScalarProperty Name="VillageID" ColumnName="VillageID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="TalukaID" ColumnName="TalukaID" />
+          <ScalarProperty Name="VillageName" ColumnName="VillageName" />
+          <ScalarProperty Name="VillageNameR" ColumnName="VillageNameR" />
+          <ScalarProperty Name="IsUrban" ColumnName="IsUrban" />
+          <ScalarProperty Name="CensusCode" ColumnName="CensusCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_WebApiAuthenticationDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.MAS_WebApiAuthenticationDetails">
+        <MappingFragment StoreEntitySet="MAS_WebApiAuthenticationDetails">
+          <ScalarProperty Name="AuthenticationID" ColumnName="AuthenticationID" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_API_Users">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_API_Users">
+        <MappingFragment StoreEntitySet="UMG_API_Users">
+          <ScalarProperty Name="ApiConsumerID" ColumnName="ApiConsumerID" />
+          <ScalarProperty Name="User_Name" ColumnName="User_Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_ControllerActionDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_ControllerActionDetails">
+        <MappingFragment StoreEntitySet="UMG_ControllerActionDetails">
+          <ScalarProperty Name="CAID" ColumnName="CAID" />
+          <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+          <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_DSCertificateDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_DSCertificateDetails">
+        <MappingFragment StoreEntitySet="UMG_DSCertificateDetails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="PublicKey" ColumnName="PublicKey" />
+          <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+          <ScalarProperty Name="CertificateChain" ColumnName="CertificateChain" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="MACAddress" ColumnName="MACAddress" />
+          <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Issuer" ColumnName="Issuer" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_LevelCombination">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_LevelCombination">
+        <MappingFragment StoreEntitySet="UMG_LevelCombination">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="LevelGroupCode" ColumnName="LevelGroupCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_LevelDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_LevelDetails">
+        <MappingFragment StoreEntitySet="UMG_LevelDetails">
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_MenuActionMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_MenuActionMapping">
+        <MappingFragment StoreEntitySet="UMG_MenuActionMapping">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="CAID" ColumnName="CAID" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_MenuDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_MenuDetails">
+        <MappingFragment StoreEntitySet="UMG_MenuDetails">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="MenuNameR" ColumnName="MenuNameR" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="VerticalLevel" ColumnName="VerticalLevel" />
+          <ScalarProperty Name="HorizontalSequence" ColumnName="HorizontalSequence" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="LevelGroupCode" ColumnName="LevelGroupCode" />
+          <ScalarProperty Name="IsMenuIDParameter" ColumnName="IsMenuIDParameter" />
+          <ScalarProperty Name="IsHorizontalMenu" ColumnName="IsHorizontalMenu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_OTP_VerificationDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_OTP_VerificationDetails">
+        <MappingFragment StoreEntitySet="UMG_OTP_VerificationDetails">
+          <ScalarProperty Name="OtpVerificationID" ColumnName="OtpVerificationID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OTPToSend" ColumnName="OTPToSend" />
+          <ScalarProperty Name="OTPSentDateTime" ColumnName="OTPSentDateTime" />
+          <ScalarProperty Name="IsOTPVerified" ColumnName="IsOTPVerified" />
+          <ScalarProperty Name="OTPVerifiedDateTime" ColumnName="OTPVerifiedDateTime" />
+          <ScalarProperty Name="OtpTypeId" ColumnName="OtpTypeId" />
+          <ScalarProperty Name="IsNullfied" ColumnName="IsNullfied" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_PasswordHistory">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_PasswordHistory">
+        <MappingFragment StoreEntitySet="UMG_PasswordHistory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="ChangeDateTime" ColumnName="ChangeDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_RecoveryQuestionAnswer">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_RecoveryQuestionAnswer">
+        <MappingFragment StoreEntitySet="UMG_RecoveryQuestionAnswer">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_RecoveryQuestions">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_RecoveryQuestions">
+        <MappingFragment StoreEntitySet="UMG_RecoveryQuestions">
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="Question" ColumnName="Question" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_RoleActionAuth">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_RoleActionAuth">
+        <MappingFragment StoreEntitySet="UMG_RoleActionAuth">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="CAID" ColumnName="CAID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_RoleDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_RoleDetails">
+        <MappingFragment StoreEntitySet="UMG_RoleDetails">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleNameR" ColumnName="RoleNameR" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_RoleLevelMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_RoleLevelMapping">
+        <MappingFragment StoreEntitySet="UMG_RoleLevelMapping">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_RoleMenuMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_RoleMenuMapping">
+        <MappingFragment StoreEntitySet="UMG_RoleMenuMapping">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="IsAdd" ColumnName="IsAdd" />
+          <ScalarProperty Name="IsEdit" ColumnName="IsEdit" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_UserDetails">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_UserDetails">
+        <MappingFragment StoreEntitySet="UMG_UserDetails">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DefaultRoleID" ColumnName="DefaultRoleID" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="IsFirstLogin" ColumnName="IsFirstLogin" />
+          <ScalarProperty Name="FailedPasswordAttempts" ColumnName="FailedPasswordAttempts" />
+          <ScalarProperty Name="PasswordChangeDate" ColumnName="PasswordChangeDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_UserDetails_Log">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_UserDetails_Log">
+        <MappingFragment StoreEntitySet="UMG_UserDetails_Log">
+          <ScalarProperty Name="UpdateID" ColumnName="UpdateID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DefaultRoleID" ColumnName="DefaultRoleID" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+          <ScalarProperty Name="IsFirstLogin" ColumnName="IsFirstLogin" />
+          <ScalarProperty Name="FailedPasswordAttempts" ColumnName="FailedPasswordAttempts" />
+          <ScalarProperty Name="PasswordChangeDate" ColumnName="PasswordChangeDate" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_UserProfile">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_UserProfile">
+        <MappingFragment StoreEntitySet="UMG_UserProfile">
+          <ScalarProperty Name="UserProfileID" ColumnName="UserProfileID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="EPIC" ColumnName="EPIC" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="ThumbTemplate" ColumnName="ThumbTemplate" />
+          <ScalarProperty Name="ThumbMinutae" ColumnName="ThumbMinutae" />
+          <ScalarProperty Name="FingerID" ColumnName="FingerID" />
+          <ScalarProperty Name="ProfileLatestUpdateDate" ColumnName="ProfileLatestUpdateDate" />
+          <ScalarProperty Name="PhotoVirtualPath" ColumnName="PhotoVirtualPath" />
+          <ScalarProperty Name="ThumbVirtualPath" ColumnName="ThumbVirtualPath" />
+          <ScalarProperty Name="PhotoFilePath" ColumnName="PhotoFilePath" />
+          <ScalarProperty Name="ThumbFilePath" ColumnName="ThumbFilePath" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="IDProofTypeID" ColumnName="IDProofTypeID" />
+          <ScalarProperty Name="IDProofNumber" ColumnName="IDProofNumber" />
+          <ScalarProperty Name="IsMobileNumVerified" ColumnName="IsMobileNumVerified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_UserProfile_Log">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_UserProfile_Log">
+        <MappingFragment StoreEntitySet="UMG_UserProfile_Log">
+          <ScalarProperty Name="UpdateID" ColumnName="UpdateID" />
+          <ScalarProperty Name="UserProfileID" ColumnName="UserProfileID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+          <ScalarProperty Name="Address1" ColumnName="Address1" />
+          <ScalarProperty Name="Address2" ColumnName="Address2" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="EPIC" ColumnName="EPIC" />
+          <ScalarProperty Name="UID" ColumnName="UID" />
+          <ScalarProperty Name="ThumbTemplate" ColumnName="ThumbTemplate" />
+          <ScalarProperty Name="ThumbMinutae" ColumnName="ThumbMinutae" />
+          <ScalarProperty Name="FingerID" ColumnName="FingerID" />
+          <ScalarProperty Name="ProfileLatestUpdateDate" ColumnName="ProfileLatestUpdateDate" />
+          <ScalarProperty Name="PhotoVirtualPath" ColumnName="PhotoVirtualPath" />
+          <ScalarProperty Name="ThumbVirtualPath" ColumnName="ThumbVirtualPath" />
+          <ScalarProperty Name="PhotoFilePath" ColumnName="PhotoFilePath" />
+          <ScalarProperty Name="ThumbFilePath" ColumnName="ThumbFilePath" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="IDProofTypeID" ColumnName="IDProofTypeID" />
+          <ScalarProperty Name="IDProofNumber" ColumnName="IDProofNumber" />
+          <ScalarProperty Name="IsMobileNumVerified" ColumnName="IsMobileNumVerified" />
+          <ScalarProperty Name="UpdateDateTime" ColumnName="UpdateDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UMG_UserRoleMapping">
+      <EntityTypeMapping TypeName="GAURIEntitiesModel.UMG_UserRoleMapping">
+        <MappingFragment StoreEntitySet="UMG_UserRoleMapping">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MAS_ServiceModuleRelation" TypeName="GAURIEntitiesModel.MAS_ServiceModuleRelation" StoreEntitySet="MAS_ServiceModuleRelation">
+      <EndProperty Name="MAS_Modules">
+        <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+      </EndProperty>
+      <EndProperty Name="MAS_Services">
+        <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="ALM_GetPartysIDAndWitnessesID" FunctionName="GAURIEntitiesModel.Store.ALM_GetPartysIDAndWitnessesID" />
+    <FunctionImportMapping FunctionImportName="CC_ApplicationDetailsSROList" FunctionName="GAURIEntitiesModel.Store.CC_ApplicationDetailsSROList" />
+    <FunctionImportMapping FunctionImportName="ECMIS_OLTP_INDEX2_FROM_KAIGR_CENTRAL" FunctionName="GAURIEntitiesModel.Store.ECMIS_OLTP_INDEX2_FROM_KAIGR_CENTRAL" />
+    <FunctionImportMapping FunctionImportName="GetClaimantForEndorsementDeclaration" FunctionName="GAURIEntitiesModel.Store.GetClaimantForEndorsementDeclaration" />
+    <FunctionImportMapping FunctionImportName="GetDocumentPropertyDetails" FunctionName="GAURIEntitiesModel.Store.GetDocumentPropertyDetails" />
+    <FunctionImportMapping FunctionImportName="GetDocumentPropertyDetailsForEndorsement" FunctionName="GAURIEntitiesModel.Store.GetDocumentPropertyDetailsForEndorsement" />
+    <FunctionImportMapping FunctionImportName="GetExecutantForEndorsementDeclaration" FunctionName="GAURIEntitiesModel.Store.GetExecutantForEndorsementDeclaration" />
+    <FunctionImportMapping FunctionImportName="GetLiabilityDocumentPropertyDetails" FunctionName="GAURIEntitiesModel.Store.GetLiabilityDocumentPropertyDetails" />
+    <FunctionImportMapping FunctionImportName="GetLiabilityOnProperties" FunctionName="GAURIEntitiesModel.Store.GetLiabilityOnProperties" />
+    <FunctionImportMapping FunctionImportName="GetLiabilityPropertyDetails" FunctionName="GAURIEntitiesModel.Store.GetLiabilityPropertyDetails" />
+    <FunctionImportMapping FunctionImportName="SearchByPropertyForBuyerVerification" FunctionName="GAURIEntitiesModel.Store.SearchByPropertyForBuyerVerification" />
+    <FunctionImportMapping FunctionImportName="SOC_Endorsement" FunctionName="GAURIEntitiesModel.Store.SOC_Endorsement" />
+    <FunctionImportMapping FunctionImportName="SOC_SoceityRegistrationCertificate" FunctionName="GAURIEntitiesModel.Store.SOC_SoceityRegistrationCertificate" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyAccountsCertificate" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyAccountsCertificate" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyAccountsEndorsement" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyAccountsEndorsement" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyAccountsReports" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyAccountsReports" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyAmendmentRegistrationCertificate" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyAmendmentRegistrationCertificate" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyAmendmentSummaryReport" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyAmendmentSummaryReport" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyDissolutionCertificate" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyDissolutionCertificate" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyDissolutionEndorsement" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyDissolutionEndorsement" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietyDissolutionSummary" FunctionName="GAURIEntitiesModel.Store.SOC_SocietyDissolutionSummary" />
+    <FunctionImportMapping FunctionImportName="SOC_SocietySummaryReport" FunctionName="GAURIEntitiesModel.Store.SOC_SocietySummaryReport" />
+    <FunctionImportMapping FunctionImportName="SP_CC_EndorsementDetails" FunctionName="GAURIEntitiesModel.Store.SP_CC_EndorsementDetails" />
+    <FunctionImportMapping FunctionImportName="SP_CC_PaymentDetails" FunctionName="GAURIEntitiesModel.Store.SP_CC_PaymentDetails" />
+    <FunctionImportMapping FunctionImportName="SP_CitySurveyProperties" FunctionName="GAURIEntitiesModel.Store.SP_CitySurveyProperties" />
+    <FunctionImportMapping FunctionImportName="SP_DDCollectiondetails" FunctionName="GAURIEntitiesModel.Store.SP_DDCollectiondetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.SP_DDCollectiondetails_Result">
+          <ScalarProperty Name="DD_Number" ColumnName="DD Number" />
+          <ScalarProperty Name="Name_of_the_Bank" ColumnName="Name of the Bank" />
+          <ScalarProperty Name="Name_of_the_Branch" ColumnName="Name of the Branch" />
+          <ScalarProperty Name="DD_Amount" ColumnName="DD Amount" />
+          <ScalarProperty Name="RECEIPT_NUMBER" ColumnName="RECEIPT NUMBER" />
+          <ScalarProperty Name="Document_Number" ColumnName="Document Number" />
+          <ScalarProperty Name="Date_of_receipt" ColumnName="Date of receipt" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_DepositofWill" FunctionName="GAURIEntitiesModel.Store.SP_DepositofWill">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.SP_DepositofWill_Result">
+          <ScalarProperty Name="Final_Registration_Number" ColumnName="Final Registration Number" />
+          <ScalarProperty Name="Presentation_Date" ColumnName="Presentation Date" />
+          <ScalarProperty Name="Executants" ColumnName="Executants" />
+          <ScalarProperty Name="Agent_Names" ColumnName="Agent Names" />
+          <ScalarProperty Name="Superscription" ColumnName="Superscription" />
+          <ScalarProperty Name="Number_of_Seals" ColumnName="Number of Seals" />
+          <ScalarProperty Name="Inscription" ColumnName="Inscription" />
+          <ScalarProperty Name="Witness_for_Executants" ColumnName="Witness for Executants" />
+          <ScalarProperty Name="Withdraw_Date" ColumnName="Withdraw Date" />
+          <ScalarProperty Name="Witness_for_Applicant" ColumnName="Witness for Applicant" />
+          <ScalarProperty Name="Delivery_Date" ColumnName="Delivery Date" />
+          <ScalarProperty Name="Book3_Number" ColumnName="Book3 Number" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_DocumentFeeSummary" FunctionName="GAURIEntitiesModel.Store.SP_DocumentFeeSummary" />
+    <FunctionImportMapping FunctionImportName="SP_DocumentScanneddetails" FunctionName="GAURIEntitiesModel.Store.SP_DocumentScanneddetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.SP_DocumentScanneddetails_Result">
+          <ScalarProperty Name="dater" ColumnName="dater" />
+          <ScalarProperty Name="Total_Registered_Documents" ColumnName="Total Registered Documents" />
+          <ScalarProperty Name="Total_Scanned_Documents" ColumnName="Total Scanned Documents" />
+          <ScalarProperty Name="Total_Documents_Delivered" ColumnName="Total Documents Delivered" />
+          <ScalarProperty Name="Total_Registered_Marriages" ColumnName="Total Registered Marriages" />
+          <ScalarProperty Name="Total_Scanned_Marriages" ColumnName="Total Scanned Marriages" />
+          <ScalarProperty Name="Total_Marriages_Delivered" ColumnName="Total Marriages Delivered" />
+          <ScalarProperty Name="Total_Registered_Societies" ColumnName="Total Registered Societies" />
+          <ScalarProperty Name="Total_Scanned_Societies" ColumnName="Total Scanned Societies" />
+          <ScalarProperty Name="Total_Societies_Delivered" ColumnName="Total Societies Delivered" />
+          <ScalarProperty Name="Total_Registered_Firms_" ColumnName="Total Registered Firms " />
+          <ScalarProperty Name="Total_Scanned_Firms_" ColumnName="Total Scanned Firms " />
+          <ScalarProperty Name="Total_Firms_Delivered" ColumnName="Total Firms Delivered" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_DocumentStampDutySummary" FunctionName="GAURIEntitiesModel.Store.SP_DocumentStampDutySummary" />
+    <FunctionImportMapping FunctionImportName="SP_EC_ApplicationStage" FunctionName="GAURIEntitiesModel.Store.SP_EC_ApplicationStage" />
+    <FunctionImportMapping FunctionImportName="SP_EC_ReportDetails" FunctionName="GAURIEntitiesModel.Store.SP_EC_ReportDetails" />
+    <FunctionImportMapping FunctionImportName="SP_EC_SeachParameterDetails" FunctionName="GAURIEntitiesModel.Store.SP_EC_SeachParameterDetails" />
+    <FunctionImportMapping FunctionImportName="SP_EC_SearchResult" FunctionName="GAURIEntitiesModel.Store.SP_EC_SearchResult" />
+    <FunctionImportMapping FunctionImportName="SP_GetApplicationSurveyDetails" FunctionName="GAURIEntitiesModel.Store.SP_GetApplicationSurveyDetails" />
+    <FunctionImportMapping FunctionImportName="SP_GetApplicationSurveyDetailsForJSLipDetailsUpload" FunctionName="GAURIEntitiesModel.Store.SP_GetApplicationSurveyDetailsForJSLipDetailsUpload" />
+    <FunctionImportMapping FunctionImportName="SP_GetImpoundedDocuments" FunctionName="GAURIEntitiesModel.Store.SP_GetImpoundedDocuments" />
+    <FunctionImportMapping FunctionImportName="SP_GetJSlipDocuments" FunctionName="GAURIEntitiesModel.Store.SP_GetJSlipDocuments" />
+    <FunctionImportMapping FunctionImportName="SP_GetMemoDocuments" FunctionName="GAURIEntitiesModel.Store.SP_GetMemoDocuments" />
+    <FunctionImportMapping FunctionImportName="SP_GetMinuteBookDetails" FunctionName="GAURIEntitiesModel.Store.SP_GetMinuteBookDetails" />
+    <FunctionImportMapping FunctionImportName="SP_GetRefusalRecords" FunctionName="GAURIEntitiesModel.Store.SP_GetRefusalRecords" />
+    <FunctionImportMapping FunctionImportName="SP_GetSurveyNumbers" FunctionName="GAURIEntitiesModel.Store.SP_GetSurveyNumbers" />
+    <FunctionImportMapping FunctionImportName="SP_GetWillDocuments" FunctionName="GAURIEntitiesModel.Store.SP_GetWillDocuments" />
+    <FunctionImportMapping FunctionImportName="SP_ImpoundedDocuments" FunctionName="GAURIEntitiesModel.Store.SP_ImpoundedDocuments" />
+    <FunctionImportMapping FunctionImportName="SP_Index_1" FunctionName="GAURIEntitiesModel.Store.SP_Index_1" />
+    <FunctionImportMapping FunctionImportName="SP_Index_2" FunctionName="GAURIEntitiesModel.Store.SP_Index_2" />
+    <FunctionImportMapping FunctionImportName="SP_Index_3And4" FunctionName="GAURIEntitiesModel.Store.SP_Index_3And4" />
+    <FunctionImportMapping FunctionImportName="SP_JSlip" FunctionName="GAURIEntitiesModel.Store.SP_JSlip" />
+    <FunctionImportMapping FunctionImportName="SP_JslipUploadDetailsNewMethod" FunctionName="GAURIEntitiesModel.Store.SP_JslipUploadDetailsNewMethod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.SP_JslipUploadDetailsNewMethod_Result">
+          <ScalarProperty Name="dater" ColumnName="dater" />
+          <ScalarProperty Name="Final_Registration_Number" ColumnName="Final Registration Number" />
+          <ScalarProperty Name="Date_of_Registration" ColumnName="Date of Registration" />
+          <ScalarProperty Name="Upload_Date_and_Time" ColumnName="Upload Date and Time" />
+          <ScalarProperty Name="List_of_survey_numbers_uploaded" ColumnName="List of survey numbers uploaded" />
+          <ScalarProperty Name="Reference_Number" ColumnName="Reference Number" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_JslipUploadDetailsOldMethod" FunctionName="GAURIEntitiesModel.Store.SP_JslipUploadDetailsOldMethod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.SP_JslipUploadDetailsOldMethod_Result">
+          <ScalarProperty Name="dater" ColumnName="dater" />
+          <ScalarProperty Name="File_Name" ColumnName="File Name" />
+          <ScalarProperty Name="Total_Documents" ColumnName="Total Documents" />
+          <ScalarProperty Name="If_Uploaded_Yes_else_No" ColumnName="If Uploaded Yes else No" />
+          <ScalarProperty Name="List_of_Documents_uploaded" ColumnName="List of Documents uploaded" />
+          <ScalarProperty Name="Upload_Date_Time" ColumnName="Upload Date Time" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Memorandum" FunctionName="GAURIEntitiesModel.Store.SP_Memorandum" />
+    <FunctionImportMapping FunctionImportName="SP_Office" FunctionName="GAURIEntitiesModel.Store.SP_Office" />
+    <FunctionImportMapping FunctionImportName="SP_Populate_FeesCollectionDetails" FunctionName="GAURIEntitiesModel.Store.SP_Populate_FeesCollectionDetails" />
+    <FunctionImportMapping FunctionImportName="SP_Populate_Index_1" FunctionName="GAURIEntitiesModel.Store.SP_Populate_Index_1" />
+    <FunctionImportMapping FunctionImportName="SP_Populate_Index_2" FunctionName="GAURIEntitiesModel.Store.SP_Populate_Index_2" />
+    <FunctionImportMapping FunctionImportName="SP_Populate_Index_3And4" FunctionName="GAURIEntitiesModel.Store.SP_Populate_Index_3And4" />
+    <FunctionImportMapping FunctionImportName="SP_Populate_OtherReceiptFeesCollectionDetails" FunctionName="GAURIEntitiesModel.Store.SP_Populate_OtherReceiptFeesCollectionDetails" />
+    <FunctionImportMapping FunctionImportName="SP_Populate_PropertyStampDutyDetails" FunctionName="GAURIEntitiesModel.Store.SP_Populate_PropertyStampDutyDetails" />
+    <FunctionImportMapping FunctionImportName="SP_RegisterofSearch" FunctionName="GAURIEntitiesModel.Store.SP_RegisterofSearch" />
+    <FunctionImportMapping FunctionImportName="SP_RegisterPOA" FunctionName="GAURIEntitiesModel.Store.SP_RegisterPOA" />
+    <FunctionImportMapping FunctionImportName="SP_RevenueRealized" FunctionName="GAURIEntitiesModel.Store.SP_RevenueRealized" />
+    <FunctionImportMapping FunctionImportName="SP_RevenueRealized_BookWise" FunctionName="GAURIEntitiesModel.Store.SP_RevenueRealized_BookWise" />
+    <FunctionImportMapping FunctionImportName="SP_RevenueRealized_NatureWise" FunctionName="GAURIEntitiesModel.Store.SP_RevenueRealized_NatureWise" />
+    <FunctionImportMapping FunctionImportName="SP_RevenueRealized_NatureWise2" FunctionName="GAURIEntitiesModel.Store.SP_RevenueRealized_NatureWise2" />
+    <FunctionImportMapping FunctionImportName="SP_RevenueRealized_OfficeWise" FunctionName="GAURIEntitiesModel.Store.SP_RevenueRealized_OfficeWise" />
+    <FunctionImportMapping FunctionImportName="SP_SakalastatusReport" FunctionName="GAURIEntitiesModel.Store.SP_SakalastatusReport" />
+    <FunctionImportMapping FunctionImportName="SP_ServiceRequestProcessed" FunctionName="GAURIEntitiesModel.Store.SP_ServiceRequestProcessed">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.SP_ServiceRequestProcessed_Result">
+          <ScalarProperty Name="Office_Name_and_Office_Type" ColumnName="Office Name and Office Type" />
+          <ScalarProperty Name="Total_Documents_Processed" ColumnName="Total Documents Processed" />
+          <ScalarProperty Name="Total_Marriages_Processed" ColumnName="Total Marriages Processed" />
+          <ScalarProperty Name="Total_Societies_Processed" ColumnName="Total Societies Processed" />
+          <ScalarProperty Name="Total_Firms_Processed" ColumnName="Total Firms Processed" />
+          <ScalarProperty Name="Total_Notices_Processed" ColumnName="Total Notices Processed" />
+          <ScalarProperty Name="Total_EC_Copies_Processed" ColumnName="Total EC Copies Processed" />
+          <ScalarProperty Name="Total_CC_copies_Processed" ColumnName="Total CC copies Processed" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ServiceRequestStatus" FunctionName="GAURIEntitiesModel.Store.SP_ServiceRequestStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.SP_ServiceRequestStatus_Result">
+          <ScalarProperty Name="Office_Name_and_Office_Type" ColumnName="Office Name and Office Type" />
+          <ScalarProperty Name="Total_Tokens_raised" ColumnName="Total Tokens raised" />
+          <ScalarProperty Name="Total_tokens_accepted" ColumnName="Total tokens accepted" />
+          <ScalarProperty Name="Total_tokens_rejected" ColumnName="Total tokens rejected" />
+          <ScalarProperty Name="Total_tokens_Expired" ColumnName="Total tokens Expired" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_SubsidiaryIndex" FunctionName="GAURIEntitiesModel.Store.SP_SubsidiaryIndex" />
+    <FunctionImportMapping FunctionImportName="SP_VAL_AgricultureRates" FunctionName="GAURIEntitiesModel.Store.SP_VAL_AgricultureRates" />
+    <FunctionImportMapping FunctionImportName="SP_VAL_AnnexureRules" FunctionName="GAURIEntitiesModel.Store.SP_VAL_AnnexureRules" />
+    <FunctionImportMapping FunctionImportName="SP_VAL_ApartmentSpecialAmeneties" FunctionName="GAURIEntitiesModel.Store.SP_VAL_ApartmentSpecialAmeneties" />
+    <FunctionImportMapping FunctionImportName="SP_VAL_ConstructionTypes" FunctionName="GAURIEntitiesModel.Store.SP_VAL_ConstructionTypes" />
+    <FunctionImportMapping FunctionImportName="SP_VAL_FlatRates" FunctionName="GAURIEntitiesModel.Store.SP_VAL_FlatRates" />
+    <FunctionImportMapping FunctionImportName="SP_VAL_OpenBuiltRates" FunctionName="GAURIEntitiesModel.Store.SP_VAL_OpenBuiltRates" />
+    <FunctionImportMapping FunctionImportName="USP_AdvancedDocumentSearch" FunctionName="GAURIEntitiesModel.Store.USP_AdvancedDocumentSearch" />
+    <FunctionImportMapping FunctionImportName="USP_AdvancedMarriageSearch" FunctionName="GAURIEntitiesModel.Store.USP_AdvancedMarriageSearch" />
+    <FunctionImportMapping FunctionImportName="USP_AMS_Get_Financial_Year" FunctionName="GAURIEntitiesModel.Store.USP_AMS_Get_Financial_Year" />
+    <FunctionImportMapping FunctionImportName="USP_AMS_OtherReceiptPaymentSummary" FunctionName="GAURIEntitiesModel.Store.USP_AMS_OtherReceiptPaymentSummary" />
+    <FunctionImportMapping FunctionImportName="USP_AMS_PaymentSummary" FunctionName="GAURIEntitiesModel.Store.USP_AMS_PaymentSummary" />
+    <FunctionImportMapping FunctionImportName="USP_ConsiderationPaymentGrid" FunctionName="GAURIEntitiesModel.Store.USP_ConsiderationPaymentGrid" />
+    <FunctionImportMapping FunctionImportName="USP_DASHBOARD_REVENUEDETAILS" FunctionName="GAURIEntitiesModel.Store.USP_DASHBOARD_REVENUEDETAILS" />
+    <FunctionImportMapping FunctionImportName="USP_DEL_MAR_TransactionTabData" FunctionName="GAURIEntitiesModel.Store.USP_DEL_MAR_TransactionTabData" />
+    <FunctionImportMapping FunctionImportName="USP_DEL_SCN_TransactionTabData" FunctionName="GAURIEntitiesModel.Store.USP_DEL_SCN_TransactionTabData" />
+    <FunctionImportMapping FunctionImportName="USP_DocumentSummaryDenotingDetails" FunctionName="GAURIEntitiesModel.Store.USP_DocumentSummaryDenotingDetails" />
+    <FunctionImportMapping FunctionImportName="USP_DocumentSummaryDetails" FunctionName="GAURIEntitiesModel.Store.USP_DocumentSummaryDetails" />
+    <FunctionImportMapping FunctionImportName="USP_DocumentSummaryDetails_Receipt_Applicable_Fees" FunctionName="GAURIEntitiesModel.Store.USP_DocumentSummaryDetails_Receipt_Applicable_Fees" />
+    <FunctionImportMapping FunctionImportName="USP_DocumentSummaryDetails_Receipt_Paid_Fees" FunctionName="GAURIEntitiesModel.Store.USP_DocumentSummaryDetails_Receipt_Paid_Fees" />
+    <FunctionImportMapping FunctionImportName="USP_DocumentSummaryOtherDetails" FunctionName="GAURIEntitiesModel.Store.USP_DocumentSummaryOtherDetails" />
+    <FunctionImportMapping FunctionImportName="USP_DocumentSummaryReceiptDetails" FunctionName="GAURIEntitiesModel.Store.USP_DocumentSummaryReceiptDetails" />
+    <FunctionImportMapping FunctionImportName="USP_ENDORSEMENT_REPORT" FunctionName="GAURIEntitiesModel.Store.USP_ENDORSEMENT_REPORT" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_AmendmentSupportDocuments" FunctionName="GAURIEntitiesModel.Store.USP_FRM_AmendmentSupportDocuments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_AmendmentSupportDocuments_Result">
+          <ScalarProperty Name="SupportDocuments" ColumnName="SupportDocuments" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_FINAL" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_FINAL" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_FINAL_FAIL" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_FINAL_FAIL" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_FINAL_FAIL_2" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_FINAL_FAIL_2" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean_F" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean_F" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean_failing9" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean_failing9" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean_FALSE" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean_FALSE" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean_Fs" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean_Fs" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean_Fsa" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean_Fsa" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean_FsaS" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean_FsaS" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_OutParam_boolean_new" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_OutParam_boolean_new" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_SHRI" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_SHRI" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_TSQL" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_TSQL" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_TSQL_old_" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_TSQL_old_" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_TSQL_ORG" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_TSQL_ORG" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DeleteAmendmentApplication_TSQL_test" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DeleteAmendmentApplication_TSQL_test" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_DissolutionSupportDocuments" FunctionName="GAURIEntitiesModel.Store.USP_FRM_DissolutionSupportDocuments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_DissolutionSupportDocuments_Result">
+          <ScalarProperty Name="SupportDocuments" ColumnName="SupportDocuments" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="DissolutionID" ColumnName="DissolutionID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_FirmAmendment_Details" FunctionName="GAURIEntitiesModel.Store.USP_FRM_FirmAmendment_Details" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_FirmBranchDetails" FunctionName="GAURIEntitiesModel.Store.USP_FRM_FirmBranchDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_FirmBranchDetails_Result">
+          <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="BranchOpeningDate" ColumnName="BranchOpeningDate" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_FirmDetails" FunctionName="GAURIEntitiesModel.Store.USP_FRM_FirmDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_FirmDetails_Result">
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="DateOfRegistration" ColumnName="DateOfRegistration" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="EmaiID" ColumnName="EmaiID" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="EstablishmentDate" ColumnName="EstablishmentDate" />
+          <ScalarProperty Name="DateOfConstitutionOfFirm" ColumnName="DateOfConstitutionOfFirm" />
+          <ScalarProperty Name="DurationInMonth" ColumnName="DurationInMonth" />
+          <ScalarProperty Name="Pages" ColumnName="Pages" />
+          <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="AtWill" ColumnName="AtWill" />
+          <ScalarProperty Name="FirmBuisness" ColumnName="FirmBuisness" />
+          <ScalarProperty Name="PrintableAddress" ColumnName="PrintableAddress" />
+          <ScalarProperty Name="PremiseNumber" ColumnName="PremiseNumber" />
+          <ScalarProperty Name="PremiseName" ColumnName="PremiseName" />
+          <ScalarProperty Name="FloorNumber" ColumnName="FloorNumber" />
+          <ScalarProperty Name="WaddoName" ColumnName="WaddoName" />
+          <ScalarProperty Name="StreetSectorDetails" ColumnName="StreetSectorDetails" />
+          <ScalarProperty Name="AreaDetails" ColumnName="AreaDetails" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Village" ColumnName="Village" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_FirmDissolution_Details" FunctionName="GAURIEntitiesModel.Store.USP_FRM_FirmDissolution_Details" />
+    <FunctionImportMapping FunctionImportName="USP_FRM_FirmMemberDetails" FunctionName="GAURIEntitiesModel.Store.USP_FRM_FirmMemberDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_FirmMemberDetails_Result">
+          <ScalarProperty Name="PresenterType" ColumnName="PresenterType" />
+          <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
+          <ScalarProperty Name="IDProofNumber" ColumnName="IDProofNumber" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="EPIC" ColumnName="EPIC" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="MemberAddress" ColumnName="MemberAddress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_FirmReceiptDetails" FunctionName="GAURIEntitiesModel.Store.USP_FRM_FirmReceiptDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_FirmReceiptDetails_Result">
+          <ScalarProperty Name="FeeRuleID" ColumnName="FeeRuleID" />
+          <ScalarProperty Name="FeeRules" ColumnName="FeeRules" />
+          <ScalarProperty Name="ApplicableAmount" ColumnName="ApplicableAmount" />
+          <ScalarProperty Name="ExemptedAmount" ColumnName="ExemptedAmount" />
+          <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="PaymentDescription" ColumnName="PaymentDescription" />
+          <ScalarProperty Name="InstrumentNumber" ColumnName="InstrumentNumber" />
+          <ScalarProperty Name="InstrumentDate" ColumnName="InstrumentDate" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="DateOfReceipt" ColumnName="DateOfReceipt" />
+          <ScalarProperty Name="IsCancelled" ColumnName="IsCancelled" />
+          <ScalarProperty Name="CancellationDateTime" ColumnName="CancellationDateTime" />
+          <ScalarProperty Name="CancellationDesc" ColumnName="CancellationDesc" />
+          <ScalarProperty Name="IsFinalized" ColumnName="IsFinalized" />
+          <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_GetApplicationCountForDocumentStatus" FunctionName="GAURIEntitiesModel.Store.USP_FRM_GetApplicationCountForDocumentStatus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_GetApplicationCountForDocumentStatus_Result">
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="DocumentStatusID" ColumnName="DocumentStatusID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_GetDashboardAppListForReport" FunctionName="GAURIEntitiesModel.Store.USP_FRM_GetDashboardAppListForReport">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_GetDashboardAppListForReport_Result">
+          <ScalarProperty Name="KioskTokenNumber" ColumnName="KioskTokenNumber" />
+          <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="NoOfPartners" ColumnName="NoOfPartners" />
+          <ScalarProperty Name="ApprovalOffice" ColumnName="ApprovalOffice" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="DateOfRegistration" ColumnName="DateOfRegistration" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_GetDashboardDocumentsStatusCount" FunctionName="GAURIEntitiesModel.Store.USP_FRM_GetDashboardDocumentsStatusCount">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_GetDashboardDocumentsStatusCount_Result">
+          <ScalarProperty Name="DataEntryInProgress" ColumnName="DataEntryInProgress" />
+          <ScalarProperty Name="OnlineApplicationSubmittedforApproval" ColumnName="OnlineApplicationSubmittedforApproval" />
+          <ScalarProperty Name="ApplicationApprovedforOnlinePayment" ColumnName="ApplicationApprovedforOnlinePayment" />
+          <ScalarProperty Name="Registered" ColumnName="Registered" />
+          <ScalarProperty Name="DigitallySigned" ColumnName="DigitallySigned" />
+          <ScalarProperty Name="ApplicationForwardedforCorrection" ColumnName="ApplicationForwardedforCorrection" />
+          <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+          <ScalarProperty Name="OnlinePaymentDone" ColumnName="OnlinePaymentDone" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_GetDashboardDocumentsStatusCount_Cover" FunctionName="GAURIEntitiesModel.Store.USP_FRM_GetDashboardDocumentsStatusCount_Cover">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_GetDashboardDocumentsStatusCount_Cover_Result">
+          <ScalarProperty Name="DataEntryInProgress" ColumnName="DataEntryInProgress" />
+          <ScalarProperty Name="OnlineApplicationSubmittedforApproval" ColumnName="OnlineApplicationSubmittedforApproval" />
+          <ScalarProperty Name="ApplicationApprovedforOnlinePayment" ColumnName="ApplicationApprovedforOnlinePayment" />
+          <ScalarProperty Name="Registered" ColumnName="Registered" />
+          <ScalarProperty Name="DigitallySigned" ColumnName="DigitallySigned" />
+          <ScalarProperty Name="ApplicationForwardedforCorrection" ColumnName="ApplicationForwardedforCorrection" />
+          <ScalarProperty Name="Rejected" ColumnName="Rejected" />
+          <ScalarProperty Name="OnlinePaymentDone" ColumnName="OnlinePaymentDone" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_GetFirmSearchDetails" FunctionName="GAURIEntitiesModel.Store.USP_FRM_GetFirmSearchDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_GetFirmSearchDetails_Result">
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="DateOfRegistration" ColumnName="DateOfRegistration" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+          <ScalarProperty Name="KioskTokenID" ColumnName="KioskTokenID" />
+          <ScalarProperty Name="KioskTokenNumber" ColumnName="KioskTokenNumber" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="StreetSectorDetails" ColumnName="StreetSectorDetails" />
+          <ScalarProperty Name="AreaDetails" ColumnName="AreaDetails" />
+          <ScalarProperty Name="Town" ColumnName="Town" />
+          <ScalarProperty Name="Village" ColumnName="Village" />
+          <ScalarProperty Name="SubDistrict" ColumnName="SubDistrict" />
+          <ScalarProperty Name="PIN" ColumnName="PIN" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="FileServerPath" ColumnName="FileServerPath" />
+          <ScalarProperty Name="VirtualServerPath" ColumnName="VirtualServerPath" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_SupportDocuments" FunctionName="GAURIEntitiesModel.Store.USP_FRM_SupportDocuments">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_FRM_SupportDocuments_Result">
+          <ScalarProperty Name="SupportDocuments" ColumnName="SupportDocuments" />
+          <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_FRM_WitnessDetailsGrid" FunctionName="GAURIEntitiesModel.Store.USP_FRM_WitnessDetailsGrid" />
+    <FunctionImportMapping FunctionImportName="USP_GeneralInformationDetailsGrid" FunctionName="GAURIEntitiesModel.Store.USP_GeneralInformationDetailsGrid" />
+    <FunctionImportMapping FunctionImportName="USP_GetCurrentDateTime" FunctionName="GAURIEntitiesModel.Store.USP_GetCurrentDateTime" />
+    <FunctionImportMapping FunctionImportName="USP_GetKaveriIPendingDocuments" FunctionName="GAURIEntitiesModel.Store.USP_GetKaveriIPendingDocuments" />
+    <FunctionImportMapping FunctionImportName="USP_GetLiabilityReports" FunctionName="GAURIEntitiesModel.Store.USP_GetLiabilityReports" />
+    <FunctionImportMapping FunctionImportName="USP_GetLiabilitySearchDetails" FunctionName="GAURIEntitiesModel.Store.USP_GetLiabilitySearchDetails" />
+    <FunctionImportMapping FunctionImportName="USP_GetPropertyNumberDetails" FunctionName="GAURIEntitiesModel.Store.USP_GetPropertyNumberDetails" />
+    <FunctionImportMapping FunctionImportName="USP_GetPropertyNumbers" FunctionName="GAURIEntitiesModel.Store.USP_GetPropertyNumbers" />
+    <FunctionImportMapping FunctionImportName="USP_GetScheduleDetails" FunctionName="GAURIEntitiesModel.Store.USP_GetScheduleDetails" />
+    <FunctionImportMapping FunctionImportName="USP_GetSimilarPropertyNumberDetails" FunctionName="GAURIEntitiesModel.Store.USP_GetSimilarPropertyNumberDetails" />
+    <FunctionImportMapping FunctionImportName="USP_KSK_ExpireKioskToken" FunctionName="GAURIEntitiesModel.Store.USP_KSK_ExpireKioskToken" />
+    <FunctionImportMapping FunctionImportName="USP_KSK_TokenServiceStatistics" FunctionName="GAURIEntitiesModel.Store.USP_KSK_TokenServiceStatistics" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_AdvancedMarriageSearch" FunctionName="GAURIEntitiesModel.Store.USP_MAR_AdvancedMarriageSearch" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_BRIDEGROOMDETAILS" FunctionName="GAURIEntitiesModel.Store.USP_MAR_BRIDEGROOMDETAILS" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ChildrenDetails" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ChildrenDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ENDORSEMENT_DETAILS" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ENDORSEMENT_DETAILS" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_Kaveri1NoticedPubDataPorting" FunctionName="GAURIEntitiesModel.Store.USP_MAR_Kaveri1NoticedPubDataPorting" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_MarCertFifthSchedule" FunctionName="GAURIEntitiesModel.Store.USP_MAR_MarCertFifthSchedule" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_MarCertFourthSchedule" FunctionName="GAURIEntitiesModel.Store.USP_MAR_MarCertFourthSchedule" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_MarriageDeclarations" FunctionName="GAURIEntitiesModel.Store.USP_MAR_MarriageDeclarations" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_MarriageNoticeDetails" FunctionName="GAURIEntitiesModel.Store.USP_MAR_MarriageNoticeDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_MarriageSummary" FunctionName="GAURIEntitiesModel.Store.USP_MAR_MarriageSummary" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_NoticePublished" FunctionName="GAURIEntitiesModel.Store.USP_MAR_NoticePublished" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_OBJ_Refusal_Endorsement" FunctionName="GAURIEntitiesModel.Store.USP_MAR_OBJ_Refusal_Endorsement" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionDetails" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionEnquiriesScheduled" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionEnquiriesScheduled" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionEnquiriesSummonsDet" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionEnquiriesSummonsDet" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionEnquiryDetails" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionEnquiryDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionList" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionList" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionNotice_Form1" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionNotice_Form1" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionPartyDetails" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionPartyDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjectionSummary" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjectionSummary" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjSummonToWitness" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjSummonToWitness" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ObjWitnessSummonDetails" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ObjWitnessSummonDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_Party_MarriageDeclarations" FunctionName="GAURIEntitiesModel.Store.USP_MAR_Party_MarriageDeclarations" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_Refusal_Endorsement" FunctionName="GAURIEntitiesModel.Store.USP_MAR_Refusal_Endorsement" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_ScheduleIII_Details" FunctionName="GAURIEntitiesModel.Store.USP_MAR_ScheduleIII_Details" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_Witness_Det" FunctionName="GAURIEntitiesModel.Store.USP_MAR_Witness_Det" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_WitnessDetails" FunctionName="GAURIEntitiesModel.Store.USP_MAR_WitnessDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MAR_WitnessIDS" FunctionName="GAURIEntitiesModel.Store.USP_MAR_WitnessIDS" />
+    <FunctionImportMapping FunctionImportName="USP_MarriageCertificateDetails" FunctionName="GAURIEntitiesModel.Store.USP_MarriageCertificateDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MarriageDeclarationsBride" FunctionName="GAURIEntitiesModel.Store.USP_MarriageDeclarationsBride" />
+    <FunctionImportMapping FunctionImportName="USP_MarriageDeclarationsGROOM" FunctionName="GAURIEntitiesModel.Store.USP_MarriageDeclarationsGROOM" />
+    <FunctionImportMapping FunctionImportName="USP_MarriageReceiptDetails" FunctionName="GAURIEntitiesModel.Store.USP_MarriageReceiptDetails" />
+    <FunctionImportMapping FunctionImportName="USP_MarriageRejectionNoticeDets" FunctionName="GAURIEntitiesModel.Store.USP_MarriageRejectionNoticeDets" />
+    <FunctionImportMapping FunctionImportName="USP_MAS_UpsertMasterDataEntry" FunctionName="GAURIEntitiesModel.Store.USP_MAS_UpsertMasterDataEntry" />
+    <FunctionImportMapping FunctionImportName="USP_PartyDetailsGrid" FunctionName="GAURIEntitiesModel.Store.USP_PartyDetailsGrid" />
+    <FunctionImportMapping FunctionImportName="USP_PEN_GeneralInformationDetailsGrid" FunctionName="GAURIEntitiesModel.Store.USP_PEN_GeneralInformationDetailsGrid" />
+    <FunctionImportMapping FunctionImportName="USP_PEN_GetPropertyNumberDetails" FunctionName="GAURIEntitiesModel.Store.USP_PEN_GetPropertyNumberDetails" />
+    <FunctionImportMapping FunctionImportName="USP_PEN_WitnessDetailsGrid" FunctionName="GAURIEntitiesModel.Store.USP_PEN_WitnessDetailsGrid" />
+    <FunctionImportMapping FunctionImportName="USP_PopulateMenus" FunctionName="GAURIEntitiesModel.Store.USP_PopulateMenus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_PopulateMenus_Result">
+          <ScalarProperty Name="IntMenuId" ColumnName="IntMenuId" />
+          <ScalarProperty Name="StrMenuName" ColumnName="StrMenuName" />
+          <ScalarProperty Name="IntMenuParentId" ColumnName="IntMenuParentId" />
+          <ScalarProperty Name="IntMenuLevel" ColumnName="IntMenuLevel" />
+          <ScalarProperty Name="BoolStatus" ColumnName="BoolStatus" />
+          <ScalarProperty Name="IntMenuSeqNo" ColumnName="IntMenuSeqNo" />
+          <ScalarProperty Name="strAreaName" ColumnName="strAreaName" />
+          <ScalarProperty Name="StrController" ColumnName="StrController" />
+          <ScalarProperty Name="StrAction" ColumnName="StrAction" />
+          <ScalarProperty Name="HorizontalSequence" ColumnName="HorizontalSequence" />
+          <ScalarProperty Name="ModuleID" ColumnName="ModuleID" />
+          <ScalarProperty Name="IsMenuIDParameter" ColumnName="IsMenuIDParameter" />
+          <ScalarProperty Name="IsHorizontalMenu" ColumnName="IsHorizontalMenu" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_PropertyDetailsAddedGrid" FunctionName="GAURIEntitiesModel.Store.USP_PropertyDetailsAddedGrid" />
+    <FunctionImportMapping FunctionImportName="USP_REG_DOC_WITHDRAWAL_ENDORSEMENT" FunctionName="GAURIEntitiesModel.Store.USP_REG_DOC_WITHDRAWAL_ENDORSEMENT" />
+    <FunctionImportMapping FunctionImportName="USP_REG_ENDORSEMENT_DETAILS" FunctionName="GAURIEntitiesModel.Store.USP_REG_ENDORSEMENT_DETAILS" />
+    <FunctionImportMapping FunctionImportName="USP_REG_ENDORSEMENT_PARTIES" FunctionName="GAURIEntitiesModel.Store.USP_REG_ENDORSEMENT_PARTIES" />
+    <FunctionImportMapping FunctionImportName="USP_REG_ENDORSEMENT_PROPERTIES" FunctionName="GAURIEntitiesModel.Store.USP_REG_ENDORSEMENT_PROPERTIES" />
+    <FunctionImportMapping FunctionImportName="USP_REG_LIABILITY_ENDORSEMENT" FunctionName="GAURIEntitiesModel.Store.USP_REG_LIABILITY_ENDORSEMENT" />
+    <FunctionImportMapping FunctionImportName="USP_REG_PEN_GetKaveriIPendingDocuments" FunctionName="GAURIEntitiesModel.Store.USP_REG_PEN_GetKaveriIPendingDocuments" />
+    <FunctionImportMapping FunctionImportName="USP_REG_PEN_PropertyDetailsAddedGrid" FunctionName="GAURIEntitiesModel.Store.USP_REG_PEN_PropertyDetailsAddedGrid" />
+    <FunctionImportMapping FunctionImportName="USP_REG_Refusal_Endorsement" FunctionName="GAURIEntitiesModel.Store.USP_REG_Refusal_Endorsement" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_AMS_Challan_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_AMS_Challan_Details" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_AMS_Challan_Payment_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_AMS_Challan_Payment_Details" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_AMS_Receipt_Fees_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_AMS_Receipt_Fees_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_AMS_Receipt_Fees_Details_Result">
+          <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="DateOfReceipt" ColumnName="DateOfReceipt" />
+          <ScalarProperty Name="ReferenceType" ColumnName="ReferenceType" />
+          <ScalarProperty Name="DescriptionR" ColumnName="DescriptionR" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DateOfReceiptForReport" ColumnName="DateOfReceiptForReport" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_AMS_Receipt_Payment_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_AMS_Receipt_Payment_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_AMS_Receipt_Payment_Details_Result">
+          <ScalarProperty Name="PaymentModeTypeID" ColumnName="PaymentModeTypeID" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="InstrumentNumber" ColumnName="InstrumentNumber" />
+          <ScalarProperty Name="InstrumentDate" ColumnName="InstrumentDate" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_AMS_Reconciliation_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_AMS_Reconciliation_Details" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_AMS_Remittance_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_AMS_Remittance_Details" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_CERTIFICATE41_REPORT" FunctionName="GAURIEntitiesModel.Store.USP_RPT_CERTIFICATE41_REPORT" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_Communication_Value_Amounts" FunctionName="GAURIEntitiesModel.Store.USP_RPT_Communication_Value_Amounts" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_Communication_Value_OfficeName" FunctionName="GAURIEntitiesModel.Store.USP_RPT_Communication_Value_OfficeName" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_Communication_Value_ScheduleDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_Communication_Value_ScheduleDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_DailyRegister" FunctionName="GAURIEntitiesModel.Store.USP_RPT_DailyRegister" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_DailyRegister_old" FunctionName="GAURIEntitiesModel.Store.USP_RPT_DailyRegister_old" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_Doc_Return_Certificate" FunctionName="GAURIEntitiesModel.Store.USP_RPT_Doc_Return_Certificate" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_Doc_Return_Certificate_GridDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_Doc_Return_Certificate_GridDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_Doc_Return_Certificate_PartyName" FunctionName="GAURIEntitiesModel.Store.USP_RPT_Doc_Return_Certificate_PartyName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_Doc_Return_Certificate_PartyName_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmAddressChangeAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmAddressChangeAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmAddressChangeAmendmentLog_Result">
+          <ScalarProperty Name="CurrentPlace" ColumnName="CurrentPlace" />
+          <ScalarProperty Name="PreviousPlace" ColumnName="PreviousPlace" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmAmendment_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmAmendment_Details">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmAmendment_Details_Result">
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FirmAddress" ColumnName="FirmAddress" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="DateOfRegistration" ColumnName="DateOfRegistration" />
+          <ScalarProperty Name="ApplyingParty" ColumnName="ApplyingParty" />
+          <ScalarProperty Name="FinalAmendmentNumber" ColumnName="FinalAmendmentNumber" />
+          <ScalarProperty Name="AmendmentFillingDateTime" ColumnName="AmendmentFillingDateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmAmendmentCertDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmAmendmentCertDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmAmendmentRefusalEndorsement_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmAmendmentRefusalEndorsement_Details" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmAmendmentRefusalEndorsement_List" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmAmendmentRefusalEndorsement_List" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmAmendmentTypesIDs" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmAmendmentTypesIDs" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmCeaseOfPartnerAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmCeaseOfPartnerAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmCeaseOfPartnerAmendmentLog_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="NameOfPartner" ColumnName="NameOfPartner" />
+          <ScalarProperty Name="AddingCeasingDate" ColumnName="AddingCeasingDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmClosingBranchAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmClosingBranchAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmClosingBranchAmendmentLog_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+          <ScalarProperty Name="BranchClosingDate" ColumnName="BranchClosingDate" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmDissolution_Details" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmDissolution_Details" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmDissolutionCertDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmDissolutionCertDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmDissolutionCertDetails_Result">
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="DateOfRegistration" ColumnName="DateOfRegistration" />
+          <ScalarProperty Name="DissolutionNumber" ColumnName="DissolutionNumber" />
+          <ScalarProperty Name="FinalDissolutionNumber" ColumnName="FinalDissolutionNumber" />
+          <ScalarProperty Name="FinalDissolutionDateTime" ColumnName="FinalDissolutionDateTime" />
+          <ScalarProperty Name="DissolutionDateTime" ColumnName="DissolutionDateTime" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmDissolutionRefusalEndorsementDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmDissolutionRefusalEndorsementDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmJoiningOfPartnerAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmJoiningOfPartnerAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmJoiningOfPartnerAmendmentLog_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="NameOfPartner" ColumnName="NameOfPartner" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="PresenterTypes" ColumnName="PresenterTypes" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="IDProofNumber" ColumnName="IDProofNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmNameChangeAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmNameChangeAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmNameChangeAmendmentLog_Result">
+          <ScalarProperty Name="PreviousName" ColumnName="PreviousName" />
+          <ScalarProperty Name="CurrentName" ColumnName="CurrentName" />
+          <ScalarProperty Name="CurrentPlace" ColumnName="CurrentPlace" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_FirmOpeningBranchAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_FirmOpeningBranchAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_FirmOpeningBranchAmendmentLog_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+          <ScalarProperty Name="BranchOpeningDate" ColumnName="BranchOpeningDate" />
+          <ScalarProperty Name="STDCode" ColumnName="STDCode" />
+          <ScalarProperty Name="BranchPhoneNumber" ColumnName="BranchPhoneNumber" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_PartnerAddressChangeAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_PartnerAddressChangeAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_PartnerAddressChangeAmendmentLog_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CurrentPresentAddress" ColumnName="CurrentPresentAddress" />
+          <ScalarProperty Name="OldPresentAddress" ColumnName="OldPresentAddress" />
+          <ScalarProperty Name="CurrentPremanentAddress" ColumnName="CurrentPremanentAddress" />
+          <ScalarProperty Name="OldPremanentAddress" ColumnName="OldPremanentAddress" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_PartnerAttainingMajorAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_PartnerAttainingMajorAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_PartnerAttainingMajorAmendmentLog_Result">
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_PartnerDetailsAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_PartnerDetailsAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_PartnerDetailsAmendmentLog_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PreviousFirstName" ColumnName="PreviousFirstName" />
+          <ScalarProperty Name="PreviousMiddleName" ColumnName="PreviousMiddleName" />
+          <ScalarProperty Name="PreviousLastName" ColumnName="PreviousLastName" />
+          <ScalarProperty Name="PreviousPhoneNumber" ColumnName="PreviousPhoneNumber" />
+          <ScalarProperty Name="PreviousEmail" ColumnName="PreviousEmail" />
+          <ScalarProperty Name="CurrentFirstName" ColumnName="CurrentFirstName" />
+          <ScalarProperty Name="CurrentMiddleName" ColumnName="CurrentMiddleName" />
+          <ScalarProperty Name="CurrentLastName" ColumnName="CurrentLastName" />
+          <ScalarProperty Name="CurrentPhoneNumber" ColumnName="CurrentPhoneNumber" />
+          <ScalarProperty Name="CurrentEmail" ColumnName="CurrentEmail" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_PartnerNameChangeAmendmentLog" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_PartnerNameChangeAmendmentLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_FRM_PartnerNameChangeAmendmentLog_Result">
+          <ScalarProperty Name="OldFullName" ColumnName="OldFullName" />
+          <ScalarProperty Name="CurrentFullName" ColumnName="CurrentFullName" />
+          <ScalarProperty Name="PresentAddress" ColumnName="PresentAddress" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="JoiningDate" ColumnName="JoiningDate" />
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_Refusal_Endorsement" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_Refusal_Endorsement" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_FRM_Refusal_Endorsement_GetDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_FRM_Refusal_Endorsement_GetDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_Get_Registration_Fee" FunctionName="GAURIEntitiesModel.Store.USP_RPT_Get_Registration_Fee">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_RPT_Get_Registration_Fee_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PayableAmount" ColumnName="PayableAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_GetCourtOrderDetailsParty" FunctionName="GAURIEntitiesModel.Store.USP_RPT_GetCourtOrderDetailsParty" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_GetCourtOrderDetailsProperty" FunctionName="GAURIEntitiesModel.Store.USP_RPT_GetCourtOrderDetailsProperty" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_GetPartyDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_GetPartyDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_GetPropertyNumberDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_GetPropertyNumberDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_MAR_EnquiriesOnObjection" FunctionName="GAURIEntitiesModel.Store.USP_RPT_MAR_EnquiriesOnObjection" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_MAR_ObjectionDet" FunctionName="GAURIEntitiesModel.Store.USP_RPT_MAR_ObjectionDet" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_MarriageApplicationDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_MarriageApplicationDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_MarriageObjectionsDet" FunctionName="GAURIEntitiesModel.Store.USP_RPT_MarriageObjectionsDet" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_SaveDailyRegisterDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_SaveDailyRegisterDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_THUMBREGISTER_REPORT" FunctionName="GAURIEntitiesModel.Store.USP_RPT_THUMBREGISTER_REPORT" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_VAL_AgricultureRateDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_VAL_AgricultureRateDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_VAL_AnnexureRulesDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_VAL_AnnexureRulesDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_VAL_ConstructionTypesDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_VAL_ConstructionTypesDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_VAL_FloorRateDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_VAL_FloorRateDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_VAL_OpenBuiltRateDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_VAL_OpenBuiltRateDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_VAL_ParkingTypesDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_VAL_ParkingTypesDetails" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_VAL_ValuationsDetails" FunctionName="GAURIEntitiesModel.Store.USP_RPT_VAL_ValuationsDetails" />
+    <FunctionImportMapping FunctionImportName="USP_StampDutyPaymentGrid" FunctionName="GAURIEntitiesModel.Store.USP_StampDutyPaymentGrid" />
+    <FunctionImportMapping FunctionImportName="USP_TransactionTableDataFlushByParam" FunctionName="GAURIEntitiesModel.Store.USP_TransactionTableDataFlushByParam" />
+    <FunctionImportMapping FunctionImportName="USP_UMG_GetChargeHandoverList" FunctionName="GAURIEntitiesModel.Store.USP_UMG_GetChargeHandoverList" />
+    <FunctionImportMapping FunctionImportName="USP_UMG_GetControllerActionList" FunctionName="GAURIEntitiesModel.Store.USP_UMG_GetControllerActionList" />
+    <FunctionImportMapping FunctionImportName="USP_UMG_GetMenuList" FunctionName="GAURIEntitiesModel.Store.USP_UMG_GetMenuList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_UMG_GetMenuList_Result">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ParentName" ColumnName="ParentName" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="VerticalLevel" ColumnName="VerticalLevel" />
+          <ScalarProperty Name="HorizontalSequence" ColumnName="HorizontalSequence" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_UMG_GetResourceList" FunctionName="GAURIEntitiesModel.Store.USP_UMG_GetResourceList" />
+    <FunctionImportMapping FunctionImportName="USP_UMG_GetRoleList" FunctionName="GAURIEntitiesModel.Store.USP_UMG_GetRoleList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_UMG_GetRoleList_Result">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="LevelID" ColumnName="LevelID" />
+          <ScalarProperty Name="LevelName" ColumnName="LevelName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_UMG_GetRoleMenus" FunctionName="GAURIEntitiesModel.Store.USP_UMG_GetRoleMenus">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="GAURIEntitiesModel.USP_UMG_GetRoleMenus_Result">
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="IsMapped" ColumnName="IsMapped" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="IsLeaf" ColumnName="IsLeaf" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_UMG_GetUserList" FunctionName="GAURIEntitiesModel.Store.USP_UMG_GetUserList" />
+    <FunctionImportMapping FunctionImportName="USP_UMG_MapRoleMenus" FunctionName="GAURIEntitiesModel.Store.USP_UMG_MapRoleMenus" />
+    <FunctionImportMapping FunctionImportName="USP_UMG_UnmapRoleMenus" FunctionName="GAURIEntitiesModel.Store.USP_UMG_UnmapRoleMenus" />
+    <FunctionImportMapping FunctionImportName="USP_WitnessDetailsGrid" FunctionName="GAURIEntitiesModel.Store.USP_WitnessDetailsGrid" />
+  </EntityContainerMapping>
+</Mapping>

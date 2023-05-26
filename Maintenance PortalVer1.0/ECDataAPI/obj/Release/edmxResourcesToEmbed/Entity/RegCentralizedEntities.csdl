@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GOAIGR_REG_CENTRALIZEDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CC_DigitizationFileDetails">
+    <Key>
+      <PropertyRef Name="FileUploadID" />
+    </Key>
+    <Property Name="FileUploadID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DocumentID" Type="Int64" Nullable="false" />
+    <Property Name="SROCode" Type="Int32" Nullable="false" />
+    <Property Name="UploadPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FileName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FileSize" Type="Int64" />
+    <Property Name="Pages" Type="Int32" Nullable="false" />
+    <Property Name="Checksum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="isPDF" Type="Boolean" />
+    <Property Name="AmendmentID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DocumentAmendment">
+    <Key>
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="AmendmentID" />
+    </Key>
+    <Property Name="DocumentID" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="AmendmentNo" Type="Int32" />
+    <Property Name="AmendmentPages" Type="Int32" />
+    <Property Name="TotalPages" Type="Int32" />
+    <Property Name="AdditionalPages" Type="Int32" />
+    <Property Name="CDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsScanned" Type="Int32" />
+    <Property Name="AmendmentDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AmendmentTypeID" Type="Int32" Nullable="false" />
+    <Property Name="SROCode" Type="Int32" Nullable="false" />
+    <Property Name="DRCode" Type="Int32" Nullable="false" />
+    <Property Name="AmendmentID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="DocumentMaster" Relationship="Self.FK_DocumentAmendments_DocumentMaster" FromRole="DocumentAmendments" ToRole="DocumentMaster" />
+  </EntityType>
+  <EntityType Name="DocumentMaster">
+    <Key>
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="SROCode" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="StampArticleCode" Type="Int32" Nullable="false" />
+    <Property Name="RegArticleCode" Type="Int32" Nullable="false" />
+    <Property Name="DocumentNumber" Type="Int32" />
+    <Property Name="FinalRegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PresentDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ExecutionDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DateOfStamp" Type="DateTime" Precision="3" />
+    <Property Name="ConsiderationAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RequiredStampDuty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PaidStampDuty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Stamp1DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp2DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp3DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp4DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp5DateTime" Type="DateTime" Precision="3" />
+    <Property Name="WithdrawalDate" Type="DateTime" Precision="3" />
+    <Property Name="PageCount" Type="Int32" />
+    <Property Name="Index2Shera" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsVisited" Type="Boolean" Nullable="false" />
+    <Property Name="IsFiling" Type="Boolean" Nullable="false" />
+    <Property Name="IsPending" Type="Boolean" Nullable="false" />
+    <Property Name="IsScanned" Type="Boolean" Nullable="false" />
+    <Property Name="IsRefused" Type="Boolean" Nullable="false" />
+    <Property Name="IsPaymentOfMoney" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdjudicated" Type="Boolean" Nullable="false" />
+    <Property Name="IsWithdrawn" Type="Boolean" Nullable="false" />
+    <Property Name="RefusalDate" Type="DateTime" Precision="3" />
+    <Property Name="RefusalReason" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="RemarksByUser" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="RemarksBySystem" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CorrectionReference" Type="Int64" />
+    <Property Name="OldDocReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdjudicationDetails" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+    <Property Name="CDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsComposite" Type="Boolean" />
+    <Property Name="SerialNumber" Type="Int64" Nullable="false" />
+    <Property Name="IsDataEntryCompleted" Type="Boolean" />
+    <Property Name="DataEntryCompletedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsCollector" Type="Boolean" />
+    <Property Name="RemarksToCollector" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="IsCancel" Type="Boolean" />
+    <Property Name="CancelReason" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="SaleAgreementReference" Type="Int64" />
+    <Property Name="StampsDateDesc" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TokenID" Type="Int64" />
+    <Property Name="DRCode" Type="Int32" Nullable="false" />
+    <Property Name="IsPartial" Type="Boolean" Nullable="false" />
+    <Property Name="DocumentID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="DocumentAmendments" Relationship="Self.FK_DocumentAmendments_DocumentMaster" FromRole="DocumentMaster" ToRole="DocumentAmendments" />
+  </EntityType>
+  <EntityType Name="CC_DigitizationDetails">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="ScannedFileName" />
+      <PropertyRef Name="UploadPath" />
+      <PropertyRef Name="UploadDateTime" />
+    </Key>
+    <Property Name="DocumentID" Type="Int64" Nullable="false" />
+    <Property Name="SROCode" Type="Int32" Nullable="false" />
+    <Property Name="ScannedFileName" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UploadPath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UploadDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RootDirectory" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_DocumentAmendments_DocumentMaster">
+    <End Role="DocumentMaster" Type="Self.DocumentMaster" Multiplicity="1" />
+    <End Role="DocumentAmendments" Type="Self.DocumentAmendment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentMaster">
+        <PropertyRef Name="SROCode" />
+        <PropertyRef Name="DocumentID" />
+      </Principal>
+      <Dependent Role="DocumentAmendments">
+        <PropertyRef Name="SROCode" />
+        <PropertyRef Name="DocumentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Reg_CentralizedEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CC_DigitizationFileDetails" EntityType="Self.CC_DigitizationFileDetails" />
+    <EntitySet Name="DocumentAmendments" EntityType="Self.DocumentAmendment" />
+    <EntitySet Name="DocumentMasters" EntityType="Self.DocumentMaster" />
+    <EntitySet Name="CC_DigitizationDetails" EntityType="Self.CC_DigitizationDetails" />
+    <AssociationSet Name="FK_DocumentAmendments_DocumentMaster" Association="Self.FK_DocumentAmendments_DocumentMaster">
+      <End Role="DocumentMaster" EntitySet="DocumentMasters" />
+      <End Role="DocumentAmendments" EntitySet="DocumentAmendments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

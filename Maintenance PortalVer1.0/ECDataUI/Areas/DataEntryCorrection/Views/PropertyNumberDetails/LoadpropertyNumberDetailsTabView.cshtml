@@ -1,0 +1,363 @@
+﻿@model CustomModels.Models.DataEntryCorrection.PropertyNumberDetailsViewModel
+
+@using ECDataUI.Helper
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+
+    .panel-body {
+        padding: unset !important;
+    }
+
+    .unselection {
+        background: #ffb06b;
+        border: 1px solid #e8a21e !important;
+    }
+
+        .unselection:hover {
+            background: #f09f58;
+            border: 1px solid #e8a21e !important;
+        }
+
+    .selection {
+        border: 1px solid #255cc6;
+    }
+
+    .hoblilabelName {
+        font-size: large !important;
+        padding-top: 10px !important;
+        text-align: left !important;
+    }
+</style>
+
+
+<script src="~/Areas/DataEntryCorrection/Scripts/PropertyNumberDetails/PropertyNumberDetails_V2.js"></script>
+@*<script src="~/Areas/DataEntryCorrection/Scripts/PropertyNumberDetails/PropertyNumberDetails_V1.js"></script>*@
+@*<script src="~/Areas/DataEntryCorrection/Scripts/PropertyNumberDetails/PropertyNumberDetails.js"></script>*@
+
+@*<script src="~/Scripts/jquery.validate.unobtrusive.bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+
+<div id="PNDetailsOuterDiv">
+
+    @*<div class="row">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapseDetail5' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchParaDetail5" aria-expanded="false" aria-controls="DtlscollapseSearchPara5" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaDetail5" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" id="SpanHeader" style="color: #fff; font-size: 120%;">Property Details</span>
+            </div>
+            <div id="DtlscollapseSearchParaDetail5" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                    <!--Html.HiddenFor(m => m.EncrytptedDocumentID, new { @class = "PaddingTop10", @Id = "EncryptedDocumentId" })-->*@
+    @*<table id="PropertyDetailTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+
+                <thead>
+
+                    <tr>
+                        <th>Select</th>
+                        <th>Sr No.</th>
+                        <th>Final Registration Number</th>
+                        <th>Registration Date</th>
+                        <th>Execution Date</th>
+                        <th>Nature of Document</th>
+                        <th>PropertyDetails</th>
+                        <th>Village Name</th>
+                        <th>Total Area</th>
+                        <th>Schedule Description</th>
+                        <th>Market Value</th>
+                        <th>Consideration</th>
+                        <th>Claimant</th>
+                        <th>Executant</th>
+                    </tr>
+                </thead>
+
+            </table>
+        </div>*@
+
+    @*<div class="row" style="padding-bottom:1%;">
+            <div class="col-md-5"></div>
+            <div class='BTNwrapper col-md-2' style="text-align:left;">
+                <span id="AddOrderSPANID">
+                    <button class='btn btn-primary' name='btnAddOrders' id='btnAddOrderId' OnClick='AddOrder()'>Add Order</button>
+                </span>
+            </div>
+            <div class="col-md-5"></div>
+        </div>*@
+    @*</div>
+            </div>
+        </div>*@
+
+
+
+
+    <div class="row">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapseDetail6' class="row well-custom" data-toggle="collapse" data-target="#DtlscollapseSearchParaDetail6" aria-expanded="false" aria-controls="DtlscollapseSearchPara6" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaDetail6" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span id="SpanHeader" style="color: #fff; font-size: 120%;">Previous Property Details</span>
+            </div>
+            <div id="DtlscollapseSearchParaDetail6" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                    @*@Html.HiddenFor(m => m.EncrytptedDocumentID, new { @class = "PaddingTop10", @Id = "EncryptedDocumentId" })*@
+                    <table id="SelectTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+
+                        <thead>
+
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>DR Order number</th>
+                                <th>Order Date</th>
+                                <th>Village</th>
+                                <th>Current property Type</th>
+                                <th>Current number</th>
+                                <th>Old property Type</th>
+                                <th>Old Number</th>
+                                <th>Survey No</th>
+                                <th>Surnoc</th>
+                                <th>Hissa No</th>
+                                <th>Order Note</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+
+
+                <div class="row">
+                    <div class="row well-custom" style="text-align: left;padding: 1rem;">
+                        <span style="color: #fff; font-size: 120%;">Add New Property Number Search Parameters</span>
+                    </div>
+                    <div style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                        <form id="PropertyNumberDetailsForm">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="panel-body">
+                                @*<div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">*@
+
+                                @*Added By Shivam B For knowing the Current SRO,DRO Login Names on 10/05/2022 *@ 
+
+                                @Html.HiddenFor(model => model.PropertyNumberDetailsAddEditModel.HiddenDroCode, new { @id = "idHiddenDROCode" })
+                                @Html.HiddenFor(model => model.PropertyNumberDetailsAddEditModel.HidddenDROName, new { @id = "idHiddenDROName" })
+                                @Html.HiddenFor(model => model.PropertyNumberDetailsAddEditModel.HiddenSROCode, new { @id = "idHiddenSROCode" })
+                                @Html.HiddenFor(model => model.PropertyNumberDetailsAddEditModel.HiddenSROName, new { @id = "idHiddenSROName" })
+
+                                @*Added By Shivam B For knowing the Current SRO,DRO Login Names on 10/05/2022 *@
+
+                                <div class='row'>
+
+                                    @*<div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                            <div class="col-md-3">
+                                                @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.Section68NoteForProperty, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                            </div>
+                                            <div class="col-md-9">
+                                                @Html.TextAreaFor(model => model.PropertyNumberDetailsAddEditModel.Section68NoteForProperty, new { @class = "form-control", @id = "txtPNDSection68Note", @title = "Section 68 Note for Property Number Details", @minlength = 1, tabindex = 1 })
+                                                @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.Section68NoteForProperty, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>*@
+
+                                    <div class="col-md-12" id="DRODropDownListID" style="padding-top:1%;">
+
+                                        @*Added by Shivam B on 10/05/2022 for Add New Property Number Search Parameter in Section 68*@
+                                        <div class="col-md-3">
+                                            <div class="col-md-6">
+                                                @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.DroCode, new { @class = "PaddingTop10" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.PropertyNumberDetailsAddEditModel.DroCode, @Model.PropertyNumberDetailsAddEditModel.DROfficeList, new { @class = "form-control minimal", id = "DROListID", autocomplete = "off", tabindex = 1 })
+                                                @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.DroCode, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        @*Added by Shivam B on 10/05/2022 for Add New Property Number Search Parameter in Section 68*@
+
+
+                                        <div class="col-md-3">
+                                            <div class="col-md-6">
+                                                @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.SroCode, new { @class = "PaddingTop10" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.PropertyNumberDetailsAddEditModel.SroCode, @Model.PropertyNumberDetailsAddEditModel.SROfficeList, new { @class = "form-control minimal", id = "SROListID", autocomplete = "off", tabindex = 2 })
+                                                @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.SroCode, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            <div class="col-md-6">
+                                                @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.VillageID, new { @class = "PaddingTop10" })
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.PropertyNumberDetailsAddEditModel.VillageID, @Model.PropertyNumberDetailsAddEditModel.VillageList, new { @class = "form-control minimal", id = "VillageListID", autocomplete = "off", tabindex = 3 })
+                                                @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.VillageID, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-3">
+                                            <div class="col-md-6" style="padding-left: 10%;">
+                                                @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.HobliID, new { @class = "PaddingTop10" })
+                                            </div>
+                                            <div class="col-md-6" style="font-size:medium;text-align:left;padding-top: 0.5%;padding-left: 3%;" id="HobliNameDivID">
+                                                @Html.DisplayFor(model => model.PropertyNumberDetailsAddEditModel.HobliName, new { @class = "form-control minimal PaddingTop10", style = "text-align: left !important;", id = "HobliNameID", autocomplete = "off", tabindex = 4 })
+                                            </div>
+                                        </div>
+                                        @*<div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3" style="padding-top:10px">
+            @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.HobliID, new { @class = "PaddingTop10" })
+        </div>
+        <div class="col-md-3" style="font-size:medium;text-align:left;padding-top:15px" id="HobliNameDivID">
+            @Html.DisplayFor(model => model.PropertyNumberDetailsAddEditModel.HobliName,new { @class = "form-control minimal PaddingTop10", style= "text-align: left !important;", id = "HobliNameID", autocomplete = "off", tabindex = 2 })
+        </div>*@
+
+                                    </div>
+                                    <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                        <div class="col-md-6" style="padding:unset;">
+                                            <div class="col-md-6">
+                                                @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.CurrentPropertyTypeID, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.DropDownListFor(model => model.PropertyNumberDetailsAddEditModel.CurrentPropertyTypeID, @Model.PropertyNumberDetailsAddEditModel.CurrentPropertyType, new { @class = "form-control minimal", id = "CurrentPropertyTypeListID", autocomplete = "off", tabindex = 3 })
+                                                @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.CurrentPropertyTypeID, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group CurrentNoHideShowClass">
+                                                <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                                    <div class="col-md-6">
+                                                        @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.CurrentNumber, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.TextBoxFor(model => model.PropertyNumberDetailsAddEditModel.CurrentNumber, new { @class = "form-control", @id = "txtCurrentNumber", @placeholder = "Current Number", @title = "Current Number", tabindex = 4 })
+                                                        @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.CurrentNumber, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 textAlignLeft SurveyNoDetailsHideShowClass" style="padding-top:1%;">
+                                    <div class="col-md-3"></div>
+                                    <div class="col-md-3" style="display: flex;">
+                                        @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.CurrentSurveyNumber, new { @class = "PaddingTop10", style = "padding-left:4px;width: inherit;width: 40%;text-align: left;" }, Mandatory.Yes)
+                                        @Html.TextBoxFor(model => model.PropertyNumberDetailsAddEditModel.CurrentSurveyNumber, new { @class = "form-control", @id = "txtCurrentSurveyNumber", @placeholder = "Survey Number", @title = "Survey Number", tabindex = 5, @style = "width: 70%;" })
+                                        @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.CurrentSurveyNumber, "", new { @class = "text-danger" })
+
+                                    </div>
+
+                                    <div class="col-md-3" style="display: flex;">
+                                        @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.CurrentSurveyNoChar, new { @class = "PaddingTop10", style = "padding-left:4px;width: inherit;width: 50%;" })
+                                        @Html.TextBoxFor(model => model.PropertyNumberDetailsAddEditModel.CurrentSurveyNoChar, new { @class = "form-control", @id = "txtCurrentSurveyNoChar", @placeholder = "Survey Number Character", tabindex = 6, @style = "width: 50%;" })
+                                        <span class="text-danger" id="invalid-char2"></span>
+                                        @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.CurrentSurveyNoChar, "", new { @class = "text-danger", @id = "txtCurrentSurveyNoChar_err" })
+
+                                    </div>
+                                    <div class="col-md-3" style="display: flex;">
+                                        @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.CurrentHissaNumber, new { @class = "PaddingTop10", style = "padding-left:4px;width: inherit;width: 50%;" })
+                                        @Html.TextBoxFor(model => model.PropertyNumberDetailsAddEditModel.CurrentHissaNumber, new { @class = "form-control", @id = "txtCurrentHissaNo", @placeholder = "Hissa Number", tabindex = 7, @style = "width: 50%;" })
+                                        <span class="text-danger" id="invalid-hissa"></span>
+
+                                        @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.CurrentHissaNumber, "", new { @class = "text-danger", @id = "txtCurrentHissaNo_err" })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                    <div class="col-md-6" style="padding:unset;">
+                                        <div class="col-md-6">
+                                            @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.OldPropertyTypeID, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.DropDownListFor(model => model.PropertyNumberDetailsAddEditModel.OldPropertyTypeID, @Model.PropertyNumberDetailsAddEditModel.OldPropertyType, new { @class = "form-control minimal", id = "OldPropertyTypeListID", autocomplete = "off", tabindex = 8 })
+                                            @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.OldPropertyTypeID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                            <div class="col-md-6">
+                                                @Html.LabelFor(model => model.PropertyNumberDetailsAddEditModel.OldNumber, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                @Html.TextBoxFor(model => model.PropertyNumberDetailsAddEditModel.OldNumber, new { @class = "form-control", @id = "txtOldNumber", @placeholder = "Old Number", @title = "Old Number", tabindex = 9 })
+                                                @Html.ValidationMessageFor(model => model.PropertyNumberDetailsAddEditModel.OldNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group" style="width:100%;text-align:center;">
+                                        <div id="AddnewPropertyNoDiv" class='BTNwrapper' style="margin-top:2%;">
+                                            <button type="button" class="btn btn-group-md btn-success" id="AddPNDetailsBtn" tabindex="6">Save</button>
+                                        </div>
+                                        @*<div id="UpdatePropertyNoDiv" class='BTNwrapper' style="margin-top:2%;">
+                                                <button type="button" class="btn btn-group-md btn-primary" id="UpdatePNDetailsBtn" tabindex="6">Update</button>
+                                            </div>*@
+                                        <style>
+                                            .BTNwrapper {
+                                                text-align: center;
+                                            }
+
+                                            .button {
+                                                position: absolute;
+                                                top: 50%;
+                                            }
+                                        </style>
+                                    </div>
+                                </div>
+                                @*</div>*@
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    @*Add Databale Divisions above*@
+
+</div>
+

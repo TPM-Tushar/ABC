@@ -1,0 +1,842 @@
+﻿@model CustomModels.Models.Remittance.RegistrationNoVerificationDetails.RegistrationNoVerificationDetailsModel
+@using ECDataUI.Helper
+
+@{
+
+
+
+    string FromDate = Model.FromDate;
+    var ToDate = Model.ToDate;
+}
+
+<script src="~/Areas/Remittance/Scripts/RegistrationNoVerificationDetails/RegistrationNoVerificationDetails.min.js"></script>
+@*<script src="~/Areas/Remittance/Scripts/RegistrationNoVerificationDetails/RegistrationNoVerificationDetails.js"></script>*@
+<script>
+    var FromDate = '@FromDate';
+    var ToDate = '@ToDate';
+   
+
+</script>
+
+<style>
+    .datepicker {
+        z-index: 1600 !important;
+    }
+    /* Customize the label (the container) */
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    /*td {
+        word-wrap: break-word;
+    }*/
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        /*// word-wrap: normal;*/
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /*// width:35px;*/
+    }
+
+
+    tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important; /* Not working */
+    }
+
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+        table-layout: fixed !important;
+        width: 98% !important;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+    td:last-child, td:nth-last-child(2), td:nth-last-child(3) {
+        /*text-align: right;*/
+        text-align: center;
+    }
+
+    .dataTables_scrollBody {
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+    }
+
+    .panel-default > .panel-heading {
+        color: #333;
+        color: #3177b4 !important;
+        background-color: #f8f8f8 !important;
+        border-color: #ddd;
+        font-size: 14px;
+        font-weight: bold;
+        padding:6px;
+        text-align:left;
+    }
+
+    
+</style>
+
+<div class="container">
+    <div class="col-md-offset-0">
+        <h3 style="text-align:center;color:#3177b4 ;">Registration No Verification Details</h3>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div>
+                <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                    <form id="SearchParametersForm">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class='row'>
+                            <div class="col-md-12 ">
+
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5" id="SRODropDownListID">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 2 })
+                                        @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-5" id="divDocumentType" style="display: table; cursor: pointer;">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.DocumentTypeId, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.DocumentTypeId, @Model.DocumentType, new { @class = "form-control minimal", id = "DocumentTypeId", autocomplete = "off", tabindex = 1 })
+                                        @Html.ValidationMessageFor(model => model.DocumentType, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-1"></div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" style="padding-top:17px">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.FromDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="date" id="divFromDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @id = "txtFromDate", @placeholder = "dd/mm/yyyy", @title = "From Date", @maxlength = 10, tabindex = 3 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.ToDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="date" id="divToDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control AllowOnlyNumber", @id = "txtToDate", @placeholder = "dd/mm/yyyy", @title = "To Date", @maxlength = 10, tabindex = 4 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                          
+                            @*//Added By Tushar on 1 Nov 2022*@
+                            @*Updated by Rushikesh 15 Feb 2023*@
+                            <div class="col-md-12" style="margin-top:2%;">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    @*<div  style="width: 100%;display: block;">*@
+                                    <div class="panel panel-default" style="width: 100%;display: block;">
+                                        <div class="panel-heading">
+                                            Data Is Displayed from Centralized Table
+
+                                            <span style="padding-left:20%"> <label style='color:red;'>*</label>C = Central &nbsp;&nbsp; <label style='color:red;padding-left:3%'>*</label>L = Local &nbsp;&nbsp; <label style='color:red ;padding-left:3%'>*</label>SFU = ScannedFileUploadDetails</span>&nbsp;&nbsp; <label style='color:red ;padding-left:3%'>*</label>FRN = Final Registration No</span>&nbsp;&nbsp; <label style='color:red ;padding-left:3%'>*</label>SFN = Scanned File Name</span>
+                                        </div>
+                                        <div class="panel-body">
+
+                                            <div class="col-md-12">
+
+                                                <div class="col-md-4 " style="margin-top:0.5%;">
+                                                     &nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; <input type="checkbox" name="NullCheckBox" value="NullCheck" /> <label style="padding-right: 36%;">Stamp 5 DateTime NULL in C & L</label>
+
+                                                </div>
+
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    &nbsp;&nbsp;&nbsp; &nbsp;  &nbsp;&nbsp;&nbsp; <input type="checkbox" name="FRNCheckBox" value="FRN" /> <label style="padding-right:21%">Final Registration No Mismatch in C & L</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="SFNCheckBox" value="SFN" /> <label style="padding-right:4%">Scan File Name Mismatch in SFU & Local Scan Master</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12" style="margin-top:5px">
+
+                                                @*<div class="col-md-1" style="margin-top:0.5%;">
+                                                        <input type="checkbox" name="File_Null" id="FileNACheckBox" value="FileNA" /> <label>File NA</label>
+                                                  </div>*@
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                 <input type="checkbox" name="File_Null" id="C_NullCheckBox" value="CNull" /> <label style="font-size:12px">Scan File Not Available in SFU & Available in Local Scan Master</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="File_Null" id="FileNACheckBox" value="FileNA" /> <label style="padding-right:1%">Scan File Not Available in SFU & Local Scan Master</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="File_Null" id="L_NullCheckBox" value="LNull" /> <label style="font-size:12px">Scan File Available in SFU and Not Available in Local Scan Master</label>
+                                                </div>
+                                                @*<div class="col-md-3"></div>
+                                        <div class="col-md-3"></div>*@
+                                                @*<div class="col-md-2" style="margin-top:0.5%;">
+                                                     <input type="checkbox" name="File_Null" id="IsDuplicate" value="IsDuplicate" /> <label>Is Duplicate</label>
+                                                 </div>*@
+                                                @*<div class="col-md-1"></div>*@
+                                                @*<div class="col-md-2"></div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            @*//End By Tushar on 1 Nov 2022*@
+
+                            @*Update by Rushikesh 15 Feb 2023 - Label and Sequence Change*@
+                            <div class="col-md-12">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <div class="panel panel-default" style="width: 100%;display: block;">
+                                        <div class="panel-heading">Data Is Displayed By Error Type</div>
+                                        <div class="panel-body">
+
+                                            @*<div class="col-md-12">
+
+
+                                                <div class="col-md-3" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="ErrorType" id="MisMatch" value="1" /> <label>C & L Final Registration No Mismatch (1)</label>
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="ErrorType" id="Deleted" value="2" /> <label><span class="replacetxt">Transaction</span> Data Not Available Locally (2)</label>
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="ErrorType" id="Added" value="3" /> <label><span class="replacetxt">Transaction</span> Data Not Transmitted to Central Database (3)</label>
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="ErrorType" id="C_NA_L_A" value="4" /> <label><span class="replacetxt">Transaction</span> Data Locally Present & Centrally Not Present (4)</label>
+                                                </div>
+                                               
+
+                                    </div>*@
+                                            <div class="col-md-12">
+
+
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    @*<input type="checkbox" name="ErrorType" id="MisMatch" value="1" /> <label>C & L Final Registration No Mismatch (1)</label>*@
+                                                    <input type="checkbox" name="ErrorType" id="MisMatch" value="1" /> <label style="padding-right:20%">Final Registration No Mismatch in C & L(1)</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="ErrorType" id="Deleted" value="2" /> <label><span class="replacetxt">Document</span> Data Not Available Locally (2)</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    <input type="checkbox" name="ErrorType" id="Added" value="3" /> <label><span class="replacetxt">Document</span> Data Not Transmitted to Central Database (3)</label>
+                                                </div>
+
+
+
+                                            </div>
+                                            <div class="col-md-12" style="margin-top: 10px;">
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    @*<input type="checkbox" name="ErrorType" id="C_NA_L_A" value="4" /> <label><span class="replacetxt">Transaction</span> Data Locally Present & Centrally Not Present (4)</label>*@
+                                                    <input type="checkbox" name="ErrorType" id="C_NA_L_A" value="4" /> <label><span class="replacetxt">Document</span> Data Scan File Not Available in SFU & Available in Local Scan Master(4)</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    @*<input type="checkbox" name="ErrorType" id="C_NA_L_NA" value="5" /> <label><span class="replacetxt">Transaction</span> Data Centrally Not Present & Locally Not Present (5)</label>*@
+                                                    <input type="checkbox" name="ErrorType" id="C_NA_L_NA" value="5" /> <label><span class="replacetxt">Document</span> Data Scan File Not Available in SFU & Local Scan Master(5)</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    @*<input type="checkbox" name="ErrorType" id="C_A_L_NA" value="6" /> <label><span class="replacetxt">Transaction</span> Data Centrally Present & Locally Not Present (6)</label>*@
+                                                    <input type="checkbox" name="ErrorType" id="C_A_L_NA" value="6" /> <label><span class="replacetxt">Document</span> Data Scan File Available in SFU and Not Available in Local Scan Master(6)</label>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-12" style="margin-top: 10px;">
+
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    @*<input type="checkbox" name="ErrorType" id="SM_M" value="7" /> <label>Scan File MisMatch (7)</label>*@
+                                                    <input type="checkbox" name="ErrorType" id="SM_M" value="7" /> <label>Scan File Name Mismatch in SFU & Local Scan Master(7)</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0.5%;">
+                                                    @*<input type="checkbox" name="File_Null" id="IsDuplicate" value="IsDuplicate" /> <label>Is Duplicate</label>*@
+                                                    <input type="checkbox" name="File_Null" id="IsDuplicate" value="IsDuplicate" /> <label>Final Registration No Duplicate Entry in Local DataBase </label>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            @*//Added By Tushar on 3 Jan 2023*@
+                            @*Updated by Rushikesh on 15 Feb 2023 - Updated Sequence and Label*@
+                            <div class="col-md-12">
+                                
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <div class="panel panel-default" style="width: 100%;display: block;">
+                                        <div class="panel-heading">MisMatch Property Details</div>
+                                        <div class="panel-body">
+                                           @* <span class="" style="color:#3177b4;font-size: 120%;display: flex;"><b>Property Details</b></span> *@
+
+                                            <div class="col-md-12">
+                                                @*<div class="col-md-1"></div>*@
+                                                @*<div class="col-md-4" style="margin-top:0%;"></div>
+                                                  <div class="col-md-2" style="margin-top:0%;">
+                                                      <input type="checkbox" name="PropertyErrorType" id="MisMatch" value="1" /> <label>MisMatch</label>
+                                                  </div>
+                                                  <div class="col-md-2" style="margin-top:0%;">
+                                                      <input type="checkbox" name="PropertyErrorType" id="Deleted" value="2" /> <label>LP_CNP</label>
+                                                  </div>
+                                                  <div class="col-md-4" style="margin-top:0%;"></div>*@
+                                               
+                                                <div class="col-md-4" style="margin-top:0%;">
+                                                    @*<input type="checkbox" name="PropertyErrorType" id="MisMatch" value="1" /> <label>Total Area MisMatch (1)</label>*@
+                                                    <input type="checkbox" name="PropertyErrorType" id="MisMatch" value="1" /> <label>Property Total Area MisMatch (1)</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0%;">
+                                                    @*<input type="checkbox" name="PropertyErrorType" id="MeasMisMatch" value="4" /> <label>Measurement Unit MisMatch (4)</label>*@
+                                                    <input type="checkbox" name="PropertyErrorType" id="MeasMisMatch" value="4" /> <label>Property Measurement Unit MisMatch (4)</label>
+                                                </div>
+                                                <div class="col-md-4" style="margin-top:0%;">
+                                                    <input type="checkbox" name="PropertyErrorType" id="Deleted" value="2" /> <label>Property Locally Present & Centrally Not Present (2)</label>
+                                                </div>
+                                                @* <div class="col-md-2" style="margin-top:0%;"></div> *@
+                                                @*<div class="col-md-1"></div>*@
+                                                @*<div class="col-md-2"></div>*@
+                                            </div>
+                                            <div class="col-md-12">
+
+                                                <div class="col-md-4" style="margin-top:2%;">
+                                                    @*<input type="checkbox" name="PropertyErrorType" id="NoIssue" value="5" /> <label>No Issue Data (5)</label>*@
+                                                    <input type="checkbox" name="PropertyErrorType" id="NoIssue" value="5" /> <label style="padding-right:8%"> No Issue (Not Applicable) (5)</label>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                                @*//End By Tushar on 3 Jan 2023*@
+                            </div>
+                            @*Added By Rushikesh on 3 Feb 2023*@
+                            <div class="col-md-12">
+
+                                <div class="col-md-1"></div>
+                                <div class="col-md-10">
+                                    <div class="panel panel-default" style="width: 100%;display: block;">
+                                        @*<div class="panel-heading">MisMatch Date Details</div>*@
+                                        <div class="panel-heading">Document Master Date MisMatch Details</div>
+                                        <div class="panel-body">
+                                            @*<span class="" style="color:#3177b4;font-size: 120%;display: flex;"><b>Mismatch Date Details</b></span>*@
+                                            <div class="col-md-12">
+
+                                                <div class="col-md-3" style="margin-top:0%;">
+                                                    @*<input type="checkbox" name="DateErrorType" id="Stamp5Date" value="9" /> <label>Stamp 5 Date MisMatch (9)</label>*@
+                                                    <input type="checkbox" name="DateErrorType" id="Stamp5Date" value="9" /> <label style="padding-right:9%">Stamp 5 DateTime MisMatch(9)</label>
+                                                </div>
+
+                                                <div class="col-md-3" style="margin-top:0%;">
+                                                    <input type="checkbox" name="DateErrorType" id="Stamp5Date1" value="20" /> <label style="padding-right:15%">Stamp 5 Date MisMatch(20)</label>
+                                                </div>
+
+                                                <div class="col-md-3" style="margin-top:0%;">
+                                                    <input type="checkbox" name="DateErrorType" id="Stamp1Date" value="10" /> <label style="padding-right:4%">Stamp 1 DateTime MisMatch(10)</label>
+                                                </div>
+
+                                                <div class="col-md-3" style="margin-top:0%;">
+                                                    <input type="checkbox" name="DateErrorType" id="Stamp2Date" value="11" /> <label style="padding-right: 11%;">Stamp 2 DateTime MisMatch(11)</label>
+                                                </div>
+
+
+
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    <input type="checkbox" name="DateErrorType" id="Stamp3Date" value="12" style="text-align:start" /> <label style="padding-right:8%">Stamp 3 DateTime MisMatch(12)</label>
+                                                </div>
+
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    <input type="checkbox" name="DateErrorType" id="Stamp4Date" value="14" /> <label style="padding-right:5%">Stamp 4 DateTime MisMatch(14)</label>
+                                                </div>
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    <input type="checkbox" name="DateErrorType" id="ExecutionDate" value="15" /> <label>Execution DateTime MisMatch(15)</label>
+                                                </div>
+
+
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    <input type="checkbox" name="DateErrorType" id="PresentationDate" value="16" /> <label>Presentation DateTime MisMatch(16)</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+
+
+
+
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    <input type="checkbox" name="DateErrorType" id="StampDate" value="17" /> <label style="padding-right:12%">Stamp DateTime MisMatch(17)</label>
+                                                </div>
+
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    <input type="checkbox" name="DateErrorType" id="WithdrawlDate" value="18" /> <label>Withdrawal DateTime MisMatch(18)</label>
+                                                </div>
+
+                                                <div class="col-md-3" style="margin-top:2%;">
+                                                    <input type="checkbox" name="DateErrorType" id="RefusalDate" value="19" /> <label style="padding-right:5%">Refusal DateTime MisMatch(19)</label>
+                                                </div>
+
+                                                @*<div class="col-md-2" style="margin-top:0%;">
+                                            <input type="checkbox" name="DateErrorType" id="Stamp5Date1" value="20" /> <label>Stamp 5 Date_1 MisMatch (20)</label>
+                                        </div>*@
+
+                                            </div>
+
+                                              
+
+                                            <div class="col-md-12" style="margin-top:15px">
+                                                <div class="panel panel-default" style="width: 100%;display: block;">
+
+                                                    <div class="panel-body">
+                                                        <div class="col-md-12">
+                                                            <div class="col-md-4" style="margin-top:0%;">
+                                                                @*<input type="checkbox" name="DateErrorType_DateDetails" id="ReceiptDate" value="1" /> <label>Receipt Date (1)</label>*@
+                                                                <input type="checkbox" name="DateErrorType_DateDetails" id="ReceiptDate" value="1" /> <label>Receipt Master Receipt Date MisMatch (1)</label>
+                                                            </div>
+
+                                                            <div class="col-md-4" style="margin-top:0%;">
+                                                                @*<input type="checkbox" name="DateErrorType_DateDetails" id="StampDateMisMatch" value="2" /> <label>Stamp Date MisMatch (2)</label>*@
+                                                                <input type="checkbox" name="DateErrorType_DateDetails" id="StampDateMisMatch" value="2" /> <label>StampDetails Stamp Date MisMatch (2)</label>
+                                                            </div>
+
+                                                            <div class="col-md-4" style="margin-top:0%;">
+                                                                @*<input type="checkbox" name="DateErrorType_DateDetails" id="DateOfReturn" value="3" /> <label>Date Of Return (3)</label>*@
+                                                                <input type="checkbox" name="DateErrorType_DateDetails" id="DateOfReturn" value="3" /> <label style="font-size: 13px;">AdditionalDocumentInfo Date Of Return MisMatch(3)</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+
+                                                            <div class="col-md-4" style="margin-top:2%;">
+                                                                @*<input type="checkbox" name="DateErrorType_DateDetails" id="AdmissionDate" value="4" /> <label>Admission Date (4)</label>*@
+                                                                <input type="checkbox" name="DateErrorType_DateDetails" id="AdmissionDate" value="4" /> <label style="padding-right:7%">PartyInfo Admission Date MisMatch(4)</label>
+                                                            </div>
+
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            @*End By Rushikesh on 3 Feb 2023*@
+
+                        </div>
+                            @*<div class="row" style="padding-bottom:1%; padding-top:3%">
+            <div class="col-md-12">
+                <div class="col-md-12" style="margin-top:3%;">
+                    <input type="radio" name="DType" value="NullCheck" checked /> <label>C & L Both Date Null</label>
+
+                </div>
+            </div>
+        </div>*@
+
+</form>
+                </div>
+                @*//Added By Tushar on 17 Feb 2023*@
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-2">
+                            <div class="form-group col-md-8">
+                                <div class='BTNwrapper' style="padding-left:21%;margin-top:2%;">
+                                    <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="5" style="width:25%" onclick="SearchRegistrationNoVerificationDetails()">Search</button>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-4">
+                            <div class="form-group col-md-8">
+                                <div class='BTNwrapper' style="padding-right:15%;margin-top:2%;">
+                                    @*<button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="5" onclick="SearchRegistrationNoVerificationDetails()">Search</button>*@
+                                    @if (@System.Configuration.ConfigurationManager.AppSettings["IsRefreshEnable"] == "true")
+                                    {
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:-19%;width:40%;margin-right:7%" onclick="RefreshDetails()">Refresh</button>
+
+                                    }
+                                    @if (@System.Configuration.ConfigurationManager.AppSettings["IsRefreshPropertyAreaDetailsEnable"] == "true")
+                                    {
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:8%;" onclick="RefreshPropertyAreaDetailsDetails()">Refresh Property Area Details</button>
+                                    }
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                @*//End By Tushar on 17 Feb 2023*@
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-2">
+                            <div class="form-group col-md-8">
+                                <div class='BTNwrapper' style="padding-left:13%;margin-top:0%;">
+
+                                    @if (@System.Configuration.ConfigurationManager.AppSettings["IsDownloadAsExcelEnableForFRN"] == "true")
+                                    {
+                                        @*<button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:11%;margin-top:1%" onclick="EXCELDownloadFunForFRN()">Download as Excel For Central Database Duplicate FRN</button>*@
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:5%;margin-top:2%;padding-right:7%" onclick="EXCELDownloadFunForFRN()">Download as Excel For Central Database Duplicate FRN</button>
+
+                                    }
+                                    @if (@System.Configuration.ConfigurationManager.AppSettings["IsDownloadAsExcelEnableForSFN"] == "true")
+                                    {
+                                        @*<button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:11%;margin-top:1%" onclick="EXCELDownloadFunForCount()">Download as Excel For SFN</button>*@
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:11%;margin-top:2%" onclick="EXCELDownloadFunForCount()">Download as Excel For Central Database Duplicate SFN</button>
+
+                                    }
+                                    @if (@System.Configuration.ConfigurationManager.AppSettings["IsDownloadAsExcelEnableForDateDetails"] == "true")
+                                    {
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:6%;margin-top:2%;margin-right:50%" onclick="EXCELDownloadFunForDateDetails()">Download as Excel For Additional Document Date Details</button>
+
+                                    }
+
+                                    @if (@System.Configuration.ConfigurationManager.AppSettings["IsDownloadAsExcelEnable"] == "true")
+                                    {
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6" style="margin-left:-38%;padding-right:9%;margin-top:2%" onclick="EXCELDownloadFun()">Download as Excel for Batch Details</button>
+
+                                    }
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br />
+
+    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">Registration No Verification Details</span>
+            </div>
+            <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                    <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span></b> </h6></i></div>
+
+                    <table id="RegistrationNoVerificationDetailsID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow:auto ; border: solid; width: 95%;">
+                        <thead>
+                            @*Updated by Rushikesh 14 Feb 2023*@
+                            <tr>
+                                <th style="vertical-align:middle;">Sr.No.</th>
+                                <th style="vertical-align:middle;">DocumentID</th>
+                                <th style="vertical-align:middle;">SROCode</th>
+                                <th style="vertical-align:middle;">C_Stamp5DateTime</th>
+                                <th style="vertical-align:middle;">L_Stamp5DateTime_1</th>
+                                <th style="vertical-align:middle;">L_Stamp5DateTime</th>
+
+                                <th style="vertical-align:middle;">C_FinalRegistrationNumber</th>
+                                <th style="vertical-align:middle;">L_FinalRegistrationNumber</th>
+                                <th style="vertical-align:middle;">C_ScannedFileName</th>
+                                <th style="vertical-align:middle;">L_ScannedFileName</th>
+                                @*<th style="vertical-align:middle;">L_Stamp5DateTime</th>*@
+                                <th style="vertical-align:middle;">C_CDNumber</th>
+                                <th style="vertical-align:middle;">L_CDNumber</th>
+                                <th style="vertical-align:middle;">C_ScanDate</th>
+                                <th style="vertical-align:middle;">L_ScanDate</th>
+                                <th style="vertical-align:middle;">C_SROCode</th>
+                                <th style="vertical-align:middle;">L_SROCode</th>
+                                <th style="vertical-align:middle;">C_PropertyID</th>
+                                <th style="vertical-align:middle;">L_PropertyID</th>
+                                @*<th style="vertical-align:middle;">C_SROCode</th>*@
+                                <th style="vertical-align:middle;">C_VillageCode</th>
+                                <th style="vertical-align:middle;">L_VillageCode</th>
+                                <th style="vertical-align:middle;">C_TotalArea</th>
+                                <th style="vertical-align:middle;">L_TotalArea</th>
+                                <th style="vertical-align:middle;">C_MeasurementUnit</th>
+                                <th style="vertical-align:middle;">L_MeasurementUnit</th>
+                                <th style="vertical-align:middle;">C_DocumentID</th>
+                                <th style="vertical-align:middle;">L_DocumentID</th>
+                                <th style="vertical-align:middle;">C_Stamp1DateTime</th>
+                                <th style="vertical-align:middle;">L_Stamp1DateTime</th>
+                                <th style="vertical-align:middle;">C_Stamp2DateTime</th>
+                                <th style="vertical-align:middle;">L_Stamp2DateTime</th>
+                                <th style="vertical-align:middle;">C_Stamp3DateTime</th>
+                                <th style="vertical-align:middle;">L_Stamp3DateTime</th>
+                                <th style="vertical-align:middle;">C_Stamp4DateTime</th>
+                                <th style="vertical-align:middle;">L_Stamp4DateTime</th>
+                                <th style="vertical-align:middle;">C_PresentDateTime</th>
+                                <th style="vertical-align:middle;">L_PresentDateTime</th>
+                                <th style="vertical-align:middle;">C_ExecutionDateTime</th>
+                                <th style="vertical-align:middle;">L_ExecutionDateTime</th>
+                                <th style="vertical-align:middle;">C_DateOfStamp</th>
+                                <th style="vertical-align:middle;">L_DateOfStamp</th>
+                                <th style="vertical-align:middle;">C_WithdrawalDate</th>
+                                <th style="vertical-align:middle;">L_WithdrawalDate</th>
+                                <th style="vertical-align:middle;">C_RefusalDate</th>
+                                <th style="vertical-align:middle;">L_RefusalDate</th>
+
+                                @*Added By Tushar on 29 Nov 2022*@
+                                <th style="vertical-align:middle">L_StartTime</th>
+                                <th style="vertical-align:middle">L_EndTime</th>
+                                <th style="vertical-align:middle">L_Filesize</th>
+                                <th style="vertical-align:middle">L_Pages</th>
+                                <th style="vertical-align:middle">L_Checksum</th>
+
+
+                                @*End By Tushar on 29 Nov 2022*@
+                                @*<th style="vertical-align:middle;">C_CDNumber</th>*@
+
+
+
+
+                                @*<th style="vertical-align:middle;">C_ScanDate</th>*@
+
+                                @*Added By Tushar on 3 jan 2023*@
+                                @*  <th style="vertical-align:middle;">L_SROCode</th>
+        <th style="vertical-align:middle;">L_PropertyID</th>
+        <th style="vertical-align:middle;">L_VillageCode</th>
+        <th style="vertical-align:middle;">L_TotalArea</th>
+        <th style="vertical-align:middle;">L_MeasurementUnit</th>
+        <th style="vertical-align:middle;">L_DocumentID</th>
+                                *@
+                                @*End By Tushar on 3 jan 2023*@
+
+
+                                <th style="vertical-align:middle">IsDuplicate</th>
+                                <th style="vertical-align:middle;">BatchID</th>
+                                <th style="vertical-align:middle;">Error Description</th>
+                                <th style="vertical-align:middle;">DocumentTypeID</th>
+                                <th style="vertical-align:middle;">BatchDateTime</th>
+                                <th style="vertical-align:middle;">BatchID</th>
+                                <th style="vertical-align:middle;">Error Description</th>
+
+                                @*Added by Rushikesh 9 Feb 2023*@
+                                <th style="vertical-align:middle;">DocumentID</th>
+                                <th style="vertical-align:middle;">SROCode</th>
+                                <th style="vertical-align:middle;">TableName</th>
+                                <th style="vertical-align:middle;">ReceiptID</th>
+                                <th style="vertical-align:middle;">StampDetailsID</th>
+                                <th style="vertical-align:middle;">PartyID</th>
+                                <th style="vertical-align:middle;">L_DateOfReceipt</th>
+                                <th style="vertical-align:middle;">C_DateOfReceipt</th>
+                                <th style="vertical-align:middle;">L_DateOfStamp</th>
+                                <th style="vertical-align:middle;">C_DateOfStamp</th>
+                                <th style="vertical-align:middle;">L_DDChalDate</th>
+                                <th style="vertical-align:middle;">C_DDChalDate</th>
+                                <th style="vertical-align:middle;">L_StampPaymentDate</th>
+                                <th style="vertical-align:middle;">C_StampPaymentDate</th>
+                                <th style="vertical-align:middle;">L_DateOfReturn</th>
+                                <th style="vertical-align:middle;">C_DateOfReturn</th>
+                                <th style="vertical-align:middle;">L_AdmissionDate</th>
+                                <th style="vertical-align:middle;">C_AdmissionDate</th>
+                                <th style="vertical-align:middle;">BatchID</th>
+                                <th style="vertical-align:middle;">ErrorType</th>
+                                @*End By Rushikesh 9 Feb 2023*@
+                            </tr>
+                            @*End updated code by Rushikesh 7 Feb 2023*@
+                        </thead>
+                    </table>
+                </div>
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-md-5"></div>
+                    <div class='BTNwrapper col-md-2' style="text-align:left;">
+                        <span id="EXCELSPANID" ></span>
+
+                    </div>
+
+                    <div class="col-md-5" style="padding-left:19%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="MasterTableModel" style="margin-left: 31%;" class="modal fade " role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

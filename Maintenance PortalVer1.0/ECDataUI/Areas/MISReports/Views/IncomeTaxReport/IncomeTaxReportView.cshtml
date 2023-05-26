@@ -1,0 +1,242 @@
+﻿@model CustomModels.Models.MISReports.IncomeTaxReport.IncomeTaxReportResponseModel
+@using ECDataUI.Helper
+
+<script src="~/Areas/MISReports/Scripts/IncomeTaxReport/IncomeTaxReportView.js"></script>
+<script>
+
+</script>
+
+<style>
+
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+    
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        vertical-align: middle;
+    }
+
+    tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important; /* Not working */
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    td:last-child, td:nth-last-child(2) {
+        text-align: right;
+    }
+
+</style>
+
+<div class="container">
+
+    <div class="col-md-offset-0">
+
+        <h3 style="text-align:center;color:#3177b4;">Income Tax Report</h3>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+            <form id="SearchParametersForm">
+                <div class="panel-body">
+
+                    <div id='SearchParaDtls' class="row well-custom" data-toggle="collapse" data-target="#SearchParaDetailsCollapse" aria-expanded="false" aria-controls="SearchParaDetailsCollapse" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                        <span style="cursor: pointer; margin-bottom: 20px;">
+                            <span id="DtlsToggleIconSearchPara" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                        </span>
+                        <span class="" style="color: #fff; font-size: 120%;">Search Parameter</span>
+                    </div>
+                    <div id="SearchParaDetailsCollapse" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+
+                        <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <div class='row'>
+                                <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+
+                                    <div class="col-md-3" id="DRODropDownListID">
+                                        <div class="col-md-4">
+                                            @Html.LabelFor(model => model.DROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.DROfficeListID, @Model.DROfficeList, new { @class = "form-control minimal", id = "DROfficeListID", autocomplete = "off", tabindex = 1 })
+                                            @Html.ValidationMessageFor(model => model.DROfficeListID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3" id="SRODropDownListID">
+                                        <div class="col-md-4">
+                                            @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.SROfficeListID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROfficeListID", autocomplete = "off", tabindex = 2 })
+                                            @Html.ValidationMessageFor(model => model.SROfficeListID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4" id="FinYearListID">
+                                        <div class="col-md-4">
+                                            @Html.LabelFor(model => model.FinYearList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownListFor(model => model.FinYearListID, @Model.FinYearList, new { @class = "form-control minimal", id = "FinYearListID", autocomplete = "off", tabindex = 3 })
+                                            @Html.ValidationMessageFor(model => model.FinYearListID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-offset-2">
+
+                                    <div class="form-group col-md-8">
+                                        <div class='BTNwrapper' style="padding-left:13%;margin-top:2%;">
+                                            <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="4">Search</button>
+                                        </div>
+                                        <style>
+                                            .BTNwrapper {
+                                                text-align: center;
+                                            }
+
+                                            .button {
+                                                position: absolute;
+                                                top: 50%;
+                                            }
+                                        </style>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+
+            <div id='DtlsSearchParaListCollapse' class="row well-custom" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaListCollapse" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">Income Tax Report</span>
+            </div>
+            
+            <div id="DtlscollapseSearchPara" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+
+                    <table id="IncomeTaxReportsID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th colspan="30" style="text-align:left">
+
+                                    @Html.LabelFor(model => model.DROfficeList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.DROName, new { id = "DroName", disabled = "disabled", style = "padding-right: 20px; " })
+                                    @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.SROName, new { id = "SroName", disabled = "disabled", style = "padding-right: 20px; " })
+                                    @Html.LabelFor(model => model.FinYearList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.FinYearName, new { id = "FinYearName", disabled = "disabled", style = "padding-right: 20px; " })
+
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th>Report Serial Number</th>
+                                <th>Original Report Serial Number</th>
+                                <th>Customer ID</th>
+                                <th>Person Name</th>
+                                <th>Date of birth/Incorporation</th>
+                                <th>Father's Name(for individuals)</th>
+                                <th>PAN Acknowledgement Number</th>
+                                <th>Aadhar No.</th>
+                                <th>Identification Type</th>
+                                <th>Identification Number</th>
+                                <th>Flat / Door / Building</th>
+                                <th>Name Of Premises / Building / Village</th>
+                                <th>Road / Street</th>
+                                <th>Area / Locality</th>
+                                <th>City / Town</th>
+                                <th>Postal Code</th>
+                                <th>State Code</th>
+                                <th>Country Code</th>
+                                <th>Mobile Number</th>
+                                <th>STD Code</th>
+                                <th>Telephone Number</th>
+                                <th>Estimated agricultural income</th>
+                                <th>Estimated non-agricultural income</th>
+                                <th>Remarks</th>
+                                <th>Form 60 Acknowledgement Number</th>
+                                <th>Transaction Date</th>
+                                <th>Transaction ID</th>
+                                <th>Transaction Type</th>
+                                <th>Transaction Amount</th>
+                                <th>Transaction Mode</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-md-4"></div>
+                    <div class='BTNwrapper col-md-2' style="text-align:left;">
+                        <span id="EXCELSPANID" tabindex="5"></span>
+                    </div>
+                    <div class='BTNwrapper col-md-2' style="">
+                        <span id="PDFSPANID" tabindex="6"></span>
+                    </div>
+                    <div class="col-md-4" style="padding-left:19%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+
+
+
+
+</div>
+
+

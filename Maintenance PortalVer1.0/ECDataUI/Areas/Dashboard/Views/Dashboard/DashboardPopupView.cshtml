@@ -1,0 +1,161 @@
+﻿@model CustomModels.Models.Dashboard.DashboardPopupViewModel
+
+
+
+<div class="modal-header">
+    @*<button type="button"  class="close" id="btnCloseOTPModal" data-dissmiss="modal">&times;</button>*@
+    @*<i class="fa fa-times-circle text-danger removeIcon pull-right" id="btnCloseOTPModal" style="cursor: pointer; font-size: 150%;" title="Close"></i>*@
+    <h4 class="modal-title">
+        <span class="" id="spnModalHeading" style="color: #5F6F81; font-size:100%;">@Model.heading <span id="spnModalHeadingSelectedVal" style="color: #5F6F81; font-size:100%;"></span></span>
+    </h4>
+</div>
+<div class="modal-body">
+    <div style="margin-left:10%;">
+
+
+        @if (Model.PopupType == "T")
+        {
+
+            <table id="tbl_1_Pop_RevenueDetails" class="table table-striped table-bordered table-condensed table-hover" style="text-align:center !important; vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid;width: 96%;">
+                <thead></thead>
+                <tr>
+                    @*ADDED BY PANKAJ SAKHARE ON 05-10-2020*@
+                    <th style="text-align:center !important;">SR NO</th>
+                    <th style="text-align:center !important;">OFFICE NAME</th>
+                    <th style="text-align:center !important;">Avg Start Time</th>
+
+                </tr>
+                <tbody>
+                    @*ADDED BY PANKAJ SAKHARE ON 05-10-2020*@
+                    @{ int SrNo = 1;}
+                    @foreach (var item in Model.PopupContentList)
+                    {
+                        <tr>
+                            <td>@SrNo</td>
+                            @*ADDED BY PANKAJ SAKHARE ON 22-09-2020*@
+                            @*<td>@item.OFFICE_NAME</td>*@
+                            <td style="text-align:left !important;">@item.OFFICE_NAME</td>
+                            <td>@item.AVG_START_TIME</td>
+
+
+                        </tr>
+                        SrNo += 1;
+                    }
+
+
+                </tbody>
+            </table>
+
+
+
+        }
+
+
+        @if (Model.PopupType == "R")
+        {
+            <table id="tbl_1_Pop_RevenueDetails" class="table table-striped table-bordered table-condensed table-hover" style="text-align:center !important; vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid;width: 96%;">
+                <thead></thead>
+                <tr>
+                    @*ADDED BY PANKAJ SAKHARE ON 05-10-2020*@
+                    <th style="text-align:center !important;">SR NO</th>
+                    <th style="text-align:center !important;">OFFICE NAME</th>
+                    <th style="text-align:center !important;">REVENUE COLLECTED</th>
+                    <th style="text-align:center !important;" id="IDPercentContributed">PERCENT CONTRIBUTED</th>
+                </tr>
+                <tbody>
+                    @*ADDED BY PANKAJ SAKHARE ON 05-10-2020*@
+                    @{ int SrNo = 1;}
+                    @foreach (var item in Model.RevenueModelList)
+                    {
+                        <tr>
+                            @*ADDED BY PANKAJ SAKHARE ON 22-09-2020*@
+                            @*<td>@item.OfficeName</td>*@
+                            <td>@SrNo</td>
+                            <td style="text-align:left !important;">@item.OfficeName</td>
+                            <td>@item.ActualRevenueCollected</td>
+                            <td>@item.Percentage</td>
+
+                        </tr>
+                        SrNo += 1;
+                    }
+
+
+                </tbody>
+            </table>
+            <div>
+                <span style="text-align: right; margin-left: 78%" >Revenue; Rs in Crores</span>
+            </div>
+
+
+        }
+
+
+        @if (Model.PopupType == "ART")
+        {
+            <table id="tbl_1_Pop_AvgRegTime" class="table table-striped table-bordered table-condensed table-hover" style="text-align:center !important; vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid;width: 96%;">
+                <thead></thead>
+                <tr>
+                    <th style="text-align:center !important;">SR NO</th>
+                    <th style="text-align:center !important;">DISTRICT NAME</th>
+                    <th style="text-align:center !important;">DOCUMENTS REGISTERED</th>
+                    <th style="text-align:center !important;">AVERAGE REGISTRATION TIME (in minutes)</th>
+                    @*//COMMENTED BY PANKAJ SAKHARE ON 05-10-2020*@
+                    @*<th style="text-align:center !important;">PERCENTAGE AVERAGE REGISTRATION TIME</th>*@
+                </tr>
+                <tbody>
+                    @*ADDED BY PANKAJ SAKHARE ON 05-10-2020*@
+                    @{ int SrNo = 1;}
+                    @foreach (var item in Model.AverageRegTimeDetailsModelList)
+                    {
+                        <tr>
+                            <td>@SrNo</td>
+                            <td style="text-align:left !important;">@item.DistrictName</td>
+                            <td>@item.DocsRegistered</td>
+                            <td>@item.ART</td>
+                            @*COMMENTED BY PANKAJ SAKHARE ON 05-10-2020*@
+                            @*<td>@item.PercentART</td>*@
+                        </tr>
+                        SrNo += 1;
+                    }
+
+
+                </tbody>
+            </table>
+
+
+        }
+
+
+
+
+        @*<div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <label id="lblRevenue_TOffice_0" for="inputEmail3" class="col-sm-2 control-label">  item.OfficeName</label>
+
+                </div>
+                <div class="col-md-8 col-sm-6 col-xs-12">
+
+                    <div class="progress-custom tooltip">
+                        <span id="Revenue_T_ToolTip_0" class="tooltiptext" data-toggle="tooltip" data-placement="bottom" title="Tooltip on bottom">
+                            item.ActualRevenueCollected
+                        </span>
+
+                        <div class="progress progress-xs" title="">
+                            <div id="Revenue_T_0" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="item.Percentage" aria-valuemin="0" aria-valuemax="100" style="width: item.Percentage">
+
+                            </div>
+                        </div>
+                        <div class="progress-value">
+                            <span id="Revenue_T_Percentage_0">
+                                item.Percentage
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>*@
+
+
+    </div>
+</div>

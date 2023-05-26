@@ -1,0 +1,373 @@
+﻿
+@model CustomModels.Models.RefundChallan.RefundChallanApproveViewModel
+
+@using ECDataUI.Helper
+
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .panel-body {
+        padding: unset !important;
+    }
+
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+
+    .BTNwrapper {
+        text-align: center;
+    }
+
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+    .fa-pull-right {
+        float: right;
+        margin-right: 7px;
+        margin-top: 7px;
+    }
+
+</style>
+
+<script type="text/javascript">
+
+        var filename ='@Model.ExistingFileName';
+
+</script>
+
+@*<script src="~/Areas/RefundChallan/Scripts/RefundChallanApproveAddEdit_V1.js"></script>*@
+<script src="~/Areas/RefundChallan/Scripts/RefundChallanApproveAddEdit_V2.js"></script>
+
+
+
+<div class="panel panel-default" id="panelAddEditOrderDetails" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;border: none;">
+
+    <span id="closeRefundChallanApproveForm"><i class="fa fa-times-circle text-danger removeIcon fa-pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>
+
+    <form id="RefundChallanApproveForm">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="panel-body">
+            <div class='row well-custom' style="height: 35px; padding-top: 10px;border-top-left-radius: 0px;">
+                <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                <span class="" style="color: #FFF; font-size: 120%;">
+                    Approve Refund Challan Details
+                </span>
+            </div>
+            <div style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                @Html.HiddenFor(model => model.RowId, new { @id = "idRowId" })
+                @Html.HiddenFor(model => model.RejectionReasonHidden, new { @id = "IdRejectionReasonHidden" })
+                @Html.HiddenFor(model => model.DROrderNumberHidden, new { @id = "idDROrderNumberHidden" })
+
+                <div class='row' style="text-align:center; margin-top:2rem;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 textAlignLeft" style="padding-top:1%;">
+                        <div class="col-md-6">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.PartyName, new { @class = "PaddingTop10" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.PartyName, new { @class = "form-control", id = "idPartyName", @readonly = "readonly", tabindex = 1 })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="col-md-5">
+                                @Html.LabelFor(model => model.PartyMobileNumber, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.PartyMobileNumber, new { @class = "form-control", @id = "idPartyMobileNumber", @readonly = "readonly", tabindex = 2 })
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+
+
+
+                <div class='row' style="text-align:center; margin-top:1rem;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 textAlignLeft" style="padding-top:1%;">
+                        <div class="col-md-6">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.InstrumentNumber, new { @class = "PaddingTop10" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.InstrumentNumber, new { @class = "form-control", id = "idChallanNumber", @readonly = "readonly", tabindex = 3 })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.InstrumentDate, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    @Html.TextBoxFor(model => model.InstrumentDate, new { @class = "form-control", @id = "idChallanDate", @readonly = "readonly", tabindex = 4 })
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+
+                <div class='row' style="text-align:center; margin-top:1rem;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 textAlignLeft" style="padding-top:1%;">
+                        <div class="col-md-6">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.ChallanAmount, new { @class = "PaddingTop10" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.ChallanAmount, new { @class = "form-control", id = "idChallanAmount", @readonly = "readonly", tabindex = 5 })
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.RefundAmount, new { @class = "PaddingTop10" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.TextBoxFor(model => model.RefundAmount, new { @class = "form-control", id = "idRefundAmount", @readonly = "readonly", tabindex = 6 })
+                            </div>
+                        </div>
+
+                        <div class="col-md-1"></div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+
+
+                <div class='row' style="text-align:center; margin-top:1rem;">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 textAlignLeft" style="padding-top:1%;">
+
+                        <div class="col-md-6">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.ApplicationDateTime, new { @class = "PaddingTop10" })
+                            </div>
+                            <div class="col-md-6">
+                                <div>
+                                    @Html.TextBoxFor(model => model.ApplicationDateTime, new { @class = "form-control", id = "idApplicationDate", @readonly = "readonly", tabindex = 7 })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.ChallanPurposeId, new { @class = "PaddingTop10" })
+                            </div>
+                            <div class="col-md-6">
+                                <div style="display: table; width: 102%; cursor: pointer; text-align:left">
+                                    @Html.ListBoxFor(model => model.ChallanPurposeId, @Model.ChallanPurposeList, new { @class = "form-control", @id = "idChallanPurposeList", tabindex = 8 })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+
+                @if (Model.IsFinalized == true)
+                {
+
+                    <div class="row" style="margin-top: 2rem;">
+                        <div class="col-md-12">
+                            <div class=" col-md-5"></div>
+                            <div class="form-group col-md-2">
+
+                                <div class='BTNwrapper' style="margin-top:2%;">
+                                    <button type="button" class="btn btn-group-md btn-success" id="idIsChallanNoExists" tabindex="9">Verify Challan Usage Status</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-2"></div>
+                    <div id="idApproveOrReject" class='row' style="text-align:center; margin-top:3rem;">
+                        <div id="rates">
+                            <input id="idApproveRadioBtn" type="radio" name="RefundChallanOrderOption" value="ApproveOrderSelected" tabindex="10" /> <label>Approve</label>
+                            <input id="idRejectRadioBtn" style="margin-left:5%;" value="RejectOrderSelected" type="radio" name="RefundChallanOrderOption" tabindex="10" /> <label>Reject</label>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+
+
+                    <div id="idApproveOrderData">
+                        <div class='row' style="text-align:center; margin-top:1rem;">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 textAlignLeft" style="padding-top:1%;">
+                                <div class="col-md-6">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.DROrderNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.DROrderNumber, new { @class = "form-control", id = "idDROrderNumber", tabindex = 11 })
+                                        @Html.ValidationMessageFor(model => model.DROrderNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="col-md-5">
+                                        @Html.LabelFor(model => model.DROrderDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="date" id="divDROrderDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.DROrderDate, new { @class = "form-control", @id = "idDROrderDate", @placeholder = "dd/mm/yyyy", @title = "Order Date", @maxlength = 10, tabindex = 12 })
+                                            @Html.ValidationMessageFor(model => model.DROrderDate, "", new { @class = "text-danger" })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+
+
+                        <div class="row" style="text-align:center;margin-top:3rem;">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <div class="row">
+
+                                    @if (@Model.IsOrderInEditMode && Model.ExistingFileName != "")
+                                    {
+                                        @*<div class='col-md-8' style="padding-top: 1%;text-align: right;">
+                                            @Html.LabelFor(model => model.AlreadyFileIsNoted, new { @class = "PaddingTop5", id = "idPDFFile" })
+                                            <span id="spnOrderFileName"></span>
+                                        </div>
+                                        <div class='col-md-6' style="padding-top: 1%;text-align: right;">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.RefundChallanNoteFile, new { @class = "PaddingTop5" })
+                                            </div>
+                                        </div>
+                                        <div class='col-md-6' style="padding-top:0.4%">
+
+                                            <div class="form-group">
+                                                <input type="file" class="form-control-file" id="decOrderFile" tabindex="13" accept="application/pdf">
+                                                @Html.HiddenFor(x => x.FilePath, new { id = "hdnfileContent" })
+                                                @Html.HiddenFor(x => x.RelativeFilePath, new { id = "hdnRelativeFilePath" })
+                                                @Html.HiddenFor(x => x.ExistingFileName, new { id = "hdnExistingFileName" })
+                                            </div>
+                                            <div class='col-md-4' style="padding-top:0.4%; left:-14px; color:red; font-size:12px " id="FileSize">FileSize  <= 2MB</div>
+                                        </div>*@
+
+                                        <div class='col-md-6' style="padding-top: 1%;text-align: right;">
+                                            @*<button type="button" class="btn btn-group-md btn-success" id="btnViewPrevOrder" name="btnViewPrevOrder" tabindex="3"> View </button>*@
+                                            <span id="spnOrderFileName"></span>
+                                        </div>
+                                        <div class='col-md-6' style="padding-top: 1%;text-align: left;">
+                                            <button type="button" class="btn btn-group-md btn-danger" id="btnDeleteCurrentOrderFile" name="btnDeleteCurrentOrderFile" tabindex="4"> Delete </button>
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <span hidden id="spnOrderFileName"></span>
+                                        <div class='col-md-6' style="padding-top: 1%;text-align: right;">
+                                            <div class="form-group">
+                                                @Html.LabelFor(model => model.RefundChallanNoteFile, new { @class = "PaddingTop5" }, Mandatory.Yes)
+
+                                            </div>
+                                        </div>
+                                        <div class='col-md-6' style="padding-top:0.4%">
+
+                                            <div class="form-group">
+                                                <input type="file" class="form-control-file" id="decOrderFile" tabindex="13" accept="application/pdf">
+                                                @Html.HiddenFor(x => x.FilePath, new { id = "hdnfileContent" })
+                                                @Html.HiddenFor(x => x.RelativeFilePath, new { id = "hdnRelativeFilePath" })
+                                                @Html.HiddenFor(x => x.ExistingFileName, new { id = "hdnExistingFileName" })
+
+                                            </div>
+                                            <div class='col-md-4' style="padding-top:0.4%; left:-14px; color:red; font-size:12px " id="FileSize">FileSize  <= 2MB</div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                    </div>
+
+                    <div id="idRejectOrderData">
+                        <div class='row' style="text-align:center; margin-top:1rem;">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8 textAlignLeft" style="padding-top:1%;">
+
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.RejectionReason, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.TextBoxFor(model => model.RejectionReason, new { @class = "form-control", id = "idRejectionReason", tabindex = 11 })
+                                    @Html.ValidationMessageFor(model => model.RejectionReason, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+    </form>
+
+
+
+    <div class="row" style="margin-top: 2rem;">
+        <div class="col-md-12">
+            <div class=" col-md-5"></div>
+            <div class="form-group col-md-2">
+
+                <div class='BTNwrapper' style="margin-top:2%;">
+                    <button type="button" class="btn btn-group-md btn-success" id="SaveRefundChallanApproveBtn" tabindex="14">Save</button>
+                    <button id="btnFinalizeOrder" class="btn btn-info" tabindex="15">Finalize</button>
+                </div>
+
+            </div>
+            <div class=" col-md-5"></div>
+        </div>
+    </div>
+
+</div>

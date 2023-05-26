@@ -1,0 +1,443 @@
+﻿@model CustomModels.Models.HomePage.HomePageModel
+
+@{
+    Layout = null;
+}
+
+@using System.Globalization;
+@using ECDataUI.Helper;
+@using ECDataUI.Common;
+@using ECDataUI.Session;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <!-- Font Awesome -->
+    @*<script src="../bower_components/jquery/dist/jquery.min.js"></script>*@
+    <script src="~/Scripts/Jquery/jquery-1.10.2.min.js"></script>
+
+    <!-- Bootstrap 3.3.7 -->
+    @*<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>*@
+
+    <script src="~/Content/bootstrap/js/bootbox.min.js"></script>
+
+
+    <script src="~/Scripts/CommonJS/jquery.validate.min.js"></script>
+    @*<script src="~/Scripts/CommonJS/jquery.validate.unobtrusive.js"></script>*@
+    <script src="~/Scripts/CommonJS/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- AdminLTE App -->
+
+    <script src="~/Content/HomePage/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    @*<script src="../dist/js/demo.js"></script>*@
+    <link href="~/Content/HomePage/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+
+    <!-- Theme style -->
+    <link href="~/Content/HomePage/dist/css/AdminLTE.min.css" rel="stylesheet" />
+
+    <link href="~/Content/HomePage/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+
+    <!-- Google Font -->
+    <link href="~/Content/HomePage/css/Admin-LTE-Fonts.css" rel="stylesheet" />
+    <link href="~/Content/website.css" rel="stylesheet" />
+
+    @*  @{
+              bool IsListNotEmpty;
+              if (Model.MenuListReturn != null && Model.MenuListReturn.Count > 0)
+              {
+                  IsListNotEmpty = true;
+              }
+              else
+              {
+                  IsListNotEmpty = false;
+              }
+
+          }
+          <script>
+             var IsEmptyList = '@IsListNotEmpty';
+
+        //      alert("List empty :: " + IsEmptyList);
+              if (IsEmptyList)
+              {
+                  var DefaultModuleID = '@Model.MenuListReturn[0].IntModuleId';
+                  var DefaultModuleName = '@Model.MenuListReturn[0].StrMenuName';
+              }
+
+           </script>*@
+
+
+
+    <script>
+        var DefaultModuleID = '@Model.DefaultModuleID';
+        var DefaultModuleName = '@Model.DefaultModuleName';
+
+    </script>
+    <script src="~/Scripts/HomePage/HomePage_OfficeUser.js"></script>
+
+    @*<script src="~/Scripts/HomePage/HomePage.js"></script>*@
+    @*<script src="~/Scripts/HomePage/HomePage.min.js"></script>*@
+
+    <style>
+        .bg-navy {
+            background-color: #405F7F !important;
+        }
+
+        .boldText {
+        }
+
+
+        .focus-box {
+            border-radius: 50%;
+            display: block;
+            height: 145px;
+            margin: auto auto 10px;
+            position: relative;
+            transition: all 0.2s ease-in-out 0s;
+            width: 145px;
+        }
+
+        .arc {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .pixeden {
+            bottom: 0;
+            display: block;
+            height: 63px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+
+</head>
+
+
+
+
+
+@{
+    string[] arrColorPanels = new string[3] { "bg-navy", "bg-aqua-active", "bg-purple" };
+    string[] arrColorCodes = new string[3] { "#405F7F", "#00a7d0", "#00a7d0" };
+
+    int colorCnt = 0;
+
+    int ListCount = Model.MenuListReturn.Count;
+    //int NoOfRows = ListCount / 3;
+    int NoOfRows = ListCount / 2;
+    if (NoOfRows == 0)
+    {
+        NoOfRows = 1;
+    }
+    bool toBreak = false;
+}
+
+
+
+<body>
+    <header>
+        @*navbar-inverse*@
+        <nav role="navigation" class="navbar navbar-fixed-top">
+            <div id="top-header">
+                <span id="top1" style="margin-left: 2%;">
+                    <img class="india-flag-img" src="../../Content/images/flag.png" />
+                    &nbsp;
+                    @*<a id="href_color" target="_blank" title="Government of Goa" href="https://www.goa.gov.in/">
+                        <span id="gov_of_india_txt" class="SmallCaps">
+                            Government of Goa
+                        </span>
+                    </a>&nbsp;&nbsp;*@
+                </span>
+
+
+
+                <!-- Top Heaader -->
+                <span style="font-size: 12px; color: #FFFFFF;" class="SmallCaps">
+                    <div style="min-height: 5px;"></div>
+                    Technical Help :
+                    <i style="font-size: 14px;" class="fa fa-phone"></i>18001-18005 (Toll Free)
+                </span>&nbsp;&nbsp;
+                <!--<a href="contactus.html" id="contact-us-link">
+                <span style="font-size:12px;">
+                    <i style="font-size:14px;" class="fa fa-envelope-o" aria-hidden="true"></i> Contact Us
+                </span></a>&nbsp;&nbsp;-->
+                <!-- End here -->
+                @*<span id="social-icon">
+                    <a style="font-size:initial;" target="_blank" href="https://www.facebook.com/LabourMinistry/"><img alt="Facebook" src="images/e_fb_share.png"></a>
+
+                    <a style="font-size:initial;" target="_blank" href="https://twitter.com/LabourMinistry"><img alt="Twitter" src="images/e_twitter_share.png"></a>&nbsp;&nbsp;
+
+                    </span>*@
+
+            </div>
+            <div class="container" style="border-bottom: 1px solid #E5E4E2 !important;">
+
+                <!--<span id="sep_line"></span>-->
+                <!--<span id="header-icon">
+                <img id="epfo_logo_1" src = "images/logo/icon13.png"/>
+                </span>-->
+                <span id="header-icon">
+                    <div class="main-icon-1 SmallCaps">ECDATA PORTAL<span class="goa-icon-img"> <img src="../../Content/images/Icon_Karnataka.svg.png" style="height: 100px;width: 130px;"></span></div>
+                    <div class="main-icon-2 SmallCaps">DEPARTMENT OF STAMPS AND REGISTRATION, GOVERNMENT OF KARNATAKA</div>
+                </span>
+            </div>
+        </nav>
+        <div class="space-50"></div>
+        <div class="space-50" style="height: 75px !important"></div>
+
+    </header>
+
+
+
+
+
+
+
+
+
+    <div class="row col-md-12" style="border-bottom: 1px solid #E5E4E2 !important; margin-bottom: 1%; padding-bottom: 10px;">
+
+
+
+        <div class="col-md-3 addressClass" style="font-size: medium; color: #5F6F81">
+            @*Welcome :*@ <i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>&nbsp;<b>@Model.UserName</b>
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="col-md-12 addressClass">
+                <div class="nav-bar-menu-1 col-md-9" style="padding-left: 0%;">
+                </div>
+
+                <div class="col-md-3 addressClass" style="text-align: right; font-size: medium; color: #5F6F81; cursor: pointer;">
+
+
+                    @*  @if (KaveriSession.Current.RoleID == (short)CommonEnum.RoleDetails.SR)
+                        {
+                         <button id="btnRegisterDSCID" class="btn btn-group-md btn-info menu-btn-1">Register DSC</button>
+
+                        } *@
+                    <b id="btnLoggOffID">Log Off</b>&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true" style="font-size: 20px;vertical-align: middle;"></i>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+    <div class="row">
+        <div class="col-md-12">
+
+            @* *************** Home Page Side Bar statistics ******************@
+            <div class="col-md-3" style="padding-right: 0px; padding-left:0px !important;">
+
+
+
+
+                <div id="dvPlaceSideBarStatisticsPage" class="user-panel" style="padding: 0px 10px 10px 10px; ">
+
+
+
+                    <div class="row">
+                        <div class="box box-widget widget-user-2">
+
+                            <div id="divSideBarModulePanelColor" class="widget-user-header" style="background-color: darkgray">
+                                <div>
+                                    <h3 class="widget-user-username">
+                                        <i class="fa fa-bank" id="ModuleSideBarStatsIcon" style="font-size: xx-large;"></i>&nbsp;&nbsp;&nbsp;
+                                        <label style="font-size: larger" id="lblModuleName"></label>
+                                        <label id="lblModuleID"></label>
+                                    </h3>
+                                </div>
+                                <p class="widget-user-desc">
+                                    Statistics for
+                                    <label id="MonthInStatBar" style="font-size: large; font-style: oblique; font-weight: bold"></label>
+                                    <label id="YearInStatBar" style="font-size: large; font-style: oblique; font-weight: bold"></label>
+                                    @*"@CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(DateTime.Now.Month)-@DateTime.Now.Year.ToString()"*@
+                                </p>
+                            </div>
+
+
+                            @*@if(KaveriSession.Current.RoleID==(short)CommonEnum.RoleDetails.SR)
+                                {*@
+                            <div class="col-md-12" style="background-color: whitesmoke">
+                                <br>
+                                <form id="frmStatistics">
+
+                                    @*@Html.TextBoxFor(model => model.ModuleID, new { id = "txtModuleNo", @style = "display:none" })*@
+
+                                    @Html.HiddenFor(model => model.ModuleID, new { id = "txtModuleNo", @style = "display:none" })
+                                    <div class="col-md-5">
+                                        @Html.DropDownListFor(model => model.YearID, @Model.Years, new { @class = "form-control DropDownInStats minimal", id = "ddlyears", @tittle = "Select Year" })
+                                        @Html.ValidationMessageFor(model => model.YearID, "", new { @class = "text-danger" })
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        @Html.DropDownListFor(model => model.MonthID, @Model.Months, new { @class = "form-control DropDownInStats minimal", id = "ddlmonths", @tittle = "Select Month" })
+                                        @Html.ValidationMessageFor(model => model.MonthID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-2" title="Refresh Statistics" style="display: none">
+                                        <span style="cursor: pointer" id="btnRefreshStats"><i class="fa fa-refresh" style="margin-top: 8px; font-size: 18px;"></i></span>
+                                    </div>
+                                </form>
+                            </div>
+                            @*}*@
+
+
+                            <div class="box-footer no-padding" style="background-color: whitesmoke; clear: both;">
+
+                                <ul class="nav nav-stacked" id="ULsubModuleStatsList">
+                                    @* @foreach (var item in Model.SubModuleList)
+                                        {
+                                            <li><a href="#"><i class="fa fa-check"></i> @item.SubModuleName <span class="pull-right badge bg-blue">@item.Count</span></a></li>
+                                        }
+                                    *@
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- /.widget-user -->
+                    </div>
+                </div>
+            </div>
+
+
+
+            @* *************** Div for Modules ******************@
+            <div class="col-md-9" style="padding-left: 2px; min-height: 730px; border-left: solid 2px #E5E4E2 !important;">
+
+
+                <div class="wrapper" style="margin-right: 20px">
+
+
+
+                    <!-- Content Wrapper. Contains page content -->
+                    <div class="" style="background-color: white">
+                        <!-- Content Header (Page header) -->
+                        <!-- Main content -->
+
+                        @for (int i = 0; i < Model.MenuListReturn.Count; i = i + 3)
+                        {
+                            <div class="row">
+
+                                @for (int j = 0; j < 3; j++)
+                                {
+                                    if (ListCount == (i + j))
+                                    {
+                                        toBreak = true;
+                                        break;
+                                    }
+
+                                    if (ListCount >= (i + j))
+                                    {
+
+                                        <div class="col-md-4">
+                                            <!-- Widget: user widget style 1 -->
+                                            <div class="box box-widget widget-user-2">
+                                                <!-- Add the bg color to the header using any of the bg-* classes -->
+                                                <div onclick="loadSideBarStatistics('@Model.MenuListReturn[(i + j)].IntModuleId','@Model.MenuListReturn[(i + j)].StrMenuName')">
+                                                    <div id="divModuleColorPanel_@Model.MenuListReturn[(i + j)].IntModuleId" class="widget-user-header  @arrColorPanels[colorCnt]">
+
+                                                        <div style="cursor:pointer;" title="View Monthly Stats of @Model.MenuListReturn[(i + j)].StrMenuName" id="divMainModule_@Model.MenuListReturn[(i + j)].IntModuleId">
+
+                                                            <h3 class="widget-user-username">
+                                                                <i class="@Model.MenuListReturn[(i + j)].ModuleIcon" id="ModuleIcon_@Model.MenuListReturn[(i + j)].IntModuleId" style="font-size:xx-large;"></i>&nbsp;&nbsp;&nbsp;
+                                                                @Model.MenuListReturn[(i + j)].StrMenuName
+                                                            </h3>
+                                                        </div>
+
+                                                        @*<h5 class="widget-user-desc"> Discription </h5>*@
+                                                    </div>
+
+
+                                                    <div class="box-footer no-padding" style="background-color:azure; text-align:center;" title="Load @Model.MenuListReturn[(i + j)].StrMenuName Details">
+
+                                                        <ul class="nav nav-stacked">
+                                                            <li style="background-color: antiquewhite">
+                                                                <a href="#" style="background-color: #eee !important;">
+                                                                    <span class="boldText" style="font-weight: bold">Details</span>
+                                                                    <span style="cursor: pointer;" class="pull-right toggleBtn span1 btnModuleToggle">
+                                                                        <i class="fa fa-plus" id="ToggleIcon_@Model.MenuListReturn[(i + j)].IntModuleId"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div id="div_SubModules_@Model.MenuListReturn[(i + j)].IntModuleId" onclick="loadMenus(@Model.MenuListReturn[(i + j)].IntMenuId , @Model.MenuListReturn[(i + j)].IntModuleId ,  '@Model.MenuListReturn[(i + j)].StrMenuName')" style="display:none;">
+
+
+                                                    <div class="box-footer no-padding" style="background-color: azure">
+
+                                                        <ul class="nav nav-stacked">
+
+
+                                                            @foreach (var item in @Model.MenuListReturn[(i + j)].SubModuleList)
+                                                            {
+                                                                <li><a href="#">@item.SubModuleName <span class="pull-right badge bg-blue" style="min-width: 40px;">@item.Count</span></a></li>
+                                                            }
+                                                            <li data-toggle="tooltip" style="background-color:antiquewhite;text-align:center;" title="Go To @Model.MenuListReturn[(i + j)].StrMenuName Services"><a href="#"><span class="boldText" style="font-weight: bold">More Details</span> <span class="pull-right badge" style="background-color: #eee !important; min-width: 40px;"><i style="color: black" class="fa fa-arrow-right"></i></span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /.widget-user -->
+                                        </div>
+                                        //   }
+                                    }
+                                    colorCnt++;
+                                }
+
+                                @{ colorCnt = 0;
+                                }
+
+                            </div>
+                        }
+                        <!-- /.row -->
+                        <!-- /.content -->
+                    </div>
+                    <!-- /.content-wrapper -->
+
+                </div>
+
+            </div>
+
+
+            @* <div id="footer">
+                    <strong>&copy; 2015 C-DAC</strong> All rights reserved.
+                </div>*@
+        </div>
+    </div>
+
+
+    <div class="container-4" style="min-height: 45px;">
+        <div class="row" id="bottom-footer">
+            <div class="col-md-12">
+                <!--<span>&copy;2016 PMRPY. All rights reserved</span> -->
+                <div>
+                  
+
+                    <span id="footer_msg_1" class="SmallCaps">@*Designed and Developed by e-Gov Solution Group, C-DAC Pune*@</span>
+                </div>
+                @*<span><span id = "last_updated">Last Updated</span>: Friday, 23 December 2016</span>*@
+            </div>
+        </div>
+
+      
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+﻿@model CustomModels.Models.UserManagement.RoleDetailsModel
+<style>
+    .marginRight {
+        margin-right:38%;
+    }
+
+</style>
+<script src="~/Areas/UserManagement/Scripts/RoleDetails/RoleMenuMapping.js"></script>
+@*<script src="~/Areas/UserManagement/Scripts/RoleDetails/RoleMenuMapping.min.js"></script>*@
+
+<div class="col-md-12" style="margin-top:0px;padding-left:20px; background: #fff; border: 1px solid #ECF0F1;">
+        <br />
+        <div class="col-md-offset-0">
+            <form method="post" id="RoleMenuFormID">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                @Html.HiddenFor(model => model.EncryptedID, new { htmlAttributes = new { @class = "form-control", @id = "EncryptedID" } })
+                @*@Html.HiddenFor(model => model.IsParentMenuMapped, new { htmlAttributes = new { @class = "form-control", @id = "IsParentMenuMapped" } })*@
+
+
+
+                <div class="row" id="roleDetailsHeadingDIVid">
+                    @*<div class="col-md-12">
+                        <h4>
+                            Map/Unmap menu with<b> @Model.RoleName</b> role.
+                        </h4>
+                    </div>*@
+                    <div class="col-md-12">
+                        <div class="alert form-control alert-info" style="padding-bottom:30px;">
+                            <span>
+                                <i class="fa fa-exclamation-circle fa-1x" aria-hidden="true"></i> Note: Map/Unmap Menu with <b>"@Model.RoleName"</b> role.
+                            </span>
+                        </div>
+                    </div>
+                </div><br />
+
+                <div class="row" id="parentMenuDetailsDIVid">
+                    <div class="col-md-2 PaddingTop10">
+                        @Html.LabelFor(model => model.ParentMenuDetailsList, "Parent Menu", htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-2 ">
+                        @Html.DropDownListFor(model => model.ParentMenuDetailsId, @Model.ParentMenuDetailsList, new { @class = "form-control minimal", @id = "parentMenuDetailsList" })
+                    </div>
+                    <div class="col-md-2" id="parentMenuDetailsMapButtonId" style="text-align:center;">
+                    </div>
+                    @*<div class="col-md-8">
+            </div>*@
+                </div><br />
+
+                <div class="row" id="FirstChildMenuDetailsDIVid">
+                    @*<div class="col-md-2">
+                        </div>*@
+                    <div class="col-md-2 PaddingTop10">
+                        @Html.LabelFor(model => model.FirstChildMenuDetailsList, "First Chlid Menu", htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(model => model.FirstChildMenuDetailsId, @Model.FirstChildMenuDetailsList, new { @class = "form-control minimal", @id = "firstChildMenuDetailsList" })
+                    </div>
+                    <div class="col-md-2" id="firstChildMenuDetailsMapButtonId" style="text-align:center;">
+                    </div>
+                    @*<div class="col-md-4">
+                        </div>*@
+                </div><br />
+
+                <div class="row" id="SecondChildDetailsDIVid">
+                    @*<div class="col-md-4">
+                        </div>*@
+                    <div class="col-md-2 PaddingTop10">
+                        @Html.LabelFor(model => model.SecondChildMenuDetailsList, "Second Chlid Menu", htmlAttributes: new { @class = "control-label" })
+                    </div>
+                    <div class="col-md-2">
+                        @Html.DropDownListFor(model => model.SecondChildMenuDetailsId, @Model.SecondChildMenuDetailsList, new { @class = "form-control minimal", @id = "secondChildMenuDetailsList" })
+                    </div>
+                    <div class="col-md-2" id="secondChildMenuDetailsMapButtonId" style="text-align:center;">
+                    </div>
+                    @*<div class="col-md-2">
+                        </div>*@
+                </div><br />
+
+
+            </form>
+        </div>
+    @*</fieldset>*@
+</div>
+
+

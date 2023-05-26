@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECDataAPI", "ECDataAPI\ECDataAPI.csproj", "{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECDataUI", "ECDataUI\ECDataUI.csproj", "{3747739F-1FF3-4FEA-BEDE-F83216C49934}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E146153C-343F-4B18-BF4B-F738D208BF1F} = {E146153C-343F-4B18-BF4B-F738D208BF1F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomModels", "CustomModels\CustomModels.csproj", "{E146153C-343F-4B18-BF4B-F738D208BF1F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Debug|x64.Build.0 = Debug|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Release|x64.ActiveCfg = Release|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Release|x64.Build.0 = Release|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3DF67D7-A9F3-4C57-8029-2E571B2D88E7}.Release|x86.Build.0 = Release|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Debug|x64.Build.0 = Debug|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Debug|x86.Build.0 = Debug|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Release|x64.ActiveCfg = Release|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Release|x64.Build.0 = Release|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Release|x86.ActiveCfg = Release|Any CPU
+		{3747739F-1FF3-4FEA-BEDE-F83216C49934}.Release|x86.Build.0 = Release|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Debug|x64.Build.0 = Debug|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Debug|x86.Build.0 = Debug|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Release|x64.ActiveCfg = Release|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Release|x64.Build.0 = Release|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Release|x86.ActiveCfg = Release|Any CPU
+		{E146153C-343F-4B18-BF4B-F738D208BF1F}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {40B4206B-A998-4455-BC0C-CBD6A1C2756B}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://egov-vstf:8080/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = ECDataAPI\\ECDataAPI.csproj
+		SccProjectName1 = ECDataAPI
+		SccLocalPath1 = ECDataAPI
+		SccProjectUniqueName2 = ECDataUI\\ECDataUI.csproj
+		SccProjectName2 = ECDataUI
+		SccLocalPath2 = ECDataUI
+		SccProjectUniqueName3 = CustomModels\\CustomModels.csproj
+		SccProjectName3 = CustomModels
+		SccLocalPath3 = CustomModels
+	EndGlobalSection
+EndGlobal

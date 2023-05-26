@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="XELRootDirectoryInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:XELFilesReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XELFilesReqModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RootDirectoryPathList" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileDownloadPath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="XELRootDirectoryInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XELRootDirectoryInfoResult" type="tns:XELFilesResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="XELFilesResModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RootDirInfoModelList" type="tns:ArrayOfRootDirInfoModel" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFileExistAtDownloadPath" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileContentField" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRootDirInfoModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RootDirInfoModel" nillable="true" type="tns:RootDirInfoModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RootDirInfoModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RootDirectory" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalSpace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsedSpace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FreeSpace" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XELSpace" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="XELFileDownloadPathVerify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:XELFilesReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XELFileDownloadPathVerifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XELFileDownloadPathVerifyResult" type="tns:XELFilesResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XELFileDownload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:XELFilesReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="XELFileDownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XELFileDownloadResult" type="tns:XELFilesResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="VerifykeyforDatabaseRestoration">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:DBRestoreReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DBRestoreReqModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="KeyorOTP" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InitID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="VerifykeyforDatabaseRestorationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="VerifykeyforDatabaseRestorationResult" type="tns:DBRestoreResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DBRestoreResModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsKeyorOTPIsCorrect" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InitID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="SROMobileNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_Insert_Script" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="DBInsertScriptId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_Res_Script_Query" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="StatusId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DBRestorationAcknowledgement">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:DBRestoreSaveDBReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DBRestoreSaveDBReqModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="InitId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastDocumentID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastFinalRegistrationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastDocumentDateOfRegistration" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastMarrigeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastMarriageRegistrationNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastMarriageRegistrationDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastNoticeID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastNoticeNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastNoticeIssuedDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LastFirmId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastFirmNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastFirmRegistrationDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbRestoreAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbRestoreDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbRestoreIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbRestoreErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbConsistencyCheckAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbConsistencyCheckDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbConsistencyCheckIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbConsistencyCheckErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbVerifyOfficeCodeAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbVerifyOfficeCodeDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbVerifyOfficeCodeIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbVerifyOfficeCodeErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbCreateKaveriUserAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbCreateKaveriUserDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbCreateKaveriUserIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbCreateKaveriUserErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbEnableAuditLogAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbEnableAuditLogDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DbEnableAuditLogIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DbEnableAuditLogErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScriptId" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendLastID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendLastIdDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendLastIdIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendLastIdErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DB_Restored_upto_BAK_DT" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExecuteScriptAction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExecuteScriptDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="ExecuteScriptIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExecuteScriptErrorDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DBInsertScriptId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TableWiseCounts2" type="tns:ArrayOfTableWiseCounts" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_Restored_upto_BAK_Size" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentRegistrationCDNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MarriageRegistrationCDNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DB_Restored_upto_BAK_FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeTableDetailsList" type="tns:ArrayOfOfficeTableDetails" />
+          <s:element minOccurs="0" maxOccurs="1" name="OfficeColumnDetailsList" type="tns:ArrayOfOfficeColumnDetails" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendDBSchemaID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendDBSchemaDateTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendDBSchemaIsSuccessful" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SendDBSchmeaErrorMessage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PresentDateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentNumber" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTableWiseCounts">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TableWiseCounts" nillable="true" type="tns:TableWiseCounts" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TableWiseCounts">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowsCount" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOfficeTableDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OfficeTableDetails" nillable="true" type="tns:OfficeTableDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OfficeTableDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DatabaseName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TableSchema" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOfficeColumnDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OfficeColumnDetails" nillable="true" type="tns:OfficeColumnDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OfficeColumnDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TableName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColumnDefault" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataType" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="charMaxLength" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumericPrecision" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DBRestorationAcknowledgementResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DBRestorationAcknowledgementResult" type="tns:DBRestoreResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DBRestorationSaveOTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:DBRestoreReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DBRestorationSaveOTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DBRestorationSaveOTPResult" type="tns:DBRestoreResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DBRestoreVerifyOTP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:DBRestoreReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DBRestoreVerifyOTPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DBRestoreVerifyOTPResult" type="tns:DBRestoreResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DBRestoreSaveInsertScriptExecutionDeatails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:DBRestoreSaveDBReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DBRestoreSaveInsertScriptExecutionDeatailsResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="SaveGeneratedScriptFileForDB_RES">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:ScriptSaveREQModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ScriptSaveREQModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ScriptContent" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsDro" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileDownloadPath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveGeneratedScriptFileForDB_RESResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveGeneratedScriptFileForDB_RESResult" type="tns:ScriptSaveRESModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ScriptSaveRESModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsScriptSavedSuccessfully" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SavedScriptFilePath" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFileExistAtDownloadPath" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileContentField" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFileFetchedSuccesfully" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DownloadScriptPathVerify">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:ScriptSaveREQModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScriptPathVerifyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadScriptPathVerifyResult" type="tns:ScriptSaveRESModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScriptForRectification">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:ScriptSaveREQModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScriptForRectificationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadScriptForRectificationResult" type="tns:ScriptSaveRESModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CentralizeDiagnosticHealthCheckupData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:DiagnosticHealthCheckupReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DiagnosticHealthCheckupReqModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="DiagnosticMasters" type="tns:ArrayOfDiagnosticMaster" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiagnosticDetails" type="tns:ArrayOfDiagnosticDetails" />
+          <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDiagnosticMaster">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DiagnosticMaster" nillable="true" type="tns:DiagnosticMaster" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DiagnosticMaster">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DiagnosticId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DiagnosticDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="StartTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionTime" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestIP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsSuccessful" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCentralized" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecureCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="OfficeCode" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="MasterID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDiagnosticDetails">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DiagnosticDetails" nillable="true" type="tns:DiagnosticDetails" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DiagnosticDetails">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DetailId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DiagnosticId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionStatus" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiagnosticOutput" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MasterId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CentralizeDiagnosticHealthCheckupDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CentralizeDiagnosticHealthCheckupDataResult" type="tns:DiagnosticHealthCheckupResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DiagnosticHealthCheckupResModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetActiveActionsForDHC">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetActiveActionsForDHCResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActiveActionsForDHCResult" type="tns:ActiveActionsForDHC" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ActiveActionsForDHC">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="diagnosticActionMasters" type="tns:ArrayOfDiagnosticActionMaster" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsError" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMsg" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDiagnosticActionMaster">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DiagnosticActionMaster" nillable="true" type="tns:DiagnosticActionMaster" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DiagnosticActionMaster">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ActionId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateSecureCodeTempered">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reqModel" type="tns:DiagnosticMaster" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSecureCodeTemperedResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="XELRootDirectoryInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:XELRootDirectoryInfo" />
+  </wsdl:message>
+  <wsdl:message name="XELRootDirectoryInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:XELRootDirectoryInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="XELFileDownloadPathVerifySoapIn">
+    <wsdl:part name="parameters" element="tns:XELFileDownloadPathVerify" />
+  </wsdl:message>
+  <wsdl:message name="XELFileDownloadPathVerifySoapOut">
+    <wsdl:part name="parameters" element="tns:XELFileDownloadPathVerifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="XELFileDownloadSoapIn">
+    <wsdl:part name="parameters" element="tns:XELFileDownload" />
+  </wsdl:message>
+  <wsdl:message name="XELFileDownloadSoapOut">
+    <wsdl:part name="parameters" element="tns:XELFileDownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="VerifykeyforDatabaseRestorationSoapIn">
+    <wsdl:part name="parameters" element="tns:VerifykeyforDatabaseRestoration" />
+  </wsdl:message>
+  <wsdl:message name="VerifykeyforDatabaseRestorationSoapOut">
+    <wsdl:part name="parameters" element="tns:VerifykeyforDatabaseRestorationResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBRestorationAcknowledgementSoapIn">
+    <wsdl:part name="parameters" element="tns:DBRestorationAcknowledgement" />
+  </wsdl:message>
+  <wsdl:message name="DBRestorationAcknowledgementSoapOut">
+    <wsdl:part name="parameters" element="tns:DBRestorationAcknowledgementResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBRestorationSaveOTPSoapIn">
+    <wsdl:part name="parameters" element="tns:DBRestorationSaveOTP" />
+  </wsdl:message>
+  <wsdl:message name="DBRestorationSaveOTPSoapOut">
+    <wsdl:part name="parameters" element="tns:DBRestorationSaveOTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBRestoreVerifyOTPSoapIn">
+    <wsdl:part name="parameters" element="tns:DBRestoreVerifyOTP" />
+  </wsdl:message>
+  <wsdl:message name="DBRestoreVerifyOTPSoapOut">
+    <wsdl:part name="parameters" element="tns:DBRestoreVerifyOTPResponse" />
+  </wsdl:message>
+  <wsdl:message name="DBRestoreSaveInsertScriptExecutionDeatailsSoapIn">
+    <wsdl:part name="parameters" element="tns:DBRestoreSaveInsertScriptExecutionDeatails" />
+  </wsdl:message>
+  <wsdl:message name="DBRestoreSaveInsertScriptExecutionDeatailsSoapOut">
+    <wsdl:part name="parameters" element="tns:DBRestoreSaveInsertScriptExecutionDeatailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveGeneratedScriptFileForDB_RESSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveGeneratedScriptFileForDB_RES" />
+  </wsdl:message>
+  <wsdl:message name="SaveGeneratedScriptFileForDB_RESSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveGeneratedScriptFileForDB_RESResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScriptPathVerifySoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadScriptPathVerify" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScriptPathVerifySoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadScriptPathVerifyResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScriptForRectificationSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadScriptForRectification" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScriptForRectificationSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadScriptForRectificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="CentralizeDiagnosticHealthCheckupDataSoapIn">
+    <wsdl:part name="parameters" element="tns:CentralizeDiagnosticHealthCheckupData" />
+  </wsdl:message>
+  <wsdl:message name="CentralizeDiagnosticHealthCheckupDataSoapOut">
+    <wsdl:part name="parameters" element="tns:CentralizeDiagnosticHealthCheckupDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveActionsForDHCSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActiveActionsForDHC" />
+  </wsdl:message>
+  <wsdl:message name="GetActiveActionsForDHCSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActiveActionsForDHCResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecureCodeTemperedSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSecureCodeTempered" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSecureCodeTemperedSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSecureCodeTemperedResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SRToCentralComServiceSoap">
+    <wsdl:operation name="XELRootDirectoryInfo">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">XEL Root Directory Information List</wsdl:documentation>
+      <wsdl:input message="tns:XELRootDirectoryInfoSoapIn" />
+      <wsdl:output message="tns:XELRootDirectoryInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XELFileDownloadPathVerify">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">XEL File Download Path Verify</wsdl:documentation>
+      <wsdl:input message="tns:XELFileDownloadPathVerifySoapIn" />
+      <wsdl:output message="tns:XELFileDownloadPathVerifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="XELFileDownload">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">XEL File Download</wsdl:documentation>
+      <wsdl:input message="tns:XELFileDownloadSoapIn" />
+      <wsdl:output message="tns:XELFileDownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="VerifykeyforDatabaseRestoration">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verify key for Database Restoration</wsdl:documentation>
+      <wsdl:input message="tns:VerifykeyforDatabaseRestorationSoapIn" />
+      <wsdl:output message="tns:VerifykeyforDatabaseRestorationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DBRestorationAcknowledgement">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">DBRestorationAcknowledgement- Restore button Click</wsdl:documentation>
+      <wsdl:input message="tns:DBRestorationAcknowledgementSoapIn" />
+      <wsdl:output message="tns:DBRestorationAcknowledgementSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DBRestorationSaveOTP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save Generated OTP in Database</wsdl:documentation>
+      <wsdl:input message="tns:DBRestorationSaveOTPSoapIn" />
+      <wsdl:output message="tns:DBRestorationSaveOTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DBRestoreVerifyOTP">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Verify OTP</wsdl:documentation>
+      <wsdl:input message="tns:DBRestoreVerifyOTPSoapIn" />
+      <wsdl:output message="tns:DBRestoreVerifyOTPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DBRestoreSaveInsertScriptExecutionDeatails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save Insert Script Execution Details</wsdl:documentation>
+      <wsdl:input message="tns:DBRestoreSaveInsertScriptExecutionDeatailsSoapIn" />
+      <wsdl:output message="tns:DBRestoreSaveInsertScriptExecutionDeatailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGeneratedScriptFileForDB_RES">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Save Generated script file for DB_RES</wsdl:documentation>
+      <wsdl:input message="tns:SaveGeneratedScriptFileForDB_RESSoapIn" />
+      <wsdl:output message="tns:SaveGeneratedScriptFileForDB_RESSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScriptPathVerify">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Database Crash SRO : Download Script Path Verify</wsdl:documentation>
+      <wsdl:input message="tns:DownloadScriptPathVerifySoapIn" />
+      <wsdl:output message="tns:DownloadScriptPathVerifySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScriptForRectification">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Database Crash SRO : Download Script For Rectification</wsdl:documentation>
+      <wsdl:input message="tns:DownloadScriptForRectificationSoapIn" />
+      <wsdl:output message="tns:DownloadScriptForRectificationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CentralizeDiagnosticHealthCheckupData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Centralize Diagnostic Health Checkup Data</wsdl:documentation>
+      <wsdl:input message="tns:CentralizeDiagnosticHealthCheckupDataSoapIn" />
+      <wsdl:output message="tns:CentralizeDiagnosticHealthCheckupDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveActionsForDHC">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Fetch Active Actions for DHC</wsdl:documentation>
+      <wsdl:input message="tns:GetActiveActionsForDHCSoapIn" />
+      <wsdl:output message="tns:GetActiveActionsForDHCSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecureCodeTempered">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Update Secure Code is Tempered</wsdl:documentation>
+      <wsdl:input message="tns:UpdateSecureCodeTemperedSoapIn" />
+      <wsdl:output message="tns:UpdateSecureCodeTemperedSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SRToCentralComServiceSoap" type="tns:SRToCentralComServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="XELRootDirectoryInfo">
+      <soap:operation soapAction="http://tempuri.org/XELRootDirectoryInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XELFileDownloadPathVerify">
+      <soap:operation soapAction="http://tempuri.org/XELFileDownloadPathVerify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XELFileDownload">
+      <soap:operation soapAction="http://tempuri.org/XELFileDownload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifykeyforDatabaseRestoration">
+      <soap:operation soapAction="http://tempuri.org/VerifykeyforDatabaseRestoration" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestorationAcknowledgement">
+      <soap:operation soapAction="http://tempuri.org/DBRestorationAcknowledgement" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestorationSaveOTP">
+      <soap:operation soapAction="http://tempuri.org/DBRestorationSaveOTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestoreVerifyOTP">
+      <soap:operation soapAction="http://tempuri.org/DBRestoreVerifyOTP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestoreSaveInsertScriptExecutionDeatails">
+      <soap:operation soapAction="http://tempuri.org/DBRestoreSaveInsertScriptExecutionDeatails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGeneratedScriptFileForDB_RES">
+      <soap:operation soapAction="http://tempuri.org/SaveGeneratedScriptFileForDB_RES" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScriptPathVerify">
+      <soap:operation soapAction="http://tempuri.org/DownloadScriptPathVerify" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScriptForRectification">
+      <soap:operation soapAction="http://tempuri.org/DownloadScriptForRectification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CentralizeDiagnosticHealthCheckupData">
+      <soap:operation soapAction="http://tempuri.org/CentralizeDiagnosticHealthCheckupData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveActionsForDHC">
+      <soap:operation soapAction="http://tempuri.org/GetActiveActionsForDHC" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecureCodeTempered">
+      <soap:operation soapAction="http://tempuri.org/UpdateSecureCodeTempered" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SRToCentralComServiceSoap12" type="tns:SRToCentralComServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="XELRootDirectoryInfo">
+      <soap12:operation soapAction="http://tempuri.org/XELRootDirectoryInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XELFileDownloadPathVerify">
+      <soap12:operation soapAction="http://tempuri.org/XELFileDownloadPathVerify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="XELFileDownload">
+      <soap12:operation soapAction="http://tempuri.org/XELFileDownload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="VerifykeyforDatabaseRestoration">
+      <soap12:operation soapAction="http://tempuri.org/VerifykeyforDatabaseRestoration" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestorationAcknowledgement">
+      <soap12:operation soapAction="http://tempuri.org/DBRestorationAcknowledgement" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestorationSaveOTP">
+      <soap12:operation soapAction="http://tempuri.org/DBRestorationSaveOTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestoreVerifyOTP">
+      <soap12:operation soapAction="http://tempuri.org/DBRestoreVerifyOTP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DBRestoreSaveInsertScriptExecutionDeatails">
+      <soap12:operation soapAction="http://tempuri.org/DBRestoreSaveInsertScriptExecutionDeatails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGeneratedScriptFileForDB_RES">
+      <soap12:operation soapAction="http://tempuri.org/SaveGeneratedScriptFileForDB_RES" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScriptPathVerify">
+      <soap12:operation soapAction="http://tempuri.org/DownloadScriptPathVerify" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScriptForRectification">
+      <soap12:operation soapAction="http://tempuri.org/DownloadScriptForRectification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CentralizeDiagnosticHealthCheckupData">
+      <soap12:operation soapAction="http://tempuri.org/CentralizeDiagnosticHealthCheckupData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActiveActionsForDHC">
+      <soap12:operation soapAction="http://tempuri.org/GetActiveActionsForDHC" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSecureCodeTempered">
+      <soap12:operation soapAction="http://tempuri.org/UpdateSecureCodeTempered" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SRToCentralComService">
+    <wsdl:port name="SRToCentralComServiceSoap" binding="tns:SRToCentralComServiceSoap">
+      <soap:address location="http://localhost:7652/SRToCentralComService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SRToCentralComServiceSoap12" binding="tns:SRToCentralComServiceSoap12">
+      <soap12:address location="http://localhost:7652/SRToCentralComService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,153 @@
+﻿@*----------------------------------------------------------------------------------------
+    * Project Id: IN-KA-IGR-02-05
+    * Project Name: KAVERI
+    * File Name: ReleaseNotesDetails.cshtml
+    * Author : Harshit Gupta
+    * Creation Date :26/June/2019
+    * Desc : This is modal view to display Service Pack Details and enter Release Notes.
+    * ---------------------------------------------------------------------------------------*@
+
+@model CustomModels.Models.ServicePackDetails.ServicePackViewModel
+<head>
+    @*<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>*@
+    @*<script src="~/Content/bootstrap/js/bootstrap-datepicker.min.js"></script>*@
+
+    @*<script src="~/Areas/ServicePack/Scripts/ApproveServicePackDetails.js"></script>*@
+    <script src="~/Areas/ServicePack/Scripts/ApproveServicePackDetails.min.js"></script>
+
+    @*<script src="~/Areas/ServicePack/Scripts/ApproveServicePackDetails.js"></script>*@
+    <style>
+        .datepicker {
+            z-index: 1600 !important; /* has to be larger than 1050 */
+        }
+
+        table {
+            border: 1px solid #dddddd;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        /*Added by shubham bhagat on 18-09-2019*/
+        .modal-open .modal {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<div class="container">
+    <form id="frmReleaseNotes">
+        @Html.HiddenFor(x => x.EncryptedID, new { @id = "hdnEncryptedID" })
+        @Html.AntiForgeryToken()
+        <!--Body-->
+        <div class="modal-body">
+            <div class='row'>
+                <div class="col-md-12">
+                    <table class="table user-list">
+                        <thead>
+                            <tr>
+                                <th>Release Type</th>
+                                <th>Release Mode</th>
+                                <th>Major Version</th>
+                                <th>Minor Version</th>
+                                <th>Description</th>
+                                <th>Installation Procedure</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(m => m.SoftwareReleaseType.TypeName)
+                                </td>
+                                @if (Model.SoftwareReleaseType.TypeID != 3)
+                                {
+                                    if (Model.ServicePackDetails.IsTestOrFinal)
+                                    {
+                                        <td>
+                                            Test
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td>
+                                            Final
+                                        </td>
+                                    }
+                                }
+                                else
+                                {
+                                    <td>
+                                        Support
+                                    </td>
+                                }
+                                <td>
+                                    @Html.DisplayFor(m => m.ServicePackDetails.Major)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => m.ServicePackDetails.Minor)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => m.ServicePackDetails.Description)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(m => m.ServicePackDetails.InstallationProcedure)
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <label class="control-label">Release Note:</label>
+                    </div>
+                    <div class="controls col-md-7" style="margin-bottom: 10px">
+                        <textarea type="text" id="txtReleaseNotes" rows="4" cols="65"></textarea>
+                    </div>
+                    <div class="col-md-3">
+                        <div style="margin-top: 1%;"> <span style="color: red;"><span id="ReleaseNotesValID"></span></span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class='row'>
+                <div class="col-md-12">
+                    <div class="col-md-2">
+                        <label class="control-label">Release Date<span style="color: red;">*</span></label>
+                    </div>
+                    <div class="controls col-md-6" style="margin-bottom: 10px">
+                        <div class="input-group date">
+                            <input type="text" class="form-control" id="DateRequired"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                    <div style="margin-top: 1%;"> <span style="color: red;"><span id="ReleaseDateValID"></span></span></div>
+                </div>
+            </div>
+            <div class='row'>
+                <div class="col-md-12">
+                    <div class="alert alert-info">
+                        <i class="fa fa-coffee"></i>
+                        <label>Note :Even though it is optional,it is recommended to add release notes. </label>
+                    </div>
+                </div>
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <input type="button" id="btnSubmitReleaseNotes" value="Approve & Release" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>

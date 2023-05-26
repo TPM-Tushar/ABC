@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="DownloadUploadFiles" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpBinding_IDownloadUploadFiles_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsoma:OptimizedMimeSerialization xmlns:wsoma="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:55333/DownloadUploadFiles.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:55333/DownloadUploadFiles.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:55333/DownloadUploadFiles.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IDownloadUploadFiles_UploadDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetPdfFileLengthCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdfFileLengthCount" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetPdfFileLengthCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPdfFileLengthCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetSHA1HashData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSHA1HashData" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetSHA1HashData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSHA1HashDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_ValidateSHA1HashData_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSHA1HashData" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_ValidateSHA1HashData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateSHA1HashDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_Upload_InputMessage">
+    <wsdl:part name="parameters" element="tns:Upload" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_Upload_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_Download_InputMessage">
+    <wsdl:part name="parameters" element="tns:Download" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_Download_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CreatePasswordProtedtedScannedDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePasswordProtedtedScannedDocument" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CreatePasswordProtedtedScannedDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePasswordProtedtedScannedDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileSize_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSize" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileSize_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_PageCount_InputMessage">
+    <wsdl:part name="parameters" element="tns:PageCount" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_PageCount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PageCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileLenghtChecksum_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileLenghtChecksum" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileLenghtChecksum_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileLenghtChecksumResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_IsFileReadable_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileReadable" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_IsFileReadable_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileReadableResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImage" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadImageWithVirtualPaths_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImageWithVirtualPaths" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadImageWithVirtualPaths_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadImageWithVirtualPathsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CopyExistingFile_InputMessage">
+    <wsdl:part name="parameters" element="tns:CopyExistingFile" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CopyExistingFile_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyExistingFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadWithVirtualPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadWithVirtualPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadWithVirtualPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadWithVirtualPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_PageCountWithVirtualPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:PageCountWithVirtualPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_PageCountWithVirtualPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PageCountWithVirtualPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFullPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFullPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFullPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileLenghtChecksumWithVirtual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileLenghtChecksumWithVirtual" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileLenghtChecksumWithVirtual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileLenghtChecksumWithVirtualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CreatePasswordProtScanDocumentWithVirtual_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePasswordProtScanDocumentWithVirtual" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CreatePasswordProtScanDocumentWithVirtual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePasswordProtScanDocumentWithVirtualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_DownloadWithVirtualPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadWithVirtualPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_DownloadWithVirtualPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DownloadWithVirtualPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileSizeWithVirtualPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSizeWithVirtualPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetFileSizeWithVirtualPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFileSizeWithVirtualPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetURIPathofVirtual_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetURIPathofVirtual" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetURIPathofVirtual_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetURIPathofVirtualResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_IsFileReadableWithVirtualPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileReadableWithVirtualPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_IsFileReadableWithVirtualPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsFileReadableWithVirtualPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CopyExistingFileWithVirtualPaths_InputMessage">
+    <wsdl:part name="parameters" element="tns:CopyExistingFileWithVirtualPaths" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_CopyExistingFileWithVirtualPaths_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CopyExistingFileWithVirtualPathsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_DeleteExistingFileWithVirtualPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExistingFileWithVirtualPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_DeleteExistingFileWithVirtualPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteExistingFileWithVirtualPathResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetRDPRXMLInnerXmlDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRDPRXMLInnerXmlDetails" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_GetRDPRXMLInnerXmlDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRDPRXMLInnerXmlDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadFirmSupportingDocumentWithVirtualPath_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFirmSupportingDocumentWithVirtualPath" />
+  </wsdl:message>
+  <wsdl:message name="IDownloadUploadFiles_UploadFirmSupportingDocumentWithVirtualPath_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadFirmSupportingDocumentWithVirtualPathResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IDownloadUploadFiles">
+    <wsdl:operation name="UploadDocuments">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadDocuments" message="tns:IDownloadUploadFiles_UploadDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadDocumentsResponse" message="tns:IDownloadUploadFiles_UploadDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPdfFileLengthCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetPdfFileLengthCount" message="tns:IDownloadUploadFiles_GetPdfFileLengthCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetPdfFileLengthCountResponse" message="tns:IDownloadUploadFiles_GetPdfFileLengthCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSHA1HashData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetSHA1HashData" message="tns:IDownloadUploadFiles_GetSHA1HashData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetSHA1HashDataResponse" message="tns:IDownloadUploadFiles_GetSHA1HashData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSHA1HashData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/ValidateSHA1HashData" message="tns:IDownloadUploadFiles_ValidateSHA1HashData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/ValidateSHA1HashDataResponse" message="tns:IDownloadUploadFiles_ValidateSHA1HashData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Upload">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/Upload" message="tns:IDownloadUploadFiles_Upload_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadResponse" message="tns:IDownloadUploadFiles_Upload_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/Download" message="tns:IDownloadUploadFiles_Download_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/DownloadResponse" message="tns:IDownloadUploadFiles_Download_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePasswordProtedtedScannedDocument">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CreatePasswordProtedtedScannedDocument" message="tns:IDownloadUploadFiles_CreatePasswordProtedtedScannedDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CreatePasswordProtedtedScannedDocumentResponse" message="tns:IDownloadUploadFiles_CreatePasswordProtedtedScannedDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileSize" message="tns:IDownloadUploadFiles_GetFileSize_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileSizeResponse" message="tns:IDownloadUploadFiles_GetFileSize_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PageCount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/PageCount" message="tns:IDownloadUploadFiles_PageCount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/PageCountResponse" message="tns:IDownloadUploadFiles_PageCount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileLenghtChecksum">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileLenghtChecksum" message="tns:IDownloadUploadFiles_GetFileLenghtChecksum_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileLenghtChecksumResponse" message="tns:IDownloadUploadFiles_GetFileLenghtChecksum_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFileReadable">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/IsFileReadable" message="tns:IDownloadUploadFiles_IsFileReadable_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/IsFileReadableResponse" message="tns:IDownloadUploadFiles_IsFileReadable_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadImage" message="tns:IDownloadUploadFiles_UploadImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadImageResponse" message="tns:IDownloadUploadFiles_UploadImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadImageWithVirtualPaths">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadImageWithVirtualPaths" message="tns:IDownloadUploadFiles_UploadImageWithVirtualPaths_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadImageWithVirtualPathsResponse" message="tns:IDownloadUploadFiles_UploadImageWithVirtualPaths_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyExistingFile">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CopyExistingFile" message="tns:IDownloadUploadFiles_CopyExistingFile_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CopyExistingFileResponse" message="tns:IDownloadUploadFiles_CopyExistingFile_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadWithVirtualPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadWithVirtualPath" message="tns:IDownloadUploadFiles_UploadWithVirtualPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadWithVirtualPathResponse" message="tns:IDownloadUploadFiles_UploadWithVirtualPath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PageCountWithVirtualPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/PageCountWithVirtualPath" message="tns:IDownloadUploadFiles_PageCountWithVirtualPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/PageCountWithVirtualPathResponse" message="tns:IDownloadUploadFiles_PageCountWithVirtualPath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFullPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFullPath" message="tns:IDownloadUploadFiles_GetFullPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFullPathResponse" message="tns:IDownloadUploadFiles_GetFullPath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileLenghtChecksumWithVirtual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileLenghtChecksumWithVirtual" message="tns:IDownloadUploadFiles_GetFileLenghtChecksumWithVirtual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileLenghtChecksumWithVirtualResponse" message="tns:IDownloadUploadFiles_GetFileLenghtChecksumWithVirtual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePasswordProtScanDocumentWithVirtual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CreatePasswordProtScanDocumentWithVirtual" message="tns:IDownloadUploadFiles_CreatePasswordProtScanDocumentWithVirtual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CreatePasswordProtScanDocumentWithVirtualResponse" message="tns:IDownloadUploadFiles_CreatePasswordProtScanDocumentWithVirtual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadWithVirtualPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/DownloadWithVirtualPath" message="tns:IDownloadUploadFiles_DownloadWithVirtualPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/DownloadWithVirtualPathResponse" message="tns:IDownloadUploadFiles_DownloadWithVirtualPath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSizeWithVirtualPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileSizeWithVirtualPath" message="tns:IDownloadUploadFiles_GetFileSizeWithVirtualPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetFileSizeWithVirtualPathResponse" message="tns:IDownloadUploadFiles_GetFileSizeWithVirtualPath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetURIPathofVirtual">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetURIPathofVirtual" message="tns:IDownloadUploadFiles_GetURIPathofVirtual_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetURIPathofVirtualResponse" message="tns:IDownloadUploadFiles_GetURIPathofVirtual_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFileReadableWithVirtualPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/IsFileReadableWithVirtualPath" message="tns:IDownloadUploadFiles_IsFileReadableWithVirtualPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/IsFileReadableWithVirtualPathResponse" message="tns:IDownloadUploadFiles_IsFileReadableWithVirtualPath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CopyExistingFileWithVirtualPaths">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CopyExistingFileWithVirtualPaths" message="tns:IDownloadUploadFiles_CopyExistingFileWithVirtualPaths_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/CopyExistingFileWithVirtualPathsResponse" message="tns:IDownloadUploadFiles_CopyExistingFileWithVirtualPaths_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExistingFileWithVirtualPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/DeleteExistingFileWithVirtualPath" message="tns:IDownloadUploadFiles_DeleteExistingFileWithVirtualPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/DeleteExistingFileWithVirtualPathResponse" message="tns:IDownloadUploadFiles_DeleteExistingFileWithVirtualPath_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRDPRXMLInnerXmlDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetRDPRXMLInnerXmlDetails" message="tns:IDownloadUploadFiles_GetRDPRXMLInnerXmlDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/GetRDPRXMLInnerXmlDetailsResponse" message="tns:IDownloadUploadFiles_GetRDPRXMLInnerXmlDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFirmSupportingDocumentWithVirtualPath">
+      <wsdl:input wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadFirmSupportingDocumentWithVirtualPath" message="tns:IDownloadUploadFiles_UploadFirmSupportingDocumentWithVirtualPath_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IDownloadUploadFiles/UploadFirmSupportingDocumentWithVirtualPathResponse" message="tns:IDownloadUploadFiles_UploadFirmSupportingDocumentWithVirtualPath_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IDownloadUploadFiles" type="tns:IDownloadUploadFiles">
+    <wsp:PolicyReference URI="#BasicHttpBinding_IDownloadUploadFiles_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="UploadDocuments">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/UploadDocuments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPdfFileLengthCount">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetPdfFileLengthCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSHA1HashData">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetSHA1HashData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateSHA1HashData">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/ValidateSHA1HashData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Upload">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/Upload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Download">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/Download" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePasswordProtedtedScannedDocument">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/CreatePasswordProtedtedScannedDocument" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetFileSize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PageCount">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/PageCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileLenghtChecksum">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetFileLenghtChecksum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileReadable">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/IsFileReadable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadImage">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/UploadImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadImageWithVirtualPaths">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/UploadImageWithVirtualPaths" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CopyExistingFile">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/CopyExistingFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadWithVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/UploadWithVirtualPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PageCountWithVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/PageCountWithVirtualPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFullPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetFullPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileLenghtChecksumWithVirtual">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetFileLenghtChecksumWithVirtual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePasswordProtScanDocumentWithVirtual">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/CreatePasswordProtScanDocumentWithVirtual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadWithVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/DownloadWithVirtualPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSizeWithVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetFileSizeWithVirtualPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetURIPathofVirtual">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetURIPathofVirtual" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileReadableWithVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/IsFileReadableWithVirtualPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CopyExistingFileWithVirtualPaths">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/CopyExistingFileWithVirtualPaths" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteExistingFileWithVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/DeleteExistingFileWithVirtualPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRDPRXMLInnerXmlDetails">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/GetRDPRXMLInnerXmlDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFirmSupportingDocumentWithVirtualPath">
+      <soap:operation soapAction="http://tempuri.org/IDownloadUploadFiles/UploadFirmSupportingDocumentWithVirtualPath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DownloadUploadFiles">
+    <wsdl:port name="BasicHttpBinding_IDownloadUploadFiles" binding="tns:BasicHttpBinding_IDownloadUploadFiles">
+      <soap:address location="http://localhost:55333/DownloadUploadFiles.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

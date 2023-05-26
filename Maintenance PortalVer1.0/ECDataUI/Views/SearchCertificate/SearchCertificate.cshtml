@@ -1,0 +1,198 @@
+﻿@model CustomModels.Models.SearchCertificate.SearchCertificateModel
+
+
+@using ECDataUI.Helper;
+@using CaptchaLib;
+@{
+    int iTabIndex = 1;
+}
+
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+@{
+    ViewBag.Title = "SearchCertificate";
+}
+
+
+@*<script src="~/Scripts/SearchCertificate/SearchCertificate.js"></script>*@
+<script src="~/Scripts/SearchCertificate/SearchCertificate.min.js"></script>
+
+<script src="~/Scripts/CommonJS/md5.min.js"></script>
+<script src="~/Scripts/CommonJS/sha512.min.js"></script>
+<style>
+    img {
+        width: 100%
+    }
+
+    .PaddingTop10 {
+        padding-top: 6px
+    }
+</style>
+<br />      <br />
+<div class="container">
+
+    <div class="" style="width:100%; margin:0 auto; margin-bottom:1%;overflow-x:hidden;overflow-y:auto;">
+        <div class="">
+            <div class="row">
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+                <form method="POST" id="SearchCertificateForm">
+
+                    <div class="panel panel-default" id="SerchCertificatePanel" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4;background:#fafafa">
+
+                        <div class="panel-body">
+
+                            <div class="col-md-12">
+                                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                                    <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                                    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Search Certificate</span>
+                                </div>
+                                <div style="text-align:center;background:#fafafa;border:1px solid #ECF0F1; padding-bottom:1%">
+                                    <div style="border: solid 1px #d1d1d1;border-radius:12px;margin-top:1%;width: 80%;margin-left: 10%;">
+                                        <br>
+
+                                        <fieldset>
+
+                                            <div class='row'>
+                                                @*<div class='col-md-1'></div>*@
+                                                <div class="form-group col-md-6">
+                                                    <div class='col-md-5'>
+                                                        @Html.LabelFor(model => model.DepartmentsList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                    </div>
+
+                                                    <div class='col-md-7'>
+
+                                                        @Html.DropDownListFor(model => model.DepartmentID, new SelectList(Model.DepartmentsList, "Value", "Text"), new { @class = "form-control minimal", @tabindex = 1 })
+                                                        @Html.ValidationMessageFor(model => model.DepartmentID, "", new { @class = "text-danger" })
+
+                                                    </div>
+                                                </div>
+                                                @*<div class='col-md-2'></div>*@
+                                                <div class="form-group col-md-6">
+                                                    <div class='col-md-5'>
+                                                        @Html.LabelFor(model => model.ServiceList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                    </div>
+
+                                                    <div class='col-md-7'>
+
+                                                        @Html.DropDownListFor(model => model.ServiceID, new SelectList(Model.ServiceList, "Value", "Text"), new { @class = "form-control minimal", @tabindex = 1 })
+                                                        @Html.ValidationMessageFor(model => model.ServiceID, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+                                                @*<div class='col-md-1'></div>*@
+                                            </div>
+
+                                            <br />
+                                            <br />
+
+                                            <div class='row'>
+                                                @*<div class='col-md-1'></div>*@
+                                                <div class="form-group col-md-6">
+
+                                                    <div class='col-md-5'>
+                                                        @Html.LabelFor(model => model.CertificateNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+
+                                                    </div>
+                                                    <div class='col-md-7'>
+                                                        @Html.TextBoxFor(model => model.CertificateNumber, new { @class = "form-control", @id = "txtCerificateNum", @style = "text-transform:uppercase;" })
+                                                        @Html.ValidationMessageFor(model => model.CertificateNumber, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                @*<div class='col-md-2'></div>*@
+                                                <div class="form-group col-md-6">
+                                                    <div class='col-md-5'>
+                                                        @Html.LabelFor(model => model.Captcha, new { @class = "PaddingTop10" }, Mandatory.Yes)
+
+                                                    </div>
+                                                    <div class='col-md-7'>
+                                                        @Html.CaptchaFor(model => model.Captcha, "GetCaptchaImage", "SearchCertificate", null, "Try Another Image? Click Here", new { @title = "Enter the text you see in an image", @class = "captcha-registration", @id = "txtCaptcha", @style = "text-align:center;", @tabindex = @iTabIndex++, autocomplete = "off" })<br>
+                                                        @Html.ValidationMessageFor(model => model.Captcha, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+                                                @*<div class='col-md-1'></div>*@
+
+                                            </div>
+                                        </fieldset>
+
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class='row'>
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+                                        <center>
+                                            <button type="button" class="btn btn-group-sm btn-success" id="btnSearch" style="padding:1%;">Search</button>
+                                            &nbsp; &nbsp;
+                                            <button type="reset" class="btn btn-group-sm btn-primary" id="btnReset" style="padding:1%;">Reset</button>
+                                            &nbsp; &nbsp;
+                                            <button type="button" class="btn btn-group-sm btn-primary" id="btnGotoLoginPage" style="padding:1%;">Back</button>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-4"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12" id="SearchCertResultPanel">
+
+                                <br>
+                                <br>
+
+                            </div>
+
+                            @*<div class="col-md-12" id="PdfDispPanel">
+
+                                    <br>
+                                    <br>
+
+                                </div>*@
+
+                        </div>
+                    </div>
+
+
+                    @*<div class="panel panel-default" id="CertDetailsPanel" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4;background-color:rgba(250, 250, 250, 0.745)">
+
+                                <div class="panel-body">
+                        <div class="col-md-12">
+                                        <br />
+                            </div>
+
+
+                                </div>
+                            </div>*@
+
+
+
+                    @*<div class="panel panel-default" id="PdfDetailPanel" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4;">
+
+                        <div class="panel-body">
+                            <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                                <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                                <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Certificate PDF</span>
+
+                                <div class="col-md-12" id="divDisplayCertificate">
+
+                                    <br>
+
+
+                                    <br>
+                                </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

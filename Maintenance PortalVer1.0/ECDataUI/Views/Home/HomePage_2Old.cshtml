@@ -1,0 +1,596 @@
+﻿@model CustomModels.Models.HomePage.HomePageModel
+
+@{
+    Layout = null;
+}
+
+@using System.Globalization;
+@using ECDataUI.Helper;
+@using ECDataUI.Common;
+@using ECDataUI.Session;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script language="javascript" type="text/javascript">
+    </script>
+    <style>
+        .modal-open .modal {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-inner > .item > img {
+            min-height: 300px;
+            max-height: 300px;
+            width: 100%;
+        }
+
+        /*.instructions-text ul, li {
+            font-weight: bold;
+            font-size: 20px;
+        }*/
+
+        .instructions-text ul, li {
+            /*font-weight: bold;*/
+            font-size: 18px;
+        }
+
+        /*.Corousel-Image{
+           width:100%;
+           height: 500px ;
+        }*/
+    </style>
+    <style type="text/css">
+        #epfo_logo_1 {
+            width: 8%;
+            height: auto;
+        }
+
+        #sep_line {
+            border-left: 1px solid #d7dbdd;
+            display: inline-block;
+            height: 5em;
+            vertical-align: middle;
+            width: 0;
+        }
+
+        .box-info-1, .box-info-2 {
+            min-height: 340px;
+        }
+    </style>
+
+    <style>
+        main:focus {
+            outline: 0;
+        }
+
+        .carousel-indicators li.active {
+            background: #808080 !important;
+        }
+
+        .carousel-indicators li {
+            background: #d7dbdd !important;
+        }
+    </style>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    @*<script src="~/Content/DataTables/Js_New/jquery-3.3.1.js"></script>*@
+    <script src="~/Content/DataTables/Js_New/jquery-3.3.1.min.js"></script>
+
+    <!-- bootbox center align code shrinivas -->
+    <link href="~/Content/index-copper.css" rel="stylesheet" />
+    <link href="~/Content/animate.min.css" rel="stylesheet" />
+    @*<link href="~/Content/effects.css" rel="stylesheet" />*@
+    <link href="~/Content/effects.min.css" rel="stylesheet" />
+    @*<script src="~/Content/js/index.js"></script>*@
+    <script src="~/Content/js/index.min.js"></script>
+    @*<script src="~/Content/js/isloading.js"></script>*@
+    <script src="~/Content/js/isloading.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    @*<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>*@
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootbox.min.js"></script>
+    <script src="~/Scripts/CommonJS/jquery.blockUI.min.js"></script> <!-- blockUI -- shrinivas -->
+    <script src="~/Scripts/CommonJS/jquery.validate.min.js"></script>
+    @*<script src="~/Scripts/CommonJS/jquery.validate.unobtrusive.js"></script>*@
+    <script src="~/Scripts/CommonJS/jquery.validate.unobtrusive.min.js"></script>
+    @*<script src="~/Content/HomePage/dist/js/adminlte.js"></script>*@
+    <script src="~/Content/HomePage/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    @*<script src="../dist/js/demo.js"></script>*@
+    <link href="~/Content/HomePage/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Theme style -->
+    <link href="~/Content/HomePage/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/Content/HomePage/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+    @*<link href="~/Content/HomePage/css/Admin-LTE-Fonts.css" rel="stylesheet" />*@
+    <link href="~/Content/HomePage/css/Admin-LTE-Fonts.min.css" rel="stylesheet" />
+    @*<link href="~/Content/website.css" rel="stylesheet" />*@
+    <link href="~/Content/website.min.css" rel="stylesheet" />
+    <link href="~/Content/HomePage/css/MenuTilesForScaleWOHighlight.css" rel="stylesheet" />
+
+    <script>
+        var DefaultModuleID = '@Model.DefaultModuleID';
+        var DefaultModuleName = '@Model.DefaultModuleName';
+        var IsMobileNumberVerfied = '@Model.IsMobileNumberVerfied'; // shrinivas
+    </script>
+
+    <script src="~/Scripts/CommonJS/sha512.min.js"></script>
+    <script src="~/Scripts/HomePage/HomePage.js"></script>
+    @*<script src="~/Scripts/HomePage/HomePage.min.js"></script>*@
+    @*<script src="~/Scripts/HomePage/HomePage.min.js"></script>*@
+
+    <style>
+        .bg-navy {
+            background-color: #405F7F !important;
+        }
+
+        .boldText {
+        }
+
+        .focus-box {
+            border-radius: 50%;
+            display: block;
+            height: 145px;
+            margin: auto auto 10px;
+            position: relative;
+            transition: all 0.2s ease-in-out 0s;
+            width: 145px;
+        }
+
+        .arc {
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .pixeden {
+            bottom: 0;
+            display: block;
+            height: 63px;
+            left: 0;
+            margin: auto;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .buttonEnter {
+            border-radius: 4px;
+            /*background-color: #405F7F;*/
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            /*padding: 20px;*/
+            width: 50%;
+            transition: all 0.5s;
+            cursor: pointer;
+            /*margin: 5px;*/
+            margin-left: 25%;
+            height: 47px !important;
+            margin-bottom: 2%;
+            margin-top: 2%;
+        }
+
+            .buttonEnter span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.5s;
+            }
+
+                .buttonEnter span:after {
+                    content: '\00bb';
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    right: -20px;
+                    transition: 0.5s;
+                }
+
+            .buttonEnter:hover span {
+                padding-right: 25px;
+            }
+
+                .buttonEnter:hover span:after {
+                    opacity: 1;
+                    right: 0;
+                }
+
+
+        .widget-user-2 .widget-user-username {
+            margin-left: 30%;
+            margin-top: -3px;
+            margin-bottom: 5px;
+            font-size: 27px;
+            font-weight: 300 !important;
+        }
+
+        .ModuleInfoClass {
+            margin-top: 6px;
+        }
+
+        img {
+            /*border-radius: 42%;
+            width: 230px;
+            height: 80px;*/
+        }
+
+        .topnav {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+            /* Style the links inside the navigation bar */
+            .topnav a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+                /* Change the color of links on hover */
+                .topnav a:hover {
+                    background-color: #ddd;
+                    color: black;
+                }
+
+                /* Add a color to the active/current link */
+                .topnav a.active {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+
+        .vdivide {
+            border-left: thin solid #faf4f4;
+        }
+
+        @@media screen and (max-width: 400px) {
+
+            .UserNameRow {
+                margin-top: 11%;
+            }
+        }
+
+
+        .verticalLine {
+            border-top: 1px solid black;
+            border-bottom: 75px solid black;
+            border-radius: 100%;
+            position: absolute;
+            left: 0px;
+            height: 71px;
+            width: 2px;
+            opacity: 0.2;
+            background-color: #aaa;
+            margin: auto;
+            margin-top: auto;
+            margin-top: 3%;
+        }
+        
+        .KaveriSangam-icon-img {
+            text-align: left;
+        }
+
+            .KaveriSangam-icon-img > img {
+                width: 10%;
+                float: left;
+                margin-top: -12px;
+                padding: 5px;
+            }
+
+    </style>
+</head>
+
+@{
+    //string[] arrColorPanels = new string[3] { "bg-navy", "bg-aqua-active", "bg-purple" };
+    //string[] arrColorCodes = new string[3] { "#405F7F", "#00a7d0", "#00a7d0" };
+    //string[] arrColorPanels = new string[5] { "bg-navy", "bg-aqua-active", "bg-red", "bg-yellow", "bg-purple" };
+    //string[] arrColorCodes = new string[5] { "#405F7F", "#00a7d0", "#DD4B39", "#DD4B39", "#F39C12" };
+
+    //string[] arrColorPanels = new string[7] { "bg-navy", "bg-aqua-active", "bg-olive", "bg-orange", "bg-red", "bg-yellow", "bg-purple" };
+    //string[] arrColorCodes = new string[7] { "#405F7F", "#00a7d0", "#3D9970", "#00a7d0", "#DD4B39", "#DD4B39", "#F39C12" };
+
+    int colorCnt = 0;
+    int ListCount = Model.MenuListReturn.Count;
+    int NoOfRows = ListCount / 3;
+    //int NoOfRows = ListCount / 2;
+    if (NoOfRows == 0)
+    {
+        NoOfRows = 1;
+    }
+    bool toBreak = false;
+}
+
+<body>
+    <header>
+        @*navbar-inverse*@
+        <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+            <div id="top-header">
+                <span id="top1" style="margin-left: 2%;float:right;">
+                    @*           <img class="india-flag-img" src="../../Content/images/flag.png" />*@
+                    <img src="../../Content/images/Icon_Karnataka.svg.png" style="height: 20px;width: 26px;">
+
+                    &nbsp;
+                    <a id="href_color" rel="noopener noreferrer" target="_blank" title="Government of Karnataka" href="https://www.Karnataka.gov.in">
+                        <span id="gov_of_india_txt" class="SmallCaps" >
+                            Government of Karnataka
+                        </span>
+                    </a>&nbsp;&nbsp;
+                </span>
+                <!-- Top Heaader -->
+                <div style="font-size: 12px; color: #FFFFFF;">
+                    <div style="min-height: 5px;"></div>
+                </div>&nbsp;&nbsp;
+
+            </div>
+            @*<div class="container" style="border-bottom: 1px solid #E5E4E2 !important;">
+
+                    <span id="header-icon">
+                        <div class="main-icon-1">
+                            <span class="KaveriSangam-icon-img">
+                                <img src="../../Content/images/KaveriSangamLogo.png" style="width: 10%;">
+                            </span>
+                            <span class="goa-icon-img">
+                                <img src="../../Content/images/Icon_Karnataka.svg.png" style="height: 100px;width: 130px;">
+                            </span>
+                        </div>
+
+                        <div class="" style="font-size: 150%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;">
+                            DEPARTMENT OF STAMPS AND REGISTRATION
+                        </div>
+                        <div class="" style="font-size: 120%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;">
+                            GOVERNMENT OF KARNATAKA
+                        </div>
+                    </span>
+                </div>*@
+            <div class="col-md-12 col-xs-12 row" style="margin-top: 8px;">
+                <div class="col-md-8 col-xs-8">
+                    <div class="col-md-4 col-xs-4">
+                        <span class="KaveriSangam-icon-img">
+                            <img src="../../Content/images/KaveriSangamLogo.png" style="width: 60%;">
+                        </span>
+                    </div>
+                    <div class="col-md-1 col-xs-1" style="margin-left: -13%;">
+                        <div class="verticalLine"></div>
+                    </div>
+                    <div class="col-md-7 col-xs-7" style="margin-left: -13%;">
+                        <div class="" style="font-size: 150%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;">
+                            DEPARTMENT OF STAMPS AND REGISTRATION
+                        </div>
+                        <div class="" style="font-size: 120%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;">
+                            GOVERNMENT OF KARNATAKA
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <span class="goa-icon-img">
+                        @*<img src="../../Content/images/Icon_Karnataka.svg.png" style="height: 100px;width: 130px;">*@
+                    </span>
+                </div>
+            </div>
+
+
+            @*Added by Shubham Bhagat on 23-10-2019 for Shifting name header above and making proper UI*@
+            @*<div class="row col-md-12 UserNameRow" style="border-bottom: 1px solid #E5E4E2 !important; margin-bottom: 1%;">*@
+            <div class="row col-md-12 UserNameRow" style="border-bottom: 1px solid #E5E4E2 !important;">
+                <div class="col-md-3 addressClass" style="font-size: medium; color: #5F6F81;display:flex;">
+                    @*Welcome :*@ <i class="fa fa-user" aria-hidden="true" style="font-size: 20px;"></i>&nbsp;<b>@Model.UserName</b>
+                    <div class="" style="margin-left:2%;margin-top: -3px;padding-left:2%;">
+                        <div class="dropdown">
+                            @*<label class="dropdown-toggle" data-toggle="dropdown" title="Update your profile" style="height:20px !important;margin-top:4%;font-family:Arial, Helvetica, sans-serif;font-weight:bold;"> <b>Update your Profile</b></label>&nbsp;&nbsp;*@
+                            <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown" title="Update your profile" style="height:20px !important;padding: 0px 12px;color: red;background-color: #E8E8E8;border-color: #969696;">
+                                <span class="caret" style="margin-top:-55% !important;"></span>
+                            </button>
+                            <ul class="dropdown-menu" style="border: solid 1px #CDDDEF;">
+                                <li style="background-color:#E8E9E9;"><a href=@Url.Action("ChangePassword", "UserProfileDetails" , new { Area="UserManagement" }) style="font-size:100%;">Change Password</a></li>
+                                <li style="background-color:#E8E9E9;"><a href=@Url.Action("ViewUserProfileDetails", "UserProfileDetails" , new { Area="UserManagement" }) style="font-size:100%;">Edit Profile</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="" style="">
+                        <div class="col-md-9" style="padding-left: 0%;">
+                            <div class="col-md-5"></div>
+                            <div class="col-md-3" style="padding-left:0px;">
+                            </div>
+                        </div>
+                        <div class="col-md-3 addressClass" style="text-align: right; font-size: medium; color: #5F6F81; cursor: pointer;">
+                            <b id="btnLoggOffID">Log Off</b>&nbsp;&nbsp;<i class="fa fa-sign-out" aria-hidden="true" style="font-size: 20px;vertical-align: middle;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="space-50"></div>
+        <div class="space-50" style="height: 75px !important"></div>
+    </header>
+    <br>
+    @*Added by Shubham Bhagat on 23-10-2019 for Shifting name header above and making proper UI*@
+    @*<div class="row" style="min-height: 250px;margin-bottom:3%;">*@
+    <div class="row" style="min-height: 250px;margin-bottom:3%; margin-top: 1%;">
+        <div class="col-md-12" style="padding-left: 1%;">
+            <div class="col-md-12">
+                <div class="wrapper" @*style="margin-right: 20px" *@>
+                    <div class="" style="background-color: white">
+                        @*@if (Model.MenuListReturn.Count == 1)
+                            {
+                                <div class="row" style="padding-top: 0%; padding-bottom: 2%;padding-left: 2%;border-radius:16px;border: 2px solid #D1D1D1; box-shadow: 2px 2px 2px #dadada;padding-right: 11%;">
+                                    @for (int i = 0; i < Model.MenuListReturn.Count; i = i + 2)
+                                    {
+                                        <div class="col-md-4" style="min-height: 100%;">
+                                            @for (int j = 0; j < 2; j++)
+                                            {
+                                                if (ListCount == (i + j))
+                                                {
+                                                    toBreak = true;
+                                                    break;
+                                                }
+                                                if (ListCount >= (i + j))
+                                                {
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="margin-top:10%;margin-bottom:38%;border: solid 3px #DBDBDB;border-radius: 8px;box-shadow: 4px 4px 21px #c9c9c9;padding-top:10%;padding-bottom:10%;">
+                                                            <div class="row" style="padding-top: 0%; padding-bottom: 3%;">
+                                                                <div class="col-md-12" style="border:2px solid #D1D1D1;">
+                                                                    <div class="box-widget widget-user-2" style="width: 90%;padding-left: 0%;height: 241px;padding-left: 7%;margin-top: 7%;">
+                                                                        <div>
+                                                                            <div id="wrap" onclick="loadMenus(@Model.MenuListReturn[(i + j)].IntMenuId , '@Model.MenuListReturn[(i + j)].IntModuleId','@Model.MenuListReturn[(i + j)].StrMenuName')" title="Enter into @Model.MenuListReturn[(i + j)].StrMenuName Service" class="widget-user-header" style="background-color:#F8F8F8; border:solid 1px #CDCDCD;border-radius:5px; min-height:20%;width: 93%;margin-left: 7%;max-height: 69px;padding-bottom:19%;">
+                                                                                <div class="" style="" title="" id="divMainModule_@Model.MenuListReturn[(i + j)].IntModuleId">
+                                                                                    @if (Model.MenuListReturn[(i + j)].StrMenuName == "User Management")
+                                                                                    {
+                                                                                        <h3 class="widget-user-username" style="margin-left:8%;font-size:24px !important;">
+                                                                                            <i class="@Model.MenuListReturn[(i + j)].ModuleIcon" id="ModuleIcon_@Model.MenuListReturn[(i + j)].IntModuleId" style="font-size:85%;"></i>&nbsp;&nbsp;&nbsp;
+                                                                                            @Model.MenuListReturn[(i + j)].StrMenuName
+                                                                                        </h3>
+                                                                                    }
+                                                                                    else
+                                                                                    {
+                                                                                        <h3 class="widget-user-username" style="margin-left:21%;">
+                                                                                            <i class="@Model.MenuListReturn[(i + j)].ModuleIcon" id="ModuleIcon_@Model.MenuListReturn[(i + j)].IntModuleId" style="font-size:85%;"></i>&nbsp;&nbsp;&nbsp;
+                                                                                            @Model.MenuListReturn[(i + j)].StrMenuName
+                                                                                        </h3>
+                                                                                    }
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                colorCnt++;
+                                            }
+
+                                            @{ colorCnt = 0;
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {*@
+                        <div class="row" style="padding-top: 0%; padding-bottom: 0%;padding-left: 0%;border-radius:16px;border: 2px solid #D1D1D1; box-shadow: 2px 2px 2px #dadada;">
+                            @for (int i = 0; i < Model.MenuListReturn.Count; i = i + 1)
+                            {
+                                if (i % 3 == 0)
+                                {
+                                    @Html.Raw("<div class='row col-md-12 col-sm-12 col-xs-12'>")
+                                }
+                                <div class="col-md-4" style="min-height: 100%;">
+                                    @for (int j = 0; j < 1; j++)
+                                    {
+                                        if (ListCount == (i + j))
+                                        {
+                                            toBreak = true;
+                                            break;
+                                        }
+                                        if (ListCount >= (i + j))
+                                        {
+                                            <div class="row">
+                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                    <div class="row" style="padding-top: 0%;">
+                                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                                            <div class="box box-widget widget-user-2" style="width: 90%;padding-left: 0%;margin-top: 8%;" onclick="loadMenus(@Model.MenuListReturn[(i + j)].IntMenuId , '@Model.MenuListReturn[(i + j)].IntModuleId','@Model.MenuListReturn[(i + j)].StrMenuName')">
+                                                                @*<fieldset class="afew" style="background-color: #F8F8F8;border: 1px solid #CDCDCD;border-radius: 14px;margin-left: 1%;margin-right: 1%;">*@
+                                                                <fieldset class="hoverFieldSet" style="border: 1px solid #CDCDCD;border-radius: 14px;margin-left: 1%;margin-right: 1%;">
+                                                                    <legend style="background-color: #73A9D9;font-size: 200%;margin-left:3%;margin:4% auto;border-radius: 10px;width: 19%;color: white;padding-top: 2%;padding-bottom: 1.5%;text-wrap:normal;"><i class="@Model.MenuListReturn[(i + j)].ModuleIcon" id="ModuleIcon_@Model.MenuListReturn[(i + j)].IntModuleId" style="font-size:2em;color:white;"></i></legend>
+                                                                    @*<div id="wrap" onclick="loadMenus(@Model.MenuListReturn[(i + j)].IntMenuId , '@Model.MenuListReturn[(i + j)].IntModuleId','@Model.MenuListReturn[(i + j)].StrMenuName')" title="Enter into @Model.MenuListReturn[(i + j)].StrMenuName Service" class="style_prevu_kit blue scale widget-user-header" style="border:solid 1px #CDCDCD;border-radius:15px; min-height:20%;width: 80%;margin-left: 0%;margin-bottom:2.5%;">*@
+                                                                    <div id="wrap" title="Enter into @Model.MenuListReturn[(i + j)].StrMenuName Service" class="style_prevu_kit blue scale widget-user-header hoverNestedClass" style="border-radius:15px; min-height:20%;width: 80%;margin-left: 0%;">
+                                                                        <div class="" style="" title="" id="divMainModule_@Model.MenuListReturn[(i + j)].IntModuleId">
+                                                                            <div class="row">
+                                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                                    <div class="">
+                                                                                        <h3 style="color:black;font-size:180%;">
+                                                                                            @Model.MenuListReturn[(i + j)].StrMenuName
+                                                                                        </h3>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row">
+                                                                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                                                                        <div class="">
+                                                                                            <h5 style="color:black;min-height:80px;text-align:justify;">
+                                                                                                @Model.MenuListReturn[(i + j)].ModuleDescription
+                                                                                                @*weit hrueh ueru uerh er g rugeru grye gegwegwe unig yg buwey tbyuweg byuwey weg tywyrg wyuegrt yuweuy weyg we w  ygweyuergwyue ryu*@
+                                                                                            </h5>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </fieldset>
+                                                            </div>
+                                                            @if ((i + j) == 0)
+                                                            {
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    @{colorCnt++; }
+                                </div>
+                                if (i % 3 == 2)
+                                {
+                                    @Html.Raw("</div>")
+                                }
+                            }
+                        </div>
+                        @*}*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-4" style="min-height: 45px;margin-top: 1.05%;">
+        <div class="row" id="bottom-footer">
+            <div class="col-md-12">
+                <!--<span>&copy;2016 PMRPY. All rights reserved</span> -->
+                <div>
+                    <span id="footer_msg_1">@*Designed and Developed by e-Gov Solution Group, C-DAC Pune*@</span>
+                </div>
+                @*<span><span id="last_updated">Last Updated</span>: Friday, 23 December 2016</span>*@
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- OTP pop up modal Shrinivas-->
+    <div id="divViewOTPValidationModal" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+        <div class="modal-dialog" style="margin-top:80px; width:45%; margin:10% auto !important;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<button type="button" class="close" id="btnCloseOTPModal" data-dissmiss="modal">&times;</button>*@
+                    <i class="fa fa-times-circle text-danger removeIcon pull-right" id="btnCloseOTPModal" style="cursor: pointer; font-size: 120%;" title="Close"></i>
+                    <h4 class="modal-title">
+                        <span class="" style="color: #5F6F81; font-size:100%;">Validate OTP</span>
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div id="divLoadOTPValidationView" style="margin-left:10%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- OTP pop up modal Shrinivas-->
+
+</body>
+</html>

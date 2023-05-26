@@ -1,0 +1,482 @@
+﻿@model CustomModels.Models.MISReports.ECCCSearchStatistics.ECCCSearchStatisticsViewModel
+@using ECDataUI.Helper
+
+<script src="~/Areas/MISReports/Scripts/ECCCSearchStatistics/ECCCSearchStatisticsView.js">
+
+</script>
+
+
+<style>
+    .datepicker {
+        z-index: 1600 !important;
+    }
+
+
+
+    /* Customize the label (the container) */
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        vertical-align: middle !important;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    /*td {
+        word-wrap: break-word;
+    }*/
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        /*// word-wrap: normal;*/
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /*// width:35px;*/
+    }
+
+    /*table.dataTable tbody th,
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }*/
+
+    tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important; /* Not working */
+    }
+
+    /*table.dataTable th {
+        white-space: nowrap;
+    }*/
+
+    /*table, td {
+        word-break: break-all !important;
+    }*/
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+    /*td:nth-last-child(3) {
+        text-align: right;
+    }
+
+    td:last-child {
+        text-align: center;
+    }
+
+    td:nth-last-child(4), td:nth-last-child(3) {
+        text-align: left;
+    }*/
+
+    .dataTables_scrollBody {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    /*td, th {
+        border: 1px solid;
+    }*/
+    /*added by mayank content 23-06-2021 for ECCC Statistics*/
+    tb, th {
+        border: 1px solid;
+    }
+
+    th {
+        border: 1px initial !important;
+        border-color: darkslategrey !important;
+    }
+</style>
+
+<div class="container">
+
+    <div class="col-md-offset-0">
+
+        <h3 style="text-align:center;color:#3177b4 ;">EC/CC Search Statistics<span style="color:black"></span></h3>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div>
+                <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                    <form id="SearchParametersForm">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <div class="row" style="padding-top:1%;padding-bottom:1%;" id="HiddedRow">
+                            <div class="col-md-3" id="DroListDivID">
+                                <div class="col-md-5">
+                                    @Html.LabelFor(model => model.DROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.DropDownListFor(model => model.DROCode, @Model.DROfficeList, new { @class = "form-control minimal", id = "DroListID", autocomplete = "off", tabindex = 1 })
+                                    @Html.ValidationMessageFor(model => model.DROCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-3" id="SRODropDownListID">
+                                <div class="col-md-5">
+                                    @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.DropDownListFor(model => model.SROCode, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 2 })
+                                    @Html.ValidationMessageFor(model => model.SROCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div><div class="col-md-3" id="financialYearDropDownListID">
+                                <div class="col-md-5">
+                                    @Html.LabelFor(model => model.FinancialYearList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.DropDownListFor(model => model.FinancialyearCode, @Model.FinancialYearList, new { @class = "form-control minimal", id = "financialYearListID", autocomplete = "off", tabindex = 3 })
+                                    @Html.ValidationMessageFor(model => model.FinancialyearCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-3" id="MonttListDivID">
+                                <div class="col-md-5">
+                                    @Html.LabelFor(model => model.MonthList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.DropDownListFor(model => model.MonthCode, @Model.MonthList, new { @class = "form-control minimal", id = "MonthListID", autocomplete = "off", tabindex = 4 })
+                                    @Html.ValidationMessageFor(model => model.MonthCode, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                <input  value="OfficeWise" type="radio" name="RDOBtnFilter" /> <label>Office Wise</label>
+                                <input style="margin-left:5%;" type="radio" name="RDOBtnFilter" value="DurationWise" /> <label>Duration Wise</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 ">
+                                    <button id="ViewBtn" type="button" class="btn btn-primary" onclick="GetSummaryAndDetails()">View</button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    @*<div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">Summary</span>
+            </div>
+            <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                    <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span></b> </h6></i></div>
+                    <table id="SummaryTable" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;" border="1">
+                        <thead>
+                            <tr>
+                                <th colspan="13">
+                                    @Html.LabelFor(model => model.DROfficeList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.DroName, new { id = "DroName", disabled = "disabled", style = "padding-right: 20px; " })
+                                    @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.SroName, new { id = "SroName", disabled = "disabled", style = "padding-right: 20px; " })
+                                    @Html.LabelFor(model => model.FinancialYearList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.FinancialYearName, new { id = "FYName", disabled = "disabled", style = "padding-right: 20px; " })
+
+                                </th>
+
+                            </tr>
+
+                            <tr>
+                                <th style="vertical-align:middle;" rowspan="2">S No.</th>
+                                <th style="vertical-align:middle;" rowspan="2">@Html.Label(Model.MonthName, new { id = "colNameYear", style = "font-weight:bold" })</th>
+                                <th style="vertical-align:middle;" rowspan="2">Total User logged</th>
+
+
+                                <th style="vertical-align: middle" colspan="3"> EC Search Statistics  </th>
+                                <th style="vertical-align: middle" colspan="3"> CC Search Statistics  </th>
+                                @*ADDED BY PANKAJ ON 11-06-2021*@
+    @*<th style="vertical-align: middle"> Anywhere EC  </th>
+            <th style="vertical-align: middle"> Local EC  </th>
+            <th style="vertical-align: middle"> Anywhere CC  </th>
+            <th style="vertical-align: middle"> Local CC  </th>
+        </tr>
+
+        <tr>
+            <th style="vertical-align:middle;">Total EC Searched</th>
+            <th style="vertical-align:middle;">Total EC Submitted</th>
+            <th style="vertical-align:middle;">Total EC Signed</th>
+            <th style="vertical-align:middle;">Total CC Searched</th>
+            <th style="vertical-align:middle;">Total CC Submitted</th>
+            <th style="vertical-align:middle;">Total CC Signed</th>*@
+    @*ADDED BY PANKAJ ON 11-06-2021*@
+    @*   <th style="vertical-align:middle;">Total EC Signed</th>
+                                    <th style="vertical-align:middle;">Total CC Signed</th>
+                                    <th style="vertical-align:middle;">Total EC Signed</th>
+                                    <th style="vertical-align:middle;">Total CC Signed</th>
+
+
+                            </tr>
+
+                            </thead>
+                        </table>
+                        <div id="ExcelDivId">
+                            <button type='button' class='btn btn-success' onclick="EXCELDownloadFun()"><i style='padding-right:3%;' class='fa fa-file-excel-o'></i>Download as Excel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+
+
+
+    <div class="panel panel-default" id="SearchResultDetail" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapseDetail' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchParaDetail" aria-expanded="false" aria-controls="DtlscollapseSearchParaDetail" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaDetail" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">Details</span>
+            </div>
+            <div id="DtlscollapseSearchParaDetail" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                    <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span></b> </h6></i></div>
+                    <table id="DetailTable" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th colspan="13">
+                                    @Html.LabelFor(model => model.DROfficeList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.DroName, new { id = "DroName", disabled = "disabled", style = "padding-right: 20px; " })
+                                    @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.SroName, new { id = "SroName", disabled = "disabled", style = "padding-right: 20px; " })
+                                    @Html.LabelFor(model => model.FinancialYearList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.FinancialYearName, new { id = "FYName", disabled = "disabled", style = "padding-right: 20px; " })
+                                    @Html.LabelFor(model => model.MonthList, new { @class = "PaddingTop10", style = "font-weight:bold" }):@Html.Label(Model.MonthName, new { id = "MonthName", disabled = "disabled", style = "padding-right: 20px; " })
+
+
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <th style="vertical-align:middle;" rowspan="2">S No.</th>
+                                <th style="vertical-align:middle;" rowspan="2">@Html.Label(Model.MonthName, new { id = "colNameMonth", style = "font-weight:bold" })</th>
+                                <th style="vertical-align:middle;" rowspan="2">Total User logged</th>
+
+                                <th style="vertical-align: middle" ; colspan="3">Online EC Search </th>
+                                <th style="vertical-align: middle" ; colspan="3">Online CC Search </th>
+                                @*ADDED BY PANKAJ ON 11-06-2021*@
+                                <th style="vertical-align: middle"> Anywhere EC Search </th>
+                                <th style="vertical-align: middle"> Local EC Search  </th>
+                                <th style="vertical-align: middle"> Anywhere CC Search </th>
+                                <th style="vertical-align: middle"> Local CC Search </th>
+                            </tr>
+
+
+                            <tr>
+
+                                <th style="vertical-align:middle;">Total EC Searched</th>
+                                <th style="vertical-align:middle;">Total EC Submitted</th>
+                                <th style="vertical-align:middle;">Total EC Signed</th>
+                                <th style="vertical-align:middle;">Total CC Searched</th>
+                                <th style="vertical-align:middle;">Total CC Submitted</th>
+                                <th style="vertical-align:middle;">Total CC Signed</th>
+                                @*ADDED BY PANKAJ ON 11-06-2021*@
+                                <th style="vertical-align:middle;">Total EC Signed</th>
+                                <th style="vertical-align:middle;">Total EC Signed</th>
+                                <th style="vertical-align:middle;">Total CC Signed</th>
+                                <th style="vertical-align:middle;">Total CC Signed</th>
+
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th id="head" colspan="2" style="font-weight:bold">Total </th>
+                                @*<th >@Html.Label(Model.TotalUserLoggedIn, new { id = "thTotalUserLoged", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalECSearched, new { id = "thTotalEcSearch", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalECSubmitted, new { id = "thTotalEcSubmitted", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalECSigned, new { id = "thTotalEcSigned", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalCCSearched, new { id = "thTotalCcSearch", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalCCSubmitted, new { id = "thTotalCcSubmitted", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalCCSigned, new { id = "thTotalCcSigned", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalAnywhereEC, new { id = "thTotalAnywhereEcSearch", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalLocalEC, new { id = "thTotalLocalEcSearch", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalAnywhereCC, new { id = "thTotalAnywhereCcSearch", style = "font-weight:bold" }) </th>
+                    <th >@Html.Label(Model.TotalLocalCC, new { id = "thTotalLocalCcSearch", style = "font-weight:bold" }) </th>*@
+                                <th id="test">@Html.Label("", new { id = "thTotalUserLoged", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalEcSearch", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalEcSubmitted", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalEcSigned", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalCcSearch", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalCcSubmitted", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalCcSigned", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalAnywhereEcSearch", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalLocalEcSearch", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalAnywhereCcSearch", style = "font-weight:bold" }) </th>
+                                <th>@Html.Label("", new { id = "thTotalLocalCcSearch", style = "font-weight:bold" }) </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="row">
+                        <div id="ExcelDivId" class="col-md-12">
+                            <button type='button' class='btn btn-success' onclick="EXCELDownloadFun()"><i style='padding-right:3%;' class='fa fa-file-excel-o'></i>Download as Excel</button>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

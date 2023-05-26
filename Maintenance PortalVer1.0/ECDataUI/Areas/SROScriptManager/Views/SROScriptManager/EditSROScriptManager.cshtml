@@ -1,0 +1,246 @@
+﻿
+@using ECDataUI.Helper;
+@model CustomModels.Models.SROScriptManager.SROScriptManagerModel
+
+
+<script src="~/Areas/SROScriptManager/Scripts/ScriptManagerDetails.js"></script>
+
+<style>
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place front is invalid - may break your css so removed */
+        padding-top: 100px; /* Location of the box - don't know what this does?  If it is to move your modal down by 100px, then just change top below to 100px and remove this*/
+        left: 0;
+        right: 0; /* Full width (left and right 0) */
+        top: 0;
+        bottom: 0; /* Full height top and bottom 0 */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        z-index: 9999; /* Sit on top - higher than any other z-index in your site*/
+    }
+
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 132px;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+
+    .HorizontalLine2 {
+        border-bottom: 1px solid gray;
+        border-radius: 100%;
+        /*position: absolute;*/
+        margin-left: 4.5%;
+        height: 0%;
+        width: 90%;
+        opacity: 0.5;
+        background-color: #aaa;
+        margin-top: 6.5%;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    th {
+        /*// word-wrap: normal;*/
+        vertical-align: middle;
+    }
+
+    table, td {
+        word-break: break-all !important;
+    }
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+
+    .dataTables_scrollBody {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    /*table.dataTable tbody th {
+        white-space: nowrap;
+    }*/
+</style>
+
+<div class="container">
+    <div class="col-md-offset-0">
+        @*col-md-offset-0 well*@
+        <div class="">
+            <div class="row">
+                <br />                
+
+                @* Datatable for existing ticket details *@
+                <div class="container">
+
+                    <div class="col-md-offset-0">
+
+                        <h3 style="text-align:center;color:#3177b4;">Script Manager Details</h3>
+                        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                            <form id="SearchParametersForm">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                <div class="panel-body">
+                                    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                                        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                        <span class="" style="color: #FFF; font-size: 120%;">
+                                            Search Parameters
+                                        </span>
+                                    </div>
+                                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                                        <div class='row'>
+
+                                            <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                                <div class="col-md-4" id="">
+                                                </div>
+
+                                                <div class="col-md-4" id="ServicePackNumber">
+                                                    <div class="col-md-4">
+                                                        @Html.LabelFor(model => model.ServicePackNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        @Html.TextBoxFor(model => model.ServicePackNumber, new { @class = "form-control ", @id = "txtSrchServicePackNumber", @tabindex = 2, @title = "Service Pack Number", @maxlength = 5, @placeholder = "Service Pack Version" })
+                                                        @Html.ValidationMessageFor(model => model.ServicePackNumber, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4" id="">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-offset-2">
+
+                                                <div class="form-group col-md-8">
+                                                    <div class='BTNwrapper' style="padding-left:13%;margin-top:2%;">
+                                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="2">Search</button>
+                                                    </div>
+                                                    <style>
+                                                        .BTNwrapper {
+                                                            text-align: center;
+                                                        }
+
+                                                        .button {
+                                                            position: absolute;
+                                                            top: 50%;
+                                                        }
+                                                    </style>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                        <div class="panel-body">
+                            <div id='scriptManagerListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                                <span style="cursor: pointer; margin-bottom: 20px;">
+                                    <span id="ToggleIconID" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                                </span>
+                                <span class="" style="color: #fff; font-size: 120%;">Script Manager Details</span>
+                            </div>
+                            <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                                    <table id="scriptManagerDetailsListTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; text-align:center; width:100%">
+                                        <thead style="text-align:center;">
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                @*Below line added by Omkar on 04092020*@
+                                                <th>Script ID</th>
+                                                @*Above line added by Omkar on 04092020*@
+
+                                                <th style="width:150px;">Script</th>
+                                                <th>ServicePack</th>
+                                                <th>Description</th>
+                                                <th>Script Date</th>
+                                                <th>Active Status</th>
+                                                <th>Edit</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+
+                                <div class="row" style="padding-bottom:1%;">
+                                    <div class="col-md-4"></div>
+                                    <div class='BTNwrapper col-md-2' style="">
+                                        <span id="PDFSPANID"></span>
+                                        @*<button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="PdfDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as PDF</button>*@
+                                    </div>
+                                    <div class='BTNwrapper col-md-2' style="text-align:left;">
+                                        <span id="EXCELSPANID"></span>
+                                        @*<button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="excelDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as Excel</button>*@
+                                    </div>
+                                    <div class="col-md-4" style="padding-left:19%;">
+                                        @*<h6> <i> This Report is generated on:   </i></h6>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="dvScriptManagerMain" style="display: none; width: auto">
+    <div class="modal fade" id="dvScriptManagerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document" style="width: 90%">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title"><b>Script Manager</b></h4>
+                </div>
+
+                <div class="modal-body divEmbed" id="dvScriptManagerModalBody">
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

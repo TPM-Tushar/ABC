@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KAIGR_SEARCHDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="RPT_ProcessingIterationMaster">
+    <Key>
+      <PropertyRef Name="IterationID" />
+    </Key>
+    <Property Name="IterationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsDro" Type="bit" Nullable="false" />
+    <Property Name="InsertDateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+  </EntityType>
+  <Function Name="FN_MONTHYEAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="DISPSEQ" Type="int" />
+          <Property Name="MONTHID" Type="int" />
+          <Property Name="MonthName" Type="varchar" MaxLength="1000" />
+          <Property Name="year" Type="varchar" MaxLength="100" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="UPS_DB_GET_TARGET_ACHIEVED_FYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_ARTICLELIST_TOP10WISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_CURRENT_REVENUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_CURRENT_REVENUE_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_CURRENT_STATUS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="DistrictCode" Type="int" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_FYWISE_PROGRESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_Get_HIGHLIGHTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_OFFICESTARTTIME" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_OFFICESTARTTIME_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SALES_STASTICS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SUMMARY_TABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SUMMARY_TABLE_DAYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SUMMARY_TABLE_FYEARWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SUMMARY_TABLE_MONTHWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SUMMARY_TABLE_UPTODATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_SURCHARGE_CESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODESTR" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_TARGET_ACHIEVED_FYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_TARGET_LINE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="districtCode" Type="int" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_HIGHVALUE_SUMMARY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_INSERT_HIGHLIGHTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="FLAG" Type="char" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_DAYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="MONTH" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_DOCUMENTWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_MONTHWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_RANGEWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="FROMDATE" Type="date" Mode="In" />
+    <Parameter Name="TODATE" Type="date" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_HIGHVALUE_PROPERTIES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="fromRange" Type="int" Mode="In" />
+    <Parameter Name="ToRange" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_JurisdictionalWiseDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_SALEDEED_REGISTERED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+    <Parameter Name="PropertyTypeID" Type="int" Mode="In" />
+    <Parameter Name="AmountRange" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+    <Parameter Name="isDRO" Type="int" Mode="In" />
+    <Parameter Name="DocumentTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+    <Parameter Name="isDRO" Type="int" Mode="In" />
+    <Parameter Name="DocumentTypeID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="KAIGR_SEARCHDBModelStoreContainer">
+    <EntitySet Name="RPT_ProcessingIterationMaster" EntityType="Self.RPT_ProcessingIterationMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

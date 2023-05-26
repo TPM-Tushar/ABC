@@ -1,0 +1,169 @@
+﻿@model CustomModels.Models.KaveriSupport.AppDeveloperViewModel
+
+@using System.Configuration;
+
+
+<script>
+
+    var MaxFileSizeToUpload = '@ConfigurationManager.AppSettings["MaxFileSizeToUploadFileForEncryption"]';
+
+</script>
+
+
+<script src="~/Areas/KaveriSupport/Scripts/KaveriSupport.min.js"></script>
+
+<script src="~/Areas/KaveriSupport/Scripts/TicketDetailsList.min.js"></script>
+
+
+
+
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 132px;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    table, td {
+        word-break: break-all !important;
+    }
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+
+
+    ::placeholder {
+        color: #858281;
+        opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #858281;
+    }
+
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: #858281;
+    }
+</style>
+
+
+
+@*<div class="panel panel-default">
+    <div class="panel-heading" style="text-align: center; font-size: medium;">Encrypt Enclosure</div>
+    <div class="panel-body">*@
+
+
+
+<div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; margin-left: 0.5%;">
+    @*<div class="panel-body">*@
+    <div class='row well-custom' id='' data-toggle="collapse in" data-target="" aria-expanded="false" aria-controls="" style="height: 35px; padding-top: 10px;">
+        @*<span style="cursor:pointer;margin-bottom:20px;">
+                <span id="ToggleIconID" class="fa fa-minus-square-o fa-pull-left" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+            </span>*@
+
+
+
+        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+        <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Encrypt Enclosure</span>
+        @*<span id="closeFirmSearchForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>*@
+    </div>
+    <div style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; overflow-y: auto;">
+
+
+
+        <div id="dialog" class="alert alert-info">
+            <span style="font-weight: bold">
+                @*• The File type must be .sql and file Size should be less than 6 MB !*@
+                <i class='fa fa-info-circle' style="font-size:140%"></i>&nbsp;&nbsp;<strong> The File type must be .SQL and file Size should be less than 6 MB  </strong>
+            </span>
+        </div>
+
+
+        <form id="frmEncryptSQLPatch">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table class="table table-bordered">
+                <tr>
+                    <th style="width: 50%"><label for="exampleFormControlFile1">Enter ticket number</label></th>
+                    <td>
+                        @Html.TextBoxFor(x => x.TicketNumber, new { @class = "AllowOnlyNumber", id = "txtticketNumber", maxlength = 8, @placeholder = "Ticket Number" })
+                        @*@Html.ValidationMessageFor(x => x.TicketNumber)*@
+                        @Html.ValidationMessageFor(x => x.TicketNumber, "", new { @class = "text-danger" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <th style="width: 50%"><label for="exampleFormControlFile1">Select SQL file to encrypt</label></th>
+                    <td>
+                        <input type="file" class="form-control-file" id="SQLPatchFile">
+                        @Html.HiddenFor(x => x.Filepath, new { id = "hdnSQLPatchFile" })
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <div class="col-md-12" style="text-align:center;margin-bottom:1%;">
+
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top:1px;" id="btnEncryptPatchFile" title="Upload">Upload </button><i>&nbsp;</i>
+        </div>
+
+    </div>
+</div>
+
+
+
+@* Datatable for private key store details *@
+
+<div class="panel panel-default" style="width: 100%;margin-left:0.5%;margin-right:0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+    <div class="panel-body">
+        <div class='row well-custom' id='PrivateKeyDetailsListCollapse' data-toggle="collapse" data-target="#collapsePrivateKeyDetailsList" aria-expanded="false" aria-controls="collapseRoleDetailsList" style="height: 35px; padding-top: 10px;margin-left:0px;margin-right:0px;">
+            <span style="cursor:pointer;margin-bottom:20px;">
+                <span id="ToggleIconID2" class="fa fa-minus-square-o fa-pull-left" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+            </span>
+            <span class="" style="color: #fff;font-size:120%;">Private key details for Uploaded patch file</span>
+
+        </div>
+        <div id="collapsePrivateKeyDetailsList" class="collapse" style="text-align: center;margin-left:0px; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+            <div class="container-fluid">
+                <div class="data-table-wrapper table-responsive col-md-12" style="max-height:inherit;">
+                    <table id="PrivateKeyDetailsListTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; text-align:center; width:100%">
+                        <thead style="text-align:center;">
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Ticket Number</th>
+                                <th>File Name</th>
+                                <th>Upload DateTime</th>
+                                <th>Active Status</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,240 @@
+﻿@using ECDataUI.Helper;
+@model CustomModels.Models.SROScriptManager.DROScriptManagerModel
+
+<script src="~/Areas/SROScriptManager/Scripts/EditDROScriptManager.js"></script>
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 70%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .HorizontalLine2 {
+        border-bottom: 1px solid gray;
+        border-radius: 100%;
+        /*position: absolute;*/
+        margin-left: 4.5%;
+        height: 0%;
+        width: 90%;
+        opacity: 0.5;
+        background-color: #aaa;
+        margin-top: 6.5%;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    table, td {
+        word-break: break-all !important;
+    }
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+</style>
+
+<div class="container">
+    <div class="col-md-offset-0">
+        @*col-md-offset-0 well*@
+        <div class="">
+            <div class="row">
+                <br />
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+                    @*<div class="panel-body">*@
+                    <div class='row well-custom' id='' data-toggle="collapse in" data-target="" aria-expanded="false" aria-controls="" style="height: 35px; padding-top: 10px;">
+
+                        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                        <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Edit DRO Scripts </span>
+                        @*<span id="closeFirmSearchForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>*@
+                    </div>
+                    <div style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; overflow-y: auto;">
+                        <div id="">
+                            <form method="POST" id="DROScriptManagerUpdateForm" style="margin-left: 10px;margin-right: 10px;">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                @Html.HiddenFor(x => x.ScriptID, new { @id = "hdnScriptID" })
+                                @Html.HiddenFor(x => x.IsActive, new { @id = "hdnIsActive" })
+                                <fieldset>
+                                    <div style="border: solid 1px #d1d1d1;border-radius:12px;display:flow-root">
+
+                                        <div class="col-md-12" style="display:flex">
+
+                                            <div class="col-md-5 col-xs-5">
+                                                <br>
+                                                <div class="form-group">
+                                                    @*@Html.HiddenFor(model => model.UserID)*@
+                                                </div>
+                                                <fieldset>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class='col-md-5' style="padding-top: 4%;">
+                                                                @Html.LabelFor(model => model.ScriptDescription, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class='col-md-6' style="padding-top:0.4%">
+                                                                @Html.TextAreaFor(model => model.ScriptDescription, new { @class = "form-control ", @id = "txtScriptDescription", @placeholder = "Script Description", @maxlength = 100, @tabindex = 1 })
+                                                                @Html.ValidationMessageFor(model => model.ScriptDescription, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+
+                                                </fieldset>
+                                            </div>
+
+
+                                            <div class="col-md-2 col-xs-2" style="text-align: center;">
+                                                <div class="verticalLine2"></div>
+                                            </div>
+
+                                            <div class="col-md-5 col-xs-5">
+                                                <br>
+                                                <fieldset>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class='col-md-5' style="padding-top: 4%;">
+                                                                @Html.LabelFor(model => model.ServicePackNumber, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class='col-md-6' style="padding-top:0.4%">
+                                                                @Html.TextBoxFor(model => model.ServicePackNumber, new { @class = "form-control ", @id = "txtServicePackNumber", @tabindex = 2, @title = "Service Pack Number", @maxlength = 5, @placeholder = "Service Pack Version" })
+                                                                @Html.ValidationMessageFor(model => model.ServicePackNumber, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+
+                                                </fieldset>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="HorizontalLine2">
+
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="col-md-3 col-xs-3">
+                                                <br>
+                                                <fieldset>
+                                                    <div class="row">
+                                                        <button type="button" class="btn btn-group-md btn-primary" id="btnDownloadDROScript" title="Download Script" tabindex="5">Download Script Details</button><i>&nbsp;</i>
+                                                    </div>
+                                                    <br />
+
+                                                </fieldset>
+                                            </div>
+
+                                            <div class="col-md-4 col-xs-4">
+                                                <br>
+                                                <fieldset>
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class='col-md-3' style="padding-top: 1%;">
+                                                                @Html.LabelFor(model => model.FilePath, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class='col-md-8' style="padding-top:0.4%">
+                                                                <input type="file" class="form-control-file" id="SQLDROScriptManagerFile" tabindex="3">
+                                                                @Html.HiddenFor(x => x.FilePath, new { id = "hdnSQLDROScriptManagerFile" })
+                                                                @Html.HiddenFor(x => x.ScriptContent, new { id = "hdnDROSQLScriptContent" })
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+
+                                                </fieldset>
+
+                                            </div>
+
+                                            <div class="col-md-4 col-xs-4">
+                                                <br>
+                                                <fieldset>
+                                                    @*<div class="row">
+                                                            <div class="form-group">
+                                                                <div class='col-md-5' style="padding-top: 1%;">
+                                                                    @Html.LabelFor(model => model.IsActive, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class='col-md-2' style="padding-top:0.4%">
+                                                                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "form-check-input", @id = "IsUpdateScriptActive", @tabindex = 4, @title = "IsScriptActive" })
+                                                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>*@
+
+                                                    <div class="row">
+                                                        <div class="form-group">
+                                                            <div class='col-md-5' style="padding-top: 1%;">
+
+                                                                @Html.Label("Is Script Active")
+                                                                <label style="color: red; display: inline">*</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class='col-md-7' style="padding-top:0.4%">
+                                                                <span>@Html.RadioButtonFor(model => model.IsActive, "1", new { @class = "form-check-input", @id = "rdnEnable", @tabindex = 4, @title = "Enable" })</span> <label style="font-weight :bold">Enable</label>
+                                                                <span>@Html.RadioButtonFor(model => model.IsActive, "2", new { @class = "form-check-input", @id = "rdnDisable", @tabindex = 5, @title = "Disable" })</span> <label style="font-weight :bold">Disable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+
+                                                </fieldset>
+                                            </div>
+
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12" style="text-align:center;margin-top:1%;">
+                                        <button type="button" class="btn btn-group-md btn-success" id="btnUpdateDROScript" title="Update Script Details" tabindex="5">Update DRO Script</button><i>&nbsp;</i>
+                                        @*<button type="reset" class="btn btn-group-md btn-warning btnResetClass" id="btnReset" title="Reset" tabindex="5">Reset</button><i>&nbsp;</i>*@
+                                    </div>
+                                </fieldset>
+
+
+                                <br /><br />
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+

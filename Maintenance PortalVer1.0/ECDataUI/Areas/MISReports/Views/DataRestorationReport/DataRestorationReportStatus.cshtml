@@ -1,0 +1,655 @@
+﻿@model CustomModels.Models.MISReports.DataRestorationReport.DataRestorationPartialViewModel
+@using ECDataUI.Helper
+@using ECDataUI.Session;
+@using ECDataUI.Common;
+
+<style>
+    /*div.divScrollClass {
+        overflow-y: scroll;
+        height: 250px;
+        width: 100%;
+    }*/
+
+    .tableFixHead {
+        overflow-y: auto;
+        height: 250px;
+    }
+
+        .tableFixHead thead th {
+            position: sticky;
+            top: 0;
+            background-color: white;
+        }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .tableFixHead, .tableFixHead td {
+        box-shadow: inset 1px -1px #000;
+    }
+
+        .tableFixHead th {
+            box-shadow: inset 1px 1px #000, 0 1px #000;
+        }
+
+
+
+    /* ADDED ON 31-07-2020 AT 7:30 PM TO MAKE TABLE SCROLLABLE*/
+    /*thead ,tbody tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;*/ /* even columns width , fix width of table too*/
+    /*}*/
+    /*ABOVE CODE IS WORKING BUT DATATABLE IS NOT RENDING PROPERLY AFTER CLICKING ROW*/
+
+
+</style>
+
+<script src="~/Areas/MISReports/Scripts/DataRestorationReport/DataRestorationReportStatus.js"></script>
+<div class="row">
+    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+        <div class="row" style="padding-top:1%;padding-bottom:1%;">
+            <div class="col-md-12">
+                @Html.HiddenFor(m => m.ShowInitDateAndGeneratedKeyMsg, new { id = "ShowInitDateAndGeneratedKeyMsgID" })
+                @Html.HiddenFor(m => m.dB_RES_TABLE_WISE_COUNT_List.Count, new { id = "dB_RES_TABLE_WISE_COUNT_ListCoundID" })
+
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                    <div class="panel-body">
+                        <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                            <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                            <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                Data Restoration Initiation :
+                            </span>
+                        </div>
+                        <div class="" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <span><label style="font-size:initial;font-weight:bold;">Office Name :</label></span><span><label style="font-size:initial;">&nbsp;@Model.OfficeName</label></span>
+                                    <br>
+                                    <span><label style="font-size:initial;font-weight:bold;">Initiation Date :</label></span>&nbsp;<span id="InitiationDateSpanID"><label style="font-size:initial;">@Model.InitiationDate</label></span><span id="InitiationDateBTNSpanID">@Html.Raw(@Model.InitiationDateBtn)</span>
+                                    <br>
+                                </div>
+                                <div class="col-md-4">
+                                    <span><label style="font-size:initial;font-weight:bold;">Sub Registrar Name :</label></span>&nbsp;<span><label style="font-size:initial;">@Model.SRName</label></span>
+                                    <br>
+                                    <span><label style="font-size:initial;font-weight:bold;">Contact Number :</label></span>&nbsp;<span><label style="font-size:initial;">@Model.SRContactNumber</label></span>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @*<div class="col-md-2"></div>*@
+                                    <div class="col-md-10">
+                                        <span id="GenerateKeyTextSpanID">
+                                            @if (!Model.IsCompleted)
+                                            {
+                                                @Html.Raw(@Model.GenerateKeyBtnAndTextMsg)
+                                            }
+                                            @*<label style="font-size:initial;font-weight:bold;background-color:#94b5d1;">Your activation key is:
+                                                <span id="GenerateKeyValueSpanID">@Model.GenerateKeyValue</span>
+                                                    which is valid for 2 days only Please share this activation key to support person.
+                                                </label>*@
+                                        </span>
+                                        @*<span id="GenerateKeyBtnSpanID" style="padding-left:15%;">@Html.Raw(@Model.GenerateKeyBtn)</span>*@
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                @*ADDED BY SHUBHAM BHAGAT ON 15-07-2020*@
+                @if (Model.IsDatabaseNotRestored)
+                {
+                    <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                        <div class="panel-body">
+                            <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                    Error :
+                                </span>
+                            </div>
+                            <div class="" style="text-align: left;background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                                <span style=" margin-left:1%;">@Html.Raw(Model.DatabaseNotRestoredErrorMsg)</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+
+                @*ADDED BY PANKAJ ON 31-07-2020*@
+                @*@if (Model.dB_RES_ACTIONsForErrorHistory.Count > 0)
+                    {
+                        <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                            <div class="panel-body">
+                                <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                    <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                        DB Restoration Error History :
+                                    </span>
+                                </div>
+                                <div class="" style="text-align: left;background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                                    <div class="divScrollClass" id="dataInsertionTableDivID">
+                                        <table style="width:100%; border: 1px solid;">
+                                            <thead>
+                                                <tr>
+                                                    <th class="TableFontClass" style=" text-align: center;" width="5%">Sr No</th>
+                                                    <th class="TableFontClass" style=" text-align: center;" width="10%">Action Description</th>
+                                                    <th class="TableFontClass" style=" text-align: center;">Error Descripton</th>
+                                                    <th class="TableFontClass" style=" text-align: center;" width="11%">Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{ int Sr = 1;}
+                                                @foreach (var record in Model.dB_RES_ACTIONsForErrorHistory)
+                                                {
+                                                    <tr>
+                                                        <td class="TableFontClass">@Sr</td>
+                                                        <td class="TableFontClass">@record.ActionDescription</td>
+                                                        <td class="TableFontClass">@record.ErrorDescription</td>
+                                                        <td class="TableFontClass">@record.ActionDateTime</td>
+                                                    </tr>
+                                                    Sr += 1;
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }*@
+                @*END*@
+
+                @*@if (Model.IsDataRestored)
+                    {*@
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                    <div class="panel-body">
+                        <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                            <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                            <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                Database Backup Restored :
+                            </span>
+                        </div>
+                        <div class="" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                            @if (Model.dB_RES_ACTIONsForErrorHistory.Count > 0)
+                            {
+                                <div class="divScrollClass" id="dataInsertionTableDivID">
+                                    <table style="width:100%; border: 1px solid;">
+                                        <thead>
+                                            <tr>
+                                                <th class="TableFontClass" style=" text-align: center;">Sr No</th>
+                                                <th class="TableFontClass" style=" text-align: center;">Action Description</th>
+                                                <th class="TableFontClass" style=" text-align: center;">Error Descripton</th>
+                                                <th class="TableFontClass" style=" text-align: center;">Date</th>
+                                                @*<th class="TableFontClass" style=" text-align: center;" width="5%">Sr No</th>
+                                                    <th class="TableFontClass" style=" text-align: center;" width="10%">Action Description</th>
+                                                    <th class="TableFontClass" style=" text-align: center;">Error Descripton</th>
+                                                    <th class="TableFontClass" style=" text-align: center;" width="11%">Date</th>*@
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ int Sr = 1;}
+                                            @foreach (var record in Model.dB_RES_ACTIONsForErrorHistory)
+                                            {
+                                                <tr>
+                                                    <td class="TableFontClass" style=" text-align: center;">@Sr</td>
+                                                    <td class="TableFontClass">@record.ActionDescription</td>
+                                                    <td class="TableFontClass">@record.ErrorDescription</td>
+                                                    <td class="TableFontClass" style=" text-align: center;">@record.ActionDateTime</td>
+                                                </tr>
+                                                Sr += 1;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+
+
+
+                            @if (Model.IsDataRestored)
+                            {
+                                <div class="row" style="margin-left: 0%;margin-top:1%;">
+                                    @*<div class="row" style="margin-left: 1%;margin-top:1%;">*@
+                                    <div class="col-md-5">
+                                        <span><label style="font-size:initial;">Database Backup file name :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DB_Restored_upto_BAK_FileName</label></span><br />
+                                        <span><label style="font-size:initial;">Database Backup file date time :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DB_RES_BAK_FILE_DATETIME</label></span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <span @*style="margin-left:2%;"*@><label style="font-size:initial;">Database Backup file size :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DB_RES_BAK_FILE_Size</label></span><br />
+                                        <span @*style="margin-left:2%;"*@><label style="font-size:initial;">Database Restoration date time:</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DataRestorationDate</label></span>@*<br />*@
+                                    </div>
+
+                                    <div class="col-md-2"></div>
+
+                                    @*<span><label style="font-size:initial;">Database restored from bak file on :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DB_RES_BAK_FILE_DATETIME</label></span>
+                                        <span style="margin-left:2%;"><label style="font-size:initial;">Database restored from bak file size :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DB_RES_BAK_FILE_Size</label></span><br />
+                                        <span><label style="font-size:initial;">Restoration Date :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DataRestorationDate</label></span><br>*@
+
+                                </div><br>
+                                <div class="row"><span><label style="font-size:initial;margin-left:1%;font-weight:bold;">Data Restored upto :</label></span></div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <span><label style="font-size:initial;font-weight:bold;">Document Registration :</label></span><span><label style="font-size:initial;"></label></span><br>
+                                        <span><label style="font-size:initial;">Document Number :</label></span><span><label style="font-size:initial;">&nbsp;@Model.DocumentNumber</label></span><br>
+                                        <span><label style="font-size:initial;">Final Registration Number :</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastDocumentRegistrationNumber</label></span><br>
+                                        <span><label style="font-size:initial;">Document CDNumber :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.DocumentRegistrationCDNumber</label></span><br>
+                                        <br>
+                                        <span><label style="font-size:initial;font-weight:bold;">Marriage Registration :</label></span><span><label style="font-size:initial;"></label></span><br>
+                                        <span><label style="font-size:initial;">Marriage Registration Number :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastMarriageRegistrationNumber</label></span><br>
+                                        <span><label style="font-size:initial;">Marriage CDNumber :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.MarriageRegistrationCDNumber</label></span><br>
+                                        <br>
+                                        <span><label style="font-size:initial;font-weight:bold;">Notice Registration :</label></span><span><label style="font-size:initial;"></label></span><br>
+                                        <span><label style="font-size:initial;">Notice Registration Number :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastNoticeRegistrationNumber</label></span><br>
+                                        <br>
+                                        <span><label style="font-size:initial;font-weight:bold;">Receipts :</label></span><span><label style="font-size:initial;"></label></span><br>
+                                        <span><label style="font-size:initial;">Receipt ID :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.OtherReceiptID</label></span>
+                                        <span><label style="font-size:initial;margin-left:20%;">Receipt Number :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.ReceiptNumber</label></span>                                       
+
+                                    </div>
+                                    <div class="col-md-5">
+                                        <span><label style="font-size:initial;"></label></span><span><label style="font-size:initial;">&nbsp;</label></span><br>
+                                        <span><label style="font-size:initial;">Presentation Date :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.PresentDateTime</label></span><br>
+                                        <span><label style="font-size:initial;">Registration Date :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastDocumentRegistrationDate</label></span><br>
+                                        <span><label style="font-size:initial;"></label></span><span><label style="font-size:initial;">&nbsp;</label></span><br>
+                                        <br>
+                                        <span><label style="font-size:initial;"></label></span><span><label style="font-size:initial;">&nbsp;</label></span><br>
+                                        <span><label style="font-size:initial;">Registration Date :</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastMarriageRegistrationDate</label></span><br>
+                                        <span><label style="font-size:initial;"></label></span><span><label style="font-size:initial;">&nbsp;</label></span><br>
+                                        <br>
+                                        <span><label style="font-size:initial;"></label></span><span><label style="font-size:initial;">&nbsp;</label></span><br>
+                                        <span><label style="font-size:initial;">Notice Issue Date :</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastNoticeRegistrationDate</label></span><br>
+                                        <br>
+                                        <span><label style="font-size:initial;"></label></span><span><label style="font-size:initial;">&nbsp;</label></span><br>
+                                        <span><label style="font-size:initial;">Receipt Date time :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.ReceiptDateTime</label></span><br>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <br>
+                @*}*@
+
+                @*BELOW CODE ADDED BY SHUBHAM BHAGAT ON 06-05-2021 ADD BUTTON TO GENERATE SCRIPT*@
+                @if (@Model.Is_GenerateScriptBTN_UI)
+                {
+                    @Html.Raw(Model.GenerateScriptBTN_UI)
+                }
+                else
+                {
+                    if (@Model.IsScriptGenerationError)
+                    {
+                        <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                            <div class="panel-body">
+                                <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                    <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                        Error :
+                                    </span>
+                                </div>
+
+                                <div class="col-md-12" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                                    <div class="col-md-12" style="font-size:initial;"><span>@Html.Raw(@Model.IsScriptGenerationMsg)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @*BELOW CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020*@
+                    @*@if (Model.IsDataRestored)*@
+                    if (Model.IsDataRestored && (!Model.IsScriptGenerationError))
+                    //ABOVE CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020
+                    {
+                        //overflow - y:scroll;
+
+                        <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                            <div class="panel-body">
+                                <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                    <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                        Data to be Restored from Central Server :
+                                    </span>
+                                </div>
+                                <div class="" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                                    @if (KaveriSession.Current.RoleID == (short)CommonEnum.RoleDetails.SR)
+                                    {
+                                        <span id="NoteForApprovalForSRID">@Html.Raw(Model.NoteForApprovalForSR)</span>
+                                    }
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-8">
+                                                <table style="width:100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="TableFontClass" style=" text-align: center;">Module Name</th>
+                                                            @if (Model.dB_RES_TABLE_WISE_COUNT_List != null && (!Model.IsScriptGenerationError))
+                                                            {
+                                                                <th class="TableFontClass" style=" text-align: center;">No of records restored</th>
+                                                            }
+                                                            else
+                                                            {
+                                                                <th class="TableFontClass" style=" text-align: center;">No of records to be restored</th>
+                                                            }
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="TableFontClass">Document Registration :</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.Summary_Tbl_DM_Count</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="TableFontClass">Marriage Registration :</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.Summary_Tbl_MR_Count</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="TableFontClass">Notice Registration :</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.Summary_Tbl_NM_Count</td>
+                                                        </tr>
+                                                        @*BELOW CODE ADDED BY SHUBHAM BHAGAT ON 03-05-2021*@
+                                                        @*<tr>
+                                                            <td class="TableFontClass">Receipts :</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.Summary_Tbl_OtherReceipt_Count</td>
+                                                        </tr>*@
+                                                        @*ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 03-05-2021*@
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                    </div>
+
+
+                                    @*<div class="divScrollClass" id="dataInsertionTableDivID" Style="margin-top:1%;">*@
+                                    <div id="dataInsertionTableDivID" Style="margin-top:1%;">
+                                        <div class="tableFixHead">
+                                            <table style="width:100%;">
+                                                @*<thead style="width: calc( 100% - 1.5% );">*@
+                                                <thead>
+                                                    <tr>
+                                                        @*<th class="TableFontClass" style=" text-align: center;">Iteration Number</th>*@
+                                                        <th class="TableFontClass" style=" text-align: center;">Sr No</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Registration Type</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Registration Number</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Registration Date</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Status</th>
+                                                        @*BELOW CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020*@
+                                                        @*@if (Model.DataInsertionDetailsList.ElementAt(1).IterationNo > 1)*@
+                                                        @* Commented and changed by shubham bhagat on 28-09-2020*@
+                                                        @if ((Model.DataInsertionDetailsList.Count > 0) ? (Model.DataInsertionDetailsList.ElementAt(0).IterationNo > 1) : false)
+                                                        //@if ((Model.DataInsertionDetailsList.Count > 0) ? (Model.DataInsertionDetailsList.ElementAt(1).IterationNo > 1) : false)
+                                                        // ABOVE CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020
+                                                        {
+                                                            <th class="TableFontClass" style=" text-align: center;">Script Rectification History</th>
+                                                        }
+                                                    </tr>
+                                                </thead>
+                                                @*<tbody style="display: block;height: 250px;overflow: auto;">*@
+                                                <tbody>
+                                                    @foreach (var item in Model.DataInsertionDetailsList)
+                                                    {
+                                                        <tr>
+                                                            @*<td class="TableFontClass" style=" text-align: center;">@item.IterationNo</td>*@
+                                                            <td class="TableFontClass" style=" text-align: center;">@item.SrNo</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@item.RegistrationType</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@item.RegistrationNumber</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@item.RegistrationDate</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@item.Status</td>
+                                                            @*BELOW CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020*@
+                                                            @*@if (Model.DataInsertionDetailsList.ElementAt(1).IterationNo > 1)*@
+                                                            @* Commented and changed by shubham bhagat on 28-09-2020*@
+                                                            @if ((Model.DataInsertionDetailsList.Count > 0) ? (Model.DataInsertionDetailsList.ElementAt(0).IterationNo > 1) : false)
+                                                            //@if ((Model.DataInsertionDetailsList.Count > 0) ? (Model.DataInsertionDetailsList.ElementAt(1).IterationNo > 1) : false)
+                                                            // ABOVE CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020
+                                                            {
+                                                                // COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 05-08-2020
+                                                                <td class="TableFontClass" style="word-wrap:anywhere !important;width:30%;">@Model.ScriptRectificationHistory</td>
+                                                                @*<td class="TableFontClass" style="word-wrap:break-word">@Model.ScriptRectificationHistory</td>*@
+                                                                @*<td class="TableFontClass">@item.ScriptRectificationHistory</td>*@
+                                                            }
+                                                        </tr>
+                                                    }
+                                                    @*ADDED BY SHUBHAM BHAGAT ON 15-07-2020 COMMENTED BELOW TR *@
+                                                    @*<tr></tr>*@
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />@*<br />*@
+                        if (@Model.ScriptExecutionErrorMsg.Count() > 0)
+                        {
+                            <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                                <div class="panel-body">
+                                    <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                        <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                            Error :
+                                        </span>
+                                    </div>
+
+                                    <div class="col-md-12" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                                        <div class="col-md-12" style="font-size:initial;"><span>@Html.Raw(@Model.ScriptExecutionErrorMsg)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div class="col-md-12" style="margin-top:1%;">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-7">
+                                <span id="ApproveBtnID">@Html.Raw(@Model.ApproveBtn)</span>
+                                <span id="DownloadScriptForTechAdminID">@Html.Raw(@Model.DownloadScriptForTechAdmin)</span>
+                                <span id="UploadScriptForTechAdminID">@Html.Raw(@Model.UploadScriptForTechAdmin)</span>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+
+                        <div class="col-md-12">
+                            @*<div class="col-md-2"></div>*@
+                            <div class="col-md-10"><span id="UploadScriptPartialViewDivID"></span></div>
+                        </div>
+                        <br />
+                    }
+
+
+
+                    @* Pankaj work here *@
+
+                    @*BELOW CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020*@
+                    @*if (Model.dB_RES_TABLE_WISE_COUNT_List != null)*@
+                    if (Model.dB_RES_TABLE_WISE_COUNT_List != null && (!Model.IsScriptGenerationError))
+                    // ABOVE CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 10-08-2020
+                    {
+                        <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                            <div class="panel-body">
+                                <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                    <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                        Data Verification Details :
+                                    </span>
+                                </div>
+                                <div class="col-md-12" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-8">
+                                                <table style="width:100%;">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="TableFontClass" style=" text-align: center;">Module Name</th>
+                                                            <th class="TableFontClass" style=" text-align: center;">Records to be restored</th>
+                                                            <th class="TableFontClass" style=" text-align: center;">Records restored</th>
+                                                            <th class="TableFontClass" style=" text-align: center;">Difference</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="TableFontClass">Document Registration :</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.DocumentRegistrationsToBeRestored</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.DocumentRegistratiosRestored</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">
+                                                                @if ((@Math.Abs(@Model.DocumentRegistrationsToBeRestored - Model.DocumentRegistratiosRestored)) == 0)
+                                                                {
+                                                                    <span>No</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>@Math.Abs(@Model.DocumentRegistrationsToBeRestored - Model.DocumentRegistratiosRestored)</span>
+                                                                }
+                                                            </td>
+                                                            @*<td class="TableFontClass" style=" text-align: center;">@Math.Abs(@Model.DocumentRegistrationsToBeRestored - Model.DocumentRegistratiosRestored)</td>*@
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="TableFontClass">Marriage Registration :</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.MarriageRegistratiosToBeRestored</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.MarriageRegistrationsRestored</td>
+
+                                                            <td class="TableFontClass" style=" text-align: center;">
+                                                                @if ((@Math.Abs(@Model.MarriageRegistratiosToBeRestored - Model.MarriageRegistrationsRestored)) == 0)
+                                                                {
+                                                                    <span>No</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>@Math.Abs(@Model.MarriageRegistratiosToBeRestored - Model.MarriageRegistrationsRestored)</span>
+                                                                }
+                                                            </td>
+                                                            @*<td class="TableFontClass" style=" text-align: center;">@Math.Abs(@Model.MarriageRegistratiosToBeRestored - Model.MarriageRegistrationsRestored)</td>*@
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="TableFontClass">Notice Registration :</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.NoticeRegistrationsToBeRestored</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Model.NoticeRegistrationsRestored</td>
+
+                                                            <td class="TableFontClass" style=" text-align: center;">
+                                                                @if ((@Math.Abs(@Model.NoticeRegistrationsToBeRestored - Model.NoticeRegistrationsRestored)) == 0)
+                                                                {
+                                                                    <span>No</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <span>@Math.Abs(@Model.NoticeRegistrationsToBeRestored - Model.NoticeRegistrationsRestored)</span>
+                                                                }
+                                                            </td>
+
+                                                            @*<td class="TableFontClass" style=" text-align: center;">@Math.Abs(@Model.NoticeRegistrationsToBeRestored - Model.NoticeRegistrationsRestored)</td>*@
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-1"></div>
+                                        </div>
+                                    </div>
+                                    <br />
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            @*<div class="col-md-offset-4">
+                                                <div class="form-group col-md-10">*@
+                                            @if (KaveriSession.Current.RoleID == (short)CommonEnum.RoleDetails.SR)
+                                            {
+                                                <div class='BTNwrapper' style="padding-left:0%;margin-top:1%;margin-bottom:1%">
+                                                    <span id="ConfirmBtnAndMsgId">@Html.Raw(@Model.ConfirmBtn)</span>
+                                                </div>
+                                            }
+                                            @*<span id="ConfirmMsg"><label style="font-size:initial;font-weight:normal;">@Html.Raw(@Model.ConfirmBtnMsg)</label></span>*@
+                                            @*</div>
+                                                </div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+
+                        if (KaveriSession.Current.RoleID == (short)CommonEnum.RoleDetails.TechnicalAdmin)
+                        {
+                            <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                                <div class="panel-body">
+                                    <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                        <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                            Table wise record comparison:
+                                        </span>
+                                    </div>
+                                    <div class="col-md-12" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            <table style="width:100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="TableFontClass" style=" text-align: center;">Sr No</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Table Name</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Records to be restored</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Records restored</th>
+                                                        <th class="TableFontClass" style=" text-align: center;">Difference</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @{ int SrNo = 1;}
+                                                    @foreach (var record in Model.dB_RES_TABLE_WISE_COUNT_List)
+                                                    {
+                                                        <tr>
+                                                            <td class="TableFontClass" style=" text-align: center;">@SrNo</td>
+                                                            <td class="TableFontClass">@record.TableName</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@record.RowsToBeInserted</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@record.RowsInserted</td>
+                                                            <td class="TableFontClass" style=" text-align: center;">@Math.Abs(@record.RowsToBeInserted - record.RowsInserted)</td>
+                                                        </tr>
+                                                        SrNo += 1;
+                                                    }
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        }
+                    }
+                    <br>
+                    if (Model.IsConclusionToDisplay)
+                    {
+
+                        <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                            <div class="panel-body">
+                                <div class='row well-custom' style="height: 35px; padding-top: 10px;text-align: left">
+                                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                                    <span class="" style="color: #FFF; font-size: 120%; font-weight: bold">
+                                        Conclusion
+                                    </span>
+                                </div> <div class="" style="text-align: left; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                                    <div class="row" style="padding-top:1%;padding-bottom:1%;">
+                                        @*<span><label style="font-size: initial; margin-left: 1%">Data restoration process completed successfully kindly verify and confirm.</label></span>*@
+                                        <span id="ConclusionMsgID">@Html.Raw(@Model.ConclusionMsg)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                }
+                @*ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 06-05-2021 ADD BUTTON TO GENERATE SCRIPT*@
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+﻿@model CustomModels.Models.ControllerAction.ControllerActionModel
+@using ECDataUI.Helper;
+
+<script src="~/Areas/UserManagement/Scripts/ControllerAction/addUpdateControllerAction.js"></script>
+@*
+<script src="~/Areas/UserManagement/Scripts/ControllerAction/addUpdateControllerAction.min.js"></script>*@
+
+
+<style>
+    .verticalLine1 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 88%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+
+    /*.verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;
+        left: 0px;
+        height: 88%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 5%;
+    }*/
+</style>
+<div class="col-md-offset-0">
+
+    <div class="panel panel-default" id="panelControllerAction" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+
+        <div class="panel-body">
+            <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-right: 0px; margin-left: 0px;">
+                <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                
+                <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Role </span>
+               
+
+
+ </div>
+            <form id="FormRoleActionAuth">
+
+
+                <div class="" style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; padding-left: 1%;padding-right: 1%;padding-bottom: 1%; overflow-y: auto;">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+
+                    <div class="" style="background: #fff; max-height: 600px;margin-bottom:2%;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-md-8">
+                                            @Html.HiddenFor(m => m.EncryptedID)
+                                            <div class="row" style="margin-top: 2%; margin-bottom: 2%;">
+                                                <div class="col-md-4">
+                                                    @Html.LabelFor(model => model.RoleId, new { @class = "control-label " }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-8">
+                                                    @Html.ListBoxFor(model => model.RoleId, @Model.RoleList, new { @class = "form-control", @id = "listbox", style = "width:20px;", tabindex = 4 })
+                                                    @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger", @id = "RoleError" })
+                                                </div>
+                                            </div>
+                                        </div><div class="col-md-2"></div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding-bottom:20%;">
+                        <div class="col-md-12" style="text-align:center;">
+                            <button type="button" class="btn btn-group-md btn-success" id="btnUpdateRoleAuth" title="Update">Update</button><i>&nbsp;</i>
+                            <button type="button" class="btn btn-group-md btn-danger " id="btnCancelRoleAuth" title="Cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

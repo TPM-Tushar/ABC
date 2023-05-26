@@ -1,0 +1,2 @@
+F:\2019\April\3-04-2019\Version 1\ECData\CustomModels\obj\x86\Debug\CustomModels.csprojAssemblyReference.cache
+F:\2019\April\3-04-2019\Version 1\ECData\CustomModels\obj\x86\Debug\CustomModels.csproj.CoreCompileInputs.cache

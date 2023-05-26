@@ -1,0 +1,203 @@
+﻿@model CustomModels.Models.DataEntryCorrection.PartyDetailsViewModel
+
+@using ECDataUI.Helper
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+    .panel-body {
+        padding: unset !important;
+    }
+</style>
+
+
+<script src="~/Areas/DataEntryCorrection/Scripts/PartyDetails/PartyDetails.js"></script>
+
+
+<div id="PartyDetailsOuterDiv">
+    @*//Added By Madhur 29-7-21*@
+
+   <!-- <div class="row">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapseDetail9' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchParaDetail9" aria-expanded="false" aria-controls="DtlscollapseSearchPara9" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaDetail9" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" id="SpanHeader" style="color: #fff; font-size: 120%;">Property Details</span>
+            </div>
+            <div id="DtlscollapseSearchParaDetail9" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                    @*@Html.HiddenFor(m => m.EncrytptedDocumentID, new { @class = "PaddingTop10", @Id = "EncryptedDocumentId" })*@
+                    <table id="PropertyDetailPartyTabTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+
+                        <thead>
+
+                            <tr>
+                                <th>Select</th>
+                                <th>Sr No.</th>
+                                <th>Final Registration Number</th>
+                                <th>Registration Date</th>
+                                <th>Execution Date</th>
+                                <th>Nature of Document</th>
+                                <th>PropertyDetails</th>
+                                <th>Village Name</th>
+                                <th>Total Area</th>
+                                <th>Schedule Description</th>
+                                <th>Market Value</th>
+                                <th>Consideration</th>
+                                <th>Claimant</th>
+                                <th>Executant</th>
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+-->
+
+    <div class="row">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapseDetail10' class="row well-custom" data-toggle="collapse" data-target="#DtlscollapseSearchParaDetail10" aria-expanded="false" aria-controls="DtlscollapseSearchPara10" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaDetail10" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" id="SpanHeader" style="color: #fff; font-size: 120%;">Selected Party Details</span>
+            </div>
+            <div id="DtlscollapseSearchParaDetail10" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                    @*@Html.HiddenFor(m => m.EncrytptedDocumentID, new { @class = "PaddingTop10", @Id = "EncryptedDocumentId" })*@
+                    <table id="SelectTablePartyTabID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>DR Order number</th>
+                                <th>Order Date</th>
+                                <th>Party Type</th>
+                                <th>First name</th>
+                                <th>Middle Name</th>
+                                <th>Last Name</th>
+                                <th>Order Note</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+                <div class="row well-custom" style="height: 35px; padding-top: 10px; cursor: pointer;text-align:left;padding-left:20px;">
+                    <span class="" style="color: #fff; font-size: 120%;">Add Party Details</span>
+                </div>
+                <div id="DtlPartyDetailsInner" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; @*padding-top: 1%;*@ border-radius: 5px;">
+
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                        <form id="PartyDetailsForm">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="panel-body">
+                                <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                                    <div class="row" style="text-align: left;">
+
+                                        @*<div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                            <div class="col-md-2" style="text-align: right;">
+                                                @Html.LabelFor(model => model.PartyDetailsAddEditModel.Section68NoteForParty, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                            </div>
+                                            <div class="col-md-9">
+                                                @Html.TextAreaFor(model => model.PartyDetailsAddEditModel.Section68NoteForParty, new { @class = "form-control", @id = "txtPartySection68Note", @title = "Section 68 Note for Party Details", @minlength = 1, tabindex = 1 })
+                                                @Html.ValidationMessageFor(model => model.PartyDetailsAddEditModel.Section68NoteForParty, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>*@
+
+                                        <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                            <div class="col-md-3"></div>
+                                            <div class="col-md-2" style="text-align: right;">
+                                                @Html.LabelFor(model => model.PartyDetailsAddEditModel.PartyTypeID, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                            </div>
+                                            <div class="col-md-3">
+                                                @Html.DropDownListFor(model => model.PartyDetailsAddEditModel.PartyTypeID, @Model.PartyDetailsAddEditModel.PartyTypeList, new { @class = "form-control minimal", id = "partyTypeListID", autocomplete = "off", tabindex = 2 })
+                                                @Html.ValidationMessageFor(model => model.PartyDetailsAddEditModel.PartyTypeID, "", new { @class = "text-danger" })
+                                            </div>
+                                            @*<div class="col-md-3"></div>
+                                            <div class="col-md-3"></div>*@
+
+                                        </div>
+
+
+                                        <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                            <div class="col-md-2"></div>
+                                            <div class="col-md-3" style="display: flex;">
+                                                @Html.LabelFor(model => model.PartyDetailsAddEditModel.FirstName, new { @class = "PaddingTop10", style = "width: inherit;width:30%;" }, Mandatory.Yes)
+                                                @Html.TextBoxFor(model => model.PartyDetailsAddEditModel.FirstName, new { @class = "form-control", @id = "txtCurrentNumber", @placeholder = "First name", @title = "First name", tabindex = 3, style = "width:70%;" })
+                                                @Html.ValidationMessageFor(model => model.PartyDetailsAddEditModel.FirstName, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-md-3" style="display: flex;">
+                                                @Html.LabelFor(model => model.PartyDetailsAddEditModel.MiddleName, new { @class = "PaddingTop10", style = "width: inherit;width:30%;" }, Mandatory.No)
+                                                @Html.TextBoxFor(model => model.PartyDetailsAddEditModel.MiddleName, new { @class = "form-control", @id = "txtCurrentSurveyNumber", @placeholder = "Middle Name", @title = "First name", tabindex = 4, style = "width:70%;" })
+                                                @Html.ValidationMessageFor(model => model.PartyDetailsAddEditModel.MiddleName, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-md-3" style="display: flex;">
+                                                @Html.LabelFor(model => model.PartyDetailsAddEditModel.LastName, new { @class = "PaddingTop10", style = "width: inherit;width:30%;" }, Mandatory.No)
+                                                @Html.TextBoxFor(model => model.PartyDetailsAddEditModel.LastName, new { @class = "form-control", @id = "txtCurrentSurveyNoChar", @placeholder = "Last Name", @title = "First name", tabindex = 5, style = "width:70%;" })
+                                                @Html.ValidationMessageFor(model => model.PartyDetailsAddEditModel.LastName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group" style="width:100%;text-align:center;">
+                                                <div class='BTNwrapper' style="margin-top:2%;">
+                                                    <button type="button" class="btn btn-group-md btn-success" id="AddPartyDetailsBtn" tabindex="6">Save</button>
+                                                </div>
+                                                <style>
+                                                    .BTNwrapper {
+                                                        text-align: center;
+                                                    }
+
+                                                    .button {
+                                                        position: absolute;
+                                                        top: 50%;
+                                                    }
+                                                </style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*Add Databale Divisions above*@
+    @*//Added By Madhur 29-7-21*@
+
+
+</div>

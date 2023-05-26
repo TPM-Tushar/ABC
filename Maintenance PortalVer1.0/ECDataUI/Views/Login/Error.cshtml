@@ -1,0 +1,70 @@
+﻿@* * Project Id    :
+    * Project Name  :   Kaveri
+    * Name          :   Error.cshtml
+    * Description   :
+    * Author        :
+    * Creation Date :
+    * Modified By   :   *@
+
+@*@model System.Web.Mvc.HandleErrorInfo*@
+
+@using ECDataUI.Session;
+
+@{
+    ViewBag.Title = "Error";
+        Layout = null;
+    //Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+
+
+
+@{
+    KaveriSession.Current.EndSession();
+    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+    Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+    Response.Cache.SetNoStore();
+    Response.Cookies.Add(new HttpCookie("KaveriSessionID", ""));
+}
+
+
+<html>
+<head>
+    <title>KAVERI</title>
+
+
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="~/Content/jquery.alerts.css" rel="stylesheet" />
+    <link href="~/Content/themes/bootstrap/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/themes/bootstrap/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/Content/HomePage/dist/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/HomePage/dist/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/Content/themes/bootstrap/css/jquery.dataTables.css" rel="stylesheet" />
+    <link href="~/Content/themes/datatables.responsive.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        <section class="content">
+
+            <div class="error-page">
+  
+                <div class="error-content">
+                    <h3><i class="fa fa-warning text-yellow"></i>Oops! Something went wrong.</h3>
+                    <p style="font-size:130%">
+                        We will work on fixing that right away.
+                        Meanwhile, you may <a href='/Login/LogoutError'> <b>return to Login</b></a>
+                    </p>
+
+                </div>
+            </div>
+            <!-- /.error-page -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ECDATA_DOCSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+    <Key>
+      <PropertyRef Name="DETAIL_ID" />
+    </Key>
+    <Property Name="DETAIL_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FUNCTIONALITY_ID" Type="Int32" Nullable="false" />
+    <Property Name="LOG_DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="INSERT_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CLASSNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="METHODNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_MASTER" Relationship="Self.FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_DEBUG_LOG" ToRole="ECLOG_FUNCTIONALITY_MASTER" />
+  </EntityType>
+  <EntityType Name="ECLOG_FUNCTIONALITY_MASTER">
+    <Key>
+      <PropertyRef Name="FUNCTIONALITY_ID" />
+    </Key>
+    <Property Name="FUNCTIONALITY_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FUNCTIONALITY_NAME" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FUNCTIONALITY_DESC" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="LEVEL_ID" Type="Int32" Nullable="false" />
+    <Property Name="PARENT_FUNCTIONALITY_ID" Type="Int32" />
+    <Property Name="STATUS" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_DEBUG_LOG" Relationship="Self.FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_MASTER" ToRole="ECLOG_FUNCTIONALITY_DEBUG_LOG" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_MASTER1" Relationship="Self.FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_MASTER" ToRole="ECLOG_FUNCTIONALITY_MASTER1" />
+    <NavigationProperty Name="ECLOG_FUNCTIONALITY_MASTER2" Relationship="Self.FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER" FromRole="ECLOG_FUNCTIONALITY_MASTER1" ToRole="ECLOG_FUNCTIONALITY_MASTER" />
+  </EntityType>
+  <Association Name="FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER">
+    <End Role="ECLOG_FUNCTIONALITY_MASTER" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="1" />
+    <End Role="ECLOG_FUNCTIONALITY_DEBUG_LOG" Type="Self.ECLOG_FUNCTIONALITY_DEBUG_LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ECLOG_FUNCTIONALITY_MASTER">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Principal>
+      <Dependent Role="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER">
+    <End Role="ECLOG_FUNCTIONALITY_MASTER" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="0..1" />
+    <End Role="ECLOG_FUNCTIONALITY_MASTER1" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ECLOG_FUNCTIONALITY_MASTER">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Principal>
+      <Dependent Role="ECLOG_FUNCTIONALITY_MASTER1">
+        <PropertyRef Name="PARENT_FUNCTIONALITY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ECDATA_DOCS_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ECLOG_FUNCTIONALITY_DEBUG_LOG" EntityType="Self.ECLOG_FUNCTIONALITY_DEBUG_LOG" />
+    <EntitySet Name="ECLOG_FUNCTIONALITY_MASTER" EntityType="Self.ECLOG_FUNCTIONALITY_MASTER" />
+    <AssociationSet Name="FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER" Association="Self.FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER">
+      <End Role="ECLOG_FUNCTIONALITY_MASTER" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+      <End Role="ECLOG_FUNCTIONALITY_DEBUG_LOG" EntitySet="ECLOG_FUNCTIONALITY_DEBUG_LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER" Association="Self.FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER">
+      <End Role="ECLOG_FUNCTIONALITY_MASTER" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+      <End Role="ECLOG_FUNCTIONALITY_MASTER1" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+    </AssociationSet>
+    <EntitySet Name="MAS_SchedulerMaster" EntityType="ECDATA_DOCSModel.MAS_SchedulerMaster" />
+    <EntitySet Name="SROCentralTransSchedularRuntimeDetails" EntityType="ECDATA_DOCSModel.SROCentralTransSchedularRuntimeDetails" />
+    <EntitySet Name="XELAuditSpecificationDetail" EntityType="ECDATA_DOCSModel.XELAuditSpecificationDetail" />
+    <EntitySet Name="XELReadJobDetails" EntityType="ECDATA_DOCSModel.XELReadJobDetails" />
+    <EntitySet Name="XELSchedulersExceptionLog" EntityType="ECDATA_DOCSModel.XELSchedulersExceptionLog" />
+    <EntitySet Name="XELTransmissionLog" EntityType="ECDATA_DOCSModel.XELTransmissionLog" />
+    <AssociationSet Name="FK_XELSchedulersExceptionLog_MAS_SchedulerMaster" Association="ECDATA_DOCSModel.FK_XELSchedulersExceptionLog_MAS_SchedulerMaster">
+      <End Role="MAS_SchedulerMaster" EntitySet="MAS_SchedulerMaster" />
+      <End Role="XELSchedulersExceptionLog" EntitySet="XELSchedulersExceptionLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XELAuditSpecificationDetail_XELReadJobDetails" Association="ECDATA_DOCSModel.FK_XELAuditSpecificationDetail_XELReadJobDetails">
+      <End Role="XELReadJobDetails" EntitySet="XELReadJobDetails" />
+      <End Role="XELAuditSpecificationDetail" EntitySet="XELAuditSpecificationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XELAuditSpecificationDetail_XELTransmissionLog" Association="ECDATA_DOCSModel.FK_XELAuditSpecificationDetail_XELTransmissionLog">
+      <End Role="XELTransmissionLog" EntitySet="XELTransmissionLog" />
+      <End Role="XELAuditSpecificationDetail" EntitySet="XELAuditSpecificationDetail" />
+    </AssociationSet>
+    <FunctionImport Name="USP_XEL_EXCEPTION_LOG" ReturnType="Collection(ECDATA_DOCSModel.USP_XEL_EXCEPTION_LOG_Result)">
+      <Parameter Name="srocode" Mode="In" Type="Int32" />
+      <Parameter Name="frmDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="isDRO" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_XEL_TRANSMISSION_LOG" ReturnType="Collection(ECDATA_DOCSModel.USP_XEL_TRANSMISSION_LOG_Result)">
+      <Parameter Name="srocode" Mode="In" Type="Int32" />
+      <Parameter Name="frmDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="isDRO" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_XEL_FILE_COUNT_OFFICEWISE" ReturnType="Collection(ECDATA_DOCSModel.USP_XEL_FILE_COUNT_OFFICEWISE_Result)">
+      <Parameter Name="isDRO" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_XEL_FILE_LIST_OFFICEWISE" ReturnType="Collection(ECDATA_DOCSModel.USP_XEL_FILE_LIST_OFFICEWISE_Result)">
+      <Parameter Name="srocode" Mode="In" Type="Int32" />
+      <Parameter Name="isDRO" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="USP_XEL_Files_RootDirPath_List_officewise" ReturnType="Collection(String)">
+      <Parameter Name="isDRO" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="MAS_SchedulerMaster">
+    <Key>
+      <PropertyRef Name="SchedulerID" />
+    </Key>
+    <Property Name="SchedulerID" Type="Int32" Nullable="false" />
+    <Property Name="Scheduler_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="XELSchedulersExceptionLog" Relationship="ECDATA_DOCSModel.FK_XELSchedulersExceptionLog_MAS_SchedulerMaster" FromRole="MAS_SchedulerMaster" ToRole="XELSchedulersExceptionLog" />
+  </EntityType>
+  <EntityType Name="SROCentralTransSchedularRuntimeDetails">
+    <Key>
+      <PropertyRef Name="IDetailID" />
+    </Key>
+    <Property Name="IDetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SROCode" Type="Int32" />
+    <Property Name="SROName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SchedularRuntime" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="DROCode" Type="Int32" />
+    <Property Name="isdro" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="XELAuditSpecificationDetail">
+    <Key>
+      <PropertyRef Name="IDetailID" />
+    </Key>
+    <Property Name="IDetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="Int64" Nullable="false" />
+    <Property Name="EVENT_TIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LOGIN_NAME" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="SERVER_NAME" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="DATABASE_NAME" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_NAME" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+    <Property Name="STATEMENT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="KEYVALUE" Type="Binary" MaxLength="200" FixedLength="false" />
+    <Property Name="SROCode" Type="Int32" />
+    <Property Name="HOST_NAME" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="TransmissionID" Type="Int64" Nullable="false" />
+    <Property Name="DROCode" Type="Int32" />
+    <Property Name="isdro" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="XELReadJobDetails" Relationship="ECDATA_DOCSModel.FK_XELAuditSpecificationDetail_XELReadJobDetails" FromRole="XELAuditSpecificationDetail" ToRole="XELReadJobDetails" />
+    <NavigationProperty Name="XELTransmissionLog" Relationship="ECDATA_DOCSModel.FK_XELAuditSpecificationDetail_XELTransmissionLog" FromRole="XELAuditSpecificationDetail" ToRole="XELTransmissionLog" />
+  </EntityType>
+  <EntityType Name="XELReadJobDetails">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SROCode" Type="Int32" />
+    <Property Name="FromYear" Type="Int32" Nullable="false" />
+    <Property Name="FromMonth" Type="Int32" Nullable="false" />
+    <Property Name="ToYear" Type="Int32" Nullable="false" />
+    <Property Name="ToMonth" Type="Int32" Nullable="false" />
+    <Property Name="JobRegisterDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsJobCompleted" Type="Boolean" Nullable="false" />
+    <Property Name="JobCompletionDateTime" Type="DateTime" Precision="3" />
+    <Property Name="NumberFilesRead" Type="Int64" />
+    <Property Name="IsErrorOccured" Type="Boolean" Nullable="false" />
+    <Property Name="ErrorMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DROCode" Type="Int32" />
+    <Property Name="isdro" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="XELAuditSpecificationDetail" Relationship="ECDATA_DOCSModel.FK_XELAuditSpecificationDetail_XELReadJobDetails" FromRole="XELReadJobDetails" ToRole="XELAuditSpecificationDetail" />
+  </EntityType>
+  <EntityType Name="XELSchedulersExceptionLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SROCode" Type="Int32" />
+    <Property Name="ExceptionType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InnerExceptionMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExceptionMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExceptionStackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ExceptionMethodName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="LogDate" Type="DateTime" Precision="3" />
+    <Property Name="SchedulerID" Type="Int32" />
+    <Property Name="DROCODE" Type="Int32" />
+    <Property Name="isdro" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="MAS_SchedulerMaster" Relationship="ECDATA_DOCSModel.FK_XELSchedulersExceptionLog_MAS_SchedulerMaster" FromRole="XELSchedulersExceptionLog" ToRole="MAS_SchedulerMaster" />
+  </EntityType>
+  <EntityType Name="XELTransmissionLog">
+    <Key>
+      <PropertyRef Name="TransmissionID" />
+    </Key>
+    <Property Name="TransmissionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SROCode" Type="Int32" />
+    <Property Name="AbsolutePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="RelativePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FileName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Checksum" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="isSuccessfullUpload" Type="Boolean" Nullable="false" />
+    <Property Name="TransmissionInitiateDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TransmissionCompleteDateTime" Type="DateTime" Precision="3" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="Month" Type="Int32" Nullable="false" />
+    <Property Name="FileSize" Type="Int64" />
+    <Property Name="IsFileReadSuccessful" Type="Boolean" Nullable="false" />
+    <Property Name="FileReadDateTime" Type="DateTime" Precision="3" />
+    <Property Name="EventStartDate" Type="DateTime" Precision="3" />
+    <Property Name="EventEndDate" Type="DateTime" Precision="3" />
+    <Property Name="DROCode" Type="Int32" />
+    <Property Name="isdro" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="XELAuditSpecificationDetail" Relationship="ECDATA_DOCSModel.FK_XELAuditSpecificationDetail_XELTransmissionLog" FromRole="XELTransmissionLog" ToRole="XELAuditSpecificationDetail" />
+  </EntityType>
+  <Association Name="FK_XELSchedulersExceptionLog_MAS_SchedulerMaster">
+    <End Type="ECDATA_DOCSModel.MAS_SchedulerMaster" Role="MAS_SchedulerMaster" Multiplicity="0..1" />
+    <End Type="ECDATA_DOCSModel.XELSchedulersExceptionLog" Role="XELSchedulersExceptionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAS_SchedulerMaster">
+        <PropertyRef Name="SchedulerID" />
+      </Principal>
+      <Dependent Role="XELSchedulersExceptionLog">
+        <PropertyRef Name="SchedulerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XELAuditSpecificationDetail_XELReadJobDetails">
+    <End Type="ECDATA_DOCSModel.XELReadJobDetails" Role="XELReadJobDetails" Multiplicity="1" />
+    <End Type="ECDATA_DOCSModel.XELAuditSpecificationDetail" Role="XELAuditSpecificationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XELReadJobDetails">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="XELAuditSpecificationDetail">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XELAuditSpecificationDetail_XELTransmissionLog">
+    <End Type="ECDATA_DOCSModel.XELTransmissionLog" Role="XELTransmissionLog" Multiplicity="1" />
+    <End Type="ECDATA_DOCSModel.XELAuditSpecificationDetail" Role="XELAuditSpecificationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XELTransmissionLog">
+        <PropertyRef Name="TransmissionID" />
+      </Principal>
+      <Dependent Role="XELAuditSpecificationDetail">
+        <PropertyRef Name="TransmissionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="USP_XEL_EXCEPTION_LOG_Result">
+    <Property Type="Int64" Name="LogID" Nullable="false" />
+    <Property Type="String" Name="SroName" Nullable="true" MaxLength="157" />
+    <Property Type="Int32" Name="SROCode" Nullable="true" />
+    <Property Type="String" Name="ExceptionType" Nullable="false" />
+    <Property Type="String" Name="InnerExceptionMsg" Nullable="false" />
+    <Property Type="String" Name="ExceptionMsg" Nullable="false" />
+    <Property Type="String" Name="ExceptionStackTrace" Nullable="false" />
+    <Property Type="String" Name="ExceptionMethodName" Nullable="false" MaxLength="150" />
+    <Property Type="DateTime" Name="LogDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="isdro" Nullable="false" />
+    <Property Type="Int32" Name="SchedulerID" Nullable="true" />
+    <Property Type="String" Name="Scheduler_Name" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_XEL_TRANSMISSION_LOG_Result">
+    <Property Type="Int64" Name="TransmissionID" Nullable="false" />
+    <Property Type="String" Name="SroName" Nullable="true" MaxLength="157" />
+    <Property Type="Int32" Name="SROCode" Nullable="true" />
+    <Property Type="String" Name="AbsolutePath" Nullable="true" />
+    <Property Type="String" Name="RelativePath" Nullable="true" />
+    <Property Type="String" Name="FileName" Nullable="false" MaxLength="500" />
+    <Property Type="Boolean" Name="isSuccessfullUpload" Nullable="false" />
+    <Property Type="DateTime" Name="TransmissionInitiateDateTime" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="TransmissionCompleteDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Year" Nullable="false" />
+    <Property Type="Int32" Name="Month" Nullable="false" />
+    <Property Type="Int64" Name="FileSize" Nullable="true" />
+    <Property Type="Boolean" Name="IsFileReadSuccessful" Nullable="false" />
+    <Property Type="DateTime" Name="FileReadDateTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EventStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EventEndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="isdro" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_XEL_FILE_COUNT_OFFICEWISE_Result">
+    <Property Type="Int32" Name="OFFICECODE" Nullable="false" />
+    <Property Type="String" Name="OFFICENAME" Nullable="false" MaxLength="75" />
+    <Property Type="Int32" Name="FILE_COUNT" Nullable="false" />
+    <Property Type="Decimal" Name="TOTAL_SIZE_ON_DISK" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="LAST_CENTRALIZED_ON" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="USP_XEL_FILE_LIST_OFFICEWISE_Result">
+    <Property Type="String" Name="FILENAME" Nullable="false" MaxLength="500" />
+    <Property Type="Decimal" Name="FILESIZE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="OFFICECODE" Nullable="true" />
+    <Property Type="DateTime" Name="FILEDATETIME" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FILEPATH" Nullable="true" />
+    <Property Type="DateTime" Name="EventStartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EventEndDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="FileReadDateTime" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>

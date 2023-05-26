@@ -1,0 +1,21 @@
+﻿div.spinedit { display: inline-block; position: relative; }
+input[type="text"].spinedit { width: 80px; }
+div.spinedit .glyphicon-chevron-up,
+div.spinedit .glyphicon-chevron-down { position: relative; cursor: pointer; width: 12px; left: 8px; }
+div.spinedit .glyphicon-chevron-up { top: -12px; }
+div.spinedit .glyphicon-chevron-down { top: 3px; left: -4px; }
+.form-search div.spinedit, .form-inline div.spinedit, .form-horizontal div.spinedit { top: 5px; }
+
+.spinner-control {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    font-size: 13px;
+    height: 25px;
+    line-height: 1.32857;
+    padding: 2px 6px;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    width: 100%;
+}

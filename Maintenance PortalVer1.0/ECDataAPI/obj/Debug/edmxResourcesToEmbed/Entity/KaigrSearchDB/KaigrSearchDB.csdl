@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KAIGR_SEARCHDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="FN_MONTHYEAR_Result">
+    <Property Name="DISPSEQ" Type="Int32" />
+    <Property Name="MONTHID" Type="Int32" />
+    <Property Name="MonthName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="year" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </ComplexType>
+  <EntityType Name="RPT_ProcessingIterationMaster">
+    <Key>
+      <PropertyRef Name="IterationID" />
+    </Key>
+    <Property Name="IterationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsDro" Type="Boolean" Nullable="false" />
+    <Property Name="InsertDateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsValid" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="KaigrSearchDB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="RPT_ProcessingIterationMaster" EntityType="Self.RPT_ProcessingIterationMaster" />
+    <FunctionImport Name="FN_MONTHYEAR" IsComposable="true" ReturnType="Collection(KAIGR_SEARCHDBModel.FN_MONTHYEAR_Result)">
+      <Parameter Name="YEAR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_DAILY_REVENUE_DAYWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_DAYWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="REGARTICLECODE" Mode="In" Type="Int32" />
+      <Parameter Name="MONTH" Mode="In" Type="Int32" />
+      <Parameter Name="YEAR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_DAILY_REVENUE_DOCUMENTWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_DOCUMENTWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="REGARTICLECODE" Mode="In" Type="Int32" />
+      <Parameter Name="YEAR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_HIGHVALUE_PROPERTIES" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_HIGHVALUE_PROPERTIES_Result)">
+      <Parameter Name="Year" Mode="In" Type="Int32" />
+      <Parameter Name="fromRange" Mode="In" Type="Int32" />
+      <Parameter Name="ToRange" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_JurisdictionalWiseDetail" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_JurisdictionalWiseDetail_Result)">
+      <Parameter Name="SROCode" Mode="In" Type="Int32" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_SALEDEED_REGISTERED" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_SALEDEED_REGISTERED_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCode" Mode="In" Type="Int32" />
+      <Parameter Name="YEAR" Mode="In" Type="Int32" />
+      <Parameter Name="PropertyTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="AmountRange" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_DAILY_REVENUE_RANGEWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_RANGEWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="REGARTICLECODE" Mode="In" Type="Int32" />
+      <Parameter Name="FROMDATE" Mode="In" Type="DateTime" />
+      <Parameter Name="TODATE" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_DAILY_REVENUE_MONTHWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_MONTHWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="REGARTICLECODE" Mode="In" Type="Int32" />
+      <Parameter Name="YEAR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UPS_DB_GET_TARGET_ACHIEVED_FYWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.UPS_DB_GET_TARGET_ACHIEVED_FYWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_ARTICLELIST_TOP10WISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_ARTICLELIST_TOP10WISE_Result)" />
+    <FunctionImport Name="USP_DB_GET_CURRENT_REVENUE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_CURRENT_REVENUE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_CURRENT_REVENUE_DETAILS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_CURRENT_REVENUE_DETAILS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_CURRENT_STATUS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_CURRENT_STATUS_Result)">
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="DistrictCode" Mode="In" Type="Int32" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_FYWISE_PROGRESS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_FYWISE_PROGRESS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_Get_HIGHLIGHTS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_Get_HIGHLIGHTS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_OFFICESTARTTIME" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_OFFICESTARTTIME_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_OFFICESTARTTIME_DETAILS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_OFFICESTARTTIME_DETAILS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SALES_STASTICS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SALES_STASTICS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SUMMARY_TABLE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="RegArticleCodeStr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SURCHARGE_CESS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SURCHARGE_CESS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="REGARTICLECODESTR" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_TARGET_ACHIEVED_FYWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_TARGET_ACHIEVED_FYWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_TARGET_LINE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_TARGET_LINE_Result)">
+      <Parameter Name="districtCode" Mode="In" Type="Int32" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_HIGHVALUE_SUMMARY" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_HIGHVALUE_SUMMARY_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_INSERT_HIGHLIGHTS">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SUMMARY_TABLE_DAYWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_DAYWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="RegArticleCodeStr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SUMMARY_TABLE_FYEARWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_FYEARWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="RegArticleCodeStr" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SUMMARY_TABLE_MONTHWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_MONTHWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="RegArticleCodeStr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SUMMARY_TABLE_UPTODATE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_UPTODATE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+      <Parameter Name="RegArticleCodeStr" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCODE" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE" ReturnType="Collection(Int32)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FLAG" Mode="In" Type="String" />
+      <Parameter Name="FYear" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_DB_GET_MONTHWISE_PROGRESS" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_DB_GET_MONTHWISE_PROGRESS_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="FYEAR" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCode" Mode="In" Type="Int32" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="isDRO" Mode="In" Type="Int32" />
+      <Parameter Name="DocumentTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY" ReturnType="Collection(KAIGR_SEARCHDBModel.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_Result)">
+      <Parameter Name="DISTRICTCODE" Mode="In" Type="Int32" />
+      <Parameter Name="SROCode" Mode="In" Type="Int32" />
+      <Parameter Name="FromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="ToDate" Mode="In" Type="DateTime" />
+      <Parameter Name="isDRO" Mode="In" Type="Int32" />
+      <Parameter Name="DocumentTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="USP_RPT_DAILY_REVENUE_DAYWISE_Result">
+    <Property Type="String" Name="ARTICLENAMEE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="registrationDate" Nullable="true" MaxLength="30" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS" Nullable="false" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_DAILY_REVENUE_DOCUMENTWISE_Result">
+    <Property Type="String" Name="FinancialYear" Nullable="true" MaxLength="61" />
+    <Property Type="String" Name="RegArticleName" Nullable="true" MaxLength="2000" />
+    <Property Type="String" Name="SROName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="FinalRegistrationNumber" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="RegistrationDate" Nullable="true" Precision="23" />
+    <Property Type="Decimal" Name="PurchaseValue" Nullable="true" Precision="19" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_HIGHVALUE_PROPERTIES_Result">
+    <Property Type="String" Name="FinancialYear" Nullable="true" MaxLength="61" />
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="DocsRegistered" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_JurisdictionalWiseDetail_Result">
+    <Property Type="String" Name="JSRONameE" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="SRONameE" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="FINALREGISTRATIONNUMBER" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_SALEDEED_REGISTERED_Result">
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS" Nullable="false" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_DAILY_REVENUE_RANGEWISE_Result">
+    <Property Type="String" Name="DISTRICT_NAME" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="OFFICE_NAME" Nullable="true" MaxLength="4000" />
+    <Property Type="String" Name="ARTICLENAMEE" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS" Nullable="true" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_DAILY_REVENUE_MONTHWISE_Result">
+    <Property Type="String" Name="ARTICLENAMEE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="registrationMonth" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS" Nullable="false" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="UPS_DB_GET_TARGET_ACHIEVED_FYWISE_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="false" />
+    <Property Type="String" Name="FYEAR_STR" Nullable="true" MaxLength="61" />
+    <Property Type="Decimal" Name="REVENUETARGET" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REVENUECOLLECTED" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_ARTICLELIST_TOP10WISE_Result">
+    <Property Type="Int32" Name="RegArticleCode" Nullable="true" />
+    <Property Type="String" Name="ArticleNameE" Nullable="true" MaxLength="8000" />
+    <Property Type="Int32" Name="GROUPCODE" Nullable="true" />
+    <Property Type="Int32" Name="DISPLAYORDER" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_CURRENT_REVENUE_Result">
+    <Property Type="String" Name="OFFICE_NAME" Nullable="false" MaxLength="75" />
+    <Property Type="Decimal" Name="REVENUECOLLECTED" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="HIERARCHY" Nullable="false" MaxLength="1" />
+    <Property Type="Int64" Name="seqno" Nullable="true" />
+    <Property Type="Decimal" Name="PERCENT_ACHIEVED" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_CURRENT_REVENUE_DETAILS_Result">
+    <Property Type="String" Name="OFFICE_NAME" Nullable="false" MaxLength="75" />
+    <Property Type="Decimal" Name="REVENUECOLLECTED" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PERCENT_ACHIEVED" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_CURRENT_STATUS_Result">
+    <Property Type="Decimal" Name="TOTAL_REV_COLLECTED" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_REV_COLLECTED_WRT_LY" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_SD_COLLECTED" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_SD_COLLECTED_WRT_LY" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_RF_COLLECTED" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_RF_COLLECTED_WRT_LY" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="TOTAL_DOCS_REGISTERED" Nullable="false" />
+    <Property Type="Decimal" Name="TOTAL_DOCS_REGISTERED_WRT_LY" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AVG_DOCS_REGISTERED_PER_MONTH" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AVG_DOCS_REGISTERED_PER_MONTH_WRT_LY" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AVG_REVENUE_COLLECTED_PER_MONTH" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="AVG_REVENUE_COLLECTED_PER_MONTH_WRT_LY" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_FYWISE_PROGRESS_Result">
+    <Property Type="Int32" Name="REGFYEAR" Nullable="true" />
+    <Property Type="String" Name="FYEAR_STR" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="NO_OF_DOCS_REGISTERED" Nullable="true" />
+    <Property Type="Decimal" Name="TOTAL_REVENUE" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="true" />
+    <Property Type="String" Name="FYEAR_TEXT" Nullable="true" MaxLength="33" />
+    <Property Type="Decimal" Name="C1_TO_10_LAKHS" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="C10_LAKHS_TO_1CRORE" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="C1CRORE_TO_5CRORE" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="C5CRORE_TO_10CRORE" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="ABOVE_10CRORE" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_Get_HIGHLIGHTS_Result">
+    <Property Type="String" Name="INFORMATION" Nullable="true" MaxLength="8000" />
+    <Property Type="Int32" Name="SEQ_ID" Nullable="false" />
+    <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+    <Property Type="String" Name="DURATION_FLAG" Nullable="false" MaxLength="1" />
+    <Property Type="Boolean" Name="IS_STATE" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_OFFICESTARTTIME_Result">
+    <Property Type="String" Name="OFFICE_NAME" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="AVG_START_TIME" Nullable="true" MaxLength="30" />
+    <Property Type="String" Name="HIERARCHY" Nullable="false" MaxLength="1" />
+    <Property Type="Int64" Name="seqno" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_OFFICESTARTTIME_DETAILS_Result">
+    <Property Type="String" Name="OFFICE_NAME" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="AVG_START_TIME" Nullable="false" MaxLength="30" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SALES_STASTICS_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="true" />
+    <Property Type="String" Name="FYEAR_TEXT" Nullable="true" MaxLength="33" />
+    <Property Type="String" Name="RANGE_NAME" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="DOCS_REGISTERED" Nullable="true" />
+    <Property Type="Decimal" Name="REVENUE_COLLECTED_LAKHS" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="true" />
+    <Property Type="String" Name="FYEAR_TEXT" Nullable="true" MaxLength="33" />
+    <Property Type="Decimal" Name="AGRI_LT_10LAKHS" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="AGRI_GT_10LAKHS" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="NONAGRI_LT_10LAKHS" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="NONAGRI_GT_10LAKHS" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="APARTMENT" Nullable="true" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="LEASE" Nullable="true" Precision="38" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SUMMARY_TABLE_Result">
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED" Nullable="true" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS" Nullable="true" Precision="19" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SURCHARGE_CESS_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="true" />
+    <Property Type="String" Name="FYEAR_TEXT" Nullable="true" MaxLength="1000" />
+    <Property Type="Decimal" Name="SURCHARGE" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="CESS" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_TARGET_ACHIEVED_FYWISE_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="false" />
+    <Property Type="String" Name="FYEAR_STR" Nullable="true" MaxLength="61" />
+    <Property Type="Decimal" Name="REVENUETARGET" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REVENUECOLLECTED" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_TARGET_LINE_Result">
+    <Property Type="Decimal" Name="FYEAR_TARGET" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="FYEAR_ACHIEVEMENT" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="FYEAR_FORCAST" Nullable="true" Precision="19" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_HIGHVALUE_SUMMARY_Result">
+    <Property Type="Int32" Name="PropertyValueRangeID" Nullable="true" />
+    <Property Type="String" Name="PropertyValueRange" Nullable="true" MaxLength="19" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED" Nullable="true" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_REVENUE_COLLECTED" Nullable="true" Precision="19" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SUMMARY_TABLE_DAYWISE_Result">
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_TODAY" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_TODAY" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_TODAY" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_NEITHER_REGISTERED_NOR_PENDING_TODAY" Nullable="false" />
+    <Property Type="Decimal" Name="STAMP_DUTY_COLLECTED_TODAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGFEE_COLLECTD_TODAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_COLLECTED_TODAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_YESTERDAY" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_YESTERDAY" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_YESTERDAY" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_NEITHER_REGISTERED_NOR_PENDING_YESTERDAY" Nullable="false" />
+    <Property Type="Decimal" Name="STAMP_DUTY_COLLECTED_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGFEE_COLLECTD_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_COLLECTED_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DOCS_PRESENTED_WRT_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DOCS_REGISTERED_WRT_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DOCS_PENDING_WRT_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NPNR_WRT_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="STAMP_DUTY_WRT_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REG_FEE_WRT_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_COLLECTED_WRT_YESTERDAY" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SUMMARY_TABLE_FYEARWISE_Result">
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_CURR_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_CURR_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_CURR_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_CURR_FYEAR" Nullable="false" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS_CURR_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_CURR_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_CURR_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_PREV_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_PREV_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_PREV_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_PREV_FYEAR" Nullable="false" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS_PREV_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_PREV_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_PREV_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_PRESENTED_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_REGISTERED_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCUMENTS_KEPT_PENDING_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_NRNP_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SUMMARY_TABLE_MONTHWISE_Result">
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_CURR_MONTH" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_CURR_MONTH" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_CURR_MONTH" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_CURR_MONTH" Nullable="false" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS_CURR_MONTH" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_CURR_MONTH" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_CURR_MONTH" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_PREV_MONTH" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_PREV_MONTH" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_PREV_MONTH" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_PREV_MONTH" Nullable="false" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_PREV_MONTH" Nullable="false" Precision="19" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_PRESENTED_WRT_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_REGISTERED_WRT_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_KEPT_PENDING_WRT_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_NRNP_WRT_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY_WRT_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_WRT_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_WRT_PREV_MONTH" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SUMMARY_TABLE_UPTODATE_Result">
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_UPTO_UPTO_CURR_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_UPTO_CURR_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_UPTO_CURR_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_UPTO_CURR_FYEAR" Nullable="false" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS_UPTO_CURR_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_UPTO_CURR_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_UPTO_CURR_FYEAR" Nullable="false" Precision="38" Scale="2" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_PRESENTED_UPTO_PREV_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_REGISTERED_UPTO_PREV_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS_KEPT_PENDING_UPTO_PREV_FYEAR" Nullable="false" />
+    <Property Type="Int32" Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_UPTO_PREV_FYEAR" Nullable="false" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS_UPTO_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_UPTO_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_UPTO_PREV_FYEAR" Nullable="false" Precision="19" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_PRESENTED_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_REGISTERED_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_KEPT_PENDING_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="NO_OF_DOCS_NRNP_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="STAMPDUTY_LACS_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE_LACS_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="TOTAL_LACS_WRT_PREV_FYEAR" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="true" />
+    <Property Type="String" Name="FYEAR_TEXT" Nullable="true" MaxLength="33" />
+    <Property Type="Int64" Name="C1_TO_10_LAKHS" Nullable="true" />
+    <Property Type="Int64" Name="C10_LAKHS_TO_1CRORE" Nullable="true" />
+    <Property Type="Int64" Name="C1CRORE_TO_5CRORE" Nullable="true" />
+    <Property Type="Int64" Name="C5CRORE_TO_10CRORE" Nullable="true" />
+    <Property Type="Int64" Name="ABOVE_10CRORE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED_Result">
+    <Property Type="Int32" Name="FYEAR" Nullable="true" />
+    <Property Type="String" Name="FYEAR_TEXT" Nullable="true" MaxLength="33" />
+    <Property Type="Int64" Name="AGRI_LT_10LAKHS" Nullable="true" />
+    <Property Type="Int64" Name="AGRI_GT_10LAKHS" Nullable="true" />
+    <Property Type="Int64" Name="NONAGRI_LT_10LAKHS" Nullable="true" />
+    <Property Type="Int64" Name="NONAGRI_GT_10LAKHS" Nullable="true" />
+    <Property Type="Int64" Name="APARTMENT" Nullable="true" />
+    <Property Type="Int64" Name="LEASE" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE_Result">
+    <Property Type="String" Name="OfficeName" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="DOCS_Registered" Nullable="true" />
+    <Property Type="Int32" Name="ART" Nullable="true" />
+    <Property Type="Decimal" Name="PERCENT_ART" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="seqNo" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS_Result">
+    <Property Type="String" Name="DistrictName" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="Docs_Registered" Nullable="true" />
+    <Property Type="Int32" Name="ART" Nullable="false" />
+    <Property Type="Decimal" Name="PERCENT_ART" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_DB_GET_MONTHWISE_PROGRESS_Result">
+    <Property Type="String" Name="MonthName" Nullable="true" MaxLength="1000" />
+    <Property Type="Int32" Name="NO_OF_DOCS_REGISTERED" Nullable="false" />
+    <Property Type="Decimal" Name="TOTAL_REVENUE" Nullable="false" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED_Result">
+    <Property Type="String" Name="DistrictName" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="SRONAMEE" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS" Nullable="true" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="19" />
+  </ComplexType>
+  <ComplexType Name="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_Result">
+    <Property Type="String" Name="DistrictName" Nullable="true" MaxLength="75" />
+    <Property Type="String" Name="SRONAMEE" Nullable="true" MaxLength="150" />
+    <Property Type="Int32" Name="NO_OF_DOCUMENTS" Nullable="true" />
+    <Property Type="Decimal" Name="STAMPDUTY" Nullable="false" Precision="19" />
+    <Property Type="Decimal" Name="REGISTRATIONFEE" Nullable="false" Precision="19" />
+  </ComplexType>
+</Schema>

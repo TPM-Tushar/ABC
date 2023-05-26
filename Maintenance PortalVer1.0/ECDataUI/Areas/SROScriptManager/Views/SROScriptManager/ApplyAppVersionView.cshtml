@@ -1,0 +1,411 @@
+﻿@using ECDataUI.Helper;
+@model CustomModels.Models.SROScriptManager.ApplyAppVersionModel
+
+
+<script src="~/Areas/SROScriptManager/Scripts/ApplyAppVersion.js"></script>
+<style>
+    /* Customize the label (the container) */
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .tr
+    {
+    line-height: 14px;
+    }
+       
+
+    .table {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    /*td {
+            word-wrap: break-word;
+        }*/
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        /*// word-wrap: normal;*/
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /*// width:35px;*/
+    }
+
+    /*table.dataTable tbody th,
+        table.dataTable tbody td {
+            white-space: nowrap;
+        }*/
+
+    tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important; /* Not working */
+    }
+
+    /*table.dataTable th {
+            white-space: nowrap;
+        }*/
+
+    /*table, td {
+            word-break: break-all !important;
+        }*/
+
+    .table tbody th {
+        white-space: nowrap;
+    }
+
+    .table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    td:last-child, td:nth-last-child(2) {
+        text-align: right;
+    }
+</style>
+
+
+<div class="container">
+
+    <div class="col-md-offset-0">
+
+        <h3 style="text-align:center;color:#3177b4;">Apply App Version </h3>
+
+
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <br />
+
+            <form id="dvApplyAppVersionForm">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="panel-body">
+
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    @Html.LabelFor(model => model.AppName, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+                                </div>
+                                <div class="col-md-4">
+
+                                    @*@Html.DropDownList("Application Name", Model.ApplicationNameList, new { id = "ApplicationNameListID",@class = "ApplicationNameListID" })*@
+                                    @Html.DropDownListFor(model => model.ApplicationNameList, @Model.ApplicationNameList, " --Select Application name--", new { @class = "form-control minimal", id = "ApplicationNameListID", autocomplete = "off", tabindex = 2 })
+                                </div>
+                                <div class="col-md-4">
+
+                                </div>
+
+                            </div>
+                            <br />
+                            <dv id="ApplyAppVersionTable" hidden>
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        @Html.LabelFor(model => model.AppName, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="selectedAppname" style="padding:4px; " class="form-control;"> </div>
+                                    </div>
+
+                                </div>
+
+                                <br />
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        @Html.LabelFor(model => model.AppMajor, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.AppMajor, new { @class = "form-control", @id = "txtAppMajor", @placeholder = "App Major Version", @title = "Major Version", @maxlength = 10, tabindex = 5 })
+                                        @Html.ValidationMessageFor(model => model.AppMajor, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        @Html.LabelFor(model => model.AppMinor, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.TextBoxFor(model => model.AppMinor, new { @class = "form-control AllowOnlyNumber", @id = "txtAppMinor", @placeholder = "App Minor Version", @title = "Minor Version", @maxlength = 10, tabindex = 6 })
+                                        @Html.ValidationMessageFor(model => model.AppMinor, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        @Html.LabelFor(model => model.ReleaseDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="date" id="divReleaseDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.ReleaseDate, new { @class = "form-control", @id = "dtReleaseDate", @placeholder = "dd/mm/yyyy", @title = "Release Date", @maxlength = 10, tabindex = 7 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                        @Html.LabelFor(model => model.LastDateForPatchUpdate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="date" id="divLastDateForPatchUpdate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.LastDateForPatchUpdate, new { @class = "form-control AllowOnlyNumber", @id = "dtLastDateForPatchUpdate", @placeholder = "dd/mm/yyyy", @title = "Last Date For Patch Update", @maxlength = 10, tabindex = 8 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <br />
+                                <br />
+
+                                <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                                    <div >
+                                       
+                                        <div class="col-md-6">
+
+                                            <span>@Html.RadioButtonFor(model => model.IsDROOfficestr, "1", new { @class = "form-check-input", @id = "rdnIsSROOffice", @tabindex = 1, @title = "Enable" })</span> <label style="font-weight :bold">SR Office</label>
+
+                                            @*<span> @Html.RadioButton("SR Office", "1")</span> <label style="font-weight :bold">SR Office</label>*@
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <span>@Html.RadioButtonFor(model => model.IsDROOfficestr, "2", new { @class = "form-check-input", @id = "rdnIsDROOffice", @tabindex = 1, @title = "Disable" })</span> <label style="font-weight :bold">DR Office</label>
+
+
+                                            @*<span>@Html.RadioButton("DR Office", "2")</span> <label style="font-weight :bold">DR Office</label>*@
+                                        </div>
+
+                                    </div>
+
+                                    <br />
+                                    <br />
+
+
+                                    <div class="panel-body">
+
+
+                                        <div id='scriptManagerListCollapse' class="row well-custom collapsed" data-toggle="" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                                            <span style="cursor: pointer; margin-bottom: 20px;">
+                                            </span>
+                                            <span class="" style="color: #fff; font-size: 120%; text-align: center;">Apply App Version</span>
+                                        </div>
+                                        <div id="DtlscollapseSearchPara" class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                                            <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                                            </div>
+
+
+                                            <table id="AppVersionDtlsID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 98%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th><input type="checkbox" name="  Select All /  Clear All" id="selectall"> Select All /  Clear All</th>
+
+                                                        @*<th>
+                                                Select All /  Clear All
+
+                                            </th>*@
+
+                                                        <th>District Name</th>
+                                                        <th>SRO  Name</th>
+                                                    </tr>
+                                                </thead>
+
+                                            </table>
+                                        </div>
+
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                                <br />
+
+
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-offset-2">
+
+                                            <div class="form-group col-md-8">
+                                                <div class='BTNwrapper' style="padding-left:13%;margin-top:2%;">
+                                                    <button type="button" class="btn btn-group-md btn-success" id="btnApplyAppVersion" tabindex="10">Apply </button>
+                                                </div>
+                                                <style>
+                                                    .BTNwrapper {
+                                                        text-align: center;
+                                                    }
+
+                                                    .button {
+                                                        position: absolute;
+                                                        top: 50%;
+                                                    }
+                                                </style>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            
+    </div>
+ </div>
+
+
+
+
+
+
+
+

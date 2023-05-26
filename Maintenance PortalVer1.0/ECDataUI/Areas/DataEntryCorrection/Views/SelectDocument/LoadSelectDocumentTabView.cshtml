@@ -1,0 +1,356 @@
+﻿@model CustomModels.Models.DataEntryCorrection.DataEntryCorrectionViewModel
+
+@using ECDataUI.Helper
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+    /*View icon pdf css*/
+    .fa-file-pdf-o {
+        color: red;
+    }
+
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+
+    .unselection {
+        background: #ffb06b;
+        border: 1px solid #e8a21e !important;
+    }
+
+        .unselection:hover {
+            background: #f09f58;
+            border: 1px solid #e8a21e !important;
+        }
+
+    .selection {
+        border: 1px solid #255cc6;
+    }
+</style>
+@*<script src="~/Areas/DataEntryCorrection/Scripts/SelectDocument/SelectDocument.js"></script>*@
+@*<script src="~/Areas/DataEntryCorrection/Scripts/SelectDocument/SelectDocument_V1.js"></script>*@
+<script src="~/Areas/DataEntryCorrection/Scripts/SelectDocument/SelectDocument_V2.js"></script>
+<script>
+    var IsDocumentSearched = '@Model.IsDocumentSearched';
+
+
+
+
+
+
+
+    @*var ToDate = '@ToDate'*@
+</script>
+<div id="SelectDocumentOuterDiv">
+    <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;border: none;">
+        <div id='DtlsSearchParaListCollapseDocumentSearch' class="row well-custom" data-toggle="collapse" data-target="#DtlscollapseSearchParaDocumentSearch" aria-expanded="false" aria-controls="DtlscollapseSearchPara2" style="height: 35px; padding-top: 10px; cursor: pointer;">
+            <span style="cursor: pointer; margin-bottom: 20px;">
+                <span id="DtlsToggleIconSearchParaDocumentSearch" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+            </span>
+            <span class="" style="color: #fff; font-size: 120%;">Document Search Parameters</span>
+        </div>
+        <div id="DtlscollapseSearchParaDocumentSearch" class="collapse in" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; @*padding-top: 1%;*@ border-radius: 5px;">
+
+            <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                <form id="DocumentSearchForm">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="panel-body">
+
+                        <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+
+
+                            <div class="row" style="padding-top:3%;">
+                                <div class="col-md-3" id="SRODropDownListID">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 2 })
+                                        @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-5">
+                                        @Html.LabelFor(model => model.DocumentNumber, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-7">
+                                        @Html.TextBoxFor(model => model.DocumentNumber, new { @class = "form-control", @id = "txtDocumentNumber", @placeholder = "Document Number", @title = "From Date", @maxlength = 10, @minlength = 1, tabindex = 3 })
+                                        @Html.ValidationMessageFor(model => model.DocumentNumber, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3" id="BookTypeListDivID">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.BookType, new { @class = "PaddingTop10", @Id = "BookTypeListLabel" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.BookTypeID, @Model.BookType, new { @class = "form-control minimal", id = "BookTypeListID", autocomplete = "off", tabindex = 4 })
+                                        @Html.ValidationMessageFor(model => model.BookType, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3" id="FinancialYearListDivID">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.FinancialYear, new { @class = "PaddingTop10", @Id = "ModuleNameListLabel" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.FinancialYearStr, @Model.FinancialYear, new { @class = "form-control minimal", id = "FinancialYearListID", autocomplete = "off", tabindex = 5 })
+                                        @Html.ValidationMessageFor(model => model.FinancialYear, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-12">
+                                    <div class='BTNwrapper' style="margin-bottom: 2%;margin-top:2%;">
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6">Get Details</button>
+                                    </div>
+                                    <style>
+                                        .BTNwrapper {
+                                            text-align: center;
+                                        }
+
+                                        .button {
+                                            position: absolute;
+                                            top: 50%;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapseDetailPropertyDetails' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchParaDetailPropertyDetails" aria-expanded="false" aria-controls="DtlscollapseSearchPara3" style="height: 35px; padding-top: 10px; cursor: pointer;text-align: left;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaDetailPropertyDetails" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" id="SpanHeader1" style="color: #fff; font-size: 120%;">Property Details</span>
+            </div>
+
+            <div id="DtlscollapseSearchParaDetailPropertyDetails" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                    @Html.HiddenFor(m => m.EncrytptedDocumentID, new { @class = "PaddingTop10", @Id = "EncryptedDocumentId" })
+                    <table id="DetailTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+
+                        <thead>
+                            <tr>
+                                @*<th>Sr No.</th>
+                                    <th>Select</th>
+                                    <
+                                    <th>Add New Party Search Key</th>
+                                    <th>Final Registration Number</th>
+                                    <th>Registration Date</th>
+                                    <th>Execution Date</th>
+                                    <th>Nature of Document</th>
+                                    <th>PropertyDetails</th>
+                                    <th>Village Name</th>
+                                    <th>Total Area</th>
+                                    <th>Schedule Description</th>
+                                    <th>Market Value</th>
+                                    <th>Consideration</th>
+                                    <th>Claimant</th>
+                                    <th>Executant</th>*@
+
+                                <th>Sr No.</th>
+                                <th>Select Property</th>
+                                <th>Property Number Search Key</th>
+                                <th>Party Search Key</th>
+                                <th>Property Description</th>
+                                <th>Execution Date</th>
+                                <th>Nature of Document</th>
+                                <th>Executant</th>
+                                <th>Claimant</th>
+                                <th>CD Number</th>
+                                <th>Page Count</th>
+                                <th>Final Registration Number</th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div id="PartialViewLoader">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapseDetailExistingOrder' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchParaDetailExistingOrder" aria-expanded="false" aria-controls="DtlscollapseSearchPara4" style="height: 35px; padding-top: 10px; cursor: pointer;text-align: left;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchParaDetailExistingOrder" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" id="SpanHeader2" style="color: #fff; font-size: 120%;">Existing DR Orders on this Property</span>
+            </div>
+            <div id="DtlscollapseSearchParaDetailExistingOrder" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                    @Html.HiddenFor(m => m.EncrytptedDocumentID, new { @class = "PaddingTop10", @Id = "EncryptedDocumentId" })
+                    <table id="PreviousDetailTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>DR Order Number</th>
+                                <th>Order Date</th>
+                                <th>Order Upload Date</th> @*Added by Madhusoodan on 11/08/2021 to add Order Upload Date column*@
+
+                                <th>Section 68(2) Note</th>
+                                <th>View Document</th>
+                                <th>Action</th>           @*Added by Madhusoodan on 13/08/2021 to load Delete button for Section 68 Note*@
+                            </tr>
+                        </thead>
+
+                    </table>
+                </div>
+
+                @*Added by Madhusoodan on 06/08/2021 to add Secion 68 Note*@
+                <div id="dvSection68Note">
+
+                    <div style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                        <h4 style="text-align:center;color:#3177b4;">Add Section 68(2) Note For Selected Property</h4>
+
+                        <form id="Section68NoteForm">
+
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="panel-body">
+                                <div class='row'>
+                                    <div class="col-md-12 textAlignLeft">
+                                        <div class="col-md-3">
+                                            @Html.LabelFor(model => model.Section68NoteForProperty, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-9">
+                                            @Html.TextAreaFor(model => model.Section68NoteForProperty, new { @class = "form-control", @id = "txtSection68Note", @title = "Section 68(2) Note for selected Property", @minlength = 1, tabindex = 1 })
+                                            @Html.ValidationMessageFor(model => model.Section68NoteForProperty, "", new { @class = "text-danger", @id = "txtSection68Note_error" })
+                                            <span class="text-danger" id="invalid-char"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="spanDv" style="text-align:left !important;padding-left: 27%;padding-top: 1%;">
+                                    <span id="spnNotePreparedPart" font-size: 20px;></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="dvSaveBtn" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                        <div class="row" style="padding-bottom:1%;text-align:center;">
+
+                            <div class='BTNwrapper col-md-2' style="width:100%;">
+                                <span id="SaveSec68NoteSpanID">
+                                    @*<button class='btn btn-primary' name='btnSelectCurrentDocument' id='btnSelectCurrentDocument'>Select This Document</button>*@
+                                    <button class='btn btn-primary' name='btnSaveSec68Note' id='btnSaveSec68Note'>Save</button>
+                                </span>
+                            </div>
+
+                            @*Added by Madhusoodan on 07/08/2021*@
+                            <div class='BTNwrapper col-md-2' style="width:100%;">
+                                <span id="UpdateSec68NoteSpanID">
+                                    <button class='btn btn-primary' name='btnUpdateSec68Note' id='btnUpdateSec68Note'>Update</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="text-align:center; padding-top: 50px;">
+                @*<button id="btnFinalizeDEC" class="btn btn-info" tabindex="22">Finalize Order</button>*@
+                <button id="btnFinalizeOrder" class="btn btn-info" tabindex="22">Finalize</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+<div id="divViewAbortModalOrderView" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+    <div class="modal-dialog" style="margin-top:1%; width:100%; margin:0% auto !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="modalCloseBtn fa fa-times-circle text-danger removeIcon pull-right" id="btncloseAbortPopupOrderView" style="cursor: pointer; font-size: 150%;" title="Close"></i>
+                @*<h4 class="modal-title">
+                        <span class="" style="color: #5F6F81; font-size:100%;"> Add\Edit Property Number Details</span>
+                    </h4>*@
+            </div>
+            <div class="modal-body">
+                <div id="divLoadAbortViewOrderView">
+                    @*<object id="objPDFViewer" data="" type="application/pdf" style="height:500px; width:100%;"></object>*@
+                    <object id="objPDFViewer1" data="" type="application/pdf" style="width:100%;height:90vh !important;"></object>
+                    @*<div id="divLoadAbortView" style="margin-left:10%;">
+                    *@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="divViewAbortModalForPropertyPopup" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+    <div class="modal-dialog" style="margin-top:1%; width:100%; margin:0% auto !important;">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align:center">
+                <i class="modalCloseBtn fa fa-times-circle text-danger removeIcon pull-right" id="btncloseAbortPopup2" style="cursor: pointer; font-size: 150%;" title="Close"></i>
+                <h4 class="modal-title">
+                    <span id="OrderDetailsPopUp" class="" style="color: #5F6F81; font-size:100%;">Add New Property Number Search Key</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="divLoadAbortViewForPropertyPopupbody">
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                @* Added by mayank on 16/08/2021 for Data Entry Correction *@
+                <div id="AddnewPropertyNoDiv" class='BTNwrapper' style="margin-top:2%;">
+                    <button type="button" class="btn btn-group-md btn-primary " id="btnclosePropertyPopup">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+@*<table border="1" style="font-family: KNB-TTUmaEN;"><tr><td><label style='color: black'><b>Section 68 Note: </b></label><span style='color: black'><b>Section 68 Note details Here</b></span></td></tr></table>
+
+
+    <table border='1' style='font-family: KNB-TTUmaEN;'><tbody><tr><td style='text-align:left;'><label style='color: black;font-size:large'><b>Note: </b></label><br><span style='color: black'><b>"+Section68NoteHere+"</b></span></td></tr></tbody></table>*@

@@ -1,0 +1,237 @@
+﻿
+@model CustomModels.Models.Remittance.RemittanceXMLLog.RemittXMLLogModel
+
+@using ECDataUI.Helper;
+
+@*<script src="~/Areas/Remittance/Scripts/RemittanceXMLLog/RemittanceXMLLog.js"></script>*@
+<script src="~/Areas/Remittance/Scripts/RemittanceXMLLog/RemittanceXMLLog.min.js"></script>
+<style>
+    /* The container */
+    .containerForRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default radio button */
+        .containerForRadio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom radio button */
+    .checkmarkForRadio {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        margin-left: 0%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerForRadio:hover input ~ .checkmarkForRadio {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerForRadio input:checked ~ .checkmarkForRadio {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkForRadio:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerForRadio input:checked ~ .checkmarkForRadio:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerForRadio .checkmarkForRadio:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    /*
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }*/
+</style>
+
+<div class="container">
+    <h3 style="text-align:center;">Remittance XML Log</h3>
+    <div class='row'>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div>
+                <form id="RemXMLLogFormID"> 
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="row" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                <div class="col-md-4"> </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        <label class="containerForRadio">
+                                            <span style="vertical-align: middle;font-size:14px;font-weight:300;font-family:Arial, Helvetica, sans-serif;">SR Office</span>
+                                            <input type="radio" name="OfficeTypeToGetDropDown" id="OfficeTypeToGetDropDown" value="SRO">
+                                            <span class="checkmarkForRadio"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="containerForRadio">
+                                            <span style="vertical-align: middle;font-size:14px;font-weight:300;font-family:Arial, Helvetica, sans-serif;">DR Office</span>
+                                            <input type="radio" name="OfficeTypeToGetDropDown" id="OfficeTypeToGetDropDown" value="DRO">
+                                            <span class="checkmarkForRadio"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col-md-2"></div>
+                                </div>
+                                <div class="col-md-4"> </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(x => x.OfficeTypeID, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(x => x.OfficeTypeID, Model.OfficeTypeList, new { @class = "form-control minimal", @Id = "OfficeTypeDropDownID", @tabindex = 1 })
+                                        @Html.ValidationMessageFor(x => x.OfficeTypeID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-5">
+                                        @Html.LabelFor(model => model.FromDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="date" id="divFromDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @id = "txtFromDate", @tabindex = 2, @placeholder = "dd/mm/yyyy", @title = "From Date", @maxlength = 10 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-5">
+                                        @Html.LabelFor(model => model.ToDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="date" id="divToDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control", @id = "txtToDate", @tabindex = 3, @placeholder = "dd/mm/yyyy", @title = "To Date", @maxlength = 10 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="margin-top:1%;">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.Request, new { @class = "PaddingTop10" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.Request, new { @class = "form-control", @tabindex = 4, @id = "RequestTxtID", @placeholder = "Request text" })
+                                        @Html.ValidationMessageFor(x => x.Request, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        @Html.LabelFor(model => model.Response, new { @class = "PaddingTop10" })
+                                    </div>
+                                    <div class="col-md-6">
+                                        @Html.TextBoxFor(model => model.Response, new { @class = "form-control", @tabindex = 5, @id = "ResponseTxtID", @placeholder = "Response text" })
+                                        @Html.ValidationMessageFor(x => x.Response, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+
+                            <div class="row" style="margin-top:1%;">
+                                <div class="col-md-4"> </div>
+                                <div class="col-md-4">
+                                    <button type="button" class="btn btn-group-md btn-primary" id="btnSearch">Search</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-group-md btn-warning" id="ResetID">Reset</button>
+                                </div>
+                                <div class="col-md-4"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panel panel-default" style="width: 100%;margin-left:0px;margin-right:0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;margin-left:0px;margin-right:0px;">
+                    <span id='remittanceXMLLogListCollapse' data-toggle="collapse" data-target="#collapseREMDetailsList" aria-expanded="false" aria-controls="collapseREMDetailsList" style="cursor:pointer;margin-bottom:20px;">
+                        <span id="ToggleIconID" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff;font-size:120%;">Remittance XML Log List</span>
+                </div>
+                <div id="collapseREMDetailsList" class="collapse" style="text-align: center;margin-left:0px; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+                    <div class="container-fluid">
+                        <div class="data-table-wrapper table-responsive col-md-12" style="max-height:inherit;">
+                            <table id="REMDetailsListTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; text-align:center; width:100%">
+                                <thead style="text-align:center;">
+                                    <tr>
+                                        <th>SR NO</th>
+                                        <th>Request XML ID</th>
+                                        @*<th>Transaction ID</th>*@
+                                        <th>SRO Code</th>
+                                        <th>Request Date Time</th>
+                                        <th>Response Date Time</th>
+                                        <th>Is Exception In Request</th>
+                                        <th>Request Exception Details</th>
+                                        <th>Is Exception In Response</th>
+                                        <th>Response Exception Details</th>
+                                        @*<th>Is DRO</th>
+                                        <th>DRO Code</th>*@
+                                        <th>Download XML</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,682 @@
+﻿@model CustomModels.Models.Remittance.OfficeWiseDiagnosticStatus.OfficeWiseDiagnosticStatusModel
+@using ECDataUI.Helper
+
+@{
+
+    string Date = Model.Date;
+}
+
+<script src="~/Areas/Remittance/Scripts/OfficeWiseDiagnosticStatus/OfficeWiseDiagnosticStatus.js"></script>
+
+<link rel="stylesheet" type="text/css" href="~/Areas/Remittance/Scripts/OfficeWiseDiagnosticStatus/DataTables-1.10.20/css/dataTables.bootstrap.min.css" />
+<link href="~/Areas/Remittance/Scripts/OfficeWiseDiagnosticStatus/DataTables-1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<script>
+    var ToDate = '@Date';
+</script>
+
+<style>
+    .roundedBorder {
+        border-radius: 11px;
+    }
+
+    .roundedBorderBottom {
+        border-bottom-left-radius: 11px;
+        border-bottom-right-radius: 11px;
+    }
+
+    .td-action {
+        cursor: pointer;
+    }
+
+    /*.action-error {
+        background: red;
+    }*/
+    /* The container */
+    .containerForRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+        /* Hide the browser's default radio button */
+        .containerForRadio input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+    /* Create a custom radio button */
+    .checkmarkForRadio {
+        /*position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+        margin-left: 0%;*/
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+        margin-left: 0%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerForRadio:hover input ~ .checkmarkForRadio {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerForRadio input:checked ~ .checkmarkForRadio {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmarkForRadio:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerForRadio input:checked ~ .checkmarkForRadio:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerForRadio .checkmarkForRadio:after {
+        /*top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;*/
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .datepicker {
+        z-index: 1600 !important;
+    }
+    /* Customize the label (the container) */
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    /*td {
+        word-wrap: break-word;
+    }*/
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        /*// word-wrap: normal;*/
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /*// width:35px;*/
+    }
+
+    /*table.dataTable tbody th,
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }*/
+
+    tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important; /* Not working */
+    }
+
+    /*table.dataTable th {
+        white-space: nowrap;
+    }*/
+
+    /*table, td {
+        word-break: break-all !important;
+    }*/
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    /*td:last-child, td:nth-last-child(2), td:nth-last-child(3) {
+        text-align: right;
+    }
+
+    td:nth-last-child(5) {
+        text-align: left;
+    }*/
+    /*td:nth-child(3), td:nth-child(4) {
+        text-align: left;
+    }*/
+    tr td:nth-of-type(n+8) {
+        cursor: pointer;
+    }
+
+    table.dataTable tbody th,
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }
+
+    .dataTables_scrollBody {
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+    }
+
+    /*.sorting {
+        background: url("../../../../Content/DataTables/images/sort_both.png") no-repeat scroll right center transparent;
+    }*/
+</style>
+
+
+<div class="container">
+    <h3 style="text-align:center;">Daily Database Diagnostic Report</h3>
+    <div class='row'>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div>
+                <form id="OfficeWiseDiagnosticStatusFormID">
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="row" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+                        <div class="col-md-12">
+
+                            <div class="row">
+                                @*<div class="col-md-6">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(x => x.OfficeTypeID, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-7">
+                                            @Html.DropDownListFor(x => x.OfficeTypeID, Model.OfficeTypeList, new { @class = "form-control minimal", @Id = "OfficeTypeDropDownID", @tabindex = 1 })
+                                            @Html.ValidationMessageFor(x => x.OfficeTypeID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+                                <div class="col-md-3"></div>
+                                <div class="col-md-6">
+                                    <div class="col-md-5">
+                                        @Html.LabelFor(model => model.Date, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="date" id="divDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.Date, new { @class = "form-control AllowOnlyNumber", @id = "txtDate", @placeholder = "dd/mm/yyyy", @title = "Date", @maxlength = 10, tabindex = 4, @onchange = "onDatechangeevent();" })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3"></div>
+
+                            </div>
+
+                            <div class="row">
+
+                            </div>
+
+
+
+                            <div class="row" style="margin-top:1%;">
+                                <div class="col-md-4"> </div>
+                                <div class="col-md-4">
+                                    @*<button type="button" class="btn btn-group-md btn-primary" id="SearchBtn">Search</button>&nbsp;&nbsp;&nbsp;&nbsp;*@
+                                    <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6">Search</button>
+                                    @*<button type="button" class="btn btn-group-md btn-warning" id="ResetID">Reset</button>*@
+                                </div>
+                                <div class="col-md-4"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    @*FOR TILES*@
+    <div class="row">
+        <div class="col-md-2 col-sm-6 col-xs-12" onclick="PopulateDataTable('0')">
+            <div class=" roundedBorder small-box bg-aqua">
+                <div class="row inner" id="Wrapper" style="cursor: pointer;">
+                    <h3 id="T_1_Figure">@Model.TilesData.TotalNo</h3>
+                    <p id="T_1_Title">All Offices</p>
+                    <p> </p>
+                    <br />
+                </div>
+                <a class="roundedBorderBottom small-box-footer">
+                    <label id="T_1_Desc" style="font-weight:bold;">&nbsp;</label>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-sm-6 col-xs-12" onclick="PopulateDataTable('4')">
+            <div class=" roundedBorder small-box bg-green">
+                <div class="inner" style="cursor: pointer;">
+                    <h3 id="T_2_Figure">@Model.TilesData.StatusAvailabelNo</h3>
+                    <p id="T_2_Title">Office(s) whose Status Available</p>
+                    <br />
+                </div>
+                <a class="roundedBorderBottom small-box-footer"><label id="T_2_Desc" style="font-weight:bold;">@Model.TilesData.StatusAvailabelDesc</label></a>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-sm-6 col-xs-12" onclick="PopulateDataTable('3')">
+            <div class=" roundedBorder small-box bg-red">
+                <div class="inner" style="cursor: pointer;">
+                    <h3 id="T_3_Figure">@Model.TilesData.StatusNotAvailable</h3>
+                    <p id="T_3_Title">Office(s) whose Status Not Available</p>
+                </div>
+                <a class="roundedBorderBottom small-box-footer"><label id="T_3_Desc" style="font-weight:bold;">@Model.TilesData.StatusNotAvailableDesc</label></a>
+            </div>
+        </div>
+
+
+        <div class="col-md-2 col-sm-6 col-xs-12" onclick="PopulateDataTable('1')">
+            <div class=" roundedBorder small-box bg-yellow">
+                <div class="inner" style="cursor: pointer;">
+                    <h3 id="T_4_Figure">@Model.TilesData.AllOkNo</h3>
+                    <p id="T_4_Title">Office(s) where All Checks Successful</p>
+                </div>
+                <a class="roundedBorderBottom small-box-footer"><label id="T_4_Desc" style="font-weight:bold;">@Model.TilesData.AllOkDesc</label></a>
+            </div>
+        </div>
+
+
+        <div class="col-md-2 col-sm-6 col-xs-12" onclick="PopulateDataTable('2')">
+            <div class=" roundedBorder small-box bg-purple">
+                <div class="inner" style="cursor: pointer;">
+                    <h3 id="T_5_Figure">@Model.TilesData.IssueFoundNo</h3>
+                    <p id="T_5_Title">Office(s) where Issues Found</p>
+                    <br />
+                </div>
+                <a class="roundedBorderBottom small-box-footer"><label id="T_5_Desc" style="font-weight:bold;">@Model.TilesData.IssueFoundNoDesc</label></a>
+            </div>
+        </div>
+
+        <div class="col-md-2 col-sm-6 col-xs-12">
+            <div class=" roundedBorder small-box bg-maroon">
+                <div class="inner">
+                    <h3 id="T_6_Figure">@Model.TilesData.TotalIssueFound</h3>
+                    <p id="T_6_Title">Total Issues Found</p>
+                    <br />
+                </div>
+                <a class="roundedBorderBottom small-box-footer"><label id="T_6_Desc" style="font-weight:bold;">&nbsp;</label></a>
+            </div>
+        </div>
+    </div>
+    @*FOR TILES*@
+
+    @*FOR TABLE*@
+    @*<div class="row">
+            <div class="col-md-12">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-4">
+                        <span style="background-color: orange">Db Consistency Check</span><br />
+                        <span style="background-color: orange">Constraint Integrity Check</span><br />
+                        <span style="background-color: orange">Audit Event Check</span><br />
+                        <span style="background-color: orange">Time Zone Check</span><br />
+
+                    </div>
+                    <div class="col-md-1">
+                        <span style="background-color: yellow">1</span><br />
+                        <span style="background-color: yellow">2</span><br />
+                        <span style="background-color: yellow">3</span><br />
+                        <span style="background-color: yellow">4</span><br />
+
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="col-md-4">
+                        <span style="background-color: orange">5</span><br />
+                        <span style="background-color: orange">6</span><br />
+                        <span style="background-color: orange">7</span><br />
+                        <span style="background-color: orange">8</span><br />
+
+                    </div>
+                    <div class="col-md-1">
+                        <span style="background-color: yellow">5</span><br />
+                        <span style="background-color: yellow">6</span><br />
+                        <span style="background-color: yellow">7</span><br />
+                        <span style="background-color: yellow">8</span><br />
+                    </div>
+                </div>
+            </div>
+        </div>*@
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-2"></div>
+            <div class="box box-info BoxBorder col-md-8" style="box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                <div class="box-header with-border BoxHeading">
+                    @*<h3 id="" class="box-title">Number of Errors in Action</h3>*@
+                    <h3 id="" class="box-title">Details of Issues as on <span id="todaydate"></span></h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            @*<div class="col-md-2">
+                                </div>*@
+                            <div class="col-md-6">
+                                <div class="col-md-8" style="color: green; font-size: 13px">
+                                    @*<span>Actions</span><br />*@
+                                    @*<div>@Model.TilesData.ActionErrorsList[0].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[1].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[2].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[3].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[4].ActionDesc</div><br />*@
+
+                                     <div>Database Integrity Failure</div><br />
+                                    <div>Database Consistency Failure</div><br />                                   
+                                    <div>Database Audit Not Running</div><br />
+                                    <div>Optimizer 1 Not Running</div><br />
+                                    <div>Optimizer 2 Not Running</div><br />
+                                </div>
+                                <div class="col-md-1" style="color: red; font-size: 13px">
+                                    @*<span>Number of Errors</span><br />*@
+                                    @* onclick="GetDataByActionType(3)" commented by mayank on 19/05/2022 show Details table on Tile Click Only *@
+                                    <div id="data_0" @*style="cursor:pointer" onclick="GetDataByActionType(3)"*@>@Model.TilesData.ActionErrorsList[0].NumberOfErrors</div><br />
+                                    <div id="data_1" @*style="cursor:pointer" onclick="GetDataByActionType(4)"*@>@Model.TilesData.ActionErrorsList[1].NumberOfErrors</div><br />
+                                    <div id="data_2" @*style="cursor:pointer" onclick="GetDataByActionType(5)"*@>@Model.TilesData.ActionErrorsList[2].NumberOfErrors</div><br />
+                                    <div id="data_3" @*style="cursor:pointer" onclick="GetDataByActionType(6)"*@>@Model.TilesData.ActionErrorsList[3].NumberOfErrors</div><br />
+                                    <div id="data_4" @*style="cursor:pointer" onclick="GetDataByActionType(7)"*@>@Model.TilesData.ActionErrorsList[4].NumberOfErrors</div><br />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="col-md-8" style="color: green; font-size: 13px">
+                                    @*<div>@Model.TilesData.ActionErrorsList[5].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[6].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[7].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[8].ActionDesc</div><br />
+                                        <div>@Model.TilesData.ActionErrorsList[9].ActionDesc</div><br />*@
+                                    <div>Last Full Backup Verification Failed</div><br />
+                                    <div>Last Differential Backup Verification Failed</div><br />
+                                    <div>Data File Size Not Available</div><br />
+                                    @*<div>Log File Size Not Available</div><br />*@
+                                    <div>Log File Size > 25%</div><br />
+                                    @*<div>Database Disk Space Size Not Available</div><br />*@
+                                    <div>Database Free Disk Space < 25%</div><br />
+                                </div>
+                                <div class="col-md-1" style="color: red; font-size: 13px">
+                                    <div id="data_5" @*style="cursor:pointer" onclick="GetDataByActionType(8)"*@>@Model.TilesData.ActionErrorsList[5].NumberOfErrors</div><br />
+                                    <div id="data_6" @*style="cursor:pointer" onclick="GetDataByActionType(9)"*@>@Model.TilesData.ActionErrorsList[6].NumberOfErrors</div><br />
+                                    <div id="data_7" @*style="cursor:pointer" onclick="GetDataByActionType(10)"*@>@Model.TilesData.ActionErrorsList[7].NumberOfErrors</div><br />
+                                    <div id="data_8" @*style="cursor:pointer" onclick="GetDataByActionType(11)"*@>@Model.TilesData.ActionErrorsList[8].NumberOfErrors</div><br />
+                                    <div id="data_9" @*style="cursor:pointer" onclick="GetDataByActionType(12)"*@>@Model.TilesData.ActionErrorsList[9].NumberOfErrors</div><br />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section id="sectionRevenueCollectedTop" class="col-lg-6"></section>
+                    <section class="col-lg-6" id="sectionRevenueCollectedBottom"></section>
+
+
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-lg-10"></div>
+                        <div class="col-lg-2" style="text-align:right">
+
+                            @*<a href="#" onclick="LoadPopup('R')" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box-footer -->
+
+            </div>
+        </div>
+    </div>
+
+    @*FOR TABLE*@
+
+    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">Daily Database Diagnostic Detail <span id="actiontypeheading">(Issues Found)</span></span>
+            </div>
+            <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                @*<div class="row" style="text-align:right;"><i><h6 style="padding-right:1%;"><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span>Note : This report is based on pre processed data considered upto @Model.maxDate</b> </h6></i></div>*@
+
+                @*Added ReportInfoID to hide/show*@
+                <div id="ReportInfoID" class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span></b> </h6></i></div>
+
+                <div class="clsTblWrapper divPeriodWise" id="divRevenuePeriodWise" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+
+                    <table id="OfficeWiseDiagnosticStatusTable" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden;  background-color: aliceblue; border: solid; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th style="vertical-align:middle;">Sr No</th>
+                                <th style="vertical-align:middle;">Office Name</th>
+                                <th style="vertical-align:middle;">Execution Date</th>
+                                <th style="vertical-align:middle;">OverAll Check Status</th>
+                                <th style="vertical-align:middle;">Data File Size (MB)</th>
+                                <th style="vertical-align:middle;">Log File Size (MB)</th>
+                                <th style="vertical-align:middle;">DB Free Disk Space (GB)</th>
+                                @*<th style="vertical-align:middle;">Secure Code Check</th>*@
+
+                                <th style="vertical-align:middle;">Time Zone Check</th>
+
+                                <th style="vertical-align:middle;">DB Consistency Check</th>
+
+                                <th style="vertical-align:middle;">Constraint Integrity Check</th>
+
+                                <th style="vertical-align:middle;">Audit Event Check</th>
+
+                                <th style="vertical-align:middle;">Optimizer 1 Check</th>
+
+                                <th style="vertical-align:middle;">Optimizer 2 Check</th>
+
+                                <th style="vertical-align:middle;">Last Full Backup Verification</th>
+
+                                <th style="vertical-align:middle;">Last Differential Backup Verification</th>
+
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-md-5"></div>
+                    <div class='BTNwrapper col-md-2' style="text-align:left;">
+                        <span id="EXCELSPANID"></span>
+                        @*<button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="excelDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as Excel</button>*@
+                    </div>
+                    <div class="col-md-5" style="padding-left:19%;">
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLongTitle">Action Details</h5>
+                                <i class="fa fa-clipboard" aria-hidden="true" style="cursor: pointer;position: relative;text-align: right;left: 265px;padding-top: 4px;" onclick="CopyText()" data-toggle="tooltip" title="copy"></i>
+
+                                @*<button type="button" onclick="CopyText()">
+                                        <span class="glyphicon glyphicon-copy">Copy</span>
+                                    </button>*@
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="modalValue" style="text-align: left; word-break: break-all;white-space: pre-wrap; max-height: 35vh; overflow-y: auto; ">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

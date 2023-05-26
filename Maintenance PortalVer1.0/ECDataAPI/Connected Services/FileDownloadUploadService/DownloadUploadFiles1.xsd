@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55333/DownloadUploadFiles.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="UploadDocuments">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bInputData" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="sFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sDirName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadDocumentsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadDocumentsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPdfFileLengthCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sDirName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPdfFileLengthCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPdfFileLengthCountResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSHA1HashData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSHA1HashDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetSHA1HashDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSHA1HashData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="inputData" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="storedHashData" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateSHA1HashDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidateSHA1HashDataResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Upload">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bInputDate" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="lOffset" type="xs:long" />
+        <xs:element minOccurs="0" name="sFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sdirectoryStructure" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Download">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sFilePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lOffset" type="xs:long" />
+        <xs:element minOccurs="0" name="iBufferSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DownloadResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePasswordProtedtedScannedDocument">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePasswordProtedtedScannedDocumentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreatePasswordProtedtedScannedDocumentResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSize">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSizeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFileSizeResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PageCount">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PageCountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PageCountResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileLenghtChecksum">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileLenghtChecksumResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFileLenghtChecksumResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFileReadable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sFileName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFileReadableResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsFileReadableResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bInputImageData" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="imgWidth" type="xs:int" />
+        <xs:element minOccurs="0" name="imgHeight" type="xs:int" />
+        <xs:element minOccurs="0" name="sImagename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sdirectoryStructure" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadImageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadImageWithVirtualPaths">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bInputImageData" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="imgWidth" type="xs:int" />
+        <xs:element minOccurs="0" name="imgHeight" type="xs:int" />
+        <xs:element minOccurs="0" name="sImagename" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sdirectoryStructure" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadImageWithVirtualPathsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadImageWithVirtualPathsResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="virtualFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyExistingFile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sSourceFilePath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sDestinationFilePath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyExistingFileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CopyExistingFileResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadWithVirtualPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="bInputDate" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="lOffset" type="xs:long" />
+        <xs:element minOccurs="0" name="sFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sdirectoryStructure" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadWithVirtualPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadWithVirtualPathResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="virtualfilepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PageCountWithVirtualPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PageCountWithVirtualPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PageCountWithVirtualPathResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFullPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFullPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFullPathResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileLenghtChecksumWithVirtual">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileLenghtChecksumWithVirtualResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFileLenghtChecksumWithVirtualResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePasswordProtScanDocumentWithVirtual">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreatePasswordProtScanDocumentWithVirtualResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreatePasswordProtScanDocumentWithVirtualResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadWithVirtualPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="lOffset" type="xs:long" />
+        <xs:element minOccurs="0" name="iBufferSize" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DownloadWithVirtualPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DownloadWithVirtualPathResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSizeWithVirtualPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFileSizeWithVirtualPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetFileSizeWithVirtualPathResult" type="xs:long" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetURIPathofVirtual">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetURIPathofVirtualResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetURIPathofVirtualResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFileReadableWithVirtualPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsFileReadableWithVirtualPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsFileReadableWithVirtualPathResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyExistingFileWithVirtualPaths">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sSourceVirtualPath" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sDestinationVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CopyExistingFileWithVirtualPathsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CopyExistingFileWithVirtualPathsResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteExistingFileWithVirtualPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sSourceVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteExistingFileWithVirtualPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteExistingFileWithVirtualPathResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRDPRXMLInnerXmlDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sVirtualPath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRDPRXMLInnerXmlDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetRDPRXMLInnerXmlDetailsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFirmSupportingDocumentWithVirtualPath">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="supportDocumentList" nillable="true" type="q1:ArrayOfstring" />
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="supportingDocDescs" nillable="true" type="q2:ArrayOfstring" />
+        <xs:element minOccurs="0" name="sFileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="sdirectoryStructure" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadFirmSupportingDocumentWithVirtualPathResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UploadFirmSupportingDocumentWithVirtualPathResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="virtualfilepath" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

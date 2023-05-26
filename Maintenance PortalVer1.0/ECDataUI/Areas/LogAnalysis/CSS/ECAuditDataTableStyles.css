@@ -1,0 +1,112 @@
+﻿
+
+/*body {
+    font-family: "KNB-TTUmaEN",Arial, Helvetica, sans-serif;
+    font-size: 20.0px;
+    line-height: 1.11em;
+}*/
+
+/* Customize the label (the container) */
+.containerRadio {
+    display: block;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 19px;
+    width: 19px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containerRadio:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerRadio input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containerRadio input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerRadio .checkmark:after {
+    top: 6px;
+    left: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+thead, th {
+    text-align: center;
+}
+
+.multiselect b.caret {
+    display: none;
+}
+
+.btn-group {
+    position: relative;
+    width: 100%;
+}
+
+.multiselect {
+    width: 100%;
+    text-align: left;
+}
+
+.multiselect-container {
+    position: absolute;
+    width: inherit;
+}
+
+    .multiselect-container > li > a {
+        /*white-space: normal;*/
+    }
+
+.minimal {
+    background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+    background-size: 5px 5px, 5px 5px, 1px 1.5em;
+    background-repeat: no-repeat;
+}
+
+.textAlignLeft {
+    text-align: left;
+}
+
+#StatTableDataID td {
+    vertical-align: middle;
+    font-family: "KNB-TTUmaEN";
+    font-size: 15px;
+}

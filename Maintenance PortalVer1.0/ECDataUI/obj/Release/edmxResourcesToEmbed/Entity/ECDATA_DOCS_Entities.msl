@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ECDATA_DOCSModelStoreContainer" CdmEntityContainer="ECDATA_DOCS_Entities">
+    <EntitySetMapping Name="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.ECLOG_FUNCTIONALITY_DEBUG_LOG">
+        <MappingFragment StoreEntitySet="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+          <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
+          <ScalarProperty Name="FUNCTIONALITY_ID" ColumnName="FUNCTIONALITY_ID" />
+          <ScalarProperty Name="LOG_DESCRIPTION" ColumnName="LOG_DESCRIPTION" />
+          <ScalarProperty Name="INSERT_DATETIME" ColumnName="INSERT_DATETIME" />
+          <ScalarProperty Name="CLASSNAME" ColumnName="CLASSNAME" />
+          <ScalarProperty Name="METHODNAME" ColumnName="METHODNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ECLOG_FUNCTIONALITY_MASTER">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.ECLOG_FUNCTIONALITY_MASTER">
+        <MappingFragment StoreEntitySet="ECLOG_FUNCTIONALITY_MASTER">
+          <ScalarProperty Name="FUNCTIONALITY_ID" ColumnName="FUNCTIONALITY_ID" />
+          <ScalarProperty Name="FUNCTIONALITY_NAME" ColumnName="FUNCTIONALITY_NAME" />
+          <ScalarProperty Name="FUNCTIONALITY_DESC" ColumnName="FUNCTIONALITY_DESC" />
+          <ScalarProperty Name="LEVEL_ID" ColumnName="LEVEL_ID" />
+          <ScalarProperty Name="PARENT_FUNCTIONALITY_ID" ColumnName="PARENT_FUNCTIONALITY_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

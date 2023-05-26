@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ECDATA_DOCSModelStoreContainer" CdmEntityContainer="ECDATA_DOCS_Entities">
+    <EntitySetMapping Name="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.ECLOG_FUNCTIONALITY_DEBUG_LOG">
+        <MappingFragment StoreEntitySet="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+          <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
+          <ScalarProperty Name="FUNCTIONALITY_ID" ColumnName="FUNCTIONALITY_ID" />
+          <ScalarProperty Name="LOG_DESCRIPTION" ColumnName="LOG_DESCRIPTION" />
+          <ScalarProperty Name="INSERT_DATETIME" ColumnName="INSERT_DATETIME" />
+          <ScalarProperty Name="CLASSNAME" ColumnName="CLASSNAME" />
+          <ScalarProperty Name="METHODNAME" ColumnName="METHODNAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ECLOG_FUNCTIONALITY_MASTER">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.ECLOG_FUNCTIONALITY_MASTER">
+        <MappingFragment StoreEntitySet="ECLOG_FUNCTIONALITY_MASTER">
+          <ScalarProperty Name="FUNCTIONALITY_ID" ColumnName="FUNCTIONALITY_ID" />
+          <ScalarProperty Name="FUNCTIONALITY_NAME" ColumnName="FUNCTIONALITY_NAME" />
+          <ScalarProperty Name="FUNCTIONALITY_DESC" ColumnName="FUNCTIONALITY_DESC" />
+          <ScalarProperty Name="LEVEL_ID" ColumnName="LEVEL_ID" />
+          <ScalarProperty Name="PARENT_FUNCTIONALITY_ID" ColumnName="PARENT_FUNCTIONALITY_ID" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_SchedulerMaster">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.MAS_SchedulerMaster">
+        <MappingFragment StoreEntitySet="MAS_SchedulerMaster">
+          <ScalarProperty Name="Scheduler_Name" ColumnName="Scheduler Name" />
+          <ScalarProperty Name="SchedulerID" ColumnName="SchedulerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SROCentralTransSchedularRuntimeDetails">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.SROCentralTransSchedularRuntimeDetails">
+        <MappingFragment StoreEntitySet="SROCentralTransSchedularRuntimeDetails">
+          <ScalarProperty Name="isdro" ColumnName="isdro" />
+          <ScalarProperty Name="DROCode" ColumnName="DROCode" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SchedularRuntime" ColumnName="SchedularRuntime" />
+          <ScalarProperty Name="SROName" ColumnName="SROName" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="IDetailID" ColumnName="IDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XELAuditSpecificationDetail">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.XELAuditSpecificationDetail">
+        <MappingFragment StoreEntitySet="XELAuditSpecificationDetail">
+          <ScalarProperty Name="isdro" ColumnName="isdro" />
+          <ScalarProperty Name="DROCode" ColumnName="DROCode" />
+          <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
+          <ScalarProperty Name="HOST_NAME" ColumnName="HOST_NAME" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="KEYVALUE" ColumnName="KEYVALUE" />
+          <ScalarProperty Name="STATEMENT" ColumnName="STATEMENT" />
+          <ScalarProperty Name="APPLICATION_NAME" ColumnName="APPLICATION_NAME" />
+          <ScalarProperty Name="DATABASE_NAME" ColumnName="DATABASE_NAME" />
+          <ScalarProperty Name="SERVER_NAME" ColumnName="SERVER_NAME" />
+          <ScalarProperty Name="LOGIN_NAME" ColumnName="LOGIN_NAME" />
+          <ScalarProperty Name="EVENT_TIME" ColumnName="EVENT_TIME" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+          <ScalarProperty Name="IDetailID" ColumnName="IDetailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XELReadJobDetails">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.XELReadJobDetails">
+        <MappingFragment StoreEntitySet="XELReadJobDetails">
+          <ScalarProperty Name="isdro" ColumnName="isdro" />
+          <ScalarProperty Name="DROCode" ColumnName="DROCode" />
+          <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+          <ScalarProperty Name="IsErrorOccured" ColumnName="IsErrorOccured" />
+          <ScalarProperty Name="NumberFilesRead" ColumnName="NumberFilesRead" />
+          <ScalarProperty Name="JobCompletionDateTime" ColumnName="JobCompletionDateTime" />
+          <ScalarProperty Name="IsJobCompleted" ColumnName="IsJobCompleted" />
+          <ScalarProperty Name="JobRegisterDateTime" ColumnName="JobRegisterDateTime" />
+          <ScalarProperty Name="ToMonth" ColumnName="ToMonth" />
+          <ScalarProperty Name="ToYear" ColumnName="ToYear" />
+          <ScalarProperty Name="FromMonth" ColumnName="FromMonth" />
+          <ScalarProperty Name="FromYear" ColumnName="FromYear" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="JobID" ColumnName="JobID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XELSchedulersExceptionLog">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.XELSchedulersExceptionLog">
+        <MappingFragment StoreEntitySet="XELSchedulersExceptionLog">
+          <ScalarProperty Name="isdro" ColumnName="isdro" />
+          <ScalarProperty Name="DROCODE" ColumnName="DROCODE" />
+          <ScalarProperty Name="SchedulerID" ColumnName="SchedulerID" />
+          <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+          <ScalarProperty Name="ExceptionMethodName" ColumnName="ExceptionMethodName" />
+          <ScalarProperty Name="ExceptionStackTrace" ColumnName="ExceptionStackTrace" />
+          <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+          <ScalarProperty Name="InnerExceptionMsg" ColumnName="InnerExceptionMsg" />
+          <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="XELTransmissionLog">
+      <EntityTypeMapping TypeName="ECDATA_DOCSModel.XELTransmissionLog">
+        <MappingFragment StoreEntitySet="XELTransmissionLog">
+          <ScalarProperty Name="isdro" ColumnName="isdro" />
+          <ScalarProperty Name="DROCode" ColumnName="DROCode" />
+          <ScalarProperty Name="EventEndDate" ColumnName="EventEndDate" />
+          <ScalarProperty Name="EventStartDate" ColumnName="EventStartDate" />
+          <ScalarProperty Name="FileReadDateTime" ColumnName="FileReadDateTime" />
+          <ScalarProperty Name="IsFileReadSuccessful" ColumnName="IsFileReadSuccessful" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="TransmissionCompleteDateTime" ColumnName="TransmissionCompleteDateTime" />
+          <ScalarProperty Name="TransmissionInitiateDateTime" ColumnName="TransmissionInitiateDateTime" />
+          <ScalarProperty Name="isSuccessfullUpload" ColumnName="isSuccessfullUpload" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+          <ScalarProperty Name="AbsolutePath" ColumnName="AbsolutePath" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USP_XEL_EXCEPTION_LOG" FunctionName="ECDATA_DOCSModel.Store.USP_XEL_EXCEPTION_LOG">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ECDATA_DOCSModel.USP_XEL_EXCEPTION_LOG_Result">
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+          <ScalarProperty Name="SroName" ColumnName="SroName" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+          <ScalarProperty Name="InnerExceptionMsg" ColumnName="InnerExceptionMsg" />
+          <ScalarProperty Name="ExceptionMsg" ColumnName="ExceptionMsg" />
+          <ScalarProperty Name="ExceptionStackTrace" ColumnName="ExceptionStackTrace" />
+          <ScalarProperty Name="ExceptionMethodName" ColumnName="ExceptionMethodName" />
+          <ScalarProperty Name="LogDate" ColumnName="LogDate" />
+          <ScalarProperty Name="isdro" ColumnName="isdro" />
+          <ScalarProperty Name="SchedulerID" ColumnName="SchedulerID" />
+          <ScalarProperty Name="Scheduler_Name" ColumnName="Scheduler Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_XEL_TRANSMISSION_LOG" FunctionName="ECDATA_DOCSModel.Store.USP_XEL_TRANSMISSION_LOG">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ECDATA_DOCSModel.USP_XEL_TRANSMISSION_LOG_Result">
+          <ScalarProperty Name="TransmissionID" ColumnName="TransmissionID" />
+          <ScalarProperty Name="SroName" ColumnName="SroName" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="AbsolutePath" ColumnName="AbsolutePath" />
+          <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="isSuccessfullUpload" ColumnName="isSuccessfullUpload" />
+          <ScalarProperty Name="TransmissionInitiateDateTime" ColumnName="TransmissionInitiateDateTime" />
+          <ScalarProperty Name="TransmissionCompleteDateTime" ColumnName="TransmissionCompleteDateTime" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="Month" ColumnName="Month" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="IsFileReadSuccessful" ColumnName="IsFileReadSuccessful" />
+          <ScalarProperty Name="FileReadDateTime" ColumnName="FileReadDateTime" />
+          <ScalarProperty Name="EventStartDate" ColumnName="EventStartDate" />
+          <ScalarProperty Name="EventEndDate" ColumnName="EventEndDate" />
+          <ScalarProperty Name="isdro" ColumnName="isdro" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_XEL_FILE_COUNT_OFFICEWISE" FunctionName="ECDATA_DOCSModel.Store.USP_XEL_FILE_COUNT_OFFICEWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ECDATA_DOCSModel.USP_XEL_FILE_COUNT_OFFICEWISE_Result">
+          <ScalarProperty Name="OFFICECODE" ColumnName="OFFICECODE" />
+          <ScalarProperty Name="OFFICENAME" ColumnName="OFFICENAME" />
+          <ScalarProperty Name="FILE_COUNT" ColumnName="FILE_COUNT" />
+          <ScalarProperty Name="TOTAL_SIZE_ON_DISK" ColumnName="TOTAL_SIZE_ON_DISK" />
+          <ScalarProperty Name="LAST_CENTRALIZED_ON" ColumnName="LAST_CENTRALIZED_ON" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_XEL_FILE_LIST_OFFICEWISE" FunctionName="ECDATA_DOCSModel.Store.USP_XEL_FILE_LIST_OFFICEWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ECDATA_DOCSModel.USP_XEL_FILE_LIST_OFFICEWISE_Result">
+          <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+          <ScalarProperty Name="FILESIZE" ColumnName="FILESIZE" />
+          <ScalarProperty Name="OFFICECODE" ColumnName="OFFICECODE" />
+          <ScalarProperty Name="FILEDATETIME" ColumnName="FILEDATETIME" />
+          <ScalarProperty Name="FILEPATH" ColumnName="FILEPATH" />
+          <ScalarProperty Name="EventStartDate" ColumnName="EventStartDate" />
+          <ScalarProperty Name="EventEndDate" ColumnName="EventEndDate" />
+          <ScalarProperty Name="FileReadDateTime" ColumnName="FileReadDateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_XEL_Files_RootDirPath_List_officewise" FunctionName="ECDATA_DOCSModel.Store.USP_XEL_Files_RootDirPath_List_officewise" />
+  </EntityContainerMapping>
+</Mapping>

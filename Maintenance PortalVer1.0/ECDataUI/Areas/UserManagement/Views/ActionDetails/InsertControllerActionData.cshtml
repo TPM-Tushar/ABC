@@ -1,0 +1,244 @@
+﻿@model CustomModels.Models.ControllerAction.ControllerActionModel
+@using ECDataUI.Helper;
+
+<script src="~/Areas/UserManagement/Scripts/ControllerAction/addUpdateControllerAction.js"></script>
+@*<script src="~/Areas/UserManagement/Scripts/ControllerAction/addUpdateControllerAction.min.js"></script>*@
+
+
+<style>
+    .verticalLine1 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 88%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+
+    /*.verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;
+        left: 0px;
+        height: 88%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 5%;
+    }*/
+</style>
+<div class="col-md-offset-0">
+
+    <div class="panel panel-default" id="panelControllerAction" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+
+        <div class="panel-body">
+            <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-right: 0px; margin-left: 0px;">
+                <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                @if (Model.IsForUpdate)
+                {
+                    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Update Controller Action Details </span>
+                }
+                else
+                {
+                    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">New  Controller Action Details</span>
+                }
+
+
+
+                <span id="closeControllerAction"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>
+            </div>
+            <form id="ControllerActionDetailsForm">
+
+
+                <div class="" style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; padding-left: 1%;padding-right: 1%;padding-bottom: 1%; overflow-y: auto;height:300px;">
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+
+                    <div class="" style="background: #fff; height: 235px;">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <fieldset>
+                                    <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;">
+
+                                        <div class="col-md-5">
+                                            <br>
+
+                                            @Html.HiddenFor(m => m.EncryptedID)
+                                            @Html.HiddenFor(m => m.ControllerNameId_Hidden, new { @id = "ControllerNameId_HiddenId" })
+                                            @Html.HiddenFor(m => m.ActionNameId_Hidden, new { @id = "ActionNameId_HiddenId" })
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="col-md-6 PaddingTop10">
+                                                        @Html.LabelFor(model => model.AreaNameId, new { @class = "control-label " }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.DropDownListFor(model => model.AreaNameId, @Model.AreaList, new { @class = "form-control minimal", onchange = "AreaChangeFun()", @id = "areaList", tabindex = 1 })
+                                                        @Html.ValidationMessageFor(model => model.AreaNameId, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 PaddingTop10">
+                                                        @Html.LabelFor(model => model.ActionNameId, new { @class = "control-label " }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.DropDownListFor(model => model.ActionNameId, @Model.ActionList, new { @class = "form-control minimal", @id = "actionList", tabindex = 3, onchange = "ActionChangeFun()" })
+                                                        @Html.ValidationMessageFor(model => model.ActionNameId, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 PaddingTop10">
+                                                        @Html.LabelFor(model => model.MenuDetailsId, new { @class = "control-label " }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @*@Html.DropDownListFor(model => model.MenuDetailsId, @Model.MenuDetailsList, new { @class = "form-control minimal", @id = "ddMenuList", tabindex = 3 })*@
+
+                                                        @Html.ListBoxFor(model => model.MenuDetailsId, @Model.MenuDetailsList, new { @class = "form-control", @id = "ddMenuList", tabindex = 4 })
+
+                                                        @Html.ValidationMessageFor(model => model.MenuDetailsId, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @*@Html.EditorFor(model => model.IsActive, new { @class = "form-control minimal", tabindex = 5 })*@
+                                                        @Html.CheckBoxFor(model => model.IsActive, new { @Id = "IsActiveId", tabindex = 5 })
+                                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div><br>
+                                            </fieldset>
+                                        </div>
+
+
+                                        <div class="col-md-2 " style="text-align: center;">
+                                            <div class="verticalLine1"></div>
+                                        </div>
+
+                                        <div class="col-md-5">
+                                            <br>
+                                            <fieldset>
+                                                <div class="row">
+
+                                                    <div class="col-md-6 PaddingTop10">
+                                                        @Html.LabelFor(model => model.ControllerNameId, new { @class = "control-label " }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.DropDownListFor(model => model.ControllerNameId, @Model.ControllerList, new { @class = "form-control minimal ajax-typeahead", onchange = "ControllerChangeFun()", @id = "controllerList", tabindex = 2 })
+                                                        @Html.ValidationMessageFor(model => model.ControllerNameId, "", new { @class = "text-danger" })
+                                                    </div>
+
+                                                </div>
+                                                <br>
+                                                @*<div class="row">
+                                                        <div class="col-md-6">
+                                                            @Html.LabelFor(model => model.RoleId, new { @class = "control-label " }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            @Html.ListBoxFor(model => model.RoleId, @Model.RoleList, new { @class = "form-control", @id = "listbox" ,style="width:20px;", tabindex = 4 })
+                                                            @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" ,@id="RoleError"})
+                                                        </div>
+                                                    </div>*@
+
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        @Html.LabelFor(model => model.Description, new { @class = "control-label " }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @Html.TextBoxFor(model => model.Description, new { @class = "form-control minimal ", @id = "", @placeholder = "" })
+
+                                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @id = "RoleError" })
+                                                    </div>
+                                                </div>
+                                                <br/>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        @Html.LabelFor(model => model.IsForMenuActionMapping, new { @class = "control-label" })
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @*@Html.EditorFor(model => model.IsActive, new { @class = "form-control minimal", tabindex = 5 })*@
+                                                        @Html.CheckBoxFor(model => model.IsForMenuActionMapping, new { @Id = "IsForMenuActionId", tabindex = 5 })
+                                                        @Html.ValidationMessageFor(model => model.IsForMenuActionMapping, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+
+                                            </fieldset>
+                                        </div>
+
+                                    </div>
+
+                                </fieldset>
+                                <br>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @*<div class="col-md-6 col-md-offset-5">*@
+                        <div class="col-md-12" style="text-align:center;">
+                            @if (Model.IsForUpdate)
+                            {
+                                <button type="button" class="btn btn-group-md btn-success" id="btnUpdate" title="Update">Update</button><i>&nbsp;</i>
+                            }
+                            else
+                            {
+                                <button type="button" class="btn btn-group-md btn-success" id="btnSave" title="Create">Create</button><i>&nbsp;</i>
+                                <button type="reset" class="btn btn-group-md btn-warning " id="btnReset" title="Reset">Reset</button><i>&nbsp;</i>
+                            }
+
+                            <button type="reset" class="btn btn-group-md btn-danger " id="btnCancel" title="Cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+</div>

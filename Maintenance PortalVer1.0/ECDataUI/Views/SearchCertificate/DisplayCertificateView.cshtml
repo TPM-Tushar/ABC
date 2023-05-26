@@ -1,0 +1,23 @@
+﻿@model CustomModels.Models.SearchCertificate.SearchCertificateModel
+
+@{
+    Layout = null;
+}
+
+
+   <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+    <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Certificate PDF</span>
+</div>
+<div style="border: solid 1px #d1d1d1;border-radius:12px;margin-top:1%">
+
+    @{
+        string urlAction = "/Certificate/GetCertificateByteArray?CertificateNum=" + Model.CertificateNumber;
+    }
+
+    <object data="@urlAction" style="height:70vh;width:91vw" type="application/pdf"></object>
+
+
+</div>
+
+

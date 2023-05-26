@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\IIS\api</_PublishTargetUrl>
+    <History>True|2023-02-07T04:57:59.5282840Z;True|2023-02-07T09:57:58.5118978+05:30;True|2023-02-07T09:56:44.6690725+05:30;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="Areas/Alerts/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/AnywhereEC/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/BhoomiMapping/Views/web.config">
+      <publishTime>10/26/2021 12:01:38</publishTime>
+    </File>
+    <File Include="Areas/Blockchain/Views/web.config">
+      <publishTime>07/13/2021 17:59:28</publishTime>
+    </File>
+    <File Include="Areas/ChallanNoDataEntryCorrection/Views/web.config">
+      <publishTime>12/21/2022 12:17:10</publishTime>
+    </File>
+    <File Include="Areas/Dashboard/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/DataEntryCorrection/Views/web.config">
+      <publishTime>07/13/2021 17:59:28</publishTime>
+    </File>
+    <File Include="Areas/DynamicDataReader/Views/web.config">
+      <publishTime>12/22/2020 12:01:48</publishTime>
+    </File>
+    <File Include="Areas/IntegrationDashboard/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/KavariSupport/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/KaveriIntegration/Views/web.config">
+      <publishTime>12/20/2019 15:31:14</publishTime>
+    </File>
+    <File Include="Areas/LogAnalysis/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/MISReports/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/RefundChallan/Views/web.config">
+      <publishTime>02/21/2022 11:31:36</publishTime>
+    </File>
+    <File Include="Areas/Remittance/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/SROScriptManager/Views/web.config">
+      <publishTime>12/20/2019 15:30:58</publishTime>
+    </File>
+    <File Include="Areas/SupportEnclosure/Views/web.config">
+      <publishTime>12/20/2019 15:30:56</publishTime>
+    </File>
+    <File Include="Areas/TicketTracing/Views/web.config">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Areas/Utilities/Views/web.config">
+      <publishTime>10/03/2019 11:52:34</publishTime>
+    </File>
+    <File Include="Areas/XELFiles/Views/web.config">
+      <publishTime>12/20/2019 15:30:58</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.dll">
+      <publishTime>04/12/2018 18:42:30</publishTime>
+    </File>
+    <File Include="bin/Antlr3.Runtime.pdb">
+      <publishTime>04/12/2018 18:42:30</publishTime>
+    </File>
+    <File Include="bin/Aspose.Words.dll">
+      <publishTime>05/03/2022 14:19:30</publishTime>
+    </File>
+    <File Include="bin/CaptchaLib.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/CustomModels.dll">
+      <publishTime>02/07/2023 10:27:41</publishTime>
+    </File>
+    <File Include="bin/CustomModels.dll.config">
+      <publishTime>06/25/2019 12:15:48</publishTime>
+    </File>
+    <File Include="bin/CustomModels.pdb">
+      <publishTime>02/07/2023 10:27:41</publishTime>
+    </File>
+    <File Include="bin/ECDataAPI.dll">
+      <publishTime>02/07/2023 10:27:52</publishTime>
+    </File>
+    <File Include="bin/ECDataAPI.pdb">
+      <publishTime>02/07/2023 10:27:52</publishTime>
+    </File>
+    <File Include="bin/ECDataAPI.XmlSerializers.dll">
+      <publishTime>02/07/2023 10:27:57</publishTime>
+    </File>
+    <File Include="bin/ECDataUI.dll">
+      <publishTime>02/07/2023 10:27:45</publishTime>
+    </File>
+    <File Include="bin/ECDataUI.dll.config">
+      <publishTime>02/01/2023 12:51:13</publishTime>
+    </File>
+    <File Include="bin/ECDataUI.pdb">
+      <publishTime>02/07/2023 10:27:45</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>10/23/2017 13:15:18</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.SqlServer.dll">
+      <publishTime>10/23/2017 13:15:20</publishTime>
+    </File>
+    <File Include="bin/EPPlus.dll">
+      <publishTime>02/03/2019 11:02:30</publishTime>
+    </File>
+    <File Include="bin/FileTypeDetective.dll">
+      <publishTime>05/11/2016 10:44:02</publishTime>
+    </File>
+    <File Include="bin/Ionic.Zip.dll">
+      <publishTime>01/01/0001 00:00:00</publishTime>
+    </File>
+    <File Include="bin/itextsharp.dll">
+      <publishTime>10/21/2015 16:15:26</publishTime>
+    </File>
+    <File Include="bin/itextsharp.xmlworker.dll">
+      <publishTime>10/21/2015 16:15:26</publishTime>
+    </File>
+    <File Include="bin/knbfaNet.dll">
+      <publishTime>01/25/2017 19:13:38</publishTime>
+    </File>
+    <File Include="bin/knbfraNet.dll">
+      <publishTime>01/25/2017 19:13:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>04/11/2018 14:27:32</publishTime>
+    </File>
+    <File Include="bin/NetISMAPI.dll">
+      <publishTime>01/25/2017 19:13:38</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>04/12/2018 15:22:30</publishTime>
+    </File>
+    <File Include="bin/PdfSharp.dll">
+      <publishTime>05/09/2014 13:04:36</publishTime>
+    </File>
+    <File Include="bin/System.Linq.Dynamic.dll">
+      <publishTime>10/15/2016 20:49:24</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>04/12/2018 15:22:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>04/20/2018 19:15:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>04/11/2018 14:27:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>04/11/2018 14:27:12</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>04/20/2018 19:15:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.Optimization.dll">
+      <publishTime>04/12/2018 18:42:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>04/20/2018 19:15:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>04/20/2018 19:15:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>04/20/2018 19:15:16</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>04/20/2018 19:15:16</publishTime>
+    </File>
+    <File Include="bin/WebGrease.dll">
+      <publishTime>04/12/2018 18:42:30</publishTime>
+    </File>
+    <File Include="Connected Services/FileDownloadUploadService/ECDataAPI.FileDownloadUploadService.UploadFirmSupportingDocumentWithVirtualPathResponse.datasource">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Connected Services/FileDownloadUploadService/ECDataAPI.FileDownloadUploadService.UploadImageWithVirtualPathsResponse.datasource">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Connected Services/FileDownloadUploadService/ECDataAPI.FileDownloadUploadService.UploadWithVirtualPathResponse.datasource">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Content/NOTARY.KEY">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="Entity/ECDATADOCS/ECDATA_DOCS_Entities.edmx.diagram">
+      <publishTime>12/27/2019 14:07:22</publishTime>
+    </File>
+    <File Include="Entity/ECDATA_PENDOCS/ECDATA_PENDOCS.edmx.diagram">
+      <publishTime>11/10/2022 11:32:50</publishTime>
+    </File>
+    <File Include="Entity/KaigrSearchDB/KaigrSearchDB.edmx.diagram">
+      <publishTime>12/26/2019 21:33:20</publishTime>
+    </File>
+    <File Include="Entity/KAIGR_ONLINE/KAIGR_ONLINE_Entities.edmx.diagram">
+      <publishTime>01/30/2023 12:07:35</publishTime>
+    </File>
+    <File Include="Entity/KaveriEntities/KaveriEntities.edmx.diagram">
+      <publishTime>01/30/2023 12:22:21</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>06/25/2019 12:15:50</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>05/25/2022 09:56:14</publishTime>
+    </File>
+    <File Include="Properties/DataSources/System.Data.DataSet.datasource">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.10.2.min.map">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.min.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/jquery.validate.unobtrusive.min.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>07/24/2019 17:51:52</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>06/25/2019 12:15:52</publishTime>
+    </File>
+    <File Include="Web References/AnyWhereECApplicationServices/Reference.map">
+      <publishTime>12/15/2021 16:12:28</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>02/07/2023 09:57:57</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,471 @@
+﻿@using ECDataUI.Helper;
+@using ECDataUI.Session;
+@using ECDataUI.Common;
+
+
+@{
+
+    string MenuNameToHighlight = string.IsNullOrEmpty(KaveriSession.Current.SubParentMenuName) ? "" : ("li" + KaveriSession.Current.SubParentMenuName.Replace(" ", string.Empty));
+    KaveriSession.Current.SubParentMenuName = "";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @*<meta name="viewport" content="width=device-width, initial-scale=1.0" >*@
+    <title>ECDATA PORTAL</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @*<meta name="viewport" content="width=device-width" />*@
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <script>
+        @*var vRegistration = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.Registration)";
+         var vAmendment ="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.Amendment)";
+         var vDissolution = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.Dissolution)";
+        // Added BY SB on 2-04-2019
+        var vRoleMenuActionDetails ="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.RoleMenuActionDetails)";
+        var vOfficeUserDetails = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.OfficeUserDetails)";
+        var vUserProfile ="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.UserProfile)";
+        var vChangePassword = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ChangePassword)";*@
+        var vEcAuditDetails="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.EcAuditDetails)";
+        var vDiagnosticDetails = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DiagnosticDetails)";
+        var vDiagnosticSummary ="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DiagnosticSummary)";
+
+        // Added BY SB on 06-04-2019
+        var vUserDetail ="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.UserDetail)";
+        var vRoleMenuMapping = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.RoleMenuMapping)";
+        var vOfficeDetail = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.OfficeDetail)";
+        var vUpdateProfile ="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.UpdateProfile)";
+        var vChangePassword = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ChangePassword)";
+        var vMenuActionDetails ="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.MenuActionDetails)";
+        var vControllerActionDetails = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ControllerActionDetails)";
+
+         //Added BY Shubham Bhagat on 25-04-2019
+        var vIntegrationCallExceptions = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.IntegrationCallExceptions)";
+
+        //Added BY Shubham Bhagat on 03-05-2019
+        var vErrorLogFiles = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ErrorLogFiles)";
+
+        //Added BY Shubham Bhagat on 03-05-2019
+        var vIndexIIReports = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.IndexIIReports)";
+
+        //Added BY Shubham Bhagat on 16-05-2019
+        var vRemittanceXMLLog = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.RemittanceXMLLog)";
+        var vChallanMatrixXMLLog = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ChallanMatrixXMLLog)";
+        var vDoubleVeriXMLLog = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DoubleVeriXMLLog)";
+        var vTotalDocumentsRegistered = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.TotalDocumentsRegistered)";//Raman
+
+        var vHighValueProperties = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.HighValueProperties)";//Akash
+        var vDailyRevenueArticleWise="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DailyRevenueArticleWise)";//Akash
+        var vSRODocumentsCashCollectionDetails="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.SRODocumentsCashCollectionDetails)";//Akash
+        var vSaleDeedRegisteredandRevenueCollected="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.SaleDeedRegisteredandRevenueCollected)";//Akash
+        var vSRODD_POCollectionDetails="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.SRODD_POCollection)";//Akash
+
+        var vTicketRegistration="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.TicketRegistration)";//Akash
+        var vDecryptEnclosure="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DecryptEnclosure)";//Akash
+        var vUploadPatchFile = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.UploadPatchFile)";//Akash
+
+        // 02-07-2019
+        var vServicePackStatus="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ServicePackStatus)";//Akash
+
+          var vDailyReceiptsDetails = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DailyReceiptsDetails)";//RamanK
+
+         // 15-07-2019
+        var vSurchargeandcessDetails="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.SurchargeandcessDetails)";//Shubham
+
+          // 18-07-2019
+        var vJurisdictionalWiseReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.JurisdictionalWiseReport)";//Shubham
+
+          // 30-09-2019
+        var vReleasedServicePacks="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ReleasedServicePacks)";//Shubham
+
+            // 30-09-2019
+        var vServicePacksDetails = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ServicePacksDetails)";//Shubham
+
+        var vServicePackDetails= "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ServicePackDetails)";//Shubham
+
+        var vAddServicePackDetails="@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.AddServicePackDetails)";//Shubham
+
+
+         // 06-08-2019
+        var vExemptedDocument = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ExemptedDocument)";//Shubham
+
+
+        // 29-08-2019
+        var vAnyWhereECLog = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.AnyWhereECLog)";//RamanK
+
+         // 29-08-2019
+        var vScannedFileUploadStatus = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ScannedFileUploadStatus)";//RamanK
+
+        // 29-08-2019
+        var vECDailyReceiptDetails = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ECDailyReceiptDetails)";//RamanK
+
+        //09-10-2019
+        var vScannedFileDownload = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ScannedFileDownload)";//RamanK
+
+        var vAnywhereRegistrationStatistics = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.AnywhereRegistrationStatistics)";//RamanK
+
+        var vDocumentCentralizationStatus = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DocumentCentralizationStatus)";//RamanK
+
+        var vXELLog = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.XELLog)";//RamanK
+
+        var vKaveriIntegrationReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.KaveriIntegrationReport)";//RamanK
+        var vReScanningDetails = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.ReScanningDetails)";//RamanK
+        var vDataTransmissionReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DataTransmissionReport)";//RamanK
+        var vPendingDocumentsSummary = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.PendingDocumentsSummary)";//RamanK
+        var vBhoomiFileUploadReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.BhoomiFileUploadReport)";//RamanK
+        var vCDWrittenReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.CDWrittenReport)";//RamanK
+        var vJSlipUploadReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.JSlipUploadReport)";//RamanK
+        var vSAKALAUploadAndPendencyReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.SAKALAUploadAndPendencyReport)";//RamanK
+        var vDocumentReferences = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DocumentReferences)";//RamanK
+        var vDocumentScanandDelivery = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DocumentScanandDelivery)";//RamanK
+        var vOtherDepartmentImport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.OtherDepartmentImport)";//RamanK
+        var vDiskUtilizationReport = "@Convert.ToInt32(CommonEnum.SubParentMenuToBeActive.DiskUtilizationReport)";//RamanK
+
+
+        var vCurrentActiveSubParentMenu = "@KaveriSession.Current.SubParentMenuToBeActive";
+        var vActiveMenuName = "@MenuNameToHighlight";
+
+
+    </script>
+
+    <link href="~/Content/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/Content/jvectormap/jquery-jvectormap.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    @*<script src="~/Content/DataTables/Js_New/jquery-3.3.1.js"></script>*@
+    <script src="~/Content/DataTables/Js_New/jquery-3.3.1.min.js"></script>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <link href="~/Content/bootstrap/css/datepicker3.min.css" rel="stylesheet" />
+    @* <script src="~/Content/themes/iCheck/icheck.js"></script>*@
+    <link href="~/Content/iCheckCss/all.css" rel="stylesheet" />
+    <script src="~/Scripts/iCheck/icheck.min.js"></script>
+    @*<link href="~/Content/website.css" rel="stylesheet" />*@
+    <link href="~/Content/website.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap/js/bootbox.min.js"></script>
+    @*<script src="~/Scripts/CommonJS/jquery.blockUI.js"></script>*@
+    <script src="~/Scripts/CommonJS/jquery.blockUI.min.js"></script>
+    <script src="~/Scripts/busywait.js"></script>
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/Js_New/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="~/Content/DataTables/Js_New/jquery.dataTables.min.js"></script>
+    <script src="~/Content/DataTables/Js_New/dataTables.fixedColumns.min.js"></script>
+    <script src="~/Content/DataTables/js/dataTables.bootstrap.js"></script>
+    <link href="~/Content/DataTablesResponsive/css/datatables.responsive.css" rel="stylesheet" />
+    <script src="~/Content/DataTablesResponsive/js/datatables.responsive.js"></script>
+    <script src="~/Scripts/CommonJS/dataTables.buttons.min.js"></script>
+    <script src="~/Scripts/CommonJS/buttons.flash.min.js"></script>
+    <script src="~/Scripts/CommonJS/jszip.min.js"></script>
+    <script src="~/Scripts/CommonJS/pdfmake.min.js"></script>
+    <script src="~/Scripts/CommonJS/vfs_fonts.js"></script>
+    <script src="~/Scripts/CommonJS/buttons.html5.min.js"></script>
+    <script src="~/Scripts/CommonJS/buttons.print.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootstrap-multiselect.js"></script>
+    <link href="~/Content/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet" />
+    @*<script src="~/Scripts/CommonJS/Captcha.js"></script>*@
+    <script src="~/Scripts/CommonJS/Captcha.min.js"></script>
+    <script src="~/Scripts/Layout/Layout.js"></script>
+    @*<script src="~/Scripts/Layout/Layout.min.js"></script>*@
+    <script src="~/Content/dist/js/adminlte.min.js"></script>
+
+    <style>
+        .dropbtn {
+            background-color: #73a9d9;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #AECFF1
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #73a9d9;
+        }
+
+        li.active > a {
+            background-color: #AECFF1 !important;
+        }
+
+        a {
+            color: #5f6f81;
+        }
+
+        .nav > li {
+            /*background: #E8E8E8 none repeat scroll 0 0;*/
+        }
+
+            .nav > li > a:hover, .nav > li > a:focus {
+                text-decoration: none;
+                color: black;
+                background-color: #BDD358;
+            }
+
+        .modal-dialog {
+            width: 600px;
+            margin: 20% auto;
+        }
+
+        .nav-pills > li > a {
+            border-top: none;
+        }
+
+        .content-wrapper {
+            min-height: 742px !important;
+        }
+
+        .alert-danger {
+            background-color: #F2DEDE !important;
+            color: #a94442 !important;
+        }
+
+        .alert-info {
+            background-color: #D9EDF7 !important;
+            color: #31708F !important;
+        }
+
+        /*ADDED BY SHUBHAM BHAGAT ON 31-05-2019*/
+        .sidebar-menu, .main-sidebar .user-panel, .sidebar-menu > li.header {
+            overflow-x: auto !important;
+            /*overflow: visible;*/
+        }
+
+        /*ADDED BY SHUBHAM BHAGAT ON 31-05-2019*/
+        .skin-blue-light .sidebar-menu > li > a {
+            font-weight: 1;
+        }
+
+        /*ADDED BY SHUBHAM BHAGAT ON 31-05-2019*/
+        .skin-blue-light .sidebar-menu > li.active > a {
+            font-weight: 1;
+        }
+
+        .verticalLine {
+            border-top: 1px solid black;
+            border-bottom: 75px solid black;
+            border-radius: 100%;
+            position: absolute;
+            left: 0px;
+            /*height: 71px;
+            width: 2px;*/
+            /*height: 71px;*/
+            width: 2%;
+            opacity: 0.2;
+            background-color: #aaa;
+            margin: auto;
+            margin-top: auto;
+            margin-top: 3%;
+        }
+
+        .KaveriSangam-icon-img {
+            text-align: left;
+        }
+
+            .KaveriSangam-icon-img > img {
+                width: 10%;
+                float: left;
+                margin-top: -12px;
+                padding: 5px;
+            }
+
+        /*.navbar-brand {
+            padding: 0px;
+        }
+
+            .navbar-brand > img {
+                height: 100%;
+                padding: 15px;
+                width: auto;
+            }*/
+
+    </style>
+</head>
+
+<body class="skin-blue-light sidebar-mini">
+    @*<div style="margin-bottom:20px;">*@
+    @*<div class="row"> navbar-inverse*@
+    @*<header>*@
+    <div id="top-header">
+        <span id="top1" style="margin-left: 2%;float:right;">
+            @*           <img class="india-flag-img" src="../../Content/images/flag.png" />*@
+            @*<img src="../../Content/images/Icon_Karnataka.svg.png" style="height: 20px;width: 26px;">*@
+
+            &nbsp;
+            <a id="href_color" rel="noopener noreferrer" target="_blank" title="Government of Karnataka" href="https://www.Karnataka.gov.in">
+                <span id="gov_of_india_txt" class="SmallCaps" style="font-weight:700">
+                    Government of Karnataka
+                </span>
+            </a>&nbsp;&nbsp;
+        </span>
+
+        <!-- Top Heaader -->
+        <span style="font-size:12px;color:#FFFFFF;" class="SmallCaps">
+            @*<div style="min-height:5px;"></div> Technical Help :
+                <i style="font-size:14px;" class="fa fa-phone"></i> 18001-18005 (Toll Free)*@
+        </span>&nbsp;&nbsp;
+    </div>
+
+    <nav role="navigation" class="navbar navbar-default">
+        @*<nav role="navigation" class="navbar navbar-default"*@ @*style="margin-top: .5%;"*@@*>*@
+        <div class="container">
+            <div class="col-md-12 col-xs-12 col-lg-12 col-sm-12">
+                @*row-fluid class will make whole image responsive but right side icon is not at right side*@
+                @*<div class="row-fluid">*@
+                @*<img src="~/Content/images/Header_006.png"*@ @*style="width: 192px;margin-left:-30%;padding-left:0%; margin-top: -10%;"*@ @*class="img-fluid" style="width:inherit;" />*@
+                <img src="~/Content/images/hEADER_8_1_2021.PNG" @*style="width: 192px;margin-left:-30%;padding-left:0%; margin-top: -10%;"*@ class="img-fluid" style="width:inherit;" />
+
+                @*</div>*@
+            </div>
+
+            <div class="row" style="padding-top: 10px;">
+                <div class="col-md-12" style="border-bottom: 1px solid #E5E4E2 !important;padding-bottom:4px;">
+                    @*<div class="col-md-3 addressClass" style="font-size: 15px;color: #5F6F81;padding-left:5px !important;">
+                        <a href="#" class="sidebar-toggle" id="iconSideBar" title="Open Menu" data-toggle="push-menu" role="button" style="color:black;vertical-align:super; outline:none;text-decoration:none; ">
+                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle navigation</span>
+                        </a>
+                                     <i class="fa fa-user" aria-hidden="true" style="font-size: 15px; vertical-align:super;margin-left:5%;"></i>&nbsp;<b style="vertical-align: super;">@KaveriSession.Current.FullName</b>
+                                    </div>*@
+                    <div class="col-md-3 addressClass" style="font-size: medium; color: #5F6F81;display:flex;">
+                        <a href="#" class="sidebar-toggle" id="iconSideBar" title="Open Menu" data-toggle="push-menu" role="button" style="color:black;vertical-align:super; outline:none;text-decoration:none;margin-right: 2%;margin-left: -3%; ">
+                            <i class="fa fa-bars"></i>
+                            <span class="sr-only">Toggle navigation</span>
+                        </a>
+                        @*Welcome :*@ <i class="fa fa-user" aria-hidden="true" style="font-size: 17px;"></i>&nbsp;<b>@KaveriSession.Current.FullName</b>
+                        <div class="" style="margin-left:10%;padding-left:2%;">
+                            @*<div class="dropdown" style="margin-left:-71%;">
+                                    <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown" title="Update your profile" style="height:20px !important;padding-top:24%;color: red;background-color: #E8E8E8;border-color: #969696;">
+                                        <span class="caret" style="margin-top:-150% !important;"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="border: solid 1px #CDDDEF;">
+                                        <li style="background-color:#E8E9E9;;font-size:109%;"><a href=@Url.Action("ChangePassword", "UserProfileDetails", new { Area = "UserManagement" }) style="font-size:112%;">Change Password</a></li>
+                                        <li style="background-color:#E8E9E9;margin-top:1%;font-size:109%;"><a href=@Url.Action("ViewUserProfileDetails", "UserProfileDetails", new { Area = "UserManagement" }) style="font-size:112%;">Edit Profile</a></li>
+                                    </ul>
+                                </div>*@
+
+                            @*<div class="dropdown" style="height: 80%;">
+                                    <button class="dropbtn" style="height: 80%;padding-top: 6%;">User Profile<span class="caret" ></span></button>
+                                    <div class="dropdown-content">
+                                        <a href=@Url.Action("ChangePassword", "UserProfileDetails", new { Area = "UserManagement" }) style="font-size:90%; font-family:Arial, Helvetica, sans-serif;">Change Password</a>
+                                        <a href=@Url.Action("ViewUserProfileDetails", "UserProfileDetails", new { Area = "UserManagement" }) style="font-size:90%;">View Profile</a>
+                                    </div>
+                                </div>*@
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="col-md-12 addressClass">
+                            <div class="nav-bar-menu-1 col-md-9" style="padding-left: 0%;">
+                            </div>
+                            <div class="col-md-3 addressClass" style="text-align: right; font-size: 15px; color: #5F6F81; cursor: pointer;">
+
+                                <div class="dropdown" style="margin-left:-71%;">
+                                    <button class="btn  dropdown-toggle" type="button" data-toggle="dropdown" title="Update your profile" style="height:20px !important;padding-top:24%;color:black;background-color: #F9FAFC;border-color: #969696;">
+                                        <span class="caret" style="margin-top:-150% !important;"></span>
+                                    </button>
+                                    <ul class="dropdown-menu" style="border: solid 1px #CDDDEF;">
+                                        <li style="background-color:#F9FAFC;;font-size:109%;"><a href=@Url.Action("ChangePassword", "UserProfileDetails", new { Area = "UserManagement" }) style="font-size:100%;text-transform:initial;font-size:small;">Change Password</a></li>
+                                        <li style="background-color:#F9FAFC;margin-top:1%;font-size:109%;"><a href=@Url.Action("ViewUserProfileDetails", "UserProfileDetails", new { Area = "UserManagement" }) style="font-size:100%;text-transform:initial;font-size:small;">Edit Profile</a></li>
+                                    </ul>
+                                </div>
+                                <b id="btnLoggOffID">Log Off</b>&nbsp;<i class="fa fa-sign-out" aria-hidden="true" style="font-size: 15px;vertical-align: middle;"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    @*<div class="space-30"></div>
+        <div class="space-50"></div>
+        <div class="space-50"></div>*@
+    @*<div class="space-30"></div>*@
+    @*<div class="space-50"></div>
+    *@
+
+    @*</header>*@
+    @*<br />*@
+    @*</div>*@
+
+    <div class="wrapper" @*style="margin-top: 0.25%;"*@>
+        <!-- Left side column. contains the logo and sidebar -->
+        <aside class="main-sidebar" style="padding-top:0 !important; border-right:solid 1px #ddd;">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <!--  Changes by shyam  KaveriUI.KaveriSession.Current.RoleID -->
+                @Html.SiteMenuAsUnorderedList(ECDataUI.Session.KaveriSession.Current.RoleID, false)
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        @*border-bottom:solid 2px #E5E4E2 !important;*@
+        <div class="content-wrapper" style="background-color:#FFFFFF;">
+            <div>
+                @*<div class="col-md-12" style="margin-top:10px;">*@
+                <div class="nav-bar-menu-1 col-md-12" style="">
+                    <div class="col-md-12" id="dvHorizontalMenuBar" style="display: flex; padding-left:0;">
+                        <!-- ********* For Horizontal MenuBar *******-->
+                        @Html.SiteMenuAsUnorderedList(ECDataUI.Session.KaveriSession.Current.RoleID, true)
+                    </div>
+                </div>
+                @*</div>*@
+                <div class="col-md-12 " style="margin-top: 5px;padding-left: 0px;">
+                    <div id="dvPlacePage" onunload="HandleOnClose();">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="dvRegisterDSCDetails">
+        </div>
+        @*<div id="footer">
+                <strong>&copy; 2015 C-DAC</strong> All rights reserved.
+            </div>*@
+    </div>
+    <br>
+    <div class="row">
+        <div class="container-4" style="min-height: 45px;">
+            <div class="row" id="bottom-footer">
+                <div class="col-md-12">
+                    <div>
+                        <span id="footer_msg_1" class="SmallCaps">@*Designed and Developed by e-Governance Solution Group, C-DAC Pune*@</span>
+                    </div>
+                    @*<span><span id = "last_updated">Last Updated</span>: Friday, 23 December 2016</span>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

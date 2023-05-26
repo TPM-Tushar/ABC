@@ -1,0 +1,49 @@
+﻿@model CustomModels.Models.MISReports.DataRestorationReport.DataRestorationPartialViewModel
+@using ECDataUI.Helper
+
+<div class="tableFixHead">
+    <table style="width:100%;">
+        @*<thead style="width: calc( 100% - 1.5% );">*@
+        <thead>
+            <tr>
+                @*<th class="TableFontClass" style=" text-align: center;">Iteration Number</th>*@
+                <th class="TableFontClass" style=" text-align: center;">Sr No</th>
+                <th class="TableFontClass" style=" text-align: center;">Registration Type</th>
+                <th class="TableFontClass" style=" text-align: center;">Registration Number</th>
+                <th class="TableFontClass" style=" text-align: center;">Registration Date</th>
+                <th class="TableFontClass" style=" text-align: center;">Status</th>
+                @* Commented and changed by shubham bhagat on 28-09-2020*@
+                @*@if (Model.DataInsertionDetailsList.ElementAt(0).IterationNo > 1)*@
+                @if ((Model.DataInsertionDetailsList.Count > 0) ? (Model.DataInsertionDetailsList.ElementAt(0).IterationNo > 1) : false)
+                // @if (Model.DataInsertionDetailsList.ElementAt(1).IterationNo > 1)
+                {
+                    <th class="TableFontClass" style=" text-align: center;">Script Rectification History</th>
+                }
+            </tr>
+        </thead>
+        @*<tbody style="display: block;height: 250px;overflow: auto;">*@
+        <tbody>
+            @foreach (var item in Model.DataInsertionDetailsList)
+            {
+            <tr>
+                @*<td class="TableFontClass" style=" text-align: center;">@item.IterationNo</td>*@
+                <td class="TableFontClass" style=" text-align: center;">@item.SrNo</td>
+                <td class="TableFontClass" style=" text-align: center;">@item.RegistrationType</td>
+                <td class="TableFontClass" style=" text-align: center;">@item.RegistrationNumber</td>
+                <td class="TableFontClass" style=" text-align: center;">@item.RegistrationDate</td>
+                <td class="TableFontClass" style=" text-align: center;">@item.Status</td>
+                @* Commented and changed by shubham bhagat on 28-09-2020*@
+                @if ((Model.DataInsertionDetailsList.Count > 0) ? (Model.DataInsertionDetailsList.ElementAt(0).IterationNo > 1) : false)
+                // @if (Model.DataInsertionDetailsList.ElementAt(1).IterationNo > 1)
+                {
+                    // COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 05-08-2020
+                    <td class="TableFontClass" style="word-wrap:anywhere !important;width:30%;">@Model.ScriptRectificationHistory</td>
+                    @*<td class="TableFontClass" style="word-wrap:break-word">@Model.ScriptRectificationHistory</td>*@
+                    @*<td class="TableFontClass">@item.ScriptRectificationHistory</td>*@
+                }
+            </tr>
+            }
+            <tr></tr>
+        </tbody>
+    </table>
+</div>

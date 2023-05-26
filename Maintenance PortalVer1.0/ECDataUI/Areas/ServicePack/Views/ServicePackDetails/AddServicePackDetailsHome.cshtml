@@ -1,0 +1,221 @@
+﻿@*
+    * Project Id    :KARIGR [ IN-KA-IGR-02-05 ]
+    * Project Name  :Kaveri Maintainance Portal
+    * Name          :AddServicePackDetailsHome.cshtml
+    * Description   :
+    * Author        :Harshit
+    * Creation Date :01/05/2019
+    * Modified By   :
+    * Updation Date :
+     * ECR No : 300
+*@
+
+
+@model CustomModels.Models.ServicePackDetails.ServicePackViewModel
+
+<head>
+    @*<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="~/Scripts/CommonJS/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>*@
+
+    <script src="~/Areas/ServicePack/Scripts/AddServicePackDetails.js"></script>
+    @*<script src="~/Areas/ServicePack/Scripts/AddServicePackDetails.min.js"></script>*@
+
+    <link href="~/Areas/ServicePack/Content/ServicePackDetails.css" rel="stylesheet" />
+    @*<title>ServicePackDetailsHome</title>*@
+</head>
+<form id="frmAddEditServicePackDetails">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ReleaseMode, new { @id = "ReleaseMode" })
+    @Html.HiddenFor(x => x.EncryptedID, new { @id = "hdnEncryptedID" })
+    @Html.HiddenFor(model => model.ServicePackDetails.SpID, new { @id = "spID" })
+    <div class="container">
+        <div id="page-wrap">
+            <div class="panel panel-default" id="panelNewBranch" style="width: auto; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                <div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                        <span class="" style="color: #FFF; font-size: 120%;">
+                            Add Service Pack Details
+                        </span>
+                    </div>
+                    <div style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <div class="alert alert-info">
+                                    <i class="fa fa-coffee"></i>
+                                    <label>Note : Service Pack file should be in Zip format having size less than 40MB. </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <div class="col-md-4">
+                                    <label class="control-label"> Release Type<span style="color: red;">*</span> </label>
+                                </div>
+                                <div class="controls col-md-5">
+                                    <div class="form-group required">
+                                        @Html.DropDownListFor(m => m.SoftwareReleaseType.TypeID, ViewBag.ReleaseTypeDD as IEnumerable<SelectListItem>, Model.SelectedValueReleaseType, new { @class = "form-control minimal dropdown-toggle minimal", tabindex = "1", @id = "lstReleaseTypes" })
+                                        <span style="color: red;">   @Html.ValidationMessageFor(m => m.SoftwareReleaseType.TypeID)</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class='row'>
+                            <div class='col-md-12'>
+                                <div class="col-md-4">
+                                    <label class="control-label"> Application Version<span style="color: red;">*</span> </label>
+                                </div>
+                                <div class="controls col-md-2" style="margin-bottom: 10px">
+                                    <div class="form-group required">
+                                        @Html.TextBoxFor(model => model.ServicePackDetails.Major, new { @id = "onlyMajorNumber", autocomplete = "off", tabindex = "2", placeholder = "Major Version", maxlength = 2 })
+                                        <span style="color: red;">@Html.ValidationMessageFor(model => model.ServicePackDetails.Major)</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="controls" style="margin-bottom: 10px">
+                                        @*<span id="errmsg"></span>*@
+                                        @Html.TextBoxFor(model => model.ServicePackDetails.Minor, new { @id = "onlyMinorNumber", autocomplete = "off", tabindex = "3", placeholder = "Minor Version", maxlength = 1 })
+                                        <span style="color: red;">@Html.ValidationMessageFor(model => model.ServicePackDetails.Minor)</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group required col-md-12">
+                                <div class="col-md-4">
+                                    <label class="control-label">Release Mode<span style="color: red;">*</span> </label>
+                                </div>
+                                <div class="controls col-md-8">
+                                    @Html.RadioButtonFor(x => x.ServicePackDetails.IsTestOrFinal, true, new { @id = "rdoYTest", @checked = "checked", tabindex = "4" }) <label>Test Release</label> <span style="color: red;">*</span>
+                                    @Html.RadioButtonFor(x => x.ServicePackDetails.IsTestOrFinal, false, new { @id = "rdoNFinal", tabindex = "5" }) <label> Final Release</label> <span style="color: red;">*</span>
+                                    @*//Added and Changed by mayank on 14/09/2021 for Support Exe Release*@
+                                    @Html.RadioButtonFor(x => x.ServicePackDetails.IsTestOrFinal, false, new { @id = "rdoNSupport", tabindex = "6" }) <label> Support Release</label> <span style="color: red;">*</span> 
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <label class="control-label"> Description<span style="color: red;">*</span> </label>
+                                </div>
+                                <div class="controls col-md-5">
+                                    @Html.TextAreaFor(model => model.ServicePackDetails.Description, new { autocomplete = "off", @id = "txtServicePackDesc", tabindex = "7", placeholder = "Service pack description", @rows = "4", @cols = "57" })
+                                    <span style="color: red;">@Html.ValidationMessageFor(model => model.ServicePackDetails.Description)</span>
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-4">
+                                    <label class="control-label">Installation Procedure<span style="color: red;">*</span> </label>
+                                </div>
+                                <div class="controls col-md-5">
+                                    @Html.TextAreaFor(model => model.ServicePackDetails.InstallationProcedure, new { autocomplete = "off", tabindex = "8", @id = "txtInstallationProcedure", placeholder = "Service pack Installation Procedure", @rows = "4", @cols = "57" })
+                                    <span style="color: red;">@Html.ValidationMessageFor(model => model.ServicePackDetails.InstallationProcedure)</span>
+                                </div>
+                                <div class="col-md-3">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-4">
+                                        <label class="control-label">Upload Service Pack | Api :<span style="color: red;">*</span> </label>
+                                    </div>
+                                    <div class="controls col-md-5">
+                                        @Html.TextBoxFor(m => m.ServicePackDetails.Files, new { type = "file", name = "Files", @class = "ClsServicePackReleaseFiles", tabindex = "9", @accept = "zip", @id = "UploadReleaseFile" })
+                                        @Html.ValidationMessageFor(model => model.ServicePackDetails.Files)
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-3" style="display:none;" id="divFileSize">
+                                        <span id="spn" class="spnClear"><i id="FileSize" class="iTagClear"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class='row'>
+                            <div class="form-group col-md-12">
+                                <div class="col-md-4">
+                                    <label class="control-label"> Changes/Modification Type<span style="color: red;">*</span> </label>
+                                </div>
+                                <div class="controls col-md-5">
+                                    @Html.DropDownListFor(x => x.ServicePackChangesDetails.ChangeType, ViewBag.ChangeTypeDD as IEnumerable<SelectListItem>, "Select", new { @class = "form-control minimal dropdown-toggle minimal", @id = "lstChangeType", tabindex = "10" })
+                                    @Html.ValidationMessageFor(x => x.ServicePackChangesDetails.ChangeType, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-info add-new" title="Click here to add new Changes/Modification Type detail"><i class="fa fa-plus"></i>Add New Entry</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-9">
+                                    <br />
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Description Details <span style="color: red;">*</span> </th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="word-wrap: anywhere;"><input type="text" /></td>
+                                                <td>
+                                                    <a class="add" title="Add" data-toggle="tooltip"><i class="glyphicon glyphicon-plus"></i></a>
+                                                    @*<a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>*@
+                                                    <a class="delete" title="Delete" data-toggle="tooltip"><i class="glyphicon glyphicon-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-offset-2">
+                                <div class="form-group col-md-8">
+                                    <div class='BTNwrapper' style="padding-left:13%;margin-top:2%;">
+                                        <input type="button" class="btn btn-primary" id="btnSubmitServicePackDetails" value='Save' title="Click here to Save Service Pack details" />
+                                        <input type="button" class="btn btn-primary" id="btnReset" value='Reset' title="Click here to reset input fields" />
+                                        <input type="button" class="btn btn-primary" id="btnClose" value='Cancel' title="Click here to go back to Home">
+                                    </div>
+                                    <style>
+                                        .BTNwrapper {
+                                            text-align: center;
+                                        }
+
+                                        .button {
+                                            position: absolute;
+                                            top: 50%;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

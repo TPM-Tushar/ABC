@@ -1,0 +1,574 @@
+﻿
+@model CustomModels.Models.UserManagement.OfficeUserDetailsModel
+@using ECDataUI.Helper;
+
+@{
+    //int iTabIndex = 1;
+    int IsForUpdate = Model.IsForUpdate ? 1 : 0;
+}
+
+<script>
+    var vIsForUpdate = '@IsForUpdate';
+</script>
+
+<script src="~/Scripts/CommonJS/md5.min.js"></script>
+<script src="~/Scripts/CommonJS/sha512.min.js"></script>
+<style>
+    .verticalLine1 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 82%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .verticalLine3 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 80%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 60%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 5%;
+    }
+
+    .verticalLine4 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 75%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 2%;
+    }
+
+    .verticalLine5 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 80%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 2%;
+    }
+
+    .DisplayText {
+        background-color: #f2f2f2;
+        padding: 4px;
+        border-radius: 6px;
+        color: #195F9C;
+        padding-left: 2%;
+        width: 44%;
+        margin-left: 3%;
+        /*font-weight: bold;*/
+    }
+</style>
+
+<script src="~/Areas/UserManagement/Scripts/OfficeUser/CreateOfficeUser.js"></script>
+@*<script src="~/Areas/UserManagement/Scripts/OfficeUser/CreateOfficeUser.min.js"></script>*@
+<script>
+    var isDrLogin = '@Model.isDrLogin';
+</script>
+<div class="col-md-offset-0">
+    <div class="panel panel-default" id="panelOffice" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+        <div class="panel-body">
+            <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-right: 0px; margin-left: 0px;">
+                <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                @if (Model.IsForUpdate)
+                {
+                    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Update Office User</span>
+                }
+                else
+                {
+                    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">New Office User</span>
+                }
+                <span id="CloseOfficeUserForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>
+            </div>
+
+            <form id="RegistrationOfficeUserFormId">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="" style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; padding-left: 1%;padding-right: 1%;padding-bottom: 1%; overflow-y: auto;">
+                    <div class="" style="background: #fff;overflow-y: auto; max-height: 600px;">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    @*on 11-4-2019 Commented by SB  due to requirement change*@
+                                    @*<legend>Office Details:</legend>
+                                        <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:1%;padding-top:1%;">
+                                            <div class="col-md-5">
+                                                <fieldset>
+                                                    <div class="row" id="OfficeID_DivId">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(x => x.OfficeID, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(x => x.OfficeID, @Model.OfficeNamesDropDown, new { @class = "form-control minimal dropdown-toggle minimal", id = "OfficeNamesDropDownId", tabindex = 1 })
+                                                            @Html.ValidationMessageFor(x => x.OfficeID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row" id="Office_ShortName_DivId">
+                                                        <div class="form-group">
+                                                            <div class='col-md-6' style="padding-top: 6px;">
+                                                                @Html.LabelFor(model => model.Office_ShortName, new { @class = "PaddingTop9", @style = "font-size:small;" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group" style="font-style:italic;font-size:medium;">
+                                                            <div class='col-md-6 DisplayText'>
+                                                                <div id="Office_ShortName_Id"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                </fieldset>
+                                            </div>
+                                            <div class="col-md-2 " style="text-align: center;">
+                                                <div class="verticalLine2" id="verticalLine2Id"></div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <fieldset>
+                                                    <div class="row" id="Office_OfficeType_DivID">
+                                                        <div class="form-group">
+                                                            <div class='col-md-6' style="padding-top: 6px;">
+                                                                @Html.LabelFor(model => model.Office_OfficeType, new { @class = "PaddingTop9", @style = "font-size:small;" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group" style="font-style:italic;font-size:medium;">
+                                                            <div class='col-md-6 DisplayText'>
+                                                                <div id="Office_OfficeType_Id"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                    <div class="row" id="Office_District_DivID">
+                                                        <div class="form-group">
+                                                            <div class='col-md-6' style="padding-top: 6px;">
+                                                                @Html.LabelFor(model => model.Office_District, new { @class = "PaddingTop9", @style = "font-size:small;" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group" style="font-style:italic;font-size:medium;">
+                                                            <div class='col-md-6 DisplayText'>
+                                                                <div id="Office_District_Id"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                </fieldset>
+                                            </div>
+                                        </div>*@
+
+                                    <legend>Office Details:</legend>
+                                    <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:1%;padding-top:1%;">
+                                        <div class="col-md-5">
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(x => x.LevelID, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.DropDownListFor(x => x.LevelID, @Model.LevelDetailsDropDown, new { @class = "form-control minimal dropdown-toggle minimal", @id = "LevelDropDownListId", tabindex = 1 })
+                                                        @Html.ValidationMessageFor(x => x.LevelID, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row" id="OfficeID_DivId">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(x => x.OfficeID, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.DropDownListFor(x => x.OfficeID, @Model.OfficeNamesDropDown, new { @class = "form-control minimal dropdown-toggle minimal", id = "OfficeNamesDropDownId", tabindex = 3 })
+                                                        @Html.ValidationMessageFor(x => x.OfficeID, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br />
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-2 " style="text-align: center;">
+                                            <div class="verticalLine4"></div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(x => x.RoleID, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.DropDownListFor(x => x.RoleID, @Model.RoleDropDown, new { @class = "form-control minimal dropdown-toggle minimal", @id = "RoleDropDownListId", tabindex = 2 })
+                                                        @Html.ValidationMessageFor(x => x.RoleID, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br />
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <legend>Office User Credentials :</legend>
+                                    <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:1%;padding-top:1%;">
+                                        <div class="col-md-5">
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.Username, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control minimal ", @id = "txtUserName", @placeholder = "Username", @maxlength = 50, tabindex = 4, autocomplete = "off" })
+                                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                                        @*<div class='col-md-12 PaddingTop10' style="color:#577ac4;font-weight:bold;">Please provide working EmailID as this EmailID will be used for authentication .</div>*@
+                                                    </div>
+                                                    <div class="row" style="display: none; margin-left:26%;margin-top:2%;" id="InValidUserNameID">
+                                                        <span class="label label-danger" style="font-size:100%;">User name alredy exists</span>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                @if (!Model.IsForUpdate)
+                                                {
+                                                    <div class="row">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(model => model.Password, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.PasswordFor(model => model.Password, new { @class = "form-control minimal ", @id = "txtPassword", @placeholder = "Password", @maxlength = 20, tabindex = 6, autocomplete = "off" })
+                                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                            <div class='col-md-12 PaddingTop10' style="color:#577ac4;font-weight:bold;">Password must contain at least 1 capital letter,digit & must contain one or more of these characters (._@@) and length must be 8 char min..</div>
+                                                        </div>
+                                                    </div>
+                                                    <br />
+                                                }
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-2 " style="text-align: center;">
+                                            <div class="verticalLine5"></div>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        @*@Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { tabindex = 14 } })*@
+                                                        @Html.CheckBoxFor(model => model.IsActive, new { @Id = "IsActiveId", tabindex = 5 })
+                                                        @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                @if (!Model.IsForUpdate)
+                                                {
+                                                    <div class="row">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control minimal ", @id = "txtConfirmPassword", @placeholder = "Confirm Password", @maxlength = 20, tabindex = 7 })
+                                                            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                }
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <legend>Office User Details:</legend>
+                                    <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;">
+                                        <div class="col-md-5">
+                                            <br>
+                                            @Html.HiddenFor(m => m.EncryptedId)
+                                            <fieldset>
+                                                @*<div class="row">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(x => x.LevelID, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(x => x.LevelID, @Model.LevelDetailsDropDown, new { @class = "form-control minimal dropdown-toggle minimal", @id = "LevelDropDownListId", tabindex = 9 })
+                                                            @Html.ValidationMessageFor(x => x.LevelID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <br />*@
+
+                                                @*<div class="row" id="OfficeID_DivId">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(x => x.OfficeID, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(x => x.OfficeID, @Model.OfficeNamesDropDown, new { @class = "form-control minimal dropdown-toggle minimal", id = "OfficeNamesDropDownId", tabindex = 1 })
+                                                            @Html.ValidationMessageFor(x => x.OfficeID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <br />*@
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.FirstName, new { @class = "control-label", @id = "firstNameID" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control minimal ", @id = "FirstName", @placeholder = "First Name", @maxlength = 50, tabindex = 8 })
+                                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.MobileNumber, new { @class = "control-label" })
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control minimal ", @id = "MobileNo", @placeholder = "Mobile Number", @maxlength = 10, tabindex = 10 })
+                                                        @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                                                        <div class='col-md-12 PaddingTop10' style="color:#577ac4;font-weight:bold;">Please provide working mobile number as this mobile number will be used for authentication .</div>
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(x => x.IDProofID, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.DropDownListFor(x => x.IDProofID, @Model.IdProofsTypeDropDown, new { @class = "form-control minimal dropdown-toggle minimal", @id = "ddlIDProof", @title = "IDProof", @placeholder = "IDProof", tabindex = 12 })
+                                                        @Html.ValidationMessageFor(x => x.IDProofID, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.Address1, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextAreaFor(model => model.Address1, new { @class = "form-control minimal ", @id = "Address", @placeholder = "Address", @maxlength = 100, tabindex = 14 })
+                                                        @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+
+
+
+
+                                                @if (!Model.IsForUpdate)
+                                                {
+                                                    @*<div class="row">
+                                                            <div class='col-md-6 PaddingTop10'>
+                                                                @Html.LabelFor(model => model.Password, new { @class = "control-label" }, Mandatory.Yes)
+                                                            </div>
+                                                            <div class='col-md-6'>
+                                                                @Html.PasswordFor(model => model.Password, new { @class = "form-control minimal ", @id = "txtPassword", @placeholder = "Password", @maxlength = 20, tabindex = 12, autocomplete = "off" })
+                                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <br>*@
+                                                    @*<div class="row">
+                                                            <div class='col-md-6 PaddingTop10'>
+                                                                @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label" }, Mandatory.Yes)
+                                                            </div>
+                                                            <div class='col-md-6'>
+                                                                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control minimal ", @id = "txtConfirmPassword", @placeholder = "Confirm Password", @maxlength = 20, tabindex = 14 })
+                                                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <br>*@
+                                                }
+                                            </fieldset>
+                                        </div>
+
+                                        @if (!Model.IsForUpdate)
+                                        {
+                                            <div class="col-md-2 " style="text-align: center;">
+                                                <div class="verticalLine1"></div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="col-md-2 " style="text-align: center;">
+                                                <div class="verticalLine3"></div>
+                                            </div>
+                                        }
+
+                                        <div class="col-md-5">
+                                            <br />
+                                            <fieldset>
+                                                @*<div class="row">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(x => x.RoleID, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(x => x.RoleID, @Model.RoleDropDown, new { @class = "form-control minimal dropdown-toggle minimal", @id = "RoleDropDownListId", tabindex = 15 })
+                                                            @Html.ValidationMessageFor(x => x.RoleID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <br>*@
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.LastName, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextBoxFor(model => model.LastName, new { @class = "form-control minimal ", @id = "LastName", @placeholder = "Last Name", @maxlength = 50, tabindex = 9 })
+                                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                @*<div class="row">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(model => model.Email, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control minimal ", @id = "txtUserName", @placeholder = "abc@example.com", @maxlength = 50, tabindex = 5, autocomplete = "off" })
+                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                        </div>
+                                                        <div class="row" style="display: none; margin-left:26%;margin-top:2%;" id="InValidUserNameID">
+                                                            <span class="label label-danger" style="font-size:100%;">User name alredy exists</span>
+                                                        </div>
+                                                    </div>
+                                                    <br>*@
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.Email, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control minimal ", @placeholder = "abc@example.com", @maxlength = 50, tabindex = 11, autocomplete = "off" })
+                                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                        <div class='col-md-12 PaddingTop10' style="color:#577ac4;font-weight:bold;">Please provide working EmailID as this EmailID will be used for authentication .</div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(x => x.IDProofNumber, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextBoxFor(x => x.IDProofNumber, new { @class = "form-control minimal", @id = "IDProofNumber", @title = "IDProof Number", @placeholder = "IDProof Number", @maxlength = 20, tabindex = 13 })
+                                                        @Html.ValidationMessageFor(x => x.IDProofNumber, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.CountryID, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.DropDownListFor(m => m.CountryID, Model.CountryDropDown, new { @class = "form-control minimal ", @id = "Country", @placeholder = "Country", tabindex = 15 })
+                                                        @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class='col-md-6 PaddingTop10'>
+                                                        @Html.LabelFor(model => model.Pincode, new { @class = "control-label" }, Mandatory.Yes)
+                                                    </div>
+                                                    <div class='col-md-6'>
+                                                        @Html.TextBoxFor(model => model.Pincode, new { @class = "form-control minimal AllowOnlyNumber", @id = "PinCode", @placeholder = "Pin Code", @maxlength = 6, tabindex = 16 })
+                                                        @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                                                    </div>
+                                                </div>
+                                                <br>
+
+
+
+
+
+                                                @*<div class="row">
+                                                        <div class='col-md-6 PaddingTop10'>
+                                                            @Html.LabelFor(model => model.Email, new { @class = "control-label" }, Mandatory.Yes)
+                                                        </div>
+                                                        <div class='col-md-6'>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control minimal ", @id = "txtUserName", @placeholder = "abc@example.com", @maxlength = 50, tabindex = 4, autocomplete = "off" })
+                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                            <div class='col-md-12 PaddingTop10' style="color:#577ac4;font-weight:bold;">Please provide working EmailID as this EmailID will be used for authentication .</div>
+                                                        </div>
+                                                        <div class="row" style="display: none; margin-left:26%;margin-top:2%;" id="InValidUserNameID">
+                                                            <span class="label label-danger" style="font-size:100%;">User name alredy exists</span>
+                                                        </div>
+                                                    </div>
+                                                    <br />*@
+
+                                                @if (!Model.IsForUpdate)
+                                                {
+                                                    @*<div class="row">
+                                                            <div class='col-md-6 PaddingTop10'>
+                                                                @Html.LabelFor(model => model.Password, new { @class = "control-label" }, Mandatory.Yes)
+                                                            </div>
+                                                            <div class='col-md-6'>
+                                                                @Html.PasswordFor(model => model.Password, new { @class = "form-control minimal ", @id = "txtPassword", @placeholder = "Password", @maxlength = 20, tabindex = 12 })
+                                                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div><br>*@
+                                                    @*<div class="row">
+                                                            <div class='col-md-6 PaddingTop10'>
+                                                                @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label" }, Mandatory.Yes)
+                                                            </div>
+                                                            <div class='col-md-6'>
+                                                                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control minimal ", @id = "txtConfirmPassword", @placeholder = "Confirm Password", @maxlength = 20, tabindex = 13 })
+                                                                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div><br>*@
+                                                }
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @*<div class="col-md-6 col-md-offset-5">*@
+                        <div class="col-md-12" style="text-align:center;">
+                            @if (Model.IsForUpdate)
+                            {
+                                <button type="button" class="btn btn-group-md btn-success" id="btnUpdate" title="Update">Update</button><i>&nbsp;</i>
+                            }
+                            else
+                            {
+                                <button type="reset" class="btn btn-group-md btn-warning " id="btnReset" title="Reset">Reset</button><i>&nbsp;</i>
+                                <button type="button" class="btn btn-group-md btn-success" id="btnCreate" title="Save">Save</button><i>&nbsp;</i>
+                            }
+                            <button type="reset" class="btn btn-group-md btn-danger " id="btnCancel" title="Cancel">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+                @Html.HiddenFor(x => x.UserID)
+            </form>
+        </div>
+    </div>
+</div>

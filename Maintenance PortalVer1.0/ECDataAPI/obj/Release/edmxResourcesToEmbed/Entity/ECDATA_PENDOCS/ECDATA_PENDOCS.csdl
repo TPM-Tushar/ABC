@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ECDATA_PENDOCS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DocPendingHistory_PENDOCS">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="PendingReasonID" />
+      <PropertyRef Name="PendingDate" />
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="DocumentID" Type="Int64" Nullable="false" />
+    <Property Name="PendingReasonID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PendingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsCleared" Type="Boolean" />
+    <Property Name="SROCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DocumentMaster" Relationship="Self.FK_DocPendingHistory_DocumentMaster" FromRole="DocPendingHistory" ToRole="DocumentMaster" />
+    <NavigationProperty Name="PendingReasonMaster" Relationship="Self.FK_DocPendingHistory_PendingReasonMaster" FromRole="DocPendingHistory" ToRole="PendingReasonMaster" />
+  </EntityType>
+  <EntityType Name="DocumentMaster_PENDOCS">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="DocumentID" Type="Int64" Nullable="false" />
+    <Property Name="SROCode" Type="Int32" Nullable="false" />
+    <Property Name="BookID" Type="Int32" Nullable="false" />
+    <Property Name="StampArticleCode" Type="Int32" Nullable="false" />
+    <Property Name="RegArticleCode" Type="Int32" Nullable="false" />
+    <Property Name="DocumentNumber" Type="Int32" />
+    <Property Name="FinalRegistrationNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PresentDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ExecutionDateTime" Type="DateTime" Precision="3" />
+    <Property Name="DateOfStamp" Type="DateTime" Precision="3" />
+    <Property Name="ConsiderationAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RequiredStampDuty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PaidStampDuty" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Stamp1DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp2DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp3DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp4DateTime" Type="DateTime" Precision="3" />
+    <Property Name="Stamp5DateTime" Type="DateTime" Precision="3" />
+    <Property Name="WithdrawalDate" Type="DateTime" Precision="3" />
+    <Property Name="PageCount" Type="Int32" />
+    <Property Name="Index2Shera" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsVisited" Type="Boolean" Nullable="false" />
+    <Property Name="IsFiling" Type="Boolean" Nullable="false" />
+    <Property Name="IsPending" Type="Boolean" Nullable="false" />
+    <Property Name="IsScanned" Type="Boolean" Nullable="false" />
+    <Property Name="IsRefused" Type="Boolean" Nullable="false" />
+    <Property Name="IsPaymentOfMoney" Type="Boolean" Nullable="false" />
+    <Property Name="IsAdjudicated" Type="Boolean" Nullable="false" />
+    <Property Name="IsWithdrawn" Type="Boolean" Nullable="false" />
+    <Property Name="RefusalDate" Type="DateTime" Precision="3" />
+    <Property Name="RefusalReason" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="RemarksByUser" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="RemarksBySystem" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="CorrectionReference" Type="Int64" />
+    <Property Name="OldDocReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdjudicationDetails" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+    <Property Name="CDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsXMLTransferredTOBHOOMI" Type="Boolean" />
+    <Property Name="uid" Type="Int32" />
+    <Property Name="PendingDocumentNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="istransmitted" Type="Boolean" />
+    <Property Name="IsPhotoThumbTransmitted" Type="Boolean" />
+    <Property Name="InsertedDateTime" Type="DateTime" Precision="3" />
+    <Property Name="InitialTransmitted" Type="Boolean" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DocPendingHistory" Relationship="Self.FK_DocPendingHistory_DocumentMaster" FromRole="DocumentMaster" ToRole="DocPendingHistory" />
+  </EntityType>
+  <EntityType Name="NoticeMaster_PENDOCS">
+    <Key>
+      <PropertyRef Name="NoticeID" />
+      <PropertyRef Name="PSROCode" />
+    </Key>
+    <Property Name="NoticeID" Type="Int64" Nullable="false" />
+    <Property Name="PSROCode" Type="Int32" Nullable="false" />
+    <Property Name="NoticeNo" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+    <Property Name="NoticeIssuedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Bride" Type="Int32" Nullable="false" />
+    <Property Name="BrideGroom" Type="Int32" Nullable="false" />
+    <Property Name="Fees" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MarriageType" Type="Int32" />
+    <Property Name="CDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SROCode" Type="Int32" />
+    <Property Name="Pages" Type="Int32" />
+    <Property Name="IsScanned" Type="Int32" />
+    <Property Name="dateofmarriage" Type="DateTime" Precision="3" />
+    <Property Name="IsSolamenised" Type="Boolean" />
+    <Property Name="IsTransmitted" Type="Boolean" />
+    <NavigationProperty Name="SROMaster" Relationship="Self.FK_NoticeMaster_SROMaster1" FromRole="NoticeMaster" ToRole="SROMaster" />
+  </EntityType>
+  <EntityType Name="PendingReasonMaster_PENDOCS">
+    <Key>
+      <PropertyRef Name="PendingReasonID" />
+    </Key>
+    <Property Name="PendingReasonID" Type="Int32" Nullable="false" />
+    <Property Name="ReasonInKannada" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ReasonInEnglish" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DocumentStage" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+    <Property Name="Severity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="DocPendingHistory" Relationship="Self.FK_DocPendingHistory_PendingReasonMaster" FromRole="PendingReasonMaster" ToRole="DocPendingHistory" />
+  </EntityType>
+  <EntityType Name="SROMaster_PENDOCS">
+    <Key>
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="SROCode" Type="Int32" Nullable="false" />
+    <Property Name="DistrictCode" Type="Int32" />
+    <Property Name="SRONameK" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SRONameE" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ShortnameK" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ShortNameE" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="GetBhoomiData" Type="Boolean" Nullable="false" />
+    <Property Name="IsVillageMatching" Type="Boolean" />
+    <NavigationProperty Name="NoticeMaster" Relationship="Self.FK_NoticeMaster_SROMaster1" FromRole="SROMaster" ToRole="NoticeMaster" />
+  </EntityType>
+  <Association Name="FK_DocPendingHistory_DocumentMaster">
+    <End Role="DocumentMaster" Type="ECDATA_PENDOCS.DocumentMaster_PENDOCS" Multiplicity="1" />
+    <End Role="DocPendingHistory" Type="ECDATA_PENDOCS.DocPendingHistory_PENDOCS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentMaster">
+        <PropertyRef Name="DocumentID" />
+        <PropertyRef Name="SROCode" />
+      </Principal>
+      <Dependent Role="DocPendingHistory">
+        <PropertyRef Name="DocumentID" />
+        <PropertyRef Name="SROCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocPendingHistory_PendingReasonMaster">
+    <End Role="PendingReasonMaster" Type="ECDATA_PENDOCS.PendingReasonMaster_PENDOCS" Multiplicity="1" />
+    <End Role="DocPendingHistory" Type="ECDATA_PENDOCS.DocPendingHistory_PENDOCS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PendingReasonMaster">
+        <PropertyRef Name="PendingReasonID" />
+      </Principal>
+      <Dependent Role="DocPendingHistory">
+        <PropertyRef Name="PendingReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NoticeMaster_SROMaster1">
+    <End Role="SROMaster" Type="ECDATA_PENDOCS.SROMaster_PENDOCS" Multiplicity="0..1" />
+    <End Role="NoticeMaster" Type="ECDATA_PENDOCS.NoticeMaster_PENDOCS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SROMaster">
+        <PropertyRef Name="SROCode" />
+      </Principal>
+      <Dependent Role="NoticeMaster">
+        <PropertyRef Name="SROCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ECDATA_PENDOCSEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DocPendingHistory_PENDOCS" EntityType="ECDATA_PENDOCS.DocPendingHistory_PENDOCS" />
+    <EntitySet Name="DocumentMaster_PENDOCS" EntityType="ECDATA_PENDOCS.DocumentMaster_PENDOCS" />
+    <EntitySet Name="NoticeMaster_PENDOCS" EntityType="ECDATA_PENDOCS.NoticeMaster_PENDOCS" />
+    <EntitySet Name="PendingReasonMaster_PENDOCS" EntityType="ECDATA_PENDOCS.PendingReasonMaster_PENDOCS" />
+    <EntitySet Name="SROMaster_PENDOCS" EntityType="ECDATA_PENDOCS.SROMaster_PENDOCS" />
+    <AssociationSet Name="FK_DocPendingHistory_DocumentMaster" Association="Self.FK_DocPendingHistory_DocumentMaster">
+      <End Role="DocumentMaster" EntitySet="DocumentMaster_PENDOCS" />
+      <End Role="DocPendingHistory" EntitySet="DocPendingHistory_PENDOCS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocPendingHistory_PendingReasonMaster" Association="Self.FK_DocPendingHistory_PendingReasonMaster">
+      <End Role="PendingReasonMaster" EntitySet="PendingReasonMaster_PENDOCS" />
+      <End Role="DocPendingHistory" EntitySet="DocPendingHistory_PENDOCS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NoticeMaster_SROMaster1" Association="Self.FK_NoticeMaster_SROMaster1">
+      <End Role="SROMaster" EntitySet="SROMaster_PENDOCS" />
+      <End Role="NoticeMaster" EntitySet="NoticeMaster_PENDOCS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

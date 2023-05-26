@@ -1,0 +1,63 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+<script>
+    sessionStorage.clear();
+</script>
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+<br />
+@{
+    ECDataUI.Session.KaveriSession.Current.EndSession();
+    new ECDataUI.Common.CommonFunctions().RegenerateSessionId();
+    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+}
+
+
+@*<link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />*@
+<link href="~/Content/bootstrap/css/style.css" rel="stylesheet" />
+
+
+<body>
+
+    <div id="notfound">
+        <div class="notfound">
+            @*<div class="notfound-404">
+            <h1>404</h1>
+        </div>*@
+            <div class="notfound-404">
+                @*<h1>404</h1>*@
+                <h3>Oops! Something went wrong </h3>
+            </div>
+            <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.  </p> @Html.ActionLink("Sign in Again", "UserLogin", "Login", new object(), new { style = "color:red;font-size: 20px;" })
+
+        </div>
+        </div>
+    <br>
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="alert alert-danger alert-error" style="width:100%;font-size:100%;margin-bottom:34%;">
+    <strong>Error : </strong> An error occurred while processing your request.
+    <br />
+    <strong>Url : </strong>  @( (Model == null || Model.ControllerName == null) ? "Error" : Model.ControllerName ) <b>/</b> @( (Model == null || Model.ActionName == null) ? "Index" : Model.ActionName )
+    <br />
+    <strong>Message : </strong> 
+    Error occurred while processing your request.  Please  @Html.ActionLink("Sign in Again", "UserLogin", "Login", new object(), new { style = "color:red" })
+</div>*@
+

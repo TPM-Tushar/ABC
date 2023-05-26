@@ -1,0 +1,94 @@
+﻿@model  CustomModels.Models.MISReports.DigilockerStatistics.DigilockerStatisticsResponseModel
+
+<style>
+
+    a:link {
+        color: #0000FF;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    
+</style>
+
+<div class="container">
+    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+        <span class="" style="color: #FFF; font-size: 120%;">
+            Digilocker Statistics Summary
+        </span>
+    </div>
+    <div class="panel panel-default" id="SearchResult2" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <table id="DigilockerStatisticsReportDetailsTable" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; width: 60%;margin-left:15%;margin-top:1%;border-bottom: 1px solid black !important;border-top: 2px solid black !important;">
+
+                    @if (@Model != null)
+                    {
+                        foreach (var item in @Model.DigilockerStatisticsDetailsList)
+                        {
+                            
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total KOS Users</th>
+                                <td style="text-align:center">  @item.TotalKOSUsers  </td>
+                            </tr>
+
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total KOS Users Linked To Digilocker</th>
+                                <td style="text-align:center">  @item.TotalKOSUsersLinkedToDigilocker  </td>
+                            </tr>
+
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total Applications Submitted</th>
+                                <td style="text-align:center">  @item.TotalApplicationsSubmitted  </td>
+                            </tr>
+                            
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total Applications Linked To Digilocker</th>
+                                <td style="text-align:center">  @item.TotalApplicationsLinkedToDigilocker  </td>
+                            </tr>
+
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total Certificates Issued</th>
+                                <td style="text-align:center">  @item.TotalCertificatesIssued  </td>
+                            </tr>
+                            
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total Certificates Pushed To Digilocker</th>
+                                <td style="text-align:center">  @item.TotalCertificatesPushedToDigilocker  </td>
+                            </tr>
+
+                            <tr>
+                                <th style="width:60% ; text-align:left;"> Total Certificates Searched From Digilocker <br /></th>
+                                <td style="text-align:center">  @item.TotalCertificatesSearchedFromDigilocker</td>
+                            </tr>
+                          
+                        }
+
+                    }
+                    else
+                    {
+                        <p>  No Data Available for current input </p>
+                    }
+
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 2%;">
+        <div class="col-md-5"></div>
+
+        <div class='BTNwrapper col-md-2' style="text-align:left;">
+
+
+            <button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="excelDownload" onclick="EXCELDownloadFun()"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as Excel</button>            
+        </div>
+        <div class="col-md-5" style="padding-left:19%;">
+            <h6> <i>  </i></h6>
+
+        </div>
+
+    </div>
+</div>

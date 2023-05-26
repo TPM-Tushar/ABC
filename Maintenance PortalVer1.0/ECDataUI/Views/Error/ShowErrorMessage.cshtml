@@ -1,0 +1,68 @@
+﻿
+@*@model CustomModels.Models.Common.ErrorPageModel*@
+
+
+@{
+    ViewBag.Title = "ShowErrorMessage";
+}
+
+
+
+<script>
+
+    var URLToRedirect = '@ViewBag.URLToRedirect';
+
+    $(document).ready(function () {
+
+
+        $("#btnBack").click(function () {
+          //  alert(URLToRedirect);
+            window.location.href = URLToRedirect;
+        });
+
+        $("#Summary").hide();
+        
+
+    });
+
+
+
+</script>
+
+
+<div class="container" id="mainFormID">
+    <div class="col-md-offset-0">
+        <div class="col-md-offset-0 well">
+            <div class="row">
+
+                <div class="alert alert-danger alert-error" style="font-size:large">
+
+                    <strong>Error : </strong>@ViewBag.Message
+
+                    &nbsp;&nbsp;&nbsp;
+                    @* <input type="button" class="btn btn-primary" value="Back" id="btnBack">*@
+
+                    <button type="button" class="btn btn-group-md btn-default btn-md" id="btnBack" title="Back">
+                        <i class="fa fa-backward" aria-hidden="true"></i>&nbsp;&nbsp;
+                        Back
+                    </button>
+
+
+                    @*                               <div class="col-md-1" style="text-align: right;">
+                            <div class="button-container">
+                                <button type="button"  class="btn btn-group-md btn-default btn-md" id="btnBack" title="Back to List">
+                                    <i class="fa fa-backward" aria-hidden="true"></i>&nbsp;&nbsp;
+                                    Back To List
+                                </button>
+                            </div>
+
+                        </div>*@
+
+
+
+
+
+                </div>
+
+
+                </div></div></div></div>

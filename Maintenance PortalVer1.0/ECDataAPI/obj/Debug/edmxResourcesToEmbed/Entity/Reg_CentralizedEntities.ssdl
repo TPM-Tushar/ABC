@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GOAIGR_REG_CENTRALIZEDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'GOAIGR_REG_CENTRALIZED.GAURI.CC_DigitizationDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CC_DigitizationDetails">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="ScannedFileName" />
+      <PropertyRef Name="UploadPath" />
+      <PropertyRef Name="UploadDateTime" />
+    </Key>
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="ScannedFileName" Type="varchar" MaxLength="256" Nullable="false" />
+    <Property Name="UploadPath" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="UploadDateTime" Type="datetime" Nullable="false" />
+    <Property Name="RootDirectory" Type="varchar" MaxLength="1500" />
+  </EntityType>
+  <EntityType Name="CC_DigitizationFileDetails">
+    <Key>
+      <PropertyRef Name="FileUploadID" />
+    </Key>
+    <Property Name="FileUploadID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="UploadPath" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="UploadDateTime" Type="datetime" Nullable="false" />
+    <Property Name="FileName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="FileSize" Type="bigint" />
+    <Property Name="Pages" Type="int" Nullable="false" />
+    <Property Name="Checksum" Type="nvarchar(max)" />
+    <Property Name="isPDF" Type="bit" />
+    <Property Name="AmendmentID" Type="int" />
+  </EntityType>
+  <EntityType Name="DocumentMaster">
+    <Key>
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="DocumentID" />
+    </Key>
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="StampArticleCode" Type="int" Nullable="false" />
+    <Property Name="RegArticleCode" Type="int" Nullable="false" />
+    <Property Name="DocumentNumber" Type="int" />
+    <Property Name="FinalRegistrationNumber" Type="varchar" MaxLength="50" />
+    <Property Name="PresentDateTime" Type="datetime" />
+    <Property Name="ExecutionDateTime" Type="datetime" />
+    <Property Name="DateOfStamp" Type="datetime" />
+    <Property Name="ConsiderationAmount" Type="money" />
+    <Property Name="RequiredStampDuty" Type="money" />
+    <Property Name="PaidStampDuty" Type="money" />
+    <Property Name="Stamp1DateTime" Type="datetime" />
+    <Property Name="Stamp2DateTime" Type="datetime" />
+    <Property Name="Stamp3DateTime" Type="datetime" />
+    <Property Name="Stamp4DateTime" Type="datetime" />
+    <Property Name="Stamp5DateTime" Type="datetime" />
+    <Property Name="WithdrawalDate" Type="datetime" />
+    <Property Name="PageCount" Type="int" />
+    <Property Name="Index2Shera" Type="varchar" MaxLength="250" />
+    <Property Name="IsVisited" Type="bit" Nullable="false" />
+    <Property Name="IsFiling" Type="bit" Nullable="false" />
+    <Property Name="IsPending" Type="bit" Nullable="false" />
+    <Property Name="IsScanned" Type="bit" Nullable="false" />
+    <Property Name="IsRefused" Type="bit" Nullable="false" />
+    <Property Name="IsPaymentOfMoney" Type="bit" Nullable="false" />
+    <Property Name="IsAdjudicated" Type="bit" Nullable="false" />
+    <Property Name="IsWithdrawn" Type="bit" Nullable="false" />
+    <Property Name="RefusalDate" Type="datetime" />
+    <Property Name="RefusalReason" Type="varchar" MaxLength="1000" />
+    <Property Name="RemarksByUser" Type="varchar" MaxLength="1000" />
+    <Property Name="RemarksBySystem" Type="varchar" MaxLength="250" />
+    <Property Name="CorrectionReference" Type="bigint" />
+    <Property Name="OldDocReference" Type="varchar" MaxLength="50" />
+    <Property Name="AdjudicationDetails" Type="varchar" MaxLength="2500" />
+    <Property Name="CDNumber" Type="varchar" MaxLength="50" />
+    <Property Name="IsComposite" Type="bit" />
+    <Property Name="SerialNumber" Type="bigint" Nullable="false" />
+    <Property Name="IsDataEntryCompleted" Type="bit" />
+    <Property Name="DataEntryCompletedDate" Type="datetime" />
+    <Property Name="IsCollector" Type="bit" />
+    <Property Name="RemarksToCollector" Type="varchar" MaxLength="500" />
+    <Property Name="IsCancel" Type="bit" />
+    <Property Name="CancelReason" Type="varchar" MaxLength="250" />
+    <Property Name="SaleAgreementReference" Type="bigint" />
+    <Property Name="StampsDateDesc" Type="varchar" MaxLength="500" />
+    <Property Name="TokenID" Type="bigint" />
+    <Property Name="DRCode" Type="int" Nullable="false" />
+    <Property Name="IsPartial" Type="bit" Nullable="false" />
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GOAIGR_REG_CENTRALIZEDModelStoreContainer">
+    <EntitySet Name="CC_DigitizationFileDetails" EntityType="Self.CC_DigitizationFileDetails" Schema="GAURI" store:Type="Tables" />
+    <EntitySet Name="DocumentMaster" EntityType="Self.DocumentMaster" Schema="GAURI" store:Type="Tables" />
+    <EntitySet Name="CC_DigitizationDetails" EntityType="Self.CC_DigitizationDetails" store:Type="Tables" store:Schema="GAURI">
+      <DefiningQuery>SELECT 
+    [CC_DigitizationDetails].[DocumentID] AS [DocumentID], 
+    [CC_DigitizationDetails].[SROCode] AS [SROCode], 
+    [CC_DigitizationDetails].[ScannedFileName] AS [ScannedFileName], 
+    [CC_DigitizationDetails].[UploadPath] AS [UploadPath], 
+    [CC_DigitizationDetails].[UploadDateTime] AS [UploadDateTime], 
+    [CC_DigitizationDetails].[RootDirectory] AS [RootDirectory]
+    FROM [GAURI].[CC_DigitizationDetails] AS [CC_DigitizationDetails]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

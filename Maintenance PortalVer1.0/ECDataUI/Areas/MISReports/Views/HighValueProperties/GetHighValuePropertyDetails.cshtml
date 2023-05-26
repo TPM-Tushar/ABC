@@ -1,0 +1,300 @@
+﻿
+@model CustomModels.Models.MISReports.HighValueProperties.HighValuePropDetailsResModel
+@using ECDataUI.Helper
+
+@{
+
+    int RecordCount = 0;
+
+}
+<style>
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    table, td, tr {
+        word-break: break-all !important;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    td {
+        word-wrap: break-word;
+    }
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        word-wrap: normal;
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        // width:35px;
+    }
+
+    /*tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important;
+    }*/
+
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }
+
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+</style>
+@*<script src="~/Areas/MISReports/Scripts/HighValueProperties/GetHighValuePropertyDetails.js"></script>*@
+<script src="~/Areas/MISReports/Scripts/HighValueProperties/GetHighValuePropertyDetails.min.js"></script>
+
+<div class="container">
+
+    @*<div style=" padding-left:70%;">
+            <h5>    <b> <i> This Report is generated on:  @Model.GenerationDateTime </i></b></h5>
+
+        </div>*@
+
+    <br />
+    @*<table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="padding-top:1% ;vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 50%;margin-left:27%;">
+            <thead>
+                <tr>
+                    <th>Total Documents   Registered</th>
+                    <th>Total Registration fees ( in Rs. )<br /></th>
+                    <th>Total Stamp Duty ( in Rs. )<br /></th>
+                    <th>Total ( in Rs. )<br /></th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td><label> @Model.TotalDocuments</label></td>
+                    <td><label>@Model.TotalRegFee</label></td>
+                    <td><label>@Model.TotalStampDuty</label></td>
+                    <td><label>@Model.Total</label></td>
+
+
+                </tr>
+            </tbody>
+        </table>*@
+
+
+    @*<div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span>Note : This report is based on pre processed data considered upto @Model.MaxDate</b> </h6></i></div>*@
+
+    <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span>@Model.ReportInfo</b> </h6></i></div>
+
+    <table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="padding-top:1% ;vertical-align: middle;background-color: #99CFF7; overflow: hidden; border: solid; width: 100%;">
+        <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Financial Year<br /></th>
+                <th>Month Name<br /></th>
+                <th>Documents Registered<br /></th>
+                <th>Stamp Duty (in Rs. )<br /></th>
+                <th>Registration Fee (in Rs. )<br /></th>
+                <th>Total<br /></th>
+
+
+            </tr>
+        </thead>
+
+
+        @if (@Model.RangeList != null)
+        {
+            foreach (var item in @Model.RangeList)
+            {
+                RecordCount++;
+                <tbody>
+                    @if (RecordCount == @Model.RangeList.Count())
+                    {
+
+                    <tr style="background-color:blue;">
+                        <td style="width:10%;"><label></label></td>
+                        <td style="width:10%;"><label></label></td>
+                        <td style="width:10%;"><label><b>@item.MonthName</b></label></td>
+                        <td style="text-align:center;width:10%;"><label><b>@item.DC</b></label></td>
+                        <td style="text-align:right;width:15%;"><label><b>@item.SD.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</b></label></td>
+                        <td style="text-align:right;width:15%;"><label><b>@item.RF.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</b></label></td>
+                        <td style="text-align:right;width:15%;"><label><b>@item.Total.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</b></label></td>
+
+                    </tr>
+                    }
+                    else
+                    {
+                    <tr>
+                        <td style="width:10%;"><label>@item.SerialNo</label></td>
+                        <td style="width:10%;"><label>@item.FinYear</label></td>
+                        <td style="width:10%;"><label>@item.MonthName</label></td>
+                        <td style="text-align:center;width:10%;"><label>@item.DC</label></td>
+                        <td style="text-align:right;width:15%;"><label>@item.SD.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</label></td>
+                        <td style="text-align:right;width:15%;"><label>@item.RF.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</label></td>
+                        <td style="text-align:right;width:15%;"><label>@item.Total.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</label></td>
+
+                    </tr>
+                    }
+
+                </tbody>
+            }
+        }
+
+
+
+    </table>
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        @*<div class='BTNwrapper col-md-2' style="">
+                <button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="PdfDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as PDF</button>
+            </div>*@
+        <div class='BTNwrapper col-md-2' style="text-align:left;">
+            @Html.Raw(Model.ExcelDownloadBtn)
+
+            @*<button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="excelDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as Excel</button>*@
+        </div>
+        <div class="col-md-5" style="padding-left:19%;">
+            <h6> <i> This Report is generated on:  @Model.GenerationDateTime </i></h6>
+
+        </div>
+
+    </div>
+</div>
+<div id="MasterTableModel" style="margin-left: 31%;" class="modal fade " role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

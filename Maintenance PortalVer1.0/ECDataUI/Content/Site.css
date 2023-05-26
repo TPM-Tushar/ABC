@@ -1,0 +1,74 @@
+﻿.align-center {
+    text-align:center;
+}
+
+.align-left {
+    text-align:left;
+}
+
+.align-right {
+    text-align:right;
+}
+
+/* Added By Shyam */
+.activeLinks {
+        pointer-events: none;
+        cursor: default;
+    }
+
+.max-150 {
+    max-width:150px;
+}
+
+.max-120 {
+    max-width:120px;
+}
+
+.max-100 {
+    max-width:100px;
+}
+
+.max-80 {
+    max-width:80px;
+}
+
+.frm-panel {
+    border:1px solid #ccc;
+    border-radius:4px;
+    margin-bottom:5px;
+    padding:5px;
+    background-color:#fff;
+}
+
+.icon-orange {
+    /*color:#fc9f11;*/
+    color:#FFF;
+}
+
+.sidebar-menu .icon-orange {
+    font-weight:bold;
+    font-size:13px;    
+ }
+
+.user-header-uname {
+    font-weight:bold;
+    padding:13px 5px;
+    font-size:15px;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 15%;
+    background-color:#FFF;
+    min-height:30px;
+    z-index:1000;
+    font-size:11px;
+    padding:5px 5px;
+    margin:5px;
+    color:#18589c;
+    font-weight:600;
+    text-align:left;
+    }
+/* Added By Shyam */
+

@@ -1,0 +1,771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KAIGR_SEARCHDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ApplicationDetails">
+    <Key>
+      <PropertyRef Name="ApplicationID" />
+      <PropertyRef Name="RequestFromSRO" />
+    </Key>
+    <Property Name="ApplicationID" Type="bigint" Nullable="false" />
+    <Property Name="ApplicationNumber" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ApplicationTypeID" Type="int" Nullable="false" />
+    <Property Name="ApplicantName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ApplicationDate" Type="datetime" Nullable="false" />
+    <Property Name="RequestFromSRO" Type="int" Nullable="false" />
+    <Property Name="RequestToSRO" Type="int" Nullable="false" />
+    <Property Name="SearchFromDate" Type="datetime" Nullable="false" />
+    <Property Name="SearchToDate" Type="datetime" Nullable="false" />
+    <Property Name="VillageCode" Type="bigint" Nullable="false" />
+    <Property Name="IsCertificateGenerated" Type="bit" Nullable="false" />
+    <Property Name="CountryCode" Type="varchar" MaxLength="4" />
+    <Property Name="MobileNumber" Type="varchar" MaxLength="11" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="OwnerNo" Type="int" Nullable="false" />
+    <Property Name="PropertySchedule" Type="nvarchar" MaxLength="1000" />
+    <Property Name="SROApplicationNumber" Type="varchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="ApplicationTypeMaster">
+    <Key>
+      <PropertyRef Name="ApplicationTypeID" />
+    </Key>
+    <Property Name="ApplicationTypeID" Type="int" Nullable="false" />
+    <Property Name="ApplicationType" Type="varchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DistrictMaster">
+    <Key>
+      <PropertyRef Name="DistrictCode" />
+    </Key>
+    <Property Name="DistrictCode" Type="int" Nullable="false" />
+    <Property Name="DistrictNameE" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="DistrictNameK" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ShortNameE" Type="varchar" MaxLength="5" />
+    <Property Name="ShortNameK" Type="varchar" MaxLength="15" />
+    <Property Name="DIGCode" Type="int" />
+    <Property Name="BhoomiDistrictCode" Type="int" />
+  </EntityType>
+  <EntityType Name="DocumentMaster">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="srocode" />
+    </Key>
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="srocode" Type="int" Nullable="false" />
+    <Property Name="RegArticleCode" Type="int" Nullable="false" />
+    <Property Name="BookId" Type="int" Nullable="false" />
+    <Property Name="FinalRegistrationNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Stamp5DateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="HobliMaster">
+    <Key>
+      <PropertyRef Name="HobliCode" />
+    </Key>
+    <Property Name="HobliCode" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+    <Property Name="TalukCode" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="HobliNameK" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="HobliNameE" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="ShortNameK" Type="int" />
+    <Property Name="ShortNameE" Type="int" />
+    <Property Name="BhoomiHobliCode" Type="int" />
+    <Property Name="BhoomiHobliName" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="PartyInfo">
+    <Key>
+      <PropertyRef Name="PartyID" />
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="PartyID" Type="bigint" Nullable="false" />
+    <Property Name="PartyTypeID" Type="int" Nullable="false" />
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="350" />
+    <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="PAN" Type="varchar" MaxLength="50" />
+    <Property Name="RelativeName" Type="varchar" MaxLength="150" />
+    <Property Name="Phonenumber" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="PropertyMaster">
+    <Key>
+      <PropertyRef Name="PropertyID" />
+      <PropertyRef Name="RegSROCode" />
+    </Key>
+    <Property Name="PropertyID" Type="bigint" Nullable="false" />
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="RegSROCode" Type="int" Nullable="false" />
+    <Property Name="VillageCode" Type="bigint" Nullable="false" />
+    <Property Name="LandMark" Type="varchar" MaxLength="5000" />
+    <Property Name="MarketValue" Type="money" />
+    <Property Name="Consideration" Type="money" />
+    <Property Name="PropertyValueRangeID" Type="int" />
+  </EntityType>
+  <EntityType Name="PropertySchedules">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="ScheduleID" Type="bigint" Nullable="false" />
+    <Property Name="PropertyID" Type="bigint" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="5000" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KAIGR_SEARCHDB.dbo.Query' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="PartyID" />
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="Address" />
+    </Key>
+    <Property Name="PartyID" Type="bigint" Nullable="false" />
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="100" />
+    <Property Name="LastName" Type="varchar" MaxLength="350" />
+    <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="PAN" Type="varchar" MaxLength="50" />
+    <Property Name="RelativeName" Type="varchar" MaxLength="150" />
+    <Property Name="Phonenumber" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="RegistrationArticles">
+    <Key>
+      <PropertyRef Name="RegArticleCode" />
+    </Key>
+    <Property Name="RegArticleCode" Type="int" Nullable="false" />
+    <Property Name="ArticleNameK" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="ArticleNameE" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="UserArticleNo" Type="varchar" MaxLength="50" />
+    <Property Name="BookId" Type="int" />
+    <Property Name="GetBhoomidata" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KAIGR_SEARCHDB.dbo.RPT_DB_RegistrationSummaryMonthwise' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RPT_DB_RegistrationSummaryMonthwise">
+    <Key>
+      <PropertyRef Name="districtcode" />
+      <PropertyRef Name="districtname" />
+      <PropertyRef Name="srocode" />
+      <PropertyRef Name="sroname" />
+      <PropertyRef Name="regmonth" />
+      <PropertyRef Name="regyear" />
+      <PropertyRef Name="regfyear" />
+      <PropertyRef Name="RegArticleCode" />
+      <PropertyRef Name="RegArticleName" />
+    </Key>
+    <Property Name="districtcode" Type="int" Nullable="false" />
+    <Property Name="districtname" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="srocode" Type="int" Nullable="false" />
+    <Property Name="sroname" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="regmonth" Type="int" Nullable="false" />
+    <Property Name="regyear" Type="int" Nullable="false" />
+    <Property Name="regfyear" Type="int" Nullable="false" />
+    <Property Name="RegArticleCode" Type="int" Nullable="false" />
+    <Property Name="RegArticleName" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="DocsRegistered" Type="int" />
+    <Property Name="StampDutyCollected" Type="numeric" Precision="38" Scale="2" />
+    <Property Name="RegFeesCollected" Type="numeric" Precision="38" Scale="2" />
+    <Property Name="PropertyValueRangeID" Type="int" />
+  </EntityType>
+  <EntityType Name="RPT_ProcessingIterationMaster">
+    <Key>
+      <PropertyRef Name="IterationID" />
+    </Key>
+    <Property Name="IterationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsDro" Type="bit" Nullable="false" />
+    <Property Name="InsertDateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsValid" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RPT_RegistrationSummaryDocumentWise">
+    <Key>
+      <PropertyRef Name="RS_RowID" />
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="RegistrationDateABS" />
+    </Key>
+    <Property Name="RS_RowID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictCode" Type="int" Nullable="false" />
+    <Property Name="DistrictName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="SROName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="RegMonth" Type="int" Nullable="false" />
+    <Property Name="RegYear" Type="int" Nullable="false" />
+    <Property Name="RegFYear" Type="int" Nullable="false" />
+    <Property Name="RegTypeID" Type="int" Nullable="false" />
+    <Property Name="PresentationDate" Type="datetime" />
+    <Property Name="RegistrationDate" Type="datetime" />
+    <Property Name="RegistrationDateABS" Type="date" Nullable="false" />
+    <Property Name="RegArticleCode" Type="int" />
+    <Property Name="RegArticleName" Type="varchar" MaxLength="2000" />
+    <Property Name="DocumentID" Type="int" />
+    <Property Name="StampDutyCollected" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="RegFeesCollected" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="InsertDateTime" Type="datetime" />
+    <Property Name="IterationID" Type="int" />
+    <Property Name="FinalRegistrationNumber" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RPT_RegistrationSummaryDocumentWise_04112019">
+    <Key>
+      <PropertyRef Name="RS_RowID" />
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="RegistrationDateABS" />
+    </Key>
+    <Property Name="RS_RowID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictCode" Type="int" Nullable="false" />
+    <Property Name="DistrictName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="SROName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="JSROCode" Type="int" />
+    <Property Name="JSROName" Type="varchar" MaxLength="100" />
+    <Property Name="RegMonth" Type="int" Nullable="false" />
+    <Property Name="RegYear" Type="int" Nullable="false" />
+    <Property Name="RegFYear" Type="int" Nullable="false" />
+    <Property Name="RegTypeID" Type="int" Nullable="false" />
+    <Property Name="PresentationDate" Type="datetime" />
+    <Property Name="RegistrationDate" Type="datetime" />
+    <Property Name="RegistrationDateABS" Type="date" Nullable="false" />
+    <Property Name="RegArticleCode" Type="int" />
+    <Property Name="RegArticleName" Type="varchar" MaxLength="2000" />
+    <Property Name="DocumentID" Type="int" />
+    <Property Name="PropertyValue" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="MarketValue" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="Consideration" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="StampDutyCollected" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="RegFeesCollected" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="PropertyValueRangeID" Type="int" />
+    <Property Name="InsertDateTime" Type="datetime" />
+    <Property Name="IterationID" Type="int" />
+    <Property Name="FinalRegistrationNumber" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="RPT_RegistrationSummaryPropertyWise">
+    <Key>
+      <PropertyRef Name="RS_RowID" />
+      <PropertyRef Name="SROCode" />
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="RegistrationDateABS" />
+    </Key>
+    <Property Name="RS_RowID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IterationID" Type="int" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="DocumentID" Type="int" Nullable="false" />
+    <Property Name="PropertyID" Type="bigint" />
+    <Property Name="PropertyTypeID" Type="int" />
+    <Property Name="InsertDateTime" Type="datetime" />
+    <Property Name="RegistrationDateABS" Type="date" Nullable="false" />
+    <Property Name="PropertyValueRangeID" Type="int" />
+    <Property Name="Consideration" Type="money" />
+    <Property Name="MarketValue" Type="money" />
+    <Property Name="StampDuty" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="PropertyValue" Type="money" />
+    <Property Name="JSROCODE" Type="int" />
+  </EntityType>
+  <EntityType Name="SROMaster">
+    <Key>
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="DistrictCode" Type="int" />
+    <Property Name="SRONameK" Type="nvarchar" MaxLength="100" />
+    <Property Name="SRONameE" Type="nvarchar" MaxLength="150" />
+    <Property Name="ShortnameK" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortNameE" Type="nvarchar" MaxLength="15" />
+    <Property Name="GetBhoomiData" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STG_RPT_RegistrationSummaryDocumentWise">
+    <Key>
+      <PropertyRef Name="RS_RowID" />
+    </Key>
+    <Property Name="RS_RowID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DistrictCode" Type="int" Nullable="false" />
+    <Property Name="DistrictName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="SROName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="RegMonth" Type="int" Nullable="false" />
+    <Property Name="RegYear" Type="int" Nullable="false" />
+    <Property Name="RegFYear" Type="int" Nullable="false" />
+    <Property Name="RegTypeID" Type="int" Nullable="false" />
+    <Property Name="PresentationDate" Type="datetime" />
+    <Property Name="RegistrationDate" Type="datetime" />
+    <Property Name="RegistrationDateABS" Type="date" />
+    <Property Name="RegArticleCode" Type="int" />
+    <Property Name="RegArticleName" Type="varchar" MaxLength="2000" />
+    <Property Name="DocumentID" Type="int" />
+    <Property Name="StampDutyCollected" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="RegFeesCollected" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="InsertDateTime" Type="datetime" />
+    <Property Name="FinalRegistrationNumber" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="STG_RPT_RegistrationSummaryPropertyWise">
+    <Key>
+      <PropertyRef Name="RS_RowID" />
+    </Key>
+    <Property Name="RS_RowID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="DocumentID" Type="int" />
+    <Property Name="PropertyID" Type="bigint" />
+    <Property Name="PropertyTypeID" Type="int" />
+    <Property Name="InsertDateTime" Type="datetime" />
+    <Property Name="RegistrationDateABS" Type="date" Nullable="false" />
+    <Property Name="PropertyValueRangeID" Type="int" />
+    <Property Name="Consideration" Type="money" />
+    <Property Name="MarketValue" Type="money" />
+    <Property Name="StampDuty" Type="numeric" Precision="18" Scale="2" />
+    <Property Name="PropertyValue" Type="money" />
+    <Property Name="JSROCODE" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'KAIGR_SEARCHDB.dbo.temp19112018' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="temp19112018">
+    <Key>
+      <PropertyRef Name="TotalWorkerTime" />
+      <PropertyRef Name="TotalElapsedTime" />
+      <PropertyRef Name="execution_count" />
+      <PropertyRef Name="last_execution_time" />
+    </Key>
+    <Property Name="AvgWorkerTime" Type="bigint" />
+    <Property Name="TotalWorkerTime" Type="bigint" Nullable="false" />
+    <Property Name="AvgElapsedTime" Type="bigint" />
+    <Property Name="TotalElapsedTime" Type="bigint" Nullable="false" />
+    <Property Name="AvgIO" Type="bigint" />
+    <Property Name="TotalIO" Type="bigint" />
+    <Property Name="Query" Type="nvarchar(max)" />
+    <Property Name="Batch" Type="nvarchar(max)" />
+    <Property Name="Database" Type="nvarchar" MaxLength="128" />
+    <Property Name="execution_count" Type="bigint" Nullable="false" />
+    <Property Name="last_execution_time" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VillageMaster">
+    <Key>
+      <PropertyRef Name="VillageCode" />
+    </Key>
+    <Property Name="VillageCode" Type="bigint" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="HobliCode" Type="int" />
+    <Property Name="CensusCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="TalukCode" Type="int" Nullable="false" />
+    <Property Name="VillageNameK" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="VillageNameE" Type="nvarchar" MaxLength="1000" />
+    <Property Name="IsUrban" Type="bit" Nullable="false" />
+    <Property Name="BhoomiTalukCode" Type="int" />
+    <Property Name="BhoomiVillageCode" Type="int" />
+    <Property Name="BhoomiVillageName" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_ApplicationDetails_ApplicationTypeMaster">
+    <End Role="ApplicationTypeMaster" Type="Self.ApplicationTypeMaster" Multiplicity="1" />
+    <End Role="ApplicationDetails" Type="Self.ApplicationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ApplicationTypeMaster">
+        <PropertyRef Name="ApplicationTypeID" />
+      </Principal>
+      <Dependent Role="ApplicationDetails">
+        <PropertyRef Name="ApplicationTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationDetails_SROMaster">
+    <End Role="SROMaster" Type="Self.SROMaster" Multiplicity="1" />
+    <End Role="ApplicationDetails" Type="Self.ApplicationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SROMaster">
+        <PropertyRef Name="SROCode" />
+      </Principal>
+      <Dependent Role="ApplicationDetails">
+        <PropertyRef Name="RequestFromSRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationDetails_SROMaster1">
+    <End Role="SROMaster" Type="Self.SROMaster" Multiplicity="1" />
+    <End Role="ApplicationDetails" Type="Self.ApplicationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SROMaster">
+        <PropertyRef Name="SROCode" />
+      </Principal>
+      <Dependent Role="ApplicationDetails">
+        <PropertyRef Name="RequestToSRO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ApplicationDetails_VillageMaster">
+    <End Role="VillageMaster" Type="Self.VillageMaster" Multiplicity="1" />
+    <End Role="ApplicationDetails" Type="Self.ApplicationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VillageMaster">
+        <PropertyRef Name="VillageCode" />
+      </Principal>
+      <Dependent Role="ApplicationDetails">
+        <PropertyRef Name="VillageCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RPT_RegistrationSummaryDocumentWise_RPT_ProcessingIterationMaster">
+    <End Role="RPT_ProcessingIterationMaster" Type="Self.RPT_ProcessingIterationMaster" Multiplicity="0..1" />
+    <End Role="RPT_RegistrationSummaryDocumentWise" Type="Self.RPT_RegistrationSummaryDocumentWise" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RPT_ProcessingIterationMaster">
+        <PropertyRef Name="IterationID" />
+      </Principal>
+      <Dependent Role="RPT_RegistrationSummaryDocumentWise">
+        <PropertyRef Name="IterationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RPT_RegistrationSummaryDocumentWise_RPT_ProcessingIterationMaster1">
+    <End Role="RPT_ProcessingIterationMaster" Type="Self.RPT_ProcessingIterationMaster" Multiplicity="0..1" />
+    <End Role="RPT_RegistrationSummaryDocumentWise_04112019" Type="Self.RPT_RegistrationSummaryDocumentWise_04112019" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RPT_ProcessingIterationMaster">
+        <PropertyRef Name="IterationID" />
+      </Principal>
+      <Dependent Role="RPT_RegistrationSummaryDocumentWise_04112019">
+        <PropertyRef Name="IterationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="FN_GetPropertyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SROCode" Type="int" />
+          <Property Name="DocumentID" Type="int" />
+          <Property Name="PropertyID" Type="bigint" />
+          <Property Name="Consideration" Type="money" />
+          <Property Name="MarketValue" Type="money" />
+          <Property Name="PropertyValue" Type="money" />
+          <Property Name="PropertyTypeID" Type="int" />
+          <Property Name="PropertyValueRangeID" Type="int" />
+          <Property Name="StampDuty" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="JSROCODE" Type="int" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FN_MONTHYEAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="DISPSEQ" Type="int" />
+          <Property Name="MONTHID" Type="int" />
+          <Property Name="MonthName" Type="varchar" MaxLength="1000" />
+          <Property Name="year" Type="varchar" MaxLength="100" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="GetConsideration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+    <Parameter Name="PropertyID" Type="bigint" Mode="In" />
+    <Parameter Name="sroCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetECDailyReceiptDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="varchar" Mode="In" />
+    <Parameter Name="toDate" Type="varchar" Mode="In" />
+    <Parameter Name="sroCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetECUserLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sroCode" Type="int" Mode="In" />
+    <Parameter Name="LogTypeID" Type="tinyint" Mode="In" />
+    <Parameter Name="fromDate" Type="varchar" Mode="In" />
+    <Parameter Name="toDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="GetMarketValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="money">
+    <Parameter Name="PropertyID" Type="bigint" Mode="In" />
+    <Parameter Name="sroCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPartysForNonPartitionDocument" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="DocumentID" Type="bigint" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="PartyTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetPropertyDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="PropertyID" Type="bigint" Mode="In" />
+    <Parameter Name="sroCode" Type="int" Mode="In" />
+  </Function>
+  <Function Name="GetScannedFileUploadStatusReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SearchByAddress" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PassNameEnglish" Type="varchar" Mode="In" />
+    <Parameter Name="PassNameKannada" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchByAddress_20112018" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PassNameEnglish" Type="varchar" Mode="In" />
+    <Parameter Name="PassNameKannada" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PassNameEnglish" Type="varchar" Mode="In" />
+    <Parameter Name="PassNameKannada" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchByName_20112018" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PassNameEnglish" Type="varchar" Mode="In" />
+    <Parameter Name="PassNameKannada" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchByPAN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PassNamePAN" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchByPAN_20112018" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PassNamePAN" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SearchByProperty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PassNameEnglish" Type="varchar" Mode="In" />
+    <Parameter Name="PassNameKannada" Type="varchar" Mode="In" />
+    <Parameter Name="PassNameVillageCode" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SP_ExportDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_ExportDetails_20112018" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="UDF_GETallDatesOfMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="month" Type="int" Mode="In" />
+    <Parameter Name="year" Type="int" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="SelDate" Type="varchar" MaxLength="100" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="USP_DB_HIGHVALUE_SUMMARY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_THISFYEAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_THISFYEAR_07102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_THISMONTH" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_THISMONTH_07102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_Today" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_Today_07102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_UPTODATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_SUMMARY_UPTODATE_07102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_Trend_FYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_DB_REG_Trend_monthWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="RegArticleCodeStr" Type="varchar" Mode="In" />
+    <Parameter Name="PropertyRangeID" Type="int" Mode="In" />
+    <Parameter Name="FYear" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_DAYWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="MONTH" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_DAYWISE_01102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="MONTH" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_DOCUMENTWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_MONTHWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_MONTHWISE_01102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_RANGEWISE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="FROMDATE" Type="date" Mode="In" />
+    <Parameter Name="TODATE" Type="date" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_DAILY_REVENUE_RANGEWISE_01102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCODE" Type="int" Mode="In" />
+    <Parameter Name="REGARTICLECODE" Type="int" Mode="In" />
+    <Parameter Name="FROMDATE" Type="date" Mode="In" />
+    <Parameter Name="TODATE" Type="date" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_HIGHVALUE_PROPERTIES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="fromRange" Type="int" Mode="In" />
+    <Parameter Name="ToRange" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_HIGHVALUE_PROPERTIES_01102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Year" Type="int" Mode="In" />
+    <Parameter Name="fromRange" Type="int" Mode="In" />
+    <Parameter Name="ToRange" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_JurisdictionalWiseDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_OLAP_GETRegistrationSummaryDocumentwise_04112019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_RPT_OLAP_GETRegistrationSummaryDocumentwise_07122019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_RPT_OLAP_GETRegistrationSummaryMonthwise" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="USP_RPT_SALEDEED_REGISTERED" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+    <Parameter Name="PropertyTypeID" Type="int" Mode="In" />
+    <Parameter Name="AmountRange" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_SALEDEED_REGISTERED_01102019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+    <Parameter Name="PropertyTypeID" Type="int" Mode="In" />
+    <Parameter Name="AmountRange" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_SALEDEED_REGISTERED_04112019" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="YEAR" Type="int" Mode="In" />
+    <Parameter Name="PropertyTypeID" Type="int" Mode="In" />
+    <Parameter Name="AmountRange" Type="int" Mode="In" />
+  </Function>
+  <Function Name="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DISTRICTCODE" Type="int" Mode="In" />
+    <Parameter Name="SROCode" Type="int" Mode="In" />
+    <Parameter Name="FromDate" Type="date" Mode="In" />
+    <Parameter Name="ToDate" Type="date" Mode="In" />
+  </Function>
+  <EntityContainer Name="KAIGR_SEARCHDBModelStoreContainer">
+    <EntitySet Name="ApplicationDetails" EntityType="Self.ApplicationDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationTypeMaster" EntityType="Self.ApplicationTypeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DistrictMaster" EntityType="Self.DistrictMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentMaster" EntityType="Self.DocumentMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HobliMaster" EntityType="Self.HobliMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PartyInfo" EntityType="Self.PartyInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyMaster" EntityType="Self.PropertyMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertySchedules" EntityType="Self.PropertySchedules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistrationArticles" EntityType="Self.RegistrationArticles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RPT_ProcessingIterationMaster" EntityType="Self.RPT_ProcessingIterationMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RPT_RegistrationSummaryDocumentWise" EntityType="Self.RPT_RegistrationSummaryDocumentWise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RPT_RegistrationSummaryDocumentWise_04112019" EntityType="Self.RPT_RegistrationSummaryDocumentWise_04112019" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RPT_RegistrationSummaryPropertyWise" EntityType="Self.RPT_RegistrationSummaryPropertyWise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SROMaster" EntityType="Self.SROMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_RPT_RegistrationSummaryDocumentWise" EntityType="Self.STG_RPT_RegistrationSummaryDocumentWise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STG_RPT_RegistrationSummaryPropertyWise" EntityType="Self.STG_RPT_RegistrationSummaryPropertyWise" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VillageMaster" EntityType="Self.VillageMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Query" EntityType="Self.Query" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Query].[PartyID] AS [PartyID], 
+    [Query].[DocumentID] AS [DocumentID], 
+    [Query].[SROCode] AS [SROCode], 
+    [Query].[FirstName] AS [FirstName], 
+    [Query].[MiddleName] AS [MiddleName], 
+    [Query].[LastName] AS [LastName], 
+    [Query].[Address] AS [Address], 
+    [Query].[PAN] AS [PAN], 
+    [Query].[RelativeName] AS [RelativeName], 
+    [Query].[Phonenumber] AS [Phonenumber]
+    FROM [dbo].[Query] AS [Query]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RPT_DB_RegistrationSummaryMonthwise" EntityType="Self.RPT_DB_RegistrationSummaryMonthwise" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RPT_DB_RegistrationSummaryMonthwise].[districtcode] AS [districtcode], 
+    [RPT_DB_RegistrationSummaryMonthwise].[districtname] AS [districtname], 
+    [RPT_DB_RegistrationSummaryMonthwise].[srocode] AS [srocode], 
+    [RPT_DB_RegistrationSummaryMonthwise].[sroname] AS [sroname], 
+    [RPT_DB_RegistrationSummaryMonthwise].[regmonth] AS [regmonth], 
+    [RPT_DB_RegistrationSummaryMonthwise].[regyear] AS [regyear], 
+    [RPT_DB_RegistrationSummaryMonthwise].[regfyear] AS [regfyear], 
+    [RPT_DB_RegistrationSummaryMonthwise].[RegArticleCode] AS [RegArticleCode], 
+    [RPT_DB_RegistrationSummaryMonthwise].[RegArticleName] AS [RegArticleName], 
+    [RPT_DB_RegistrationSummaryMonthwise].[DocsRegistered] AS [DocsRegistered], 
+    [RPT_DB_RegistrationSummaryMonthwise].[StampDutyCollected] AS [StampDutyCollected], 
+    [RPT_DB_RegistrationSummaryMonthwise].[RegFeesCollected] AS [RegFeesCollected], 
+    [RPT_DB_RegistrationSummaryMonthwise].[PropertyValueRangeID] AS [PropertyValueRangeID]
+    FROM [dbo].[RPT_DB_RegistrationSummaryMonthwise] AS [RPT_DB_RegistrationSummaryMonthwise]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="temp19112018" EntityType="Self.temp19112018" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [temp19112018].[AvgWorkerTime] AS [AvgWorkerTime], 
+    [temp19112018].[TotalWorkerTime] AS [TotalWorkerTime], 
+    [temp19112018].[AvgElapsedTime] AS [AvgElapsedTime], 
+    [temp19112018].[TotalElapsedTime] AS [TotalElapsedTime], 
+    [temp19112018].[AvgIO] AS [AvgIO], 
+    [temp19112018].[TotalIO] AS [TotalIO], 
+    [temp19112018].[Query] AS [Query], 
+    [temp19112018].[Batch] AS [Batch], 
+    [temp19112018].[Database] AS [Database], 
+    [temp19112018].[execution_count] AS [execution_count], 
+    [temp19112018].[last_execution_time] AS [last_execution_time]
+    FROM [dbo].[temp19112018] AS [temp19112018]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_ApplicationDetails_ApplicationTypeMaster" Association="Self.FK_ApplicationDetails_ApplicationTypeMaster">
+      <End Role="ApplicationTypeMaster" EntitySet="ApplicationTypeMaster" />
+      <End Role="ApplicationDetails" EntitySet="ApplicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationDetails_SROMaster" Association="Self.FK_ApplicationDetails_SROMaster">
+      <End Role="SROMaster" EntitySet="SROMaster" />
+      <End Role="ApplicationDetails" EntitySet="ApplicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationDetails_SROMaster1" Association="Self.FK_ApplicationDetails_SROMaster1">
+      <End Role="SROMaster" EntitySet="SROMaster" />
+      <End Role="ApplicationDetails" EntitySet="ApplicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ApplicationDetails_VillageMaster" Association="Self.FK_ApplicationDetails_VillageMaster">
+      <End Role="VillageMaster" EntitySet="VillageMaster" />
+      <End Role="ApplicationDetails" EntitySet="ApplicationDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RPT_RegistrationSummaryDocumentWise_RPT_ProcessingIterationMaster" Association="Self.FK_RPT_RegistrationSummaryDocumentWise_RPT_ProcessingIterationMaster">
+      <End Role="RPT_ProcessingIterationMaster" EntitySet="RPT_ProcessingIterationMaster" />
+      <End Role="RPT_RegistrationSummaryDocumentWise" EntitySet="RPT_RegistrationSummaryDocumentWise" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RPT_RegistrationSummaryDocumentWise_RPT_ProcessingIterationMaster1" Association="Self.FK_RPT_RegistrationSummaryDocumentWise_RPT_ProcessingIterationMaster1">
+      <End Role="RPT_ProcessingIterationMaster" EntitySet="RPT_ProcessingIterationMaster" />
+      <End Role="RPT_RegistrationSummaryDocumentWise_04112019" EntitySet="RPT_RegistrationSummaryDocumentWise_04112019" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

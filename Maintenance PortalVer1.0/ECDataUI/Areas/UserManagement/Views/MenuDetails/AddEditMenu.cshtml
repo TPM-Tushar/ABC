@@ -1,0 +1,332 @@
+﻿@model CustomModels.Models.UserManagement.MenuDetailsModel
+<style>
+    #btnSubmit {
+        text-align: center;
+    }
+
+    .listbox {
+        /*width: auto;*/
+        border-width: thick;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+    /*#listBoxId {
+        text-align:right;
+        background-color:red;
+    }*/
+
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 80%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .verticalLine3 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 50%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    /*.disabled { cursor: not-allowed; }*/
+    /*.listboxId {
+        overflow: auto;
+        max-height: 100px;
+    }*/
+</style>
+
+<script src="~/Areas/UserManagement/Scripts/MenuDetails/AddEditMenu.js"></script>
+
+
+<div class="col-md-12" style="margin-top:0px;padding-left:20px; background: #fff; border: 1px solid #ECF0F1;">
+    <br />
+    <div class="col-md-offset-0">
+        <form method="post" id="MenuFormID">
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                <div class="col-md-8">
+                    @Html.HiddenFor(model => model.EncryptedID, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.HiddenFor(model => model.DropDownValuesCanChange, new { htmlAttributes = new { @class = "form-control", id = "DropDownValuesCanChange" } })
+
+                </div>
+            </div>
+            <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:20px;">
+                <div class="col-md-5">
+                    <br />
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.MenuName, "Menu Name", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.MenuName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Menu Name", @Id = "MenuNameId", tabindex = 1 } })
+                                @Html.ValidationMessageFor(model => model.MenuName, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        @*<div class="row">
+            <div class="col-md-6 PaddingTop10">
+                @Html.LabelFor(model => model.RoleList, "Role", htmlAttributes: new { @class = "control-label  " })
+            </div>
+            <div class="col-md-6">
+                @Html.ListBoxFor(model => model.RoleListIds, @Model.RoleList, new { @class = "listbox", id = "listBoxId" })
+            </div>
+        </div><br />*@
+                        @*<div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.MenuList, "Parent Menu", htmlAttributes: new { @class = "control-label  " })
+            </div>
+            <div class="col-md-6">
+                @Html.DropDownListFor(model => model.TempParentId, @Model.MenuList, new { @class = "form-control minimal" })
+            </div>
+        </div><br />*@
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.VerticalLevel, "Vertical Level", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.VerticalLevel, new { htmlAttributes = new { @class = "form-control", @placeholder = "Vertical Level ", tabindex = 3 } })
+                                @Html.ValidationMessageFor(model => model.VerticalLevel, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.IsActive, "Is Active", htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-6 PaddingTop10" style="padding-left:20px;">
+                                @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { tabindex = 5 } })
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.IsMenuIDParameter, "Is Menu ID Parameter", htmlAttributes: new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-6 PaddingTop10" style="padding-left:20px;">
+                                @Html.RadioButtonFor(model => model.IsMenuIDParameter, "true", htmlAttributes: new { @class = "control-label", tabindex = 7 }) Yes
+                                @Html.RadioButtonFor(model => model.IsMenuIDParameter, "false", htmlAttributes: new { @class = "control-label" }) No
+                                <br />
+                                @Html.ValidationMessageFor(model => model.IsMenuIDParameter, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        @*<div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.RoleList, "Role", htmlAttributes: new { @class = "control-label  " })
+            </div>
+            <div class="col-md-6">
+                @Html.ListBoxFor(model => model.RoleListIds, @Model.RoleList, new { @class = "listbox", id = "listBoxId" })
+            </div>
+        </div><br />*@
+
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.MenuIcon, "Menu Icon", htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.MenuIcon, new { htmlAttributes = new { @class = "form-control", @placeholder = "Menu Icon", @Id = "txtMenuIcon", tabindex = 9 } })
+                                @Html.ValidationMessageFor(model => model.MenuIcon, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                    </fieldset>
+                </div>
+
+                <div class="col-md-2" style="text-align:center;">
+                    <div class="verticalLine2"></div>
+                </div>
+                <div class="col-md-5">
+                    <br />
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.MenuNameR, "Menu Name (R)", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.MenuNameR, new { htmlAttributes = new { @class = "form-control", @placeholder = "Menu Name R", tabindex = 2 } })
+                                @Html.ValidationMessageFor(model => model.MenuNameR, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.Sequence, "Sequence", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.Sequence, new { htmlAttributes = new { @class = "form-control", @placeholder = "Sequence", tabindex = 4 } })
+                                @Html.ValidationMessageFor(model => model.Sequence, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.HorizontalSequence, "Horizontal Sequence", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.HorizontalSequence, new { htmlAttributes = new { @class = "form-control", @placeholder = "Horizontal Sequence", tabindex = 6 } })
+                                @Html.ValidationMessageFor(model => model.HorizontalSequence, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.LevelGroupCode, "Level Group Code", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.LevelGroupCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Level Group Code", tabindex = 8 } })
+                                @Html.ValidationMessageFor(model => model.LevelGroupCode, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br /><div class="row">
+                            <div class="col-md-6">
+                                @*@Html.LabelFor(model => model.IsHorizontalMenu, "Is Horizontal Menu", htmlAttributes: new { @class = "control-label" })*@
+                            </div>
+                            <div class="col-md-6">
+                                @*@Html.EditorFor(model => model.IsHorizontalMenu)
+                @Html.ValidationMessageFor(model => model.IsHorizontalMenu, "", new { @class = "text-danger" })*@
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.MenuDescription, "Menu Description", htmlAttributes: new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.MenuDescription, new { htmlAttributes = new { @class = "form-control", @placeholder = "Menu Description", @Id = "txtMenuDescription", tabindex = 10 } })
+                                @Html.ValidationMessageFor(model => model.MenuDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                    </fieldset>
+                </div>
+            </div>
+
+            @*<div class="container" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:50px;">
+                <div style="display:block;width:100%;">*@
+            @if (Model.DropDownValuesCanChange == false)
+            {
+                <div class="col-md-12">
+                    <div class="alert form-control alert-info" style="padding-bottom:30px;">
+                        <span style="font-weight: bold ;">
+                            <i class="fa fa-exclamation-circle fa-1x" aria-hidden="true"></i>  @Model.DropDownValuesStatus
+                        </span>
+                    </div>
+                </div>
+            }
+            @*</div>*@
+
+            <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:20px;">
+                <div class="col-md-5">
+                    <br />
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.MenuList, "Parent Menu", htmlAttributes: new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-6 ">
+                                @Html.DropDownListFor(model => model.ParentID, @Model.MenuList, new { @class = "form-control minimal", @id = "parentMenuDetailsList", tabindex = 11 })
+                            </div>
+                        </div><br />
+                        <div class="row" id="secondChildMenuListDivId">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.SecondChildMenuDetailsList, "Second Child Menu", htmlAttributes: new { @class = "control-label " })
+                            </div>
+                            <div class="col-md-6 ">
+                                @Html.DropDownListFor(model => model.SecondChildMenuDetailsId, @Model.SecondChildMenuDetailsList, new { @class = "form-control minimal ", @id = "secondChildMenuDetailsList", tabindex = 13 })
+                            </div>
+                        </div><br />
+                    </fieldset>
+                </div>
+                <div class="col-md-2" style="text-align:center;">
+                    <div class="verticalLine3"></div>
+                </div>
+                <div class="col-md-5">
+                    <br />
+                    <fieldset>
+                        <div class="row" id="firstChildMenuListDivId">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.FirstChildMenuDetailsList, "First Child Menu", htmlAttributes: new { @class = "control-label " })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(model => model.FirstChildMenuDetailsId, @Model.FirstChildMenuDetailsList, new { @class = "form-control minimal ", @id = "firstChildMenuDetailsList", tabindex = 12 })
+                            </div>
+                        </div><br />
+                    </fieldset>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    @if (Model.IsUpdatable == true)
+                    {
+                        <button type="button" class="btn btn-group-md btn-success" id="btnSubmit" title="Save & Proceed" onclick="editMenu()">Save & Proceed</button><i>&nbsp;</i>
+                        <button type="button" class="btn btn-group-md btn-danger btnCancelClass" id="btnCancelForEdit" title="Cancel">Cancel</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-group-md btn-success" id="btnSubmit" title="Save & Proceed" onclick="addMenu()">Save & Proceed</button><i>&nbsp;</i>
+                        <button type="reset" class="btn btn-group-md btn-warning btnResetClass" id="btnReset" title="Reset">Reset</button><i>&nbsp;</i>
+                        <button type="button" class="btn btn-group-md btn-danger btnCancelClass" id="btnCancelForAdd" title="Cancel">Cancel</button>
+                    }
+                </div>
+            </div><br /><br />
+        </form>
+        @*AddEditMenu1*@
+        @*<div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    @if (Model.IsUpdatable == true)
+                    {
+                        <button type="button" class="btn btn-group-md btn-success" id="btnSubmit" title="Save & Proceed" onclick="editMenu()">Save & Proceed</button><i>&nbsp;</i>
+                            <button type="button" class="btn btn-group-md btn-danger btnCancelClass" id="btnCancelForEdit" title="Cancel">Cancel</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-group-md btn-success" id="btnSubmit" title="Save & Proceed" onclick="addMenu()">Save & Proceed</button><i>&nbsp;</i>
+                            <button type="reset" class="btn btn-group-md btn-warning btnResetClass" id="btnReset" title="Reset">Reset</button><i>&nbsp;</i>
+                            <button type="button" class="btn btn-group-md btn-danger btnCancelClass" id="btnCancelForAdd" title="Cancel">Cancel</button>
+                    }
+                </div>
+            </div><br /><br />*@
+    </div>
+</div>

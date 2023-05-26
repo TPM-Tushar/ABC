@@ -1,0 +1,59 @@
+﻿@model CustomModels.Models.MISReports.PropertyWthoutImportBypassRDPR.ReportWrapperModel
+@using ECDataUI.Helper
+
+@{
+    //int RecordCount = 0;
+}
+<style>
+
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }
+    
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+    .thead_Color {
+        background-color: #99CFF7;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+
+@*<script src="~/Areas/KaveriIntegration/Scripts/KaveriIntegrationView.js"></script>*@
+
+<table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="padding-top:1% ;vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+    <thead>
+        <tr>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">S. No.</th>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Sub-Registrar Office Name<br>(A)</th>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Total Properties Registered<br>(B)</th>
+            <th class="thead_Color" colspan="3" style="vertical-align:middle;">Total Properties imported from</th>
+            <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Total properties registered without importing<br>(F)</th>
+        </tr>
+        <tr>
+            <th class="thead_Color" style="vertical-align:middle;">Bhoomi<br>(C)</th>
+            <th class="thead_Color" style="vertical-align:middle;">E-Swathu<br>(D)</th>
+            <th class="thead_Color" style="vertical-align:middle;">UPOR<br>(E)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ReportDetailList)
+        {
+            <tr>
+                <td><label>@item.SerialNo</label></td>
+                <td style="text-align:left;"><label>@item.SROName</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.TotalPropertiesRegistered)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.Bhoomi)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.E_Swathu)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.UPOR)</label></td>
+                <td style="text-align:center;"><label>@Html.Raw(@item.Total_Properties_Registered_Without_Importing)</label></td>
+                @*<td style="text-align:right"><label>@item.str_RF</label></td>*@
+            </tr>
+        }
+    </tbody>
+</table>

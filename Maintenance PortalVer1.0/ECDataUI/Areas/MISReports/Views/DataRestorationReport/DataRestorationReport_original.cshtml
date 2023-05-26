@@ -1,0 +1,141 @@
+﻿@model CustomModels.Models.MISReports.DataRestorationReport.DataRestorationReportViewModel
+@using ECDataUI.Helper
+
+<script src="~/Areas/MISReports/Scripts/DataRestorationReport/DataRestorationReport.js"></script>
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        /*padding: 2.5%;*/
+        padding: 1.5%;
+    }
+
+    .TableFontClass {
+        font-size: initial;
+    }
+</style>
+<div class="container">
+    <div class="col-md-offset-0">
+        <h3 style="text-align:center;color:#3177b4 ;">Data Restoration<span style="color:black"></span></h3>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div> <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                    <form id="SearchParametersForm">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @*<div class="row" style="padding-top:1%;padding-bottom:1%;" id="HiddedRow">*@
+                        <div class="row" style="padding-top:1%;padding-bottom:1%;">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4" id="SRODropDownListID">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 2 })
+                                    @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-offset-2">
+                    <div class="form-group col-md-8">
+                        <div class='BTNwrapper' style="padding-left:13%;margin-top:1%;margin-bottom:1%">
+                            <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="InformationPanedID" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            @*<div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                        <span class="" style="color: #FFF; font-size: 120%;">
+                        </span>
+                    </div>
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                        <div class="row" style="padding-top:1%;padding-bottom:1%;">
+                            <div class="col-md-12">
+
+                                <fieldset style="text-align:left;">
+                                    <legend>Data Restoration Initiation : </legend>
+                                    <span><label style="font-size:initial;">Office Name :</label></span><br>
+                                    <span><label style="font-size:initial;"> Initiation Date :</label></span><br>
+                                    <span><label style="font-size:initial;">SR Name :</label></span><br>
+                                    <span><label style="font-size:initial;">Contact number :</label></span><a>Change</a><br>
+                                </fieldset>
+                                <br>
+                                <fieldset style="text-align:left;">
+                                    <legend>Database Restoration Details : </legend>
+                                    <span><label style="font-size:initial;">Restoration Date :</label></span><br>
+                                    <span><label style="font-size:initial;">Data Restored upto :</label></span><br>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <span><label style="font-size:initial;">Last Document Registration Number :</label></span><br>
+                                            <span><label style="font-size:initial;">Last Marriage Registration Number :	</label></span><br>
+                                            <span><label style="font-size:initial;">Last Notice Registration Number :	</label></span><br>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <span><label style="font-size:initial;">Registration Date :	</label></span><br>
+                                            <span><label style="font-size:initial;">Registration Date :</label></span><br>
+                                            <span><label style="font-size:initial;">Registration Date :</label></span><br>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <br>
+                                <fieldset style="text-align:left;">
+                                    <legend>Data Insertion Details : </legend>
+                                    <table style="width:60%;">
+                                        <thead>
+                                            <tr>
+                                                <th class="TableFontClass">Insertion Projection</th>
+                                                <th class="TableFontClass">Data Insertion attempt 1 Result</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="TableFontClass">Document Registration :</td>
+                                                <td class="TableFontClass"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="TableFontClass">Marriage Registration :</td>
+                                                <td class="TableFontClass"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="TableFontClass">Notice Registration :</td>
+                                                <td class="TableFontClass"></td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+</div>

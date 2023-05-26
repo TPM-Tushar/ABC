@@ -1,0 +1,1147 @@
+﻿@model CustomModels.Models.Dashboard.DashboardSummaryModel
+@using ECDataUI.Helper
+@using ECDataUI.Session;
+@{
+
+    int FirstElemOfDistrictList = Convert.ToInt32(Model.DistrictList.ElementAt(0).Value);
+    string FirstElemOfDistrictListTxt = Model.DistrictList.ElementAt(0).Text;
+
+
+}
+<script src="~/Content/jquery/dist/jquery-ui.js"></script>
+<script src="~/Areas/Dashboard/Scripts/dashboard.js"></script>
+@*<script src="~/Areas/Dashboard/Scripts/DashboardSummaryView.min.js"></script>*@
+
+
+<script src="~/Areas/Dashboard/Scripts/DashboardSummaryView.js"></script>
+@*<script src="~/Areas/Dashboard/Scripts/bootstrap.min.js"></script>*@
+<script src="~/Areas/Dashboard/Scripts/bootsnav.js"></script>
+<link href="~/Content/bootstrap/css/bootsnav.css" rel="stylesheet" />
+<link href="~/Content/bootstrap/css/bootsnav_temp.css" rel="stylesheet" />
+<script>
+    var FirstElemOfDistrictList = '@FirstElemOfDistrictList';
+    var FirstElemOfDistrictListTxt='@FirstElemOfDistrictListTxt'
+</script>
+<style>
+
+    .info-box-content {
+        padding: 5px 10px;
+        margin-left: 0px !important;
+    }
+
+    .content {
+        padding: 0px;
+    }
+
+    /*#UlAchivements {
+        list-style: none;
+    }
+
+        #UlAchivements > li {
+            opacity: 0;
+            right: 100%;
+            position: relative;
+        }
+
+
+
+
+    #achivementID ul > li:before {
+        content: "•";
+        padding-right: 1%;
+        color: #3177B4;
+        opacity: .8;
+    }*/
+
+
+    #UlAchivements {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        #UlAchivements > li {
+            /*padding-left: 1em;*/
+            text-indent: -.11em;
+            opacity: 0;
+            right: 100%;
+            position: relative;
+        }
+
+    #achivementID ul > li:before {
+        content: "\2022";
+        padding-right: 1%;
+        font-family: FontAwesome;
+        color: #3177B4;
+        font-size: 170%; /* or whatever */
+        padding-right: 10px;
+        /*
+
+            or whatever color you prefer */ /*margin-right: 4px;*/
+    }
+
+
+
+    .prog-Target {
+        -webkit-transition: none !important;
+        transition: none !important;
+    }
+
+    .progress.xs, .progress-xs, .progress.xs .progress-bar, .progress-xs .progress-bar {
+        border-radius: 1px;
+    }
+
+    .progress.xs, .progress-xs {
+        /*height: 10px;*/
+    }
+
+    .progress-custom {
+        display: table;
+        width: 100%;
+        margin-bottom: 20px; /*optionally same as the margin bottom of progress class*/
+        z-index: 1;
+    }
+
+        .progress-custom .progress {
+            margin-bottom: 0;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .progress-custom .progress-value {
+            display: table-cell;
+            vertical-align: middle;
+            width: 1%;
+            padding: 0 4px; /*optionally*/
+        }
+
+    .roundedBorder {
+        border-radius: 11px;
+    }
+
+    .roundedBorderBottom {
+        border-bottom-left-radius: 11px;
+        border-bottom-right-radius: 11px;
+    }
+
+    .ulRevenueStatus {
+        font-family: "Roboto";
+        font-size: 15px;
+        line-height: 1.5em;
+        margin: 5px 0 15px;
+        padding: 0;
+    }
+
+        .ulRevenueStatus li {
+            list-style: none;
+            position: relative;
+            padding: 0 0 0 20px;
+        }
+
+    ul.arrow li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 6px;
+        height: 5px;
+        width: 5px;
+        border: 1px solid #ff6600;
+        border-width: 2px 2px 0 0;
+        transform: rotate(45deg);
+    }
+
+
+
+
+    .progress-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #5a5a5a;
+        margin: 0 0 10px;
+    }
+
+    #dvTargetLine .progress {
+        height: 12px;
+        /*line-height: 15px;*/
+        background: #F5F5F5;
+        border-radius: 0;
+        /*margin-bottom: 50px;*/
+        padding: 4px;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    .progress {
+        height: 12px;
+        /*line-height: 15px;*/
+        background: #F5F5F5;
+        border-radius: 0;
+        /*margin-bottom: 50px;*/
+        padding: 4px;
+        box-shadow: none;
+        overflow: visible;
+    }
+
+        .progress:last-child {
+            margin-bottom: 0;
+        }
+
+        .progress .progress-bar {
+            position: relative;
+            animation: animate-positive 2s;
+        }
+
+            .progress .progress-bar:after {
+                /*content: "\f0da";*/
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                font-size: 22px;
+                position: absolute;
+                top: -9px;
+                right: -2px;
+            }
+
+        /*COMMENTED AND ADDED ON 20-10-2020*/
+
+        /*.progress .progress-value {
+            font-size: 11px;
+            color: #fff;
+            border-radius: 4px;
+            padding: 2px 2px;
+            background: #29102b;
+            position: absolute;
+            top: -29px;
+            right: -48px;
+        }*/
+
+        /*.progress .progress-value:after {
+                content: "";
+                border: 5px solid transparent;
+                border-top: 5px solid #29102b;
+                border-left: 5px solid #29102b;
+                position: absolute;
+                bottom: -6px;
+                left: 0;
+            }*/
+
+
+        /*TOOLTIP POINT IS LEFT ALIGN IN BELOW CODE AND ABOVE CODE*/
+        /*IS ALSO SAME ONLY COLOR OF BACKGROUD IS CHANGED TO BLUE IN BELOW CODE*/
+        .progress .progress-value {
+            font-size: 11px;
+            color: #fff;
+            border-radius: 4px;
+            padding: 2px 2px;
+            background: #3177b4;
+            position: absolute;
+            top: -29px;
+            right: -48px;
+           
+        }
+
+            .progress .progress-value:after {
+                content: "";
+                border: 5px solid transparent;
+                border-top: 5px solid #3177b4;
+                border-left: 5px solid #3177b4;
+                position: absolute;
+                bottom: -6px;
+                left: 0;
+            }
+
+        /*TOOLTIP POINT IS CHANGED TO RIGHT ALIGN AND ABOVE CODE IS WORKING FOR LEFT ALIGN TOOLTIP*/
+        /*.progress .progress-value {
+            font-size: 11px;
+            color: #fff;
+            border-radius: 4px;
+            padding: 2px 2px;
+            background: #3177b4;
+            position: absolute;
+            top: -29px;
+            right: 0px;
+        }
+
+            .progress .progress-value:after {
+                content: "";
+                border: 5px solid transparent;
+                border-top: 5px solid #3177b4;
+                position: absolute;
+                bottom: -6px;
+                right: 0%;
+                border-right: 5px solid #3177b4;
+            }*/
+
+    /*.demoLeft {
+        content: "";
+        border: 5px solid transparent;
+        border-top: 5px solid #3177b4;
+        border-left: 5px solid #3177b4;
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+    }
+
+  .demoRight{
+        content: "";
+        border: 5px solid transparent;
+        border-top: 5px solid #3177b4;
+        position: absolute;
+        bottom: -6px;
+        right: 0%;
+        border-right: 5px solid #3177b4;
+    }*/
+
+    nav.bootsnav .megamenu-content {
+        padding: 15px;
+        width: 100% !important;
+    }
+
+
+    .dropdown-menu {
+        min-width: 480% !important;
+        left: -194% !important;
+    }
+
+    .small-box > .small-box-footer {
+        z-index: 1 !important;
+    }
+
+    .TextColor {
+        color: blue !important;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #74A9DB;
+        color: black;
+        text-align: center;
+        border-radius: 6px;
+        padding: 1px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        /*opacity:0.9;*/
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    .tooltip {
+        position: absolute;
+        display: inline-block;
+        /*border-bottom: 1px dotted black;*/
+        opacity: 1 !important;
+    }
+
+    .div {
+        padding-top: 0%;
+    }
+
+    .BoxHeading {
+        color: black;
+        opacity: 1;
+        background-image: url('../../Content/images/DivBgicon2.png') !important;
+        background-size: 100% 100%;
+        border-top-color: #00c0ef !important;
+    }
+
+    .BoxBorder {
+        border: 1px solid #3c8dbc !important;
+    }
+
+    .box box-info {
+    }
+</style>
+@*<img src="~/Content/images/Bgicon.png" />*@
+<section class="content">
+
+    @*<div style=" background-image: url('../../Content/images/Bgicon.png') !important;height:200px;width:300px;">
+            sfd
+        </div>*@
+    <div class="container">
+
+        <div class="col-md-offset-0">
+
+            <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 2px 2px 5px #d0d3d4; background: #FBFCFC; display: block;">
+
+
+                <div class="panel-body">
+
+
+                    <div class="" style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;background-color: #f3f7fa;">
+                        <form id="frmDashboardSummary">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            @*<div class="row" style="padding-bottom:1%;">*@
+                            <div class="row" style="">
+                                <div class="col-md-12" style="">
+                                    @*<div class="col-md-5" style="border:1px solid #BEDEEB !important;">*@
+                                    <div class="col-md-5" style="text-align:center;  vertical-align: middle !important;padding-top:0.5%;">
+
+                                        <div style="border:1px solid #74A9DB !important;padding-bottom:2.5%;padding-top:2.5%; width:100%;">
+                                            <span style="font-size:17px;text-align:left;font-family:inherit;font-weight:100;padding-right:4%;margin-left:0%;">Duration : </span>
+                                            <input type="radio" name="rdoDBSummary" value="F" /> <label>Financial Year</label>
+
+                                            @*<div class="col-md-3" id="SRODropDownListID">
+                        <div class="col-md-4">*@
+                                            @*@Html.LabelFor(model => model.FinYearList, new { @class = "PaddingTop10" }, Mandatory.Yes)*@
+                                            @*</div>
+                        <div class="col-md-8">*@
+                                            @Html.DropDownListFor(model => model.FinYearId, @Model.FinYearList, new { @class = "form-control minimal", id = "FinYearListId", autocomplete = "off", tabindex = 1, style = "width: 16%;display:inline;" })
+                                            @Html.ValidationMessageFor(model => model.FinYearId, "", new { @class = "text-danger" })
+                                            @*</div>
+                        </div>*@
+
+
+
+                                            <input style="margin-left:5%;" value="M" type="radio" name="rdoDBSummary" /> <label>Current Month</label>
+
+                                            <input style="margin-left:5%;" value="D" type="radio" name="rdoDBSummary" /> <label>Today</label>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-md-2" style="">
+                                        @*<button type="button" class="btn btn-group-md btn-light" id="btnStateWideDBSummary" tabindex="6"><span id="spnDrOfficeDtls">State wide View</span> </button>*@
+
+                                        <nav class="navbar navbar-mobile bootsnav on">
+
+                                            <div class="collapse navbar-collapse" id="navbar-menu" style="">
+                                                <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp" style="display:block;">
+
+                                                    <li class="dropdown megamenu-fw">
+                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="Megamenu">
+
+                                                            @if (Model.LevelId == 2)//DR Level
+                                                            {
+                                                                <span id="spnOfficeDesc"> @Model.DistrictList.ElementAt(0).Text </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span id="spnOfficeDesc"> State Wide View </span>
+                                                            }
+
+                                                            <span data-hover="Megamenu"></span>
+                                                        </a>
+                                                        <ul class="dropdown-menu megamenu-content animated" role="menu" style="border: 1px solid #3076B4;">
+                                                            <li>
+                                                                @if (Model.LevelId == 2)
+                                                                {
+
+                                                                    <div class="row">
+                                                                        <div class="col-menu col-md-3">
+                                                                            <div class="content">
+                                                                                <ul class="menu-col">
+
+                                                                                    <li class="TextColor" onclick="OnclickOfHref(@Model.DistrictList.ElementAt(0).Value,'@Model.DistrictList.ElementAt(0).Text');"><a href="#">@Model.DistrictList.ElementAt(0).Text</a></li>
+
+
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div><!-- end col-3 -->
+                                                                    </div>
+
+                                                                }
+                                                                else
+                                                                {
+                                                                    <div class="row">
+                                                                        <div class="col-menu col-md-3">
+                                                                            <div class="content">
+                                                                                <ul class="menu-col">
+                                                                                    @for (int Index = 0; Index <= 8; Index++)
+                                                                                    {
+                                                                                        <li class="TextColor" onclick="OnclickOfHref(@Model.DistrictList.ElementAt(Index).Value,'@Model.DistrictList.ElementAt(Index).Text');"><a href="#">@Model.DistrictList.ElementAt(Index).Text</a></li>
+                                                                                    }
+
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div><!-- end col-3 -->
+
+                                                                        <div class="col-menu col-md-3">
+                                                                            <div class="content">
+                                                                                <ul class="menu-col">
+                                                                                    @for (int Index = 9; Index <= 17; Index++)
+                                                                                    {
+                                                                                        <li class="TextColor" onclick="OnclickOfHref(@Model.DistrictList.ElementAt(Index).Value,'@Model.DistrictList.ElementAt(Index).Text');"><a href="#">@Model.DistrictList.ElementAt(Index).Text</a></li>
+                                                                                    }
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div><!-- end col-3 -->
+                                                                        <div class="col-menu col-md-3">
+                                                                            <div class="content">
+                                                                                <ul class="menu-col">
+                                                                                    @for (int Index = 18; Index <= 26; Index++)
+                                                                                    {
+                                                                                        <li class="TextColor" onclick="OnclickOfHref(@Model.DistrictList.ElementAt(Index).Value,'@Model.DistrictList.ElementAt(Index).Text');"><a href="#">@Model.DistrictList.ElementAt(Index).Text</a></li>
+
+                                                                                    }
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-menu col-md-3">
+                                                                            <div class="content">
+                                                                                <ul class="menu-col">
+                                                                                    @for (int Index = 27; Index < 35; Index++)
+                                                                                    {
+                                                                                        <li class="TextColor" onclick="OnclickOfHref(@Model.DistrictList.ElementAt(Index).Value,'@Model.DistrictList.ElementAt(Index).Text');"><a href="#">@Model.DistrictList.ElementAt(Index).Text</a></li>
+
+                                                                                    }
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div><!-- end col-3 -->
+                                                                    </div><!-- end row -->
+
+                                                                }
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </nav>
+                                        <span id="DurationDescID" style="font-weight: bolder;font-size: 130%; color:#3177B4;margin-left:3%;">
+
+
+                                        </span>
+                                    </div>
+
+                                    <div class="col-md-5" style="" id="dvTargetLine">
+
+                                        <h3 class="progress-title" style="display:inline;">F.Y. Target</h3> <span id="TargetValueID"></span>
+                                        @*<div class="progress" style="margin-bottom:0%;">
+            <div id="TargetBarID" class="progress-bar" style="width:0%; background:#F39C12; color:#00a79c;margin-bottom: 0%;">
+                <div id="TargetId" class="progress-value" style="right:-32px !important;"><span id="TargetSpanId"></span></div>
+            </div>
+
+        </div>*@
+
+
+                                        <div class="progress" style="margin-bottom:0%;" title="" id="ToolTipTargetId">
+                                            <div id="TargetBarID" class="progress-bar" style="width:0%; background:#F39C12; color:#00a79c;margin-bottom: 0%;border-radius:5px 5px;">
+                                                <div id="TargetId" class="progress-value" style="width:50px !important;"><span id="TargetSpanId"></span></div>
+                                            </div>
+                                        </div>
+
+
+                                        @* BELOW CODE ADDED BY SHUBHAM BHAGAT ON 13-08-2020*@
+                                        @*<h3 class="progress-title">Achieved and Forecast</h3>*@
+                                        @* BELOW CODE ADDED BY SHUBHAM BHAGAT ON 20-10-2020*@
+                                        @*<h3 class="progress-title" id="AchievedForecastTextID">Achieved and Forecast</h3>*@
+                                        <h3 class="progress-title" id="AchievedTextID" style="display:inline;">F.Y. Achieved </h3> <span id="AchievedValueID"></span>
+                                        @* ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 20-10-2020*@
+                                        @* ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 13-08-2020*@
+
+                                        @* BELOW CODE ADDED BY SHUBHAM BHAGAT ON 20-10-2020*@
+                                        @*<div class="progress" title="" id="ToolTipAchievedId">*@
+                                        <div class="progress" title="" id="ToolTipAchievedId" style="margin-bottom: 5px;">
+                                            @* ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 20-10-2020*@
+
+                                            <div id="AchievedBarID" class="progress-bar" style="width:0%; background:#3177B4; color:black;margin-bottom: 0%;border-radius:5px 5px;">
+                                                @*<div id="AchievedId" class="progress-value" style="width:130px !important;"><span id="AchievedSpanId"></span></div>*@
+                                                <div id="AchievedId" class="progress-value" style="width:50px !important;"><span id="AchievedSpanId"></span></div>
+                                            </div>
+
+                                            @*<div id="ForecastBarID" class="progress-bar" style="width:0%; background:#96ddbc; color:#3498db;margin-bottom: 0%;border-radius:5px 5px;">
+                <div id="ForecastId" class="progress-value" style="width:150px !important;"><span id="ForecastSpanId"></span></div>
+            </div>*@
+                                        </div>
+
+
+                                        <h3 class="progress-title" id="ForecastTextID" style="display:inline;">F.Y. Forecast</h3> <span id="ForecastValueID"></span>
+                                        @* BELOW CODE ADDED BY SHUBHAM BHAGAT ON 20-10-2020*@
+                                        @*<div class="progress" title="" id="ToolTipForecastId">*@
+                                        <div class="progress" title="" id="ToolTipForecastId" style="margin-bottom: 5px;">
+                                            @* ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 20-10-2020*@
+                                            <div id="ForecastBarID" class="progress-bar" style="width:0%; background:#96ddbc; color:#3498db;margin-bottom: 0%;border-radius:5px 5px;">
+                                                <div id="ForecastId" class="progress-value" style="width:50px !important;"><span id="ForecastSpanId"></span></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                    <div class=" roundedBorder small-box bg-aqua">
+                                        @*<span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>*@
+
+                                        @*<span class="info-box-text">Bookmarks</span>*@
+
+                                        @*<h3 class=""></h3>
+                    <span class="info-box-text">Total Revenue Collected</span>*@
+                                        <div class="row inner" id="Wrapper">
+                                            <h3 id="T_1_Amt"></h3>
+                                            <p id="T_1_Title"></p>
+                                        </div>
+
+                                        @*<div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>*@
+                                        <a href="#" class="roundedBorderBottom small-box-footer">
+                                            <label id="T_1_Desc" style="font-weight:bold;"></label>
+                                            @**@
+                                        </a>
+
+                                        @*<div class="progress">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>*@
+
+                                    </div>
+                                    <!-- /.info-box -->
+                                </div>
+                                <!-- /.col -->
+
+                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                    <div class=" roundedBorder small-box bg-green">
+                                        @*<span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>*@
+
+                                        @*<span class="info-box-text">Bookmarks</span>*@
+
+                                        @*<h3 class=""></h3>
+                    <span class="info-box-text">Total Revenue Collected</span>*@
+                                        <div class="inner">
+                                            <h3 id="T_2_Amt"></h3>
+                                            <p id="T_2_Title"></p>
+                                        </div>
+                                        @*<div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>*@
+                                        <a href="#" class="roundedBorderBottom small-box-footer"><label id="T_2_Desc" style="font-weight:bold;"></label></a>
+
+                                        @*<div class="progress">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>*@
+
+                                    </div>
+                                    <!-- /.info-box -->
+                                </div>
+
+                                <!-- /.col -->
+
+
+
+                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                    <div class=" roundedBorder small-box bg-yellow">
+                                        @*<span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>*@
+
+                                        @*<span class="info-box-text">Bookmarks</span>*@
+
+                                        @*<h3 class=""></h3>
+                    <span class="info-box-text">Total Revenue Collected</span>*@
+                                        <div class="inner">
+                                            <h3 id="T_3_Amt"></h3>
+                                            <p id="T_3_Title"></p>
+                                        </div>
+                                        @*<div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>*@
+                                        <a href="#" class="roundedBorderBottom small-box-footer"><label id="T_3_Desc" style="font-weight:bold;"></label></a>
+
+                                        @*<div class="progress">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>*@
+
+                                    </div>
+                                    <!-- /.info-box -->
+                                </div>
+
+                                <!-- /.col -->
+
+
+
+
+
+
+
+                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                    <div class=" roundedBorder small-box bg-red">
+                                        @*<span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>*@
+
+                                        @*<span class="info-box-text">Bookmarks</span>*@
+
+                                        @*<h3 class=""></h3>
+                    <span class="info-box-text">Total Revenue Collected</span>*@
+                                        <div class="inner">
+                                            <h3 id="T_4_Amt"></h3>
+                                            <p id="T_4_Title"></p>
+                                        </div>
+                                        @*<div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>*@
+                                        <a href="#" class="roundedBorderBottom small-box-footer"><label id="T_4_Desc" style="font-weight:bold;"></label></a>
+
+                                        @*<div class="progress">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>*@
+
+                                    </div>
+                                    <!-- /.info-box -->
+                                </div>
+
+
+                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                    <div class=" roundedBorder small-box bg-purple">
+                                        @*<span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>*@
+
+                                        @*<span class="info-box-text">Bookmarks</span>*@
+
+                                        @*<h3 class=""></h3>
+                    <span class="info-box-text">Total Revenue Collected</span>*@
+                                        <div class="inner">
+                                            <h3 id="T_5_Amt"></h3>
+                                            <p id="T_5_Title"></p>
+                                        </div>
+                                        @*<div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>*@
+                                        <a href="#" class="roundedBorderBottom small-box-footer"><label id="T_5_Desc" style="font-weight:bold;"></label></a>
+
+                                        @*<div class="progress">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>*@
+
+                                    </div>
+                                    <!-- /.info-box -->
+                                </div>
+
+
+
+
+                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                    <div class=" roundedBorder small-box bg-navy">
+                                        @*<span class="info-box-icon"><i class="fa fa-bookmark-o"></i></span>*@
+
+                                        @*<span class="info-box-text">Bookmarks</span>*@
+
+                                        @*<h3 class=""></h3>
+                    <span class="info-box-text">Total Revenue Collected</span>*@
+                                        <div class="inner">
+                                            <h3 id="T_6_Amt"></h3>
+                                            <p id="T_6_Title"></p>
+                                        </div>
+                                        @*<div class="icon">
+                        <i class="ion ion-bag"></i>
+                    </div>*@
+                                        <a href="#" class="roundedBorderBottom small-box-footer"><label id="T_6_Desc" style="font-weight:bold;"></label></a>
+
+                                        @*<div class="progress">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                    <span class="progress-description">
+                        70% Increase in 30 Days
+                    </span>*@
+
+                                    </div>
+                                    <!-- /.info-box -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+
+                            <div class="row">
+                                <section class="col-lg-5 connectedSortable ui-sortable">
+
+                                    <div class="box box-info BoxBorder" style="box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                                        <div class="box-header with-border BoxHeading">
+
+                                            <h3 id="OfficeStartTimeId" class="box-title"></h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body">
+
+                                            <section id="sectionAvgTimeTop" class="col-lg-6"></section>
+                                            <section class="col-lg-6" id="sectionAvgTimeBottom"></section>
+                                        </div>
+
+
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <div class="row">
+                                                <div class="col-lg-9"></div>
+                                                <div class="col-lg-3" style="text-align:right">
+
+                                                    <a href="#" onclick="LoadPopup('T')" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-footer -->
+
+                                    </div>
+
+
+
+                                    @*ADDED BY SHUBHAM BHAGAT ON 21-09-2020*@
+                                    <div class="box box-info BoxBorder" style="box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                                        <div class="box-header with-border BoxHeading">
+
+                                            <h3 id="AvgRegTimeHeadingId" class="box-title"></h3>
+                                            <h3 id="OverAllRegTimeHeadingId" class="box-title"></h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body">
+
+                                            <section class="col-lg-6" id="sectionAvgRegTimeTop"></section>
+                                            <section class="col-lg-6" id="sectionAvgRegTimeBottom"></section>
+                                        </div>
+
+
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <div class="row">
+                                                <div class="col-lg-9"></div>
+                                                <div class="col-lg-3" style="text-align:right">
+
+                                                    <a href="#" onclick="LoadPopup('ART')" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-footer -->
+
+                                    </div>
+                                    @*ADDED BY SHUBHAM BHAGAT ON 21-09-2020*@
+
+                                    <div class="box box-primary BoxBorder" style="box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                                        <div class="box-header with-border BoxHeading">
+                                            <h3 id="HighlightsId" class="box-title"></h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div id="achivementID" @*class="box-body"*@>
+                                            @*Shu*@
+                                            <ul id="UlAchivements" @*class="list-group"*@ style="max-height: 145px !important;overflow-y: auto;">
+                                                @*<ul id="UlAchivements" @*class="list-group" style="max-height: 272px !important;overflow-y: auto;">*@
+                                                @*<li class="list-group-item list-group-item-success">Success item</li>
+                            <li class="list-group-item list-group-item-secondary">Secondary item</li>
+                            <li class="list-group-item list-group-item-info">Info item</li>
+                            <li class="list-group-item list-group-item-warning">Warning item</li>
+                            <li class="list-group-item list-group-item-danger">Danger item</li>
+                            <li class="list-group-item list-group-item-primary">Primary item</li>
+                            <li class="list-group-item list-group-item-dark">Dark item</li>
+                            <li class="list-group-item list-group-item-light">Light item</li>*@
+
+
+
+                                            </ul>
+
+
+
+
+
+                                        </div>
+
+                                        <!-- /.box-body -->
+                                        @*<div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>*@
+
+                                    </div>
+
+                                </section>
+
+                                <section class="col-lg-7 connectedSortable ui-sortable">
+                                    <div class="box box-info BoxBorder" style="box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                                        <div class="box-header with-border BoxHeading">
+                                            <h3 id="TopAndBottomOfficesId" class="box-title"></h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <!-- form start -->
+                                        <div class="box-body">
+
+
+                                            <section id="sectionRevenueCollectedTop" class="col-lg-6"></section>
+                                            <section class="col-lg-6" id="sectionRevenueCollectedBottom"></section>
+
+
+
+
+
+                                            @*<div class="row">
+
+
+                        </div>*@
+
+                                        </div>
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <div class="row">
+                                                <div class="col-lg-10"></div>
+                                                <div class="col-lg-2" style="text-align:right">
+
+                                                    <a href="#" onclick="LoadPopup('R')" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /.box-footer -->
+
+                                    </div>
+
+                                    <section class="col-lg-6 connectedSortable ui-sortable" style="padding-left:0px;">
+
+                                        <div class="box box-primary BoxBorder" style=" box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                                            <div class="box-header ui-sortable-handle BoxHeading" style="cursor: move;">
+
+                                                <div class="col-md-10">
+                                                    <h3 class="box-title">Revenue : Target Vs Achieved</h3>
+                                                </div>
+                                                <div class="col-md-2">
+
+                                                    <a href="#" data-toggle="modal" data-target="#RevenueTargetVsAchievedPopUpId" data-source="65.1,59.47,80.00,81.11,56.67,55.45,40.88,20.45,40.98,80.66,88.34,61.01" data-target-source="50" id="RevenueTargetVsAchievedMaxBtnId" style="margin-left:58%;">
+                                                        <span style="font-size:151%;">
+                                                            @*<i class="fas fa-window-maximize"></i>*@
+                                                            <i class="fa fa-external-link" aria-hidden="true"></i>
+                                                        </span>
+                                                    </a>
+
+                                                </div>
+
+                                            </div>
+                                            <div class="slimScrollDiv" style="width: auto; overflow: hidden; position: relative;">
+                                                <div id="dv_1_RevenueTargetVsAchieved_Wrapper">
+
+
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-9" style="margin-top:2%; margin-bottom:2%;">
+                                                        @*ADDED BY SHUBHAM BHAGAT ON 17-09-2020*@
+                                                        <span id="EXCELRevenueTargetVsAchievedSpanID"></span>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <div class="paddingBottom" data-toggle="buttons" style="border:none;">
+
+                                                            <div class=" btn active" role="button" id="RevTartVsAch_Graph_btnID">
+                                                                <input class="rdoToggleChartTable" type="radio" name="options" value="1_1" required="required">
+                                                                <i class="fa fa-line-chart" style="font-size:18px"></i>
+                                                            </div>
+                                                            <div class=" btn" role="button" id="RevTartVsAch_DT_btnID">
+                                                                <input class="rdoToggleChartTable" type="radio" name="options" value="1_2">
+                                                                <i class="fa fa-table" style="font-size:18px"></i>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </section>
+
+                                    <section class="col-lg-6 connectedSortable ui-sortable" style="padding-right:0px;">
+                                        <div class="box box-success BoxBorder" style=" box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                                            <div class="box-header ui-sortable-handle BoxHeading" style="cursor: move;">
+                                                @*BELOW CODE ADDED BY SHUBHAM BHAGAT ON 14-10-2020*@
+                                                <div class="col-md-10">
+                                                    <h3 class="box-title">Progress : Current Vs Previous Fin. Years</h3>
+                                                </div>
+                                                <div class="col-md-2">
+
+                                                    <a href="#" data-toggle="modal" data-target="#CurrentVsPrevFinYrPopUpId" data-source="65.1,59.47,80.00,81.11,56.67,55.45,40.88,20.45,40.98,80.66,88.34,61.01" data-target-source="50" id="CurrentVsPrevFinYrMaxBtnId" style="margin-left:58%;">
+                                                        <span style="font-size:151%;">
+                                                            @*<i class="fas fa-window-maximize"></i>*@
+                                                            <i class="fa fa-external-link" aria-hidden="true"></i>
+                                                        </span>
+                                                    </a>
+
+                                                </div>
+                                                @*ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 14-10-2020*@
+                                            </div>
+                                            <div class="slimScrollDiv" style="width: auto; overflow: hidden; position: relative;">
+
+
+                                                <div id="dv_1_CurrentVsPrevFinYr_Wrapper"></div>
+
+
+
+
+                                                <div class="col-lg-9" style="margin-top:2%; margin-bottom:2%;">
+                                                    @*ADDED BY PANKAJ SAKHARE ON 17-09-2020*@
+                                                    <span id="EXCELCurrentVsPrevFinYearSpanID"></span>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="paddingBottom1" data-toggle="buttons" style="border:none;">
+                                                        <div class=" btn active" role="button" id="ProgCurrVsPrev_Graph_btnID">
+                                                            <input class="rdoToggleChartTable" type="radio" name="options" value="2_1" required="required">
+                                                            <i class="fa fa-bar-chart" style="font-size:18px"></i>
+                                                        </div>
+                                                        <div class=" btn" role="button" id="ProgCurrVsPrev_DT_btnID">
+                                                            <input class="rdoToggleChartTable" type="radio" name="options" value="2_2">
+                                                            <i class="fa fa-table" style="font-size:18px"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </section>
+
+
+                                </section>
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </form>
+
+
+                        <div class="row" style="margin-top:0.5%;">
+                            <div class="col-md-12">
+                                <div class="col-md-6" style="text-align:left;padding-right:0.5%;">
+                                    <h5>@Model.ReportInfo</h5>
+                                </div>
+                                <div class="col-md-6" style="text-align:right;padding-right:0.5%;">
+                                    <h5><i>Amount: Rupees in Crores.</i></h5>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="row" style="margin-top:0.5%;">
+                                <div class="col-md-12">
+                                    <div class="col-md-1">
+
+                                    </div>
+                                    <div class="col-md-11">
+                                        <div id="NoteDivId" style="text-align: left;margin-left: -6%;font-weight: bold;font-size: 110%;">
+                                            Note : Data Coming from September 2019 onwards
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row" style="text-align:right;padding-right:0.5%;">
+                                <i><h5 style="color:black;"> Amount in Crores.</h5></i>
+
+                            </div>*@
+
+
+                        @*<div class="row" style="text-align:right;padding-right:0.5%;">
+                                <i><h5 style="color:black;"> Amount in Crores.</h5></i>
+
+                            </div>*@
+                        @*BELOW CODE ADDED BY SHUBHAM BHAGAT ON 14-10-2020*@
+                        <div class="row">
+                            <div class="modal fade" id="RevenueTargetVsAchievedPopUpId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                @*<div class="modal-dialog">*@
+                                @*<div class="modal-content">*@
+                                @*ADDED FOR CENTRAL ALIGNMENT OF MODEL style in modal-dialog*@
+                                @*BELOW CODE IS WORKING FOR SAME SIZE POUP BUT MODAL ALIGNMENT IS NOT PROPER*@
+                                <div class="modal-dialog" style="margin-left: 20%; margin-top:8%;">
+                                    <div class="modal-content" style="height:700px; width: 1151px;">
+                                        @*ABOVE CODE IS WORKING FOR SAME SIZE POUP BUT MODAL ALIGNMENT IS NOT PROPER*@
+
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title" id="RevenueTargetVsAchievedPopUpTitleID"></h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <canvas id="canvasRevenueTargetVsAchievedPopUp"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="CurrentVsPrevFinYrPopUpId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                @*<div class="modal-dialog">*@
+                                @*<div class="modal-content">*@
+                                @*ADDED FOR CENTRAL ALIGNMENT OF MODEL style in modal-dialog*@
+                                @*BELOW CODE IS WORKING FOR SAME SIZE POUP BUT MODAL ALIGNMENT IS NOT PROPER*@
+                                <div class="modal-dialog" style="margin-left: 20%; margin-top:8%;">
+                                    <div class="modal-content" style="height:700px; width: 1151px;">
+                                        @*ABOVE CODE IS WORKING FOR SAME SIZE POUP BUT MODAL ALIGNMENT IS NOT PROPER*@
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">
+                                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                            </button>
+                                            <h4 class="modal-title" id="CurrentVsPrevFinYrPopUpTitleID"></h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <canvas id="canvasCurrentVsPrevFinYrPopUp"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 14-10-2020*@
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+</section>
+
+<script>
+
+
+
+
+
+                                    //$(".prog-Target").animate({
+                                    //    width: "40%"
+                                    //}, 2500);
+</script>
+
+<div id="divLoadPopup" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+    <div class="modal-dialog" style="margin-top:80px; width:45%; margin:10% auto !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="divLoadPopupView">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*COMMEDTED BY PANKAJ SAKHARE ON 21-09-2020*@
+@*<div id="divLoadPopup" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+        <div class="modal-dialog" style="margin-top:80px; width:45%; margin:10% auto !important;">
+            <div class="modal-content" id="divLoadPopupView">
+
+            </div>
+        </div>
+    </div>*@

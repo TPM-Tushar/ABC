@@ -1,0 +1,354 @@
+﻿
+
+@model CustomModels.Models.DataEntryCorrection.DataEntryCorrectionViewModel
+@using ECDataUI.Helper
+@using ECDataUI.Session
+
+<script>
+    @*var FromDate = '@FromDate';
+    var ToDate = '@ToDate'*@
+</script>
+<style>
+
+    /*View icon pdf css*/
+
+    .ShorterTextClass {
+        max-width: 115px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+    }
+
+    .tooltiptext {
+        visibility: hidden;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        height: 100%;
+    }
+
+    .ShorterTextClass:hover .tooltiptext {
+        visibility: visible;
+        overflow: hidden;
+    }
+
+    .fa-file-pdf-o {
+        color: red;
+    }
+
+    .modalCloseBtn {
+        background-color: transparent !important;
+        color: #4c8ef5 !important;
+    }
+
+        .modalCloseBtn:hover {
+            color: #f5544c !important;
+        }
+
+
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+
+
+
+    /*td:last-child, td:nth-last-child(2), td:nth-last-child(3) {
+        text-align: left;
+    }*/
+
+    .thead_Color {
+        background-color: #99CFF7;
+    }
+
+    /*th {
+        text-align: center;
+    }*/
+
+
+    .pull-left {
+        float: left !important;
+    }
+
+    .subMenuDivClass {
+        background-color: #F5F5F5;
+        color: black;
+    }
+
+        .active, .subMenuDivClass:hover {
+            /*background-color: #73A9D9;*/
+            background-color: #73A9D9;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #73A9D9 !important;
+            border-radius: 10px 10px 0 0 !important;
+            font-size: 14px !important;
+        }
+
+    table, th {
+        text-align: center;
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    .KannadFontClass {
+        font-family: KNB-TTUmaEN !important;
+        font-size: initial !important;
+        /*font-size: x-large !important;*/
+    }
+</style>
+
+<script src="~/Areas/DataEntryCorrection/Scripts/DataEntryCorrection.js"></script>
+
+<link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
+
+
+<div class="col-md-offset-0">
+
+    <h3 style="text-align:center;color:#3177b4;">Section 68(2) Note Data Entry</h3>
+
+    <!-- #region DR Order Details Table -->
+    @*Added by Madhusoodan on 23/07/2021 to load DR Order Details*@
+    @*<div class="panel panel-default" id="panelOrderDetails" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">*@
+    <div class="panel panel-default" id="panelDROrderDetails" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div id='DROrderDetailsCollapse' class="row well-custom" data-toggle="collapse" data-target="#DROrderDetailsList" aria-expanded="false" aria-controls="DROrderDetailsList" style="height: 35px; padding-top: 10px; cursor: pointer;">
+            <span style="cursor: pointer; margin-bottom: 20px;">
+                <span id="DtlsToggleIconSearchPara" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+            </span>
+            <span class="" style="color: #fff; font-size: 120%;">DR Order Details</span>
+        </div>
+
+
+        <div id="DROrderDetailsList" class="collapse in row" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important;">
+            <div class="row" style="padding-top:3%; padding-bottom:2%">
+                <div class="col-md-3"></div>
+                <div class="col-md-3" id="DRODropDownListID">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.DROfficeOrderList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.DistrictOrderCode, @Model.DROfficeOrderList, new { @class = "form-control minimal", id = "DROOfficeOrderListID", autocomplete = "off", tabindex = 2 })
+                        @Html.ValidationMessageFor(model => model.DistrictOrderCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-3" id="SRODropDownListID">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.SROfficeOrderList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.SROOrderCode, @Model.SROfficeOrderList, new { @class = "form-control minimal", id = "SROOfficeOrderListID", autocomplete = "off", tabindex = 2 })
+                        @Html.ValidationMessageFor(model => model.SROOrderCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="col-md-1"></div>
+                    <div class='BTNwrapper col-md-1' style="text-align:left;">
+                        <span id="SearchOrderSPANID">
+                            <button class='btn btn-success' name='btnSearchOrder' id='btnSearchOrder' OnClick='SearchOrder()'>View</button>
+                        </span>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+            <div id="DROrderTableDiv" class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                    <table id="DROrderDtlsTable" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Sr. No</th>
+                                <th>DRO Name</th>
+                                <th>SRO Name</th>
+                                <th>Order Uploaded By</th>
+                                <th>DR Order Number</th>
+                                <th>Order Date</th>
+                                <th>Section 68(2) Note</th>
+                                <th>Registration Number</th>
+                                <th>Status</th>
+                                <th>View DR Order</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="row" style="padding-bottom:1%;">
+                @*<div class="col-md-5"></div>*@
+                <div class='BTNwrapper col-md-offset-0' style="text-align:left; padding-left:1%">
+                    <span id="ExcelOrderSPANID">
+
+                        <button class='btn btn-success' name='btnExcelOrder' id='btnExcelOrder' OnClick='ExcelOrderDetails()'>Download as Excel</button>
+
+                    </span>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row" style="padding-bottom:1%;">
+                <div class="col-md-5"></div>
+                <div class='BTNwrapper col-md-2' style="text-align:left;">
+                    <span id="AddOrderSPANID">
+                        @* Added by mayank District enabled for DEC *@
+                        @if (Model.IsDRLoginEnabledforDEC)
+                        {
+                            <button class='btn btn-primary' name='btnAddNewOrder' id='btnAddNewOrder' OnClick='AddEditOrder()'>Add New DR Order</button>
+                        }
+                    </span>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+        </div>
+    </div>
+    @*</div>*@
+    <!-- #endregion DR Order Details-->
+    <!--Content shown when popup is not displayed-->
+    @*<button class="open">Open</button>*@
+    @*Pop Up ends here*@
+
+    <!-- #region Data Correction Tabs  -->
+    <div class="col-md-offset-0">
+
+        <div class="panel panel-default" id="panelAllTabs" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;padding-top: 2rem;padding-bottom: 2rem;">
+            @*<div id='DROrderDetailsCollapse' class="row well-custom" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                    <span style="cursor: pointer; margin-bottom: 20px;">
+                        <span id="DtlsToggleIconSearchPara" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">Tab Panel</span>
+                </div>*@
+
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            @if (ECDataUI.Session.KaveriSession.Current.LevelID == (int)ECDataUI.Common.CommonEnum.LevelDetails.DR)
+                            {
+                                <div id="AddEditOrderTabDivID" class=" subMenuDivClass" style="width:15%;padding:1%;display:inline-block;border: 1px solid #d5d5d5;border-radius: 10px;" onclick="LoadTabView('AddEditOrder')"> DR Order Details</div>
+                            }
+                            else if(ECDataUI.Session.KaveriSession.Current.LevelID == (int)ECDataUI.Common.CommonEnum.LevelDetails.SR){
+                            @* Below line commented by mayank on 29/11/2021 for DEC changes *@
+                            <div id="SelectDocumentTabDivID" class=" subMenuDivClass" style="width:15%;padding:1%;display:inline-block;border: 1px solid #d5d5d5;border-radius: 10px;" onclick="LoadTabView('SelectDocument')">Select Document</div>
+                            }
+
+                            @*Comented by Madhusoodan on 08/08/2021 to remove from tabs*@
+                            @*<div id="PropertyNumberDetailsTabDivID" class=" subMenuDivClass" style="width:20%;padding:1%;display:inline-block;border: 1px solid #d5d5d5;border-radius: 10px;" onclick="LoadTabView('PropertyNumberDetails')">Add Section 68 Note for Property Details</div>
+        <div id="PartyDetailsMenuTabDivID" class=" subMenuDivClass" style="width:20%;padding:1%;display:inline-block;border: 1px solid #d5d5d5;border-radius: 10px;" onclick="LoadTabView('PartyDetails')">Add Section 68 Note for Party Details</div>*@
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" id="LoadDECInsertUpdateDeleteViewDivID" style="height: 80vh;overflow: auto;margin-bottom:2rem;padding: 0;">
+                            </div>
+                        </div>
+                        @*<div class="row" style="text-align:center;">
+                                <button id="btnFinalizeDEC" class="btn btn-info" tabindex="22">Finalize Old</button>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <!-- #endregion Data Correction Tabs End-->
+        </div>
+
+
+    </div>
+</div>
+<div id="divViewAbortModal" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+    <div class="modal-dialog" style="margin-top:1%; width:100%; margin:0% auto !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="modalCloseBtn fa fa-times-circle text-danger removeIcon pull-right" id="btncloseAbortPopup" style="cursor: pointer; font-size: 150%;" title="Close"></i>
+                <h4 class="modal-title">
+                    <span class="" style="color: #5F6F81; font-size:100%;">PDF Viewer</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="divLoadAbortView">
+                    @*<object id="objPDFViewer" data="" type="application/pdf" style="height:500px; width:100%;"></object>*@
+                    <object id="objPDFViewer" data="" type="application/pdf" style="width:100%;height:90vh !important;"></object>
+                    @*<div id="divLoadAbortView" style="margin-left:10%;">*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*Added by Madhusoodan on 20/08/2021 to show Index II report for finalized orders*@
+
+<div id="divViewAbortModalForIndexIIPopup" class="modal fade" role="dialog" style="overflow:auto!important; padding-left:15px; padding-right:15px; ">
+    <div class="modal-dialog" style="margin-top:1%; width:100%; margin:0% auto !important; ">
+        <div class="modal-content">
+            <div class="modal-header" style="text-align:center; ">
+                <i class="modalCloseBtn fa fa-times-circle text-danger removeIcon pull-right" id="btncloseAbortPopup2" style="cursor: pointer; font-size: 150%;" title="Close"></i>
+                <h4 class="modal-title">
+                    <span id="IndexIIDetailsPopUp" class="" style="color: #5F6F81; font-size:100%;">Index II Entry Report</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="divViewAbortModalForIndexIIPopupbody">
+
+                    <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                        <table id="IndexIITableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+
+                            <thead>
+
+                                <tr>
+                                    <th>Sr No.</th>
+                                    <th>Property Description</th>
+                                    <th>Execution Date</th>
+                                    <th>Nature of Document</th>
+                                    <th>Executant</th>
+                                    <th>Claimant</th>
+                                    <th>CD Number</th>
+                                    <th>Page Count</th>
+                                    <th>Final Registration Number</th>
+                                </tr>
+                            </thead>
+
+                        </table>
+                    </div>
+
+                </div>
+                <div class="row" style="padding-bottom:1%;">
+                    @*<div class="col-md-5"></div>*@
+                    <div class='BTNwrapper col-md-offset-0' style="text-align:left;">
+                        <span id="ExcelIndexIISPANID">
+
+
+                        </span>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @* Added by mayank on 16/08/2021 for Data Entry Correction *@
+                <div id="IndexIIFooter" class='BTNwrapper' style="margin-top:2%;">
+                    <button type="button" class="btn btn-group-md btn-primary " id="btnclosePropertyPopup">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>

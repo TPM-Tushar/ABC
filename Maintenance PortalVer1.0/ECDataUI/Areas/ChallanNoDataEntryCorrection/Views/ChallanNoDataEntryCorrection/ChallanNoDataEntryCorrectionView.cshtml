@@ -1,0 +1,520 @@
+﻿@model CustomModels.Models.ChallanNoDataEntryCorrection.ChallanDetailsModel
+@using ECDataUI.Helper
+@{
+
+    string Date = Model.Date;
+}
+
+<script>
+    var ToDate = '@Date';
+</script>
+
+<script src="~/Areas/ChallanNoDataEntryCorrection/Scripts/ChallanNoDataEntryCorrection.js"></script>
+
+<style>
+    .datepicker {
+        z-index: 1600 !important;
+    }
+    /* Customize the label (the container) */
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        vertical-align: middle !important;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    /*td {
+        word-wrap: break-word;
+    }*/
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        /*// word-wrap: normal;*/
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /*// width:35px;*/
+    }
+
+    /*table.dataTable tbody th,
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }*/
+
+    tbody tr.selected {
+        color: #6aa0ce;
+        background-color: whitesmoke !important; /* Not working */
+    }
+
+    /*table.dataTable th {
+        white-space: nowrap;
+    }*/
+
+    /*table, td {
+        word-break: break-all !important;
+    }*/
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+    /*td:last-child, td:nth-last-child(3) {
+        text-align: right;
+    }
+
+    td:nth-last-child(4), td:nth-last-child(3) {
+        text-align: left;
+    }*/
+
+    .dataTables_scrollBody {
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+    }
+</style>
+
+
+<div class="container">
+
+    <form id="ChallanDetailsForm">
+        <div class="col-md-offset-0">
+
+            <h3 style="text-align:center;color:#3177b4 ;">Challan No Data Entry Correction<span style="color:black"></span></h3>
+            <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+                @Html.HiddenFor(model => model.HiddenInstrumentNo, new { @id = "idHiddenInstrumentNo" })
+
+                @Html.HiddenFor(model => model.Receipt_StampPayDate, new { @id = "idReceipt_StampPayDate" })
+                @Html.HiddenFor(model => model.Date, new { @id = "idOldChallanDate" })
+
+
+                <input type="hidden" value="@System.Configuration.ConfigurationManager.AppSettings["MinChallanMonthOfChallanNoDataEntryCorrection"]" id="IdMinChallanMonthOfChallanNoDataEntryCorrection" />
+                <input type="hidden" value="@System.Configuration.ConfigurationManager.AppSettings["MinChallanYearOfChallanNoDataEntryCorrection"]" id="IdMinChallanYearOfChallanNoDataEntryCorrection" />
+
+
+
+                <div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                        <span class="" style="color: #FFF; font-size: 120%;">
+                            Search Parameters
+                        </span>
+                    </div>
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+
+                        <div class="row" style="padding-top:1%;padding-bottom:1%;" id="HiddedRow">
+                            <div class="col-md-2"></div>
+
+                            <div class="col-md-5" id="DRODropDownListID">
+                                <div class="col-md-8">
+                                    @Html.LabelFor(model => model.InstrumentNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(model => model.InstrumentNumber, new { @class = "form-control AllowOnlyNumber", @id = "txtInstrumentNo", @placeholder = "", @title = "", tabindex = 1, maxlength = 18 })
+                                    @Html.ValidationMessageFor(model => model.InstrumentNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                          
+                            <div class="col-md-2">
+                                <div class='BTNwrapper' style="padding-left:13%;margin-top:1%;margin-bottom:2%;">
+                                    <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="2">Search</button>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3"></div>
+
+                        </div>
+
+                        <div class="row" style="padding-top:1%;padding-bottom:1%;" id="HiddedRow1">
+                            <div class="col-md-2"></div>
+                                
+                            <div class="col-md-5">
+                              
+                                <div class="col-md-4">
+                            
+                                 </div>
+                            </div>
+
+                                  <div class="col-md-3"></div>
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </div>
+              
+            </div>
+        </div>
+
+
+
+
+        <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                    <span style="cursor: pointer; margin-bottom: 20px;">
+                        <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">Challan Details</span>
+                </div>
+                <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                    @*<div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">*@
+                    <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                        <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span>@*Note : This report is based on pre processed data considered upto*@ @*@Model.MaxDate*@</b> </h6></i></div>
+
+                        <table id="ChallanDetailsTable" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th style="vertical-align:middle;">SrNo</th>
+                                    <th style="vertical-align:middle;">SRO Name</th>
+                                    <th style="vertical-align:middle;">Is Payment Done At DRO Office</th>
+                                    <th style="vertical-align:middle;">DR Office Name</th>
+                                    <th style="vertical-align:middle;">Challan Number</th>
+                                    <th style="vertical-align:middle;">Challan Date</th>
+                                    <th style="vertical-align:middle;">Amount (in Rs.)</th>
+                                    <th style="vertical-align:middle;">Is Stamp Payment</th>
+                                    <th style="vertical-align:middle;">Is Receipt Payment</th>
+                                    <th style="vertical-align:middle;">Receipt Number</th>
+                                    <th style="vertical-align:middle;">Receipt / Stamp Payment Date</th>
+                                    <th style="vertical-align:middle;">Service Name</th>
+                                    <th style="vertical-align:middle;">Document Pending Number</th>
+                                    <th style="vertical-align:middle;">Final Registration Number</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="panel panel-default" id="panelEditChallanNoDetails" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+            <div class="panel-body">
+
+                <div id='DtlsEditChallanNoDetailsCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseChallanNo" aria-expanded="false" aria-controls="DtlscollapseChallanNo" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                    <span style="cursor: pointer; margin-bottom: 20px;">
+                        <span id="DtlsToggleIconEditChallanNo" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">Edit Challan No Details</span>
+                </div>
+
+
+                <div id="DtlscollapseChallanNo" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="panel-body">
+
+                        <div style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                            <div class='row' style="text-align:center; margin-top:1rem;">
+                                <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(model => model.NewInstrumentNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(model => model.NewInstrumentNumber, new { @class = "form-control", @id = "idNewChallanNumber", onclick = "ChangeInstrumentNoType()", onkeydown = "ChangeInstrumentNoType()", @autocomplete = "off", onpaste = "return false", @maxlength = "18", @tabindex = 3 })
+                                            @Html.ValidationMessageFor(model => model.NewInstrumentNumber, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(model => model.ReEnterInstrumentNumber, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.PasswordFor(model => model.ReEnterInstrumentNumber, new { @class = "form-control", @id = "idReEnterChallanNumber", @autocomplete = "off", onpaste = "return false", @maxlength = "18", @tabindex = 4 })
+                                            @Html.ValidationMessageFor(model => model.ReEnterInstrumentNumber, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-1"></div>
+                                    </div>
+                                    <div class="col-md-2"></div>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class='row' style="text-align:center; margin-top:1rem;">
+                                <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                @Html.CheckBoxFor(model => model.IsChallanDateSelected, new { @Id = "idIsChallanDateSelectedCheckBox", @name = "isDR", tabindex = 5, @class = "CheckBoxClass" })
+                                                @Html.ValidationMessageFor(model => model.IsChallanDateSelected, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-md-10">
+                                                <div class="green" id="idSelectAllYearMessage"><b>Edit Challan Date</b></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(model => model.NewInstrumentDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="date" id="divNewInstrumentDate" style="display: table; width: 102%; cursor: pointer;">
+                                                @Html.TextBoxFor(model => model.NewInstrumentDate, new { @class = "form-control", @id = "idNewInstrumentDate", disabled = "true", @placeholder = "dd/mm/yyyy", @title = "Order Date", @maxlength = 10, tabindex = 6, onpaste = "return false" })
+                                                @Html.ValidationMessageFor(model => model.NewInstrumentDate, "", new { @class = "text-danger" })
+                                                <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-4">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(model => model.ReEnterInstrumentDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="date" id="divReEnterInstrumentDate" style="display: table; width: 102%; cursor: pointer;">
+                                                @Html.TextBoxFor(model => model.ReEnterInstrumentDate, new { @class = "form-control", @id = "idReEnterInstrumentDate", disabled = "true", @placeholder = "dd/mm/yyyy", @title = "Order Date", @maxlength = 10, tabindex = 7 , onpaste = "return false" })
+                                                @Html.ValidationMessageFor(model => model.ReEnterInstrumentDate, "", new { @class = "text-danger" })
+                                                <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class='row' style="text-align:center; margin-top:1rem;">
+                                <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-4">
+                                        <div class="col-md-5">
+                                            @Html.LabelFor(model => model.Reason, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                        </div>
+                                        <div class="col-md-6">
+                                            @Html.TextBoxFor(model => model.Reason, new { @class = "form-control", id = "idReason", @autocomplete = "off", @maxlength = "250", @tabindex = 8 })
+                                            @Html.ValidationMessageFor(model => model.Reason, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-md-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <div class="col-md-4"></div>
+                                    <div class="col-md-4">
+
+                                        <div class="col-md-4"></div>
+                                        <div class="col-md-2">
+                                            <div class='BTNwrapper' style="padding-left:13%;margin-top:1%;margin-bottom:2%;">
+                                                <button type="button" class="btn btn-group-md btn-success" id="SaveBtn" tabindex="9">Save</button>
+                                            </div>
+                                        </div>
+
+                                        <div class='col-md-2' style="">
+                                            <span id="UpdateButtonID" tabindex="6"></span>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4"></div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <span id="idRemarkMessage" tabindex="10"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+
+
+    </form>
+
+
+    <br />
+</div>

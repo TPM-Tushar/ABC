@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GOAIGR_REG_CENTRALIZEDModelStoreContainer" CdmEntityContainer="Reg_CentralizedEntities">
+    <EntitySetMapping Name="CC_DigitizationFileDetails">
+      <EntityTypeMapping TypeName="GOAIGR_REG_CENTRALIZEDModel.CC_DigitizationFileDetails">
+        <MappingFragment StoreEntitySet="CC_DigitizationFileDetails">
+          <ScalarProperty Name="FileUploadID" ColumnName="FileUploadID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="UploadDateTime" ColumnName="UploadDateTime" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileSize" ColumnName="FileSize" />
+          <ScalarProperty Name="Pages" ColumnName="Pages" />
+          <ScalarProperty Name="Checksum" ColumnName="Checksum" />
+          <ScalarProperty Name="isPDF" ColumnName="isPDF" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentAmendments">
+      <EntityTypeMapping TypeName="GOAIGR_REG_CENTRALIZEDModel.DocumentAmendment">
+        <MappingFragment StoreEntitySet="DocumentAmendments">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="AmendmentNo" ColumnName="AmendmentNo" />
+          <ScalarProperty Name="AmendmentPages" ColumnName="AmendmentPages" />
+          <ScalarProperty Name="TotalPages" ColumnName="TotalPages" />
+          <ScalarProperty Name="AdditionalPages" ColumnName="AdditionalPages" />
+          <ScalarProperty Name="CDNumber" ColumnName="CDNumber" />
+          <ScalarProperty Name="IsScanned" ColumnName="IsScanned" />
+          <ScalarProperty Name="AmendmentDateTime" ColumnName="AmendmentDateTime" />
+          <ScalarProperty Name="AmendmentTypeID" ColumnName="AmendmentTypeID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="DRCode" ColumnName="DRCode" />
+          <ScalarProperty Name="AmendmentID" ColumnName="AmendmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentMasters">
+      <EntityTypeMapping TypeName="GOAIGR_REG_CENTRALIZEDModel.DocumentMaster">
+        <MappingFragment StoreEntitySet="DocumentMaster">
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="StampArticleCode" ColumnName="StampArticleCode" />
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="PresentDateTime" ColumnName="PresentDateTime" />
+          <ScalarProperty Name="ExecutionDateTime" ColumnName="ExecutionDateTime" />
+          <ScalarProperty Name="DateOfStamp" ColumnName="DateOfStamp" />
+          <ScalarProperty Name="ConsiderationAmount" ColumnName="ConsiderationAmount" />
+          <ScalarProperty Name="RequiredStampDuty" ColumnName="RequiredStampDuty" />
+          <ScalarProperty Name="PaidStampDuty" ColumnName="PaidStampDuty" />
+          <ScalarProperty Name="Stamp1DateTime" ColumnName="Stamp1DateTime" />
+          <ScalarProperty Name="Stamp2DateTime" ColumnName="Stamp2DateTime" />
+          <ScalarProperty Name="Stamp3DateTime" ColumnName="Stamp3DateTime" />
+          <ScalarProperty Name="Stamp4DateTime" ColumnName="Stamp4DateTime" />
+          <ScalarProperty Name="Stamp5DateTime" ColumnName="Stamp5DateTime" />
+          <ScalarProperty Name="WithdrawalDate" ColumnName="WithdrawalDate" />
+          <ScalarProperty Name="PageCount" ColumnName="PageCount" />
+          <ScalarProperty Name="Index2Shera" ColumnName="Index2Shera" />
+          <ScalarProperty Name="IsVisited" ColumnName="IsVisited" />
+          <ScalarProperty Name="IsFiling" ColumnName="IsFiling" />
+          <ScalarProperty Name="IsPending" ColumnName="IsPending" />
+          <ScalarProperty Name="IsScanned" ColumnName="IsScanned" />
+          <ScalarProperty Name="IsRefused" ColumnName="IsRefused" />
+          <ScalarProperty Name="IsPaymentOfMoney" ColumnName="IsPaymentOfMoney" />
+          <ScalarProperty Name="IsAdjudicated" ColumnName="IsAdjudicated" />
+          <ScalarProperty Name="IsWithdrawn" ColumnName="IsWithdrawn" />
+          <ScalarProperty Name="RefusalDate" ColumnName="RefusalDate" />
+          <ScalarProperty Name="RefusalReason" ColumnName="RefusalReason" />
+          <ScalarProperty Name="RemarksByUser" ColumnName="RemarksByUser" />
+          <ScalarProperty Name="RemarksBySystem" ColumnName="RemarksBySystem" />
+          <ScalarProperty Name="CorrectionReference" ColumnName="CorrectionReference" />
+          <ScalarProperty Name="OldDocReference" ColumnName="OldDocReference" />
+          <ScalarProperty Name="AdjudicationDetails" ColumnName="AdjudicationDetails" />
+          <ScalarProperty Name="CDNumber" ColumnName="CDNumber" />
+          <ScalarProperty Name="IsComposite" ColumnName="IsComposite" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="IsDataEntryCompleted" ColumnName="IsDataEntryCompleted" />
+          <ScalarProperty Name="DataEntryCompletedDate" ColumnName="DataEntryCompletedDate" />
+          <ScalarProperty Name="IsCollector" ColumnName="IsCollector" />
+          <ScalarProperty Name="RemarksToCollector" ColumnName="RemarksToCollector" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ScalarProperty Name="CancelReason" ColumnName="CancelReason" />
+          <ScalarProperty Name="SaleAgreementReference" ColumnName="SaleAgreementReference" />
+          <ScalarProperty Name="StampsDateDesc" ColumnName="StampsDateDesc" />
+          <ScalarProperty Name="TokenID" ColumnName="TokenID" />
+          <ScalarProperty Name="DRCode" ColumnName="DRCode" />
+          <ScalarProperty Name="IsPartial" ColumnName="IsPartial" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CC_DigitizationDetails">
+      <EntityTypeMapping TypeName="GOAIGR_REG_CENTRALIZEDModel.CC_DigitizationDetails">
+        <MappingFragment StoreEntitySet="CC_DigitizationDetails">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="ScannedFileName" ColumnName="ScannedFileName" />
+          <ScalarProperty Name="UploadPath" ColumnName="UploadPath" />
+          <ScalarProperty Name="UploadDateTime" ColumnName="UploadDateTime" />
+          <ScalarProperty Name="RootDirectory" ColumnName="RootDirectory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

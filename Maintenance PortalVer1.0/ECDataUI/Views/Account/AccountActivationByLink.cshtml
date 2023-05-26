@@ -1,0 +1,23 @@
+﻿
+
+
+
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+
+
+<div class="col-md-6 col-md-offset-3 well">
+    @Html.Raw(ViewBag.Text);
+    
+    <div class="form-group login-panel-bottom">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5>   <a href="@Url.Action("UserLogin", "Login")"><i class="fa fa-user-plus"></i>Goto Home page</a></h5>
+            </div>
+        </div>
+    </div>
+
+</div>

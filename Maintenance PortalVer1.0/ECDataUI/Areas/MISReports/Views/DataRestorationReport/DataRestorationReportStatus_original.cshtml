@@ -1,0 +1,309 @@
+﻿@model CustomModels.Models.MISReports.DataRestorationReport.DataRestorationPartialViewModel
+@using ECDataUI.Helper
+@using ECDataUI.Session;
+@using ECDataUI.Common;
+
+<style>
+    div.divScrollClass {
+        overflow-y: scroll;
+        height: 250px;
+        /*width: 65%;*/
+        width: 100%;
+    }
+</style>
+
+<script src="~/Areas/MISReports/Scripts/DataRestorationReport/DataRestorationReportStatus.js"></script>
+<div class="panel-body">
+    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+        <span class="" style="color: #FFF; font-size: 120%;">
+        </span>
+    </div>
+    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+        <div class="row" style="padding-top:1%;padding-bottom:1%;">
+            <div class="col-md-12">
+                @Html.HiddenFor(m => m.ShowInitDateAndGeneratedKeyMsg, new { id = "ShowInitDateAndGeneratedKeyMsgID" })
+
+                <div style="border-style: solid;border-width: 4px;border-radius:10px;background-color: #DCDCDC;border-color:#696969;">
+                    <fieldset style="text-align:left;margin-top:1%;margin-left:1%;margin-bottom:1%;">
+                        <legend>Data Restoration Initiation : </legend>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <span><label style="font-size:initial;font-weight:bold;">Office Name :</label></span><span><label style="font-size:initial;">&nbsp;@Model.OfficeName</label></span>
+                                <br>
+                                <span><label style="font-size:initial;font-weight:bold;">Initiation Date :</label></span>&nbsp;<span id="InitiationDateSpanID"><label style="font-size:initial;">@Model.InitiationDate</label></span><span id="InitiationDateBTNSpanID">@Html.Raw(@Model.InitiationDateBtn)</span>
+                                <br>
+                            </div>
+                            <div class="col-md-4">
+                                <span><label style="font-size:initial;font-weight:bold;">Sub Registrar Name :</label></span>&nbsp;<span><label style="font-size:initial;">@Model.SRName</label></span>
+                                <br>
+                                <span><label style="font-size:initial;font-weight:bold;">Contact Number :</label></span>&nbsp;<span><label style="font-size:initial;">@Model.SRContactNumber</label></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                @*<div class="col-md-2"></div>*@
+                                <div class="col-md-10">
+                                    <span id="GenerateKeyTextSpanID">
+                                        @Html.Raw(@Model.GenerateKeyBtnAndTextMsg) @*<label style="font-size:initial;font-weight:bold;background-color:#94b5d1;">Your activation key is:
+                                            <span id="GenerateKeyValueSpanID">@Model.GenerateKeyValue</span>
+                                                which is valid for 2 days only Please share this activation key to support person.
+                                            </label>*@
+                                    </span>
+                                    @*<span id="GenerateKeyBtnSpanID" style="padding-left:15%;">@Html.Raw(@Model.GenerateKeyBtn)</span>*@
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </div>
+                <br>
+
+                @*ADDED BY SHUBHAM BHAGAT ON 15-07-2020*@
+                @if (Model.IsDatabaseNotRestored)
+                {
+                    <div style="border-style: solid;border-width: 4px;border-radius:10px;background-color: #DCDCDC;border-color:#696969;">
+                        <fieldset style="text-align:left;margin-top:1%;margin-left:1%;margin-bottom:1%;">
+                            <span>@Html.Raw(Model.DatabaseNotRestoredErrorMsg)</span>
+                        </fieldset>
+                    </div>
+                }
+
+                @if (Model.IsDataRestored)
+                {
+                    <div style="border-style: solid;border-width: 4px;border-radius:10px;background-color: #DCDCDC;border-color:#696969;">
+                        <fieldset style="text-align:left;margin-top:1%;margin-left:1%;margin-bottom:1%;">
+                            <legend>Last Database Backup Restorated : </legend>
+                            <span><label style="font-size:initial;">Database restored from bak file on :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DB_RES_BAK_FILE_DATETIME</label></span>
+                            <span style="margin-left:2%;"><label style="font-size:initial;">Database restored from bak file size :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DB_RES_BAK_FILE_Size</label></span><br />
+                            <span><label style="font-size:initial;">Restoration Date :</label></span> <span><label style="font-size:initial;">&nbsp;@Model.DataRestorationDate</label></span><br>
+                            <span><label style="font-size:initial;">Data Restored upto :</label></span><br>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <span><label style="font-size:initial;">Last Document Registration Number :</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastDocumentRegistrationNumber</label></span><br>
+                                    <span><label style="font-size:initial;">Last Marriage Registration Number :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastMarriageRegistrationNumber</label></span><br>
+                                    <span><label style="font-size:initial;">Last Notice Registration Number :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastNoticeRegistrationNumber</label></span><br>
+                                </div>
+                                <div class="col-md-5">
+                                    <span><label style="font-size:initial;">Registration Date :	</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastDocumentRegistrationDate</label></span><br>
+                                    <span><label style="font-size:initial;">Registration Date :</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastMarriageRegistrationDate</label></span><br>
+                                    <span><label style="font-size:initial;">Registration Date :</label></span><span><label style="font-size:initial;">&nbsp;@Model.LastNoticeRegistrationDate</label></span><br>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div> <br>
+                }
+
+                @if (Model.IsDataRestored)
+                {
+                    //overflow - y:scroll;
+
+                    <div style="border-style: solid;border-width: 4px;border-radius:10px;background-color: #DCDCDC;border-color:#696969;">
+                        <fieldset style="text-align:left;margin-top:1%;margin-left:1%;margin-bottom:1%;">
+                            <legend>Data to be Restored from Central Server : </legend>
+                            @if (KaveriSession.Current.RoleID == (short)CommonEnum.RoleDetails.SR)
+                            {
+                                <span id="NoteForApprovalForSRID">@Html.Raw(Model.NoteForApprovalForSR)</span>
+                            }
+                            <div class="divScrollClass" id="dataInsertionTableDivID">
+                                <table style="width:100%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="TableFontClass">Iteration Number</th>
+                                            <th class="TableFontClass">Registration Type</th>
+                                            <th class="TableFontClass">Registration Number</th>
+                                            <th class="TableFontClass">Registration Date</th>
+                                            <th class="TableFontClass">Status</th>
+                                            <th class="TableFontClass">Script Rectification History</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.DataInsertionDetailsList)
+                                        {
+                                            <tr>
+                                                <td class="TableFontClass">@item.IterationNo</td>
+                                                <td class="TableFontClass">@item.RegistrationType</td>
+                                                <td class="TableFontClass">@item.RegistrationNumber</td>
+                                                <td class="TableFontClass">@item.RegistrationDate</td>
+                                                <td class="TableFontClass">@item.Status</td>
+                                                <td class="TableFontClass">@item.ScriptRectificationHistory</td>
+                                            </tr>
+                                        }
+                                        @*ADDED BY SHUBHAM BHAGAT ON 15-07-2020 COMMENTED BELOW TR *@
+                                        @*<tr></tr>*@
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                <div class="col-md-2"></div>
+                                <div class="col-md-8"><span>@Html.Raw(@Model.ScriptExecutionErrorMsg)</span></div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            <br />
+                            <div class="col-md-12">
+                                <div class="col-md-4"></div>
+                                <div class="col-md-6">
+                                    <span id="ApproveBtnID">@Html.Raw(@Model.ApproveBtn)</span>
+                                    <span id="DownloadScriptForTechAdminID">@Html.Raw(@Model.DownloadScriptForTechAdmin)</span>
+                                    <span id="UploadScriptForTechAdminID">@Html.Raw(@Model.UploadScriptForTechAdmin)</span>
+                                </div>
+                                <div class="col-md-2"></div>
+                            </div>
+                            <div class="col-md-12">
+                                @*<div class="col-md-2"></div>*@
+                                <div class="col-md-10"><span id="UploadScriptPartialViewDivID"></span></div>
+                            </div>
+                        </fieldset>@*<br /><br /><br /><br />*@
+                    </div><br />
+                }
+
+
+
+                @*  @if (Model.IsDataRestored)
+                    {*@
+                @*<fieldset style="text-align:left;">
+                        <legend>Data Insertion Details : </legend>
+                        <table style="width:60%;">
+                            <thead>
+                                <tr>
+                                    <th class="TableFontClass">Insertion Projection</th>
+                                    <th class="TableFontClass">Data Insertion attempt 1 Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="TableFontClass">Document Registration :</td>
+                                    <td class="TableFontClass"></td>
+                                </tr>
+                                <tr>
+                                    <td class="TableFontClass">Marriage Registration :</td>
+                                    <td class="TableFontClass"></td>
+                                </tr>
+                                <tr>
+                                    <td class="TableFontClass">Notice Registration :</td>
+                                    <td class="TableFontClass"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </fieldset>*@
+                @*}*@
+
+                @* Pankaj work here *@
+                @if (Model.dB_RES_TABLE_WISE_COUNT_List != null)
+                {
+                    <div style="border-style: solid;border-width: 4px;border-radius:10px;background-color: #DCDCDC;border-color:#696969;">
+                        <fieldset style="text-align:left;margin-top:1%;margin-left:1%;margin-bottom:1%;">
+                            <legend>Data Verification Details : </legend>
+                            <table style="width:60%;">
+                                <thead>
+                                    <tr>
+                                        <th class="TableFontClass">Module Name</th>
+                                        <th class="TableFontClass">Records to be restored</th>
+                                        <th class="TableFontClass">Records restored</th>
+                                        <th class="TableFontClass">Difference</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="TableFontClass">Document Registrations :</td>
+                                        <td class="TableFontClass">@Model.DocumentRegistrationsToBeRestored</td>
+                                        <td class="TableFontClass">@Model.DocumentRegistratiosRestored</td>
+                                        <td class="TableFontClass">@Math.Abs(@Model.DocumentRegistrationsToBeRestored - Model.DocumentRegistratiosRestored)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="TableFontClass">Marriage Registrations :</td>
+                                        <td class="TableFontClass">@Model.MarriageRegistratiosToBeRestored</td>
+                                        <td class="TableFontClass">@Model.MarriageRegistrationsRestored</td>
+                                        <td class="TableFontClass">@Math.Abs(@Model.MarriageRegistratiosToBeRestored - Model.MarriageRegistrationsRestored)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="TableFontClass">Notice Registrations :</td>
+                                        <td class="TableFontClass">@Model.NoticeRegistrationsToBeRestored</td>
+                                        <td class="TableFontClass">@Model.NoticeRegistrationsRestored</td>
+                                        <td class="TableFontClass">@Math.Abs(@Model.NoticeRegistrationsToBeRestored - Model.NoticeRegistrationsRestored)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            @*for confirm button working here*@
+                            <br />
+                            @*<div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <span id="ConfirmBtnId">@Html.Raw(@Model.ConfirmBtn)</span>
+                                    </div>
+                                </div>*@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-offset-4">
+                                        <div class="form-group col-md-10">
+                                            <div class='BTNwrapper' style="padding-left:13%;margin-top:1%;margin-bottom:1%">
+                                                <span id="ConfirmBtnAndMsgId">@Html.Raw(@Model.ConfirmBtn)</span>
+                                            </div>
+                                            <span id="ConfirmMsg"><label style="font-size:initial;font-weight:normal;">@Html.Raw(@Model.ConfirmBtnMsg)</label></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <br />
+
+                    if (KaveriSession.Current.RoleID == (short)CommonEnum.RoleDetails.TechnicalAdmin)
+                    {
+                        <div style="border-style: solid;border-width: 4px;border-radius:10px;background-color: #DCDCDC;border-color:#696969;">
+                            <fieldset style="text-align:left;margin-top:1%;margin-left:1%;margin-bottom:1%;">
+                                <legend>Table wise record comparison:  </legend>
+                                <table style="width:60%;">
+                                    <thead>
+                                        <tr>
+                                            <th class="TableFontClass">Sr No</th>
+                                            <th class="TableFontClass">Table Name</th>
+                                            <th class="TableFontClass">Records to be restored</th>
+                                            <th class="TableFontClass">Records restored</th>
+                                            <th class="TableFontClass">Difference</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{ int SrNo = 1;}
+                                        @foreach (var record in Model.dB_RES_TABLE_WISE_COUNT_List)
+                                        {
+                                            <tr>
+                                                <td class="TableFontClass">@SrNo</td>
+                                                <td class="TableFontClass">@record.TableName</td>
+                                                <td class="TableFontClass">@record.RowsToBeInserted</td>
+                                                <td class="TableFontClass">@record.RowsInserted</td>
+                                                <td class="TableFontClass">@Math.Abs(@record.RowsToBeInserted - record.RowsInserted)</td>
+                                            </tr>
+                                            SrNo += 1;
+                                        }
+
+
+                                    </tbody>
+                                </table>
+                            </fieldset>
+                        </div>
+                        <br />
+                    }
+                }
+                <br>
+                @if (Model.IsConclusionToDisplay)
+                {
+
+                    <div style="border-style: solid;border-width: 4px;border-radius:10px;background-color: #DCDCDC;border-color:#696969;">
+                        <fieldset style="text-align:left;margin-top:1%;margin-left:1%;margin-bottom:1%;">
+                            <legend>Conclusion : </legend>
+                            <div class="col-md-12">
+                                <span><label style="font-size: initial;">Data restoration process completed successfully kindly verify and confirm.</label></span>
+                            </div>
+                        </fieldset>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

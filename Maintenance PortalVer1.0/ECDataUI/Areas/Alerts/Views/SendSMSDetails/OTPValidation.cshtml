@@ -1,0 +1,170 @@
+﻿@model CustomModels.Models.Alerts.OTPValidationModelForCaptcha
+
+@using ECDataUI.Helper;
+@using CaptchaLib;
+
+
+
+@{
+    Layout = null;
+}
+
+
+<script src="~/Scripts/CommonJS/jquery.validate.min.js"></script>
+<script src="~/Scripts/CommonJS/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script src="~/Scripts/CommonJS/Captcha.min.js"></script>
+
+<script src="~/Areas/Alerts/Scripts/OTPValidation.js"></script>
+@*<script src="~/Areas/Alerts/Scripts/OTPValidation.min.js"></script>*@
+
+<div class="row">
+
+    <br />
+    <div class="panel panel-default" id="" style="box-shadow: 5px 5px 10px #d0d3d4;width:90%;margin-left:1%;">
+
+        <div class="panel-body">
+            <form method="POST" id="OTPValidationFormId">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+
+
+                <div class="col-md-12" id="divCaptcha">
+
+                    <fieldset>
+
+                        <div class="row">
+
+
+                            <div class="form-group col-md-12">
+                                <div class='col-md-5'>
+                                    @Html.LabelFor(model => model.Captcha, new { @class = "PaddingTop10" }, Mandatory.Yes)
+
+                                </div>
+                                <div class='col-md-7' id="mydiv">
+                                    @Html.CaptchaFor(model => model.Captcha, "GetCaptchaImage", "SendSMSDetails", null, "Try Another Image? Click Here", new { @title = "Enter the text you see in an image", @class = "captcha-registration", @id = "txtCaptcha", @style = "text-align:center;", autocomplete = "off" })<br>
+                                    @Html.ValidationMessageFor(model => model.Captcha, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                            <div class="col-md-12" style="text-align:center;">
+
+                                <button type="button" class="btn btn-group-sm btn-primary" id="btnVerifyCaptcha">Verify Captcha</button>
+
+
+
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12" id="divOTPInput">
+                    <br>
+                    <fieldset>
+
+                        @if (Model.Message != null)
+    {
+                    <div class="row" style="margin-top: 0%;" id="divForMessageResend">
+                        <div class="col-md-12">
+                            <div class="alert alert-success fade in" id="messageforResend" style="height:10px;padding-bottom: 31px;color: #3c763d !important;background-color: #dff0d8 !important;border-color: #d6e9c6 !important;"> @Model.Message </div>
+                        </div>
+                    </div>
+}
+
+                        <div class="row" style="margin-top: 0%;" id="divOTPSentMsg">
+                            <div class="col-md-12">
+                                <div class="alert alert-success fade in" id="OTPSentMsg" style="height:10px;padding-bottom: 31px;color: #3c763d !important;background-color: #dff0d8 !important;border-color: #d6e9c6 !important;text-align:center;"> OTP has been sent to your registered mobile number. </div>
+                            </div>
+                        </div>
+
+                        @*Added by Shubham Bhagat on 20-04-2019 to show mobile number *@
+                        <div class="row" style="margin-top: 0%;">
+                            <div class="col-md-12">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5" style="margin-left: 3%;">
+                                    @Html.Label("Mobile Number")
+                                </div>
+
+                                <div class="col-md-5 form-group " style="display:inline-block;margin-left: -8px;">
+                                    @*@Html.DisplayFor(model=>model.MobileNumber,new { @id= "MobileNumbertoDisplayID" })*@
+                                    <span id="MobileNumbertoDisplayID"></span>
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 0%;">
+                            <div class="col-md-12">
+                                <div class="col-md-1"></div>
+                                <div class="col-md-5 PaddingTop10 " style="margin-left: 3%;">
+                                    @Html.Label("Enter OTP", Mandatory.Yes)
+                                </div>
+
+                                <div class="col-md-5 form-group " style="display:inline-block;margin-left: -8px;">
+                                    @Html.HiddenFor(model => model.EncryptedUId, new { @id = "HDEncryptedUId" })
+                                    @Html.HiddenFor(model => model.IsOTPSent, new { @id = "HDIsOTPSent" })
+                                    @Html.HiddenFor(model => model.OTPTypeId, new { @id = "HDOTPTypeId" })
+                                    @*@Html.TextBoxFor(model => model.EncryptedUId)*@
+
+                                    @Html.TextBoxFor(model => model.EncryptedOTP, new { @class = "form-control AllowOnlyNumber", @id = "OTPID", @placeholder = "OTP", maxlength = 6 })
+                                </div>
+                                <div class="col-md-1"></div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8" style="font-size: 85%;text-align: center;">
+                                @Html.ValidationMessageFor(model => model.EncryptedOTP, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+
+                    </fieldset>
+
+                    <br />
+
+                    <div class="row" style="margin-top: 0%;" id="divForMessageResendOTPAttempt">
+                        <label id="messageforResendOTPAttempt" style="color:red;border-radius:3px;width:45%; font-weight:bold; height:5%;text-align:center;margin-left:25%;border-color: #a94442 !important;font-size: 119%;font-weight: initial;"></label>
+                    </div>
+
+
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12" style="height:10px;text-align:center;">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-group-sm btn-primary" id="btnValidateOTP">Verify OTP</button>
+                            </div>
+
+                            <div class="col-md-4">
+                                <button type="button" class="btn btn-group-sm btn-primary" id="btnResendOTP">Resend OTP</button>
+                            </div>
+                            <div class="col-md-2"></div>
+
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div>
+
+
+
+
+
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+

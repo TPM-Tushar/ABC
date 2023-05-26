@@ -1,0 +1,33 @@
+﻿@model CustomModels.Models.Remittance.XELFileStorageDetails.XELFileStorageViewModel
+@using ECDataUI.Helper
+
+@{
+    Layout = null;
+}
+
+
+@*<div>
+    dfguewvugreiutvuegtwnvryt
+</div>*@
+
+<table class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 50%;margin-left:25%;">
+    <tr>
+        <td>Serial No</td>
+        <td>Root Directory</td>
+        <td>Total Space (Drive)</td>
+        <td>Used Space (Drive)</td>
+        <td>XEL Used space (Root Directory)</td>
+        <td>Free Space (Drive)</td>
+    </tr>
+    @foreach (var item in Model.RootDirInfoModelList)
+    {
+        <tr>
+            <td>@item.SerialNo</td>
+            <td>@item.RootDirectory</td>
+            <td>@item.TotalSpace</td>
+            <td>@item.UsedSpace</td>
+            <td>@item.XELSpace</td>
+            <td>@item.FreeSpace</td>
+        </tr>
+    }
+</table>

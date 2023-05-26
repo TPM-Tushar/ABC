@@ -1,0 +1,57 @@
+﻿@model CustomModels.Models.DynamicDataReader.ReadNewDataModel
+@using MvcReportViewer
+
+
+@*@{
+        var myList = new List<KeyValuePair<string, object>>();
+
+        // adding elements
+        myList.Add(new KeyValuePair<string, object>("SQLTxt", Model.QueryText));
+        myList.Add(new KeyValuePair<string, object>("DatabaseName", Model.DatabaseName));
+        myList.Add(new KeyValuePair<string, object>("UserID", Model.UserID));
+        myList.Add(new KeyValuePair<string, object>("Password", Model.Password));
+    }*@
+@*<!DOCTYPE html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    </head>*@
+
+@*@Html.MvcReportViewer(
+    "/DynamicReportProject/DynamicReport", null, null, null,
+    new
+    {
+        SQLTxt = Model.QueryText,
+        DatabaseName = Model.DatabaseName,
+        UserID = Model.UserID,
+        Password =  Model.Password
+    }, null,
+    new { Height = 900, Width = 1650, style = "border: none; width: inherit" }, FormMethod.Post)*@
+
+@*@Html.MvcReportViewer(
+    "/DynamicReportProject/DynamicReport", null, null, null,
+    @myList as IEnumerable<KeyValuePair<string, object>>, null,
+    new { Height = 900, Width = 1650, style = "border: none; width: inherit" }, FormMethod.Post)*@
+
+@Html.MvcReportViewer(
+"/DynamicReportProject/DynamicReport", null, null, null,
+new List<KeyValuePair<string, object>>() {
+                new KeyValuePair<string, object>("SQLTxt", Model.QueryText) ,
+                new KeyValuePair<string, object>("DatabaseName", Model.DatabaseName) ,
+                new KeyValuePair<string, object>("UserID", Model.UserID),
+                new KeyValuePair<string, object>("Password", Model.Password)
+                }, null,
+new { Height = 900, Width = 1650, style = "border: none; width: inherit" }, FormMethod.Post)
+
+
+@*@Html.MvcReportViewer("/Report2").ReportParameters(
+    new{
+        SQLTxt = Model.QueryText,
+        DatabaseName = Model.DatabaseName
+    })*@
+
+
+@*@Html.MvcReportViewer("/DynamicReportProject/DynamicReport").ReportParameters(
+    new{
+        SQLTxt = Model.QueryText,
+        DatabaseName = Model.DatabaseName
+    })*@

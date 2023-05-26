@@ -1,0 +1,986 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="generateEchallanPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="demand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="encrypt_XML_data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="generateEchallanPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generateEchallanPDFResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="generateEchallanPDFNew">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="demand" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="encrypt_XML_data" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="serviceCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="generateEchallanPDFNewResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="generateEchallanPDFNewResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallanPaymentStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="demandno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedEchallanno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallanPaymentStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eChallanPaymentStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallanSuccessPayments">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="demandno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedXMLDates" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallanSuccessPaymentsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eChallanSuccessPaymentsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallanPaymentData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="demandno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedXMLDates" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eChallanPaymentDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eChallanPaymentDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="treasuryReceipts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="demandno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedXMLDates" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="treasuryReceiptsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="treasuryReceiptsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ereceipt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="demandno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="enc_echallanno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ereceiptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ereceiptResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="echallancount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="transactiondate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="echallancountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="echallancountResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getGPFName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedGPFnoDetails" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getGPFNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getGPFNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPpanName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedPpannoDetails" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPpanNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPpanNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateRefund">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedRefundDetails" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidateRefundResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateRefundResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="generateEchallanPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:generateEchallanPDF" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:generateEchallanPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFNewSoapIn">
+    <wsdl:part name="parameters" element="tns:generateEchallanPDFNew" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFNewSoapOut">
+    <wsdl:part name="parameters" element="tns:generateEchallanPDFNewResponse" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:eChallanPaymentStatus" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:eChallanPaymentStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="eChallanSuccessPaymentsSoapIn">
+    <wsdl:part name="parameters" element="tns:eChallanSuccessPayments" />
+  </wsdl:message>
+  <wsdl:message name="eChallanSuccessPaymentsSoapOut">
+    <wsdl:part name="parameters" element="tns:eChallanSuccessPaymentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentDataSoapIn">
+    <wsdl:part name="parameters" element="tns:eChallanPaymentData" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentDataSoapOut">
+    <wsdl:part name="parameters" element="tns:eChallanPaymentDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="treasuryReceiptsSoapIn">
+    <wsdl:part name="parameters" element="tns:treasuryReceipts" />
+  </wsdl:message>
+  <wsdl:message name="treasuryReceiptsSoapOut">
+    <wsdl:part name="parameters" element="tns:treasuryReceiptsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ereceiptSoapIn">
+    <wsdl:part name="parameters" element="tns:ereceipt" />
+  </wsdl:message>
+  <wsdl:message name="ereceiptSoapOut">
+    <wsdl:part name="parameters" element="tns:ereceiptResponse" />
+  </wsdl:message>
+  <wsdl:message name="echallancountSoapIn">
+    <wsdl:part name="parameters" element="tns:echallancount" />
+  </wsdl:message>
+  <wsdl:message name="echallancountSoapOut">
+    <wsdl:part name="parameters" element="tns:echallancountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGPFNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getGPFName" />
+  </wsdl:message>
+  <wsdl:message name="getGPFNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getGPFNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPpanNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getPpanName" />
+  </wsdl:message>
+  <wsdl:message name="getPpanNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getPpanNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidateRefundSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidateRefund" />
+  </wsdl:message>
+  <wsdl:message name="ValidateRefundSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateRefundResponse" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFHttpGetIn">
+    <wsdl:part name="demand" type="s:string" />
+    <wsdl:part name="encrypt_XML_data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFNewHttpGetIn">
+    <wsdl:part name="demand" type="s:string" />
+    <wsdl:part name="encrypt_XML_data" type="s:string" />
+    <wsdl:part name="serviceCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFNewHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentStatusHttpGetIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedEchallanno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanSuccessPaymentsHttpGetIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedXMLDates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanSuccessPaymentsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentDataHttpGetIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedXMLDates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentDataHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="treasuryReceiptsHttpGetIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedXMLDates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="treasuryReceiptsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ereceiptHttpGetIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="enc_echallanno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ereceiptHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="echallancountHttpGetIn">
+    <wsdl:part name="transactiondate" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="echallancountHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getGPFNameHttpGetIn">
+    <wsdl:part name="encryptedGPFnoDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getGPFNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getPpanNameHttpGetIn">
+    <wsdl:part name="encryptedPpannoDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getPpanNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateRefundHttpGetIn">
+    <wsdl:part name="encryptedRefundDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateRefundHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFHttpPostIn">
+    <wsdl:part name="demand" type="s:string" />
+    <wsdl:part name="encrypt_XML_data" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFNewHttpPostIn">
+    <wsdl:part name="demand" type="s:string" />
+    <wsdl:part name="encrypt_XML_data" type="s:string" />
+    <wsdl:part name="serviceCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="generateEchallanPDFNewHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentStatusHttpPostIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedEchallanno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanSuccessPaymentsHttpPostIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedXMLDates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanSuccessPaymentsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentDataHttpPostIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedXMLDates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="eChallanPaymentDataHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="treasuryReceiptsHttpPostIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="encryptedXMLDates" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="treasuryReceiptsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ereceiptHttpPostIn">
+    <wsdl:part name="demandno" type="s:string" />
+    <wsdl:part name="enc_echallanno" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ereceiptHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="echallancountHttpPostIn">
+    <wsdl:part name="transactiondate" type="s:string" />
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="echallancountHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="getGPFNameHttpPostIn">
+    <wsdl:part name="encryptedGPFnoDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getGPFNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="getPpanNameHttpPostIn">
+    <wsdl:part name="encryptedPpannoDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getPpanNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateRefundHttpPostIn">
+    <wsdl:part name="encryptedRefundDetails" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ValidateRefundHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="serviceSoap">
+    <wsdl:operation name="generateEchallanPDF">
+      <wsdl:input message="tns:generateEchallanPDFSoapIn" />
+      <wsdl:output message="tns:generateEchallanPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generateEchallanPDFNew">
+      <wsdl:input message="tns:generateEchallanPDFNewSoapIn" />
+      <wsdl:output message="tns:generateEchallanPDFNewSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentStatus">
+      <wsdl:input message="tns:eChallanPaymentStatusSoapIn" />
+      <wsdl:output message="tns:eChallanPaymentStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanSuccessPayments">
+      <wsdl:input message="tns:eChallanSuccessPaymentsSoapIn" />
+      <wsdl:output message="tns:eChallanSuccessPaymentsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentData">
+      <wsdl:input message="tns:eChallanPaymentDataSoapIn" />
+      <wsdl:output message="tns:eChallanPaymentDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="treasuryReceipts">
+      <wsdl:input message="tns:treasuryReceiptsSoapIn" />
+      <wsdl:output message="tns:treasuryReceiptsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ereceipt">
+      <wsdl:input message="tns:ereceiptSoapIn" />
+      <wsdl:output message="tns:ereceiptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="echallancount">
+      <wsdl:input message="tns:echallancountSoapIn" />
+      <wsdl:output message="tns:echallancountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getGPFName">
+      <wsdl:input message="tns:getGPFNameSoapIn" />
+      <wsdl:output message="tns:getGPFNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPpanName">
+      <wsdl:input message="tns:getPpanNameSoapIn" />
+      <wsdl:output message="tns:getPpanNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateRefund">
+      <wsdl:input message="tns:ValidateRefundSoapIn" />
+      <wsdl:output message="tns:ValidateRefundSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="serviceHttpGet">
+    <wsdl:operation name="generateEchallanPDF">
+      <wsdl:input message="tns:generateEchallanPDFHttpGetIn" />
+      <wsdl:output message="tns:generateEchallanPDFHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generateEchallanPDFNew">
+      <wsdl:input message="tns:generateEchallanPDFNewHttpGetIn" />
+      <wsdl:output message="tns:generateEchallanPDFNewHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentStatus">
+      <wsdl:input message="tns:eChallanPaymentStatusHttpGetIn" />
+      <wsdl:output message="tns:eChallanPaymentStatusHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanSuccessPayments">
+      <wsdl:input message="tns:eChallanSuccessPaymentsHttpGetIn" />
+      <wsdl:output message="tns:eChallanSuccessPaymentsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentData">
+      <wsdl:input message="tns:eChallanPaymentDataHttpGetIn" />
+      <wsdl:output message="tns:eChallanPaymentDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="treasuryReceipts">
+      <wsdl:input message="tns:treasuryReceiptsHttpGetIn" />
+      <wsdl:output message="tns:treasuryReceiptsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ereceipt">
+      <wsdl:input message="tns:ereceiptHttpGetIn" />
+      <wsdl:output message="tns:ereceiptHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="echallancount">
+      <wsdl:input message="tns:echallancountHttpGetIn" />
+      <wsdl:output message="tns:echallancountHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getGPFName">
+      <wsdl:input message="tns:getGPFNameHttpGetIn" />
+      <wsdl:output message="tns:getGPFNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPpanName">
+      <wsdl:input message="tns:getPpanNameHttpGetIn" />
+      <wsdl:output message="tns:getPpanNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateRefund">
+      <wsdl:input message="tns:ValidateRefundHttpGetIn" />
+      <wsdl:output message="tns:ValidateRefundHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="serviceHttpPost">
+    <wsdl:operation name="generateEchallanPDF">
+      <wsdl:input message="tns:generateEchallanPDFHttpPostIn" />
+      <wsdl:output message="tns:generateEchallanPDFHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="generateEchallanPDFNew">
+      <wsdl:input message="tns:generateEchallanPDFNewHttpPostIn" />
+      <wsdl:output message="tns:generateEchallanPDFNewHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentStatus">
+      <wsdl:input message="tns:eChallanPaymentStatusHttpPostIn" />
+      <wsdl:output message="tns:eChallanPaymentStatusHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanSuccessPayments">
+      <wsdl:input message="tns:eChallanSuccessPaymentsHttpPostIn" />
+      <wsdl:output message="tns:eChallanSuccessPaymentsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentData">
+      <wsdl:input message="tns:eChallanPaymentDataHttpPostIn" />
+      <wsdl:output message="tns:eChallanPaymentDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="treasuryReceipts">
+      <wsdl:input message="tns:treasuryReceiptsHttpPostIn" />
+      <wsdl:output message="tns:treasuryReceiptsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ereceipt">
+      <wsdl:input message="tns:ereceiptHttpPostIn" />
+      <wsdl:output message="tns:ereceiptHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="echallancount">
+      <wsdl:input message="tns:echallancountHttpPostIn" />
+      <wsdl:output message="tns:echallancountHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getGPFName">
+      <wsdl:input message="tns:getGPFNameHttpPostIn" />
+      <wsdl:output message="tns:getGPFNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPpanName">
+      <wsdl:input message="tns:getPpanNameHttpPostIn" />
+      <wsdl:output message="tns:getPpanNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidateRefund">
+      <wsdl:input message="tns:ValidateRefundHttpPostIn" />
+      <wsdl:output message="tns:ValidateRefundHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="serviceSoap" type="tns:serviceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="generateEchallanPDF">
+      <soap:operation soapAction="http://tempuri.org/generateEchallanPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateEchallanPDFNew">
+      <soap:operation soapAction="http://tempuri.org/generateEchallanPDFNew" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentStatus">
+      <soap:operation soapAction="http://tempuri.org/eChallanPaymentStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanSuccessPayments">
+      <soap:operation soapAction="http://tempuri.org/eChallanSuccessPayments" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentData">
+      <soap:operation soapAction="http://tempuri.org/eChallanPaymentData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="treasuryReceipts">
+      <soap:operation soapAction="http://tempuri.org/treasuryReceipts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ereceipt">
+      <soap:operation soapAction="http://tempuri.org/ereceipt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="echallancount">
+      <soap:operation soapAction="http://tempuri.org/echallancount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGPFName">
+      <soap:operation soapAction="http://tempuri.org/getGPFName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPpanName">
+      <soap:operation soapAction="http://tempuri.org/getPpanName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateRefund">
+      <soap:operation soapAction="http://tempuri.org/ValidateRefund" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="serviceSoap12" type="tns:serviceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="generateEchallanPDF">
+      <soap12:operation soapAction="http://tempuri.org/generateEchallanPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateEchallanPDFNew">
+      <soap12:operation soapAction="http://tempuri.org/generateEchallanPDFNew" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentStatus">
+      <soap12:operation soapAction="http://tempuri.org/eChallanPaymentStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanSuccessPayments">
+      <soap12:operation soapAction="http://tempuri.org/eChallanSuccessPayments" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentData">
+      <soap12:operation soapAction="http://tempuri.org/eChallanPaymentData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="treasuryReceipts">
+      <soap12:operation soapAction="http://tempuri.org/treasuryReceipts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ereceipt">
+      <soap12:operation soapAction="http://tempuri.org/ereceipt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="echallancount">
+      <soap12:operation soapAction="http://tempuri.org/echallancount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGPFName">
+      <soap12:operation soapAction="http://tempuri.org/getGPFName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPpanName">
+      <soap12:operation soapAction="http://tempuri.org/getPpanName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateRefund">
+      <soap12:operation soapAction="http://tempuri.org/ValidateRefund" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="serviceHttpGet" type="tns:serviceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="generateEchallanPDF">
+      <http:operation location="/generateEchallanPDF" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateEchallanPDFNew">
+      <http:operation location="/generateEchallanPDFNew" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentStatus">
+      <http:operation location="/eChallanPaymentStatus" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanSuccessPayments">
+      <http:operation location="/eChallanSuccessPayments" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentData">
+      <http:operation location="/eChallanPaymentData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="treasuryReceipts">
+      <http:operation location="/treasuryReceipts" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ereceipt">
+      <http:operation location="/ereceipt" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="echallancount">
+      <http:operation location="/echallancount" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGPFName">
+      <http:operation location="/getGPFName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPpanName">
+      <http:operation location="/getPpanName" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateRefund">
+      <http:operation location="/ValidateRefund" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="serviceHttpPost" type="tns:serviceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="generateEchallanPDF">
+      <http:operation location="/generateEchallanPDF" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="generateEchallanPDFNew">
+      <http:operation location="/generateEchallanPDFNew" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentStatus">
+      <http:operation location="/eChallanPaymentStatus" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanSuccessPayments">
+      <http:operation location="/eChallanSuccessPayments" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eChallanPaymentData">
+      <http:operation location="/eChallanPaymentData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="treasuryReceipts">
+      <http:operation location="/treasuryReceipts" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ereceipt">
+      <http:operation location="/ereceipt" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="echallancount">
+      <http:operation location="/echallancount" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGPFName">
+      <http:operation location="/getGPFName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPpanName">
+      <http:operation location="/getPpanName" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidateRefund">
+      <http:operation location="/ValidateRefund" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="service">
+    <wsdl:port name="serviceSoap" binding="tns:serviceSoap">
+      <soap:address location="https://egov.goa.nic.in/echallanws/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="serviceSoap12" binding="tns:serviceSoap12">
+      <soap12:address location="https://egov.goa.nic.in/echallanws/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="serviceHttpGet" binding="tns:serviceHttpGet">
+      <http:address location="https://egov.goa.nic.in/echallanws/service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="serviceHttpPost" binding="tns:serviceHttpPost">
+      <http:address location="https://egov.goa.nic.in/echallanws/service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

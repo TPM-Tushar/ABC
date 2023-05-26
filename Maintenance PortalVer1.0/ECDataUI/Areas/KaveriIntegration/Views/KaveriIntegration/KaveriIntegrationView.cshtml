@@ -1,0 +1,268 @@
+﻿@model CustomModels.Models.KaveriIntegration.KaveriIntegrationModel
+@using ECDataUI.Helper
+@{
+    string FromDate = @Model.FromDate;
+    string ToDate = @Model.ToDate;
+}
+<script>
+    var FromDate = '@FromDate';
+    var ToDate = '@ToDate'
+</script>
+<style>
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    /*td:last-child, td:nth-last-child(2), td:nth-last-child(3) {
+        text-align: left;
+    }*/
+
+    .thead_Color {
+        background-color: #99CFF7;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+
+<script src="~/Areas/KaveriIntegration/Scripts/KaveriIntegrationView.js"></script>
+@*<script src="~/Areas/KaveriIntegration/Scripts/KaveriIntegrationView.min.js"></script>*@
+<div class="container">
+    <div class="col-md-offset-0">
+        <h3 style="text-align:center;color:#3177b4 ;">Summary of Imported Properties from other departments</h3>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div>
+                <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 2%;padding-bottom:0%;">
+                    <form id="SearchParametersForm">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <div class='row'>
+                            <div class="col-md-12 textAlignLeft" style="margin-bottom: 1%;">
+                                <div class="col-md-3">
+                                    @*<div class="col-md-4" id="DRODropDownListID">*@
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.DistrictList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.DistrictID, @Model.DistrictList, new { @class = "form-control minimal", id = "DROOfficeListID", autocomplete = "off", tabindex = 1 })
+                                        @Html.ValidationMessageFor(model => model.DistrictID, "", new { @class = "text-danger" })
+                                    </div>
+                                    @*</div>*@
+                                </div>
+
+                                @*<div class="col-md-3" id="SRODropDownListID">*@
+                                <div class="col-md-3" id="">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 2 })
+                                        @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.FromDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="date" id="divFromDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @id = "txtFromDate", @placeholder = "dd/mm/yyyy", @title = "From Date", @maxlength = 10, tabindex = 1 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.ToDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="date" id="divToDate" style="display: table; width: 102%; cursor: pointer;">
+                                            @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control AllowOnlyNumber", @id = "txtToDate", @placeholder = "dd/mm/yyyy", @title = "To Date", @maxlength = 10, tabindex = 2 })
+                                            <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                    </form>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class='BTNwrapper'>
+                            <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="3">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">Summary of Imported Properties from other departments</span>
+            </div>
+
+            <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                    <table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; overflow: hidden; border: solid; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" style="vertical-align:middle;">Serial No.</th>
+                                <th rowspan="2" style="vertical-align:middle;">District Office</th>
+                                <th rowspan="2" style="vertical-align:middle;">Sub-Registrar Office<br>(A)</th>
+                                <th rowspan="2" style="vertical-align:middle;">Total Properties Registered<br>(B)</th>
+                                <th colspan="5" style="vertical-align:middle;">Total Properties imported from</th>
+                                <th rowspan="2" style="vertical-align:middle;">Total properties registered without importing<br>(H=B-(C+D+E+G))</th>
+                                @*<th rowspan="2" style="vertical-align:middle;">Total properties registered without importing<br>(F)</th>*@
+                            </tr>
+                            <tr>
+                                <th style="vertical-align:middle;">Bhoomi<br>(C)</th>
+                                <th style="vertical-align:middle;">E-Swathu<br>(D)</th>
+                                <th style="vertical-align:middle;">UPOR<br>(E)</th>
+                                <th style="vertical-align:middle;">Mojini<br>(F)</th>
+                                <th style="vertical-align:middle;">E-Aasthi<br>(G)</th>
+                            </tr>
+                        </thead>
+                        @*Commented by Shubham Bhagat on 05-11-2019 For uncoloring table header*@
+                        @*<thead>
+                                <tr>
+                                    <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Serial No.</th>
+                                    <th class="thead_Color" rowspan="2" style="vertical-align:middle;">District Office</th>
+                                    <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Sub-Registrar Office<br>(A)</th>
+                                    <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Total Properties Registered<br>(B)</th>
+                                    <th class="thead_Color" colspan="3" style="vertical-align:middle;">Total Properties imported from</th>
+                                    <th class="thead_Color" rowspan="2" style="vertical-align:middle;">Total properties registered without importing<br>(F)</th>
+                                </tr>
+                                <tr>
+                                    <th class="thead_Color" style="vertical-align:middle;">Bhoomi<br>(C)</th>
+                                    <th class="thead_Color" style="vertical-align:middle;">E-Swathu<br>(D)</th>
+                                    <th class="thead_Color" style="vertical-align:middle;">UPOR<br>(E)</th>
+                                </tr>
+                            </thead>*@
+                        @*<div id="tableToBeLaded">
+                            </div>*@
+                        @*<tbody>
+                                @foreach (var item in Model.KaveriIntegrationDetailList)
+                                {
+                                    <tr>
+                                        <td><label>@item.SerialNo</label></td>
+                                        <td style="text-align:left;"><label>@item.SROName</label></td>
+                                        <td style="text-align:center;"><label>@Html.Raw(@item.TotalPropertiesRegistered)</label></td>
+                                        <td style="text-align:center;"><label>@Html.Raw(@item.Bhoomi)</label></td>
+                                        <td style="text-align:center;"><label>@Html.Raw(@item.E_Swathu)</label></td>
+                                        <td style="text-align:center;"><label>@Html.Raw(@item.UPOR)</label></td>
+                                        <td style="text-align:center;"><label>@Html.Raw(@item.Total_Properties_Registered_Without_Importing)</label></td>
+
+                                    </tr>
+                                }
+                            </tbody>*@
+                    </table>
+                </div>
+
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-md-5"></div>
+                    <div class='BTNwrapper col-md-2' style="text-align:left;">
+                        <span id="EXCELSPANID"></span>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="MasterTableModel" style="" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-content" style="width:75%;">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            @*<h4 class="modal-title">Kaveri Integration Report</h4>*@
+            <h4 class="modal-title" id="modelHeadingID"></h4>
+            <br />
+            <div class="row">
+                <span style="font-weight:bold;">SRO : </span><span id="SROSpanID" style="margin-right:1%;"></span>
+                <span style="font-weight:bold;">From Date : </span><span id="FromDateSpanID" style="margin-right:1%;"></span>
+                <span style="font-weight:bold;">To Date :</span><span id="ToDateSpanID" style="margin-right:1%;"></span>
+            </div>
+        </div>
+
+        <div class="modal-body" style="width:75%;">
+            <div class="panel panel-default" id="SearchResult1" style="width: 135%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                <div class="panel-body">
+                    @*<div id='DtlsSearchParaListCollapse1' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara1" aria-expanded="false" aria-controls="DtlscollapseSearchPara1" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                            <span style="cursor: pointer; margin-bottom: 20px;">
+                                <span id="DtlsToggleIconSearchPara1" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                            </span>
+                            <span class="" style="color: #fff; font-size: 120%;">Kaveri Integration Report</span>
+                        </div>*@
+                    @*<div id="DtlscollapseSearchPara1" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">*@
+                    <div id="DtlscollapseSearchPara1" class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                        <div class="clsTblWrapper1" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                            <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span></b> </h6></i></div>
+                            <table id="AnywhereECTable" class="table table-striped table-bordered table-condensed table-hover" style="table-layout:inherit;vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Serial No.</th>
+                                        <th>Document Number</th>
+                                        <th>Final Registration Number</th>
+                                        <th>Nature of Document</th>
+                                        <th>Village Name</th>
+                                        <th>Property Details</th>
+                                        <th>Executant</th>
+                                        <th>Claimant</th>
+                                        <th>Reference / Acknowledgement Number</th>
+                                        <th>Integration Department Name</th>
+                                        <th>Upload Date</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-md-5"></div>
+                    <div class='BTNwrapper col-md-2' style="text-align:left;">
+                        <span id="EXCELSPANID1"></span>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+    </div>
+</div>

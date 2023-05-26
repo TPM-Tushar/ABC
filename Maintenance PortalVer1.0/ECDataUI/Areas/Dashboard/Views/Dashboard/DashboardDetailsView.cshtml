@@ -1,0 +1,597 @@
+﻿@model CustomModels.Models.Dashboard.DashboardDetailsViewModel
+@using ECDataUI.Helper
+
+@{
+                /**/
+
+                Layout = null;
+}
+
+<script src="~/Content/jquery/dist/jquery-ui.js"></script>
+
+<script src="~/Areas/Dashboard/Scripts/dashboard.js"></script>
+
+
+<script src="~/Areas/Dashboard/Scripts/DashboardDetailsView.js"></script>
+
+@*<script src="~/Areas/Dashboard/Scripts/DashboardDetailsView.min.js"></script>*@
+
+
+
+
+<link href="~/Content/animate.min.css" rel="stylesheet" />
+
+<style>
+    .BoxBorder {
+        border: 1px solid #3c8dbc !important;
+    }
+    .BGImage {
+        background-image: url('../../Content/images/DivBgicon2.png') !important;
+        background-size: 100% 100%;
+        border-top-color: #00c0ef !important;
+        /*border: 1px solid #3c8dbc !important;*/
+    }
+    .dataTables_filter {
+        display: none;
+    }
+    .multiselect b.caret {
+        display: none;
+    }
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+    .rdoToggleChartTable {
+    }
+
+    .fa-flag:hover {
+        color: red;
+    }
+
+    #divSummaryTblID {
+        border-top: none !important;
+    }
+
+
+    .floatRight {
+        /*float: right !important;*/
+    }
+
+    .paddingBottom1 {
+        padding-bottom: 15% !important;
+    }
+
+    .btn-secondary {
+        color: #292b2c;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+
+    text-center {
+        text-align: center !important;
+    }
+    th {
+    text-align:center;
+/*border-right:solid 1px black !important;*/
+    }
+    .dataTables_scrollBody {
+        overflow-x: auto !important;
+        overflow-y: auto !important;
+    }
+    /*.box.box-primary {
+        border-top-color: none !important;
+    }*/
+    /*.td {*/
+        /*padding: 2%;*/
+        /*padding: 10px !important;
+        margin:10px !important;
+        border: 1px solid black;*/
+    /*}*/
+    #DashboardSummaryTblID > tbody > tr > td, .table-bordered > tfoot > tr > td {
+        border: 2px solid #FFFFFF;
+        border-bottom-width: 1px;
+        border-left-width: 1px;
+    }
+    /*body {
+        padding-top: 5em;
+    }*/
+    .modal-dialog {
+        width: 65%;
+        margin-top: 5% !important;
+    }
+    @*ADDED BY SHUBHAM BHAGAT 09-04-2020*@
+    /*select optgroup {
+        text-decoration: underline !important;
+    }*/
+    .multiselect-group {
+        text-decoration: underline !important;
+    }
+    /*.multiselect-item group {
+        margin-top: 2.5%;
+    }*/
+    .multiselect-container > li > label.multiselect-group {
+        padding-top: 0.5%;
+    }
+    @*ADDED BY SHUBHAM BHAGAT 09-04-2020*@
+</style>
+<div class="container">
+
+    <div class="col-md-offset-0">
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 2px 2px 2px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+
+
+
+                <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                    <span style="cursor: pointer; margin-bottom: 20px;">
+                        <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">Summary Report </span><i><span id="SummaryRptFilterId" style="color: #fff; font-size: 120%;"></span></i>
+                </div>
+                <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;;padding-right:1%;padding-left:1%;">
+
+
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:6%">
+                        <form id="DashboardDetailsFormId">
+                            <div class="col-md-12 textAlignLeft" style="">
+                                @*BELOW CODE ADDED BY SHUBHAM BHAGAT ON 14-08-2020 AT 10:23 AM*@
+                                <div class="col-md-2" id="FinYearListDivID">
+                                    @*<div class="col-md-2" id="ArtilceNameList">*@
+                                    @* ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 14-08-2020 AT 10:23 AM*@
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.FinYearList, new { @class = "PaddingTop10", @Id = "lblArticleNameList" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.FinYearId, @Model.FinYearList, new { @class = "form-control minimal", id = "FinYearListID", autocomplete = "off", tabindex = 1, style = "width: 104%;" })
+                                        @Html.ValidationMessageFor(model => model.FinYearId, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3" id="DrOfficeList">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.DROfficeList, new { @class = "PaddingTop10", @Id = "lblDROfficeList" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.DROfficeID, @Model.DROfficeList, new { @class = "form-control minimal", id = "DROOfficeListID", autocomplete = "off", tabindex = 2 })
+                                        @Html.ValidationMessageFor(model => model.DROfficeID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3" id="SRODropDownListID">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 1 })
+                                        @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3" id="ArtilceNameList">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.NatuereOfDocsList, new { @class = "PaddingTop10", @Id = "lblArticleNameList" }, Mandatory.Yes)
+                                    </div>
+                                    <div class="col-md-8">
+                                        @*@Html.DropDownListFor(model => model.NatureOfDocID, @Model.NatuereOfDocsList, new { @class = "form-control minimal", id = "ddArticleNameList", autocomplete = "off", tabindex = 2 })*@
+                                        @Html.ValidationMessageFor(model => model.NatureOfDocID, "", new { @class = "text-danger" })
+                                        @Html.ListBoxFor(model => model.NatureOfDocID, @Model.NatuereOfDocsList, new { @class = "form-control", @id = "ddArticleNameList", style = "width:20px;", tabindex = 4 })
+
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-1">
+                                    <div class='BTNwrapper' style="padding-left:13%;margin-top:1%;margin-bottom:2%;">
+                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6">Search</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @*ADDED BY SHUBHAM BHAGAT 09-04-2020*@
+                            <div class="col-md-12">
+                                @*BELOW CODE ADDED BY SHUBHAM BHAGAT ON 14-08-2020 AT 10:23 AM*@
+                                <div class="col-md-6">
+                                    @*<div class="col-md-4">*@
+                                    @*ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 14-08-2020 AT 10:23 AM*@
+                                    @*6*@
+                                </div> @*BELOW CODE ADDED BY SHUBHAM BHAGAT ON 14-08-2020 AT 10:23 AM*@
+                                <div class="col-md-0">
+                                    @*<div class="col-md-4">*@
+                                    @*ABOVE CODE ADDED BY SHUBHAM BHAGAT ON 14-08-2020 AT 10:23 AM*@
+                                    @*1*@
+                                </div>
+                                <div class="col-md-4">
+                                    <div style="margin-left:0%;">
+                                        <input type="radio" value="ALL" id="natureOfArticleTypeID" name="natureOfArticleTypeName" /><span style="margin-left:1%;"><label>ALL Articles</label></span>
+                                        <input type="radio" value="TOP_10_Articles" id="natureOfArticleTypeID" name="natureOfArticleTypeName" style="margin-left:5%;" /><span style="margin-left:1%;"><label>TOP 10 Articles</label></span>
+                                    </div>
+                                </div>
+                            </div>
+                            @*ADDED BY SHUBHAM BHAGAT 09-04-2020*@
+                        </form>
+
+                    </div>
+                    <div style="background:#fff;border:1px solid #ECF0F1;margin-top:1%;margin-bottom:1%;padding-top:1%;padding-bottom:1%;padding-left:1%;padding-right:1%;">
+                        <table id="DashboardSummaryTblID" cellpadding="5" class="SummaryTbl table-striped table-bordered table-condensed" style="background:#fff;box-shadow:5px 5px 5px 5px #d0d3d4 !important;border: 2px solid #3c8dbc !important;margin-top: 1%;vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th colspan="1" style="vertical-align:middle;border-bottom:none;border-left:none;"></th>
+                                    <th colspan="2" style="vertical-align:middle;background-color: #E0EFF7 !important;color:black;border-bottom: 1px solid #FFFFFF;border-left:1px solid #73a9d9;border-left:1px solid #73a9d9;border-right:1px solid #73a9d9;">Day Wise</th>
+                                    <th colspan="2" style="vertical-align:middle;background-color: #C1DFEF !important;color:black;border-bottom: 1px solid #FFFFFF;border-right:1px solid #FFFFFF;border-left:1px solid #FFFFFF;border-right:1px solid #73a9d9;">Month Wise</th>
+                                    <th colspan="2" style="vertical-align:middle;background-color: #A0C8E6 !important;color:black;border-bottom: 1px solid #FFFFFF;border-right:1px solid #FFFFFF;border-left:1px solid #FFFFFF;border-right:1px solid #73a9d9;">Financial year wise</th>
+                                    <th colspan="1" style="vertical-align:middle;background-color: #7EB3DC !important;color:black;border-bottom: 1px solid #FFFFFF;border-right:1px solid #FFFFFF;border-left:1px solid #FFFFFF;">Cumulative</th>
+
+                                </tr>
+                                <tr style="">
+                                    <th style="vertical-align:middle;border-left:1px solid #73a9d9 !important;border-top:none;border-bottom:1px solid #73a9d9;border-left:none !important;"></th>
+                                    <th style="vertical-align:middle;background-color: #E0EFF7 !important;color:black;border-right:1px solid #FBFCFC;border-bottom:1px solid black;border-left:1px solid #73a9d9;border-bottom:1px solid #73a9d9;">Today</th>
+                                    <th style="vertical-align:middle;background-color: #E0EFF7 !important;color:black;border:1px solid #FBFCFC;border-bottom:1px solid black;border-right:1px solid #73a9d9;border-bottom:1px solid #73a9d9;">Yesterday</th>
+                                    <th style="vertical-align:middle;background-color: #C1DFEF !important;color:black;border:1px solid #FBFCFC;border-bottom:1px solid black;border-bottom:1px solid #73a9d9;">Current Month</th>
+                                    <th style="vertical-align:middle;background-color: #C1DFEF !important;color:black;border:1px solid #FBFCFC;border-bottom:1px solid black;border-right:1px solid #73a9d9;border-bottom:1px solid #73a9d9;">Previous Month</th>
+                                    <th id="IdTDCurrentFinYr" style="vertical-align:middle;background-color: #A0C8E6 !important;color:black;border:1px solid #FBFCFC;border-bottom:1px solid black;border-bottom:1px solid #73a9d9;">Current F Year</th>
+                                    <th id="IdTDPrevFinYr" style="vertical-align:middle;background-color: #A0C8E6 !important;color:black;border:1px solid #FBFCFC;border-bottom:1px solid black;border-right:1px solid #73a9d9;border-bottom:1px solid #73a9d9;">Previous F Year</th>
+                                    <th id="IdCumulative" style="vertical-align:middle;background-color: #7EB3DC !important;color:black;border:1px solid #FBFCFC;border-bottom:1px solid black;border-bottom:1px solid #73a9d9;">Upto Current F Year</th>
+                                    @*<th style="vertical-align:middle;background-color: #7EB3DC !important;color:black;border:1px solid #FBFCFC;border-bottom:1px solid black;border-bottom:1px solid #73a9d9;">Upto Previous F Year</th>*@
+
+                                </tr>
+                            </thead>
+                        </table>
+                        @*ADDED BY PANKAJ SAKHARE ON  18-09-2020*@
+                        <div class="row" @*style="margin-top:0.5%;"*@>
+                            <div class="col-md-12">
+                                <div class="col-md-1">
+                                    <div id="ExcelDivId" style="text-align: left;margin-left: 1%;margin-top: 6%;">
+
+                                    </div>
+                                </div>
+                                <div class="col-md-11">
+                                    <div id="NoteDivId" style="text-align: left;margin-left: -6%;font-weight: bold;margin-top: 0.5%;">
+                                        @*<h5>* This Data is from September 2019 onwards</h5>*@
+                                        <h5>* This data is not completely available for given period</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 10px 10px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+        <div class='row' style="padding-top:1%;">
+
+
+            @*<div class="box box-danger ExpandOnHover" style="border-top-color: #73A9D9;width:98%;margin-left:1%;margin-right:1%;margin-top:1%;">*@
+            @*<div class="box-header with-border">*@
+            @*<div class="box-header">
+                    <h3 class="box-title"></h3>
+                    <div class="box-tools pull-left" style="right:98% !important;">
+                        <button type="button" class="btn btn-box-tool" onclick="" data-widget="collapse" id="CollapseSearchDiv">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>*@
+            @*<div class="box-body">
+                    <div class="text-align: center;background:#fff;border: 1px solid #ECF0F1;padding-top: 2%;padding-bottom: 0%;">
+                    </div>
+
+                    <div>
+                    </div>
+
+                </div>*@
+            <!-- /.box-body -->
+            @*</div>*@
+            @*</div>*@
+
+
+
+
+
+
+
+
+
+
+            <section class="col-lg-4 connectedSortable ui-sortable">
+
+                <div class="BoxBorder" style=" box-shadow: 5px 5px 5px 5px #d0d3d4 !important;border-top-color: none !important;">
+                    <div class="box-header ui-sortable-handle BGImage row" style="cursor: move;">
+                        <div class="col-md-10">
+                            <h3 class="box-title" style="color:black;">Sales Statistics &nbsp;<span id="spanSalesStatistics"  style="font-size: 80%"></span></h3>
+                        </div>
+                        <div class="col-md-2">
+
+                            <a href="#" data-toggle="modal" data-target="#modChart" data-source="65.1,59.47,80.00,81.11,56.67,55.45,40.88,20.45,40.98,80.66,88.34,61.01" data-target-source="50" id="SalesStatMaxBtnId" style="margin-left:58%;">
+                                <span class="" style="font-size:151%;">
+                                    @*<i class="fas fa-window-maximize"></i>*@
+                                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    @*<i class="fas fa-window-maximize" aria-hidden="false"></i>*@
+                    <div class="slimScrollDiv" style="overflow: hidden; position: relative;">
+                        <div>
+                            <div style="margin-left:16%;">
+                                <input type="radio" name="rdoDBSaleStatistics" value="Revenue" onclick="SaleStatisticsRdoClick()" /> <label>Revenue Collected</label>
+                                <input style="margin-left:5%;" value="DocRegistered" type="radio" name="rdoDBSaleStatistics" onclick="SaleStatisticsRdoClick()" /> <label>Documents Registered</label>
+
+                            </div>
+                            <div id="dv_1_Wrapper">
+
+                            </div>
+                        </div>
+                        <div class="col-lg-9" style="margin-top:2%; margin-bottom:2%;">
+
+                            @*ADDED BY SHUBHAM BHAGAT ON 17-09-2020*@
+                            <span id="EXCELSaleStatisticsSpanID"></span>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="paddingBottom1" data-toggle="buttons" style="border:none;" id="IDRdoRevenueCollected">
+
+                                <div class=" btn active" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="1_1" required="required">
+                                    <i class="fa fa-line-chart" style="font-size:18px"></i>
+                                </div>
+                                <div class=" btn" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="1_2">
+                                    <i class="fa fa-table" style="font-size:18px"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="paddingBottom1" data-toggle="buttons" style="border:none;" id="IDRdoDocRegistered">
+
+                                <div class=" btn active" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="4_1" required="required">
+                                    <i class="fa fa-line-chart" style="font-size:18px"></i>
+                                </div>
+                                <div class=" btn" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="4_2">
+                                    <i class="fa fa-table" style="font-size:18px"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </section>
+            <section class="col-lg-4 connectedSortable ui-sortable">
+                <div class="BoxBorder" style=" box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+                    <div class="box-header ui-sortable-handle BGImage row" style="cursor: move;">
+
+                        <div class="col-md-10">
+                            @*BELOW CODE IS COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 22-12-2020*@
+                            @*<h3 class="box-title" style="color:black;">Surcharge And Cess Collected &nbsp;<span id="spanSurchargeAndCess" style="font-size: 80%"></span></h3>*@
+                            <h3 class="box-title" style="color:black;">Surcharge - Cess Collected &nbsp;<span id="spanSurchargeAndCess" style="font-size: 80%"></span></h3>
+                            @*ABOVE CODE IS COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 22-12-2020*@
+                        </div>
+                        <div class="col-md-2">
+
+                            <a href="#" data-toggle="modal" data-target="#SurchargeCessPopUpId" data-source="65.1,59.47,80.00,81.11,56.67,55.45,40.88,20.45,40.98,80.66,88.34,61.01" data-target-source="50" id="SurchargeCessMaxBtnId" style="margin-left:58%;">
+                                <span style="font-size:151%;">
+                                    @*<i class="fas fa-window-maximize"></i>*@
+                                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                                </span>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="slimScrollDiv" style="width: auto; overflow: hidden; position: relative;">
+
+
+                        <div id="dv_2_Wrapper" style="padding-top:5% !important;">
+
+                        </div>
+
+
+
+
+                        <div class="col-lg-9" style="margin-top:2%; margin-bottom:2%;">
+                            @*ADDED BY PANKAJ SAKHARE ON 18-09-2020*@
+                            <span id="EXCELSurchargeCessSpanId"></span>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="paddingBottom1" data-toggle="buttons" style="border:none;">
+                                <div class=" btn active" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="2_1" required="required">
+                                    <i class="fa fa-bar-chart" style="font-size:18px"></i>
+                                </div>
+                                <div class=" btn" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="2_2">
+                                    <i class="fa fa-table" style="font-size:18px"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+
+            <section class="col-lg-4 connectedSortable ui-sortable">
+                <div class="BoxBorder" style=" box-shadow: 5px 5px 5px 5px #d0d3d4 !important;">
+
+                    <div class="box-header ui-sortable-handle BGImage row" style="cursor: move;">
+                        <div class="col-md-10">
+                            <h3 class="box-title" style="color:black;">High Value Properties &nbsp;<span id="spanHighValProp" style="font-size: 80%"></span></h3>
+                        </div>
+                        <div class="col-md-2">
+
+                            <a href="#" data-toggle="modal" data-target="#HighValuePopUpId" data-source="65.1,59.47,80.00,81.11,56.67,55.45,40.88,20.45,40.98,80.66,88.34,61.01" data-target-source="50" id="HighValPropMaxBtnId" style="margin-left:58%;">
+                                <span style="font-size:151%;">
+                                    <i class="fa fa-external-link" aria-hidden="true"></i>
+                                    @*<i class="fas fa-window-maximize"></i>*@
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slimScrollDiv" style="width: auto; overflow: hidden; position: relative;">
+
+                        <div style="margin-left:16%;">
+                            <input type="radio" name="rdoDBHighValueProp" value="Revenue" onclick="HighValPropRdoClick()" /> <label>Revenue Collected</label>
+                            <input style="margin-left:5%;" value="DocRegistered" type="radio" name="rdoDBHighValueProp" onclick="HighValPropRdoClick()" /> <label>Documents Registered</label>
+                        </div>
+
+                        <div id="dv_3_Wrapper">
+
+
+                        </div>
+
+
+                        <div class="col-lg-9" style="margin-top:2%; margin-bottom:2%;">
+
+                            @*ADDED BY SHUBHAM BHAGAT ON 17-09-2020*@
+                            <span id="EXCELHighValPropSpanID"></span>
+
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="paddingBottom1" data-toggle="buttons" style="border:none;" id="IDRdoHighValRevenue">
+
+                                <div class=" btn active" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="3_1" required="required">
+                                    <i class="fa fa-line-chart" style="font-size:18px"></i>
+                                </div>
+                                <div class=" btn" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="3_2">
+                                    <i class="fa fa-table" style="font-size:18px"></i>
+                                </div>
+
+                            </div>
+
+                            <div class="paddingBottom1" data-toggle="buttons" style="border:none;" id="IDRdoHighValDocRegd">
+
+                                <div class=" btn active" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="5_1" required="required">
+                                    <i class="fa fa-line-chart" style="font-size:18px"></i>
+                                </div>
+                                <div class=" btn" role="button">
+                                    <input class="rdoToggleChartTable" type="radio" name="options" value="5_2">
+                                    <i class="fa fa-table" style="font-size:18px"></i>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+            @*<div class="modal fade" id="IdModalSalesSattisticsChart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleModalLabel">Linechart</h4>
+                        </div>
+                        <div class="modal-body" id="SalesSatatRevenueModalId">*@
+            @*<canvas id="canvas" width="568" height="300"></canvas>*@
+            @*</div>
+                        </div>
+                    </div>
+                </div>*@
+
+
+
+
+            <div class="row">
+                <div class="modal fade" id="modChart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="TitleSaleStatId"></h4>
+                            </div>
+                            <div class="modal-body">
+                                <canvas id="canvas" width="568" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="SurchargeCessPopUpId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleModalLabel">Linechart</h4>
+                            </div>
+                            <div class="modal-body">
+                                <canvas id="canvasSurchargeCessPopUp" width="568" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="HighValuePopUpId" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                </button>
+                                <h4 class="modal-title" id="TitleHighValPropId">Linechart</h4>
+                            </div>
+                            <div class="modal-body">
+                                <canvas id="canvasHighValuePopUp" width="568" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+

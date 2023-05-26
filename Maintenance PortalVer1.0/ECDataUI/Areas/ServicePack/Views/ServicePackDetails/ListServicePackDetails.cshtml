@@ -1,0 +1,78 @@
+﻿@*
+    * Project Id    :KARIGR [ IN-KA-IGR-02-05 ]
+    * Project Name  :Kaveri Maintainance Portal
+    * Name          :ListServicePackDetails.cshtml
+    * Description   :
+    * Author        :Harshit
+    * Creation Date :07/05/2018
+    * Modified By   :
+    * Updation Date :
+    * ECR No : 300
+*@
+<head>
+    @*<title>EC Portal</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Content/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/themes/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/bootstrap/js/bootbox.min.js"></script>
+    <script src="~/Scripts/CommonJS/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/DataTables/js/jquery.dataTables.min.js"></script>
+    <link href="~/Content/DataTables/Js_New/jquery.dataTables.min.css" rel="stylesheet" />*@
+
+    @*<script src="~/Areas/ServicePack/Scripts/ServicePackDetails.js"></script>*@
+    <script src="~/Areas/ServicePack/Scripts/ServicePackDetails.min.js"></script>
+<style>
+
+    .dataTables_filter {
+        display: none;
+    }
+
+    .dataTables_wrapper .dataTables_length {
+        float: right;
+    }
+
+    td {
+    word-break:break-word;
+    }
+</style>
+</head>
+
+<div class="panel panel-default" id="panelNewBranch" style="width: 99%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;margin-left:1%;">
+    <div class="panel-body">
+        <div class='row well-custom' style="height: 35px; padding-top: 10px;width: 99.5%;margin-left: 0.5%;">
+            <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+            <span class="" style="color: #FFF; font-size: 120%;">
+                Service Pack Details
+            </span>
+        </div>
+        <div class="panel-body">
+            <div id="dvServicePackGrid" class="col-md-12 table-responsive">
+                <table id="tblServicePackGrid" class="table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">Serial No</th>
+                            <th style="text-align: center">Action</th>
+                            <th>Edit</th>
+                            <th>Service Pack Release Type</th>
+                            <th>Release Mode</th>
+                            <th>Major Version</th>
+                            <th>Minor Version</th>
+                            @*Added By Tushar on 2 Jan 2023 for Upload DateTime*@
+                            <th style="text-align:center">Upload DateTime</th>
+                            @*End By Tushar on 2 Jan 2023*@
+                            <th>Description</th>
+                            <th>Installation Procedure</th>
+                            <th>Changes/Enhancements Description</th>
+                            <th>Download Service Pack</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

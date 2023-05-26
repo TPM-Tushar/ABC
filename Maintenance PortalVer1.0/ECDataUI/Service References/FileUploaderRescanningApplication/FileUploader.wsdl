@@ -1,0 +1,1098 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="DownloadScannedFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScannedFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadScannedFileResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunkAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="offset" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fileSize" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="docType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="VersionNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunkAllResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetChunkAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="chunkID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="docID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="docType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChunkAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChunkAllResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileSizeAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="docID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="docType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileSizeAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFileSizeAllResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateServerLogAll">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="docID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="docType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateServerLogAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateServerLogAllResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScannedPhotoThumb">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="filePath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadScannedPhotoThumbResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadScannedPhotoThumbResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PhotoThumbUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="partyid" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsPhoto" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="IsThumb" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PhotoThumbUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PhotoThumbUploadResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPhotoThumbAvailable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="JSONObj" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsPhotoThumbAvailableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IsPhotoThumbAvailableResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="Offset" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fileSize" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunkResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="chunkID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SroCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChunkResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileSize">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="docID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileSizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFileSizeResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateServerLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="docID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateServerLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateServerLogResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Documentid" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentTypeId" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="RescanModuleType" type="s1:char" />
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsValidUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsValidUploadResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RC" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SupportAllUpload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="offset" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fileSize" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="SroTriletter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnclosureType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FinalPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SupportAllUploadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FinalPath" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFileExists">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SroCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupportDocumentID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartyID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFileExistsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsFileExistsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SupportAllDownload">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DocID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupportDocID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartyID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SupportAllDownloadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SupportAllDownloadResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUploadedFilePath">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DocID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SroCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupportDocID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateDateTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="physicalPath" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="VirtualPath" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartyID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUploadedFilePathResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveUploadedFilePathResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUploadedEnclosureCnt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupportDocID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="EnclosureType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUploadedEnclosureCntResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUploadedEnclosureCntResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsSpaceAvailableonDrive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FileSize" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsSpaceAvailableonDriveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsSpaceAvailableonDriveResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEnclosureFileSize">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SroCode" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="SupportDocumentID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartyID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEnclosureFileSizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetEnclosureFileSizeResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFileExistAndNotRescanningEnabled">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentTypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFileExistAndNotRescanningEnabledResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsFileExistAndNotRescanningEnabledResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFileExistAndNotRescanningEnabledMP">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="DocumentTypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SROCode" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsFileExistAndNotRescanningEnabledMPResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsFileExistAndNotRescanningEnabledMPResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunkAllFormIII">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary" />
+            <s:element minOccurs="1" maxOccurs="1" name="offset" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fileSize" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="docType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="VersionNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AppendChunkAllFormIIIResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="updateServerLogAllFormIII">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="docID" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="docType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updateServerLogAllFormIIIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updateServerLogAllFormIIIResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="char">
+        <s:restriction base="s:unsignedShort" />
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="DownloadScannedFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadScannedFile" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScannedFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadScannedFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkAllSoapIn">
+    <wsdl:part name="parameters" element="tns:AppendChunkAll" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkAllSoapOut">
+    <wsdl:part name="parameters" element="tns:AppendChunkAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkAllSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChunkAll" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkAllSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChunkAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSizeAllSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileSizeAll" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSizeAllSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileSizeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateServerLogAllSoapIn">
+    <wsdl:part name="parameters" element="tns:updateServerLogAll" />
+  </wsdl:message>
+  <wsdl:message name="updateServerLogAllSoapOut">
+    <wsdl:part name="parameters" element="tns:updateServerLogAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScannedPhotoThumbSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadScannedPhotoThumb" />
+  </wsdl:message>
+  <wsdl:message name="DownloadScannedPhotoThumbSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadScannedPhotoThumbResponse" />
+  </wsdl:message>
+  <wsdl:message name="PhotoThumbUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:PhotoThumbUpload" />
+  </wsdl:message>
+  <wsdl:message name="PhotoThumbUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:PhotoThumbUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsPhotoThumbAvailableSoapIn">
+    <wsdl:part name="parameters" element="tns:IsPhotoThumbAvailable" />
+  </wsdl:message>
+  <wsdl:message name="IsPhotoThumbAvailableSoapOut">
+    <wsdl:part name="parameters" element="tns:IsPhotoThumbAvailableResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:AppendChunk" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:AppendChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChunk" />
+  </wsdl:message>
+  <wsdl:message name="GetChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSizeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileSize" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSizeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileSizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateServerLogSoapIn">
+    <wsdl:part name="parameters" element="tns:updateServerLog" />
+  </wsdl:message>
+  <wsdl:message name="updateServerLogSoapOut">
+    <wsdl:part name="parameters" element="tns:updateServerLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsValidUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:IsValidUpload" />
+  </wsdl:message>
+  <wsdl:message name="IsValidUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:IsValidUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="SupportAllUploadSoapIn">
+    <wsdl:part name="parameters" element="tns:SupportAllUpload" />
+  </wsdl:message>
+  <wsdl:message name="SupportAllUploadSoapOut">
+    <wsdl:part name="parameters" element="tns:SupportAllUploadResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsFileExistsSoapIn">
+    <wsdl:part name="parameters" element="tns:IsFileExists" />
+  </wsdl:message>
+  <wsdl:message name="IsFileExistsSoapOut">
+    <wsdl:part name="parameters" element="tns:IsFileExistsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SupportAllDownloadSoapIn">
+    <wsdl:part name="parameters" element="tns:SupportAllDownload" />
+  </wsdl:message>
+  <wsdl:message name="SupportAllDownloadSoapOut">
+    <wsdl:part name="parameters" element="tns:SupportAllDownloadResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUploadedFilePathSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUploadedFilePath" />
+  </wsdl:message>
+  <wsdl:message name="SaveUploadedFilePathSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUploadedFilePathResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadedEnclosureCntSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUploadedEnclosureCnt" />
+  </wsdl:message>
+  <wsdl:message name="GetUploadedEnclosureCntSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUploadedEnclosureCntResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsSpaceAvailableonDriveSoapIn">
+    <wsdl:part name="parameters" element="tns:IsSpaceAvailableonDrive" />
+  </wsdl:message>
+  <wsdl:message name="IsSpaceAvailableonDriveSoapOut">
+    <wsdl:part name="parameters" element="tns:IsSpaceAvailableonDriveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEnclosureFileSizeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEnclosureFileSize" />
+  </wsdl:message>
+  <wsdl:message name="GetEnclosureFileSizeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEnclosureFileSizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsFileExistAndNotRescanningEnabledSoapIn">
+    <wsdl:part name="parameters" element="tns:IsFileExistAndNotRescanningEnabled" />
+  </wsdl:message>
+  <wsdl:message name="IsFileExistAndNotRescanningEnabledSoapOut">
+    <wsdl:part name="parameters" element="tns:IsFileExistAndNotRescanningEnabledResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsFileExistAndNotRescanningEnabledMPSoapIn">
+    <wsdl:part name="parameters" element="tns:IsFileExistAndNotRescanningEnabledMP" />
+  </wsdl:message>
+  <wsdl:message name="IsFileExistAndNotRescanningEnabledMPSoapOut">
+    <wsdl:part name="parameters" element="tns:IsFileExistAndNotRescanningEnabledMPResponse" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkAllFormIIISoapIn">
+    <wsdl:part name="parameters" element="tns:AppendChunkAllFormIII" />
+  </wsdl:message>
+  <wsdl:message name="AppendChunkAllFormIIISoapOut">
+    <wsdl:part name="parameters" element="tns:AppendChunkAllFormIIIResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateServerLogAllFormIIISoapIn">
+    <wsdl:part name="parameters" element="tns:updateServerLogAllFormIII" />
+  </wsdl:message>
+  <wsdl:message name="updateServerLogAllFormIIISoapOut">
+    <wsdl:part name="parameters" element="tns:updateServerLogAllFormIIIResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FileUploaderSoap">
+    <wsdl:operation name="DownloadScannedFile">
+      <wsdl:input message="tns:DownloadScannedFileSoapIn" />
+      <wsdl:output message="tns:DownloadScannedFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunkAll">
+      <wsdl:input message="tns:AppendChunkAllSoapIn" />
+      <wsdl:output message="tns:AppendChunkAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChunkAll">
+      <wsdl:input message="tns:GetChunkAllSoapIn" />
+      <wsdl:output message="tns:GetChunkAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSizeAll">
+      <wsdl:input message="tns:GetFileSizeAllSoapIn" />
+      <wsdl:output message="tns:GetFileSizeAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLogAll">
+      <wsdl:input message="tns:updateServerLogAllSoapIn" />
+      <wsdl:output message="tns:updateServerLogAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScannedPhotoThumb">
+      <wsdl:input message="tns:DownloadScannedPhotoThumbSoapIn" />
+      <wsdl:output message="tns:DownloadScannedPhotoThumbSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PhotoThumbUpload">
+      <wsdl:input message="tns:PhotoThumbUploadSoapIn" />
+      <wsdl:output message="tns:PhotoThumbUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPhotoThumbAvailable">
+      <wsdl:input message="tns:IsPhotoThumbAvailableSoapIn" />
+      <wsdl:output message="tns:IsPhotoThumbAvailableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunk">
+      <wsdl:input message="tns:AppendChunkSoapIn" />
+      <wsdl:output message="tns:AppendChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChunk">
+      <wsdl:input message="tns:GetChunkSoapIn" />
+      <wsdl:output message="tns:GetChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <wsdl:input message="tns:GetFileSizeSoapIn" />
+      <wsdl:output message="tns:GetFileSizeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLog">
+      <wsdl:input message="tns:updateServerLogSoapIn" />
+      <wsdl:output message="tns:updateServerLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsValidUpload">
+      <wsdl:input message="tns:IsValidUploadSoapIn" />
+      <wsdl:output message="tns:IsValidUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SupportAllUpload">
+      <wsdl:input message="tns:SupportAllUploadSoapIn" />
+      <wsdl:output message="tns:SupportAllUploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExists">
+      <wsdl:input message="tns:IsFileExistsSoapIn" />
+      <wsdl:output message="tns:IsFileExistsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SupportAllDownload">
+      <wsdl:input message="tns:SupportAllDownloadSoapIn" />
+      <wsdl:output message="tns:SupportAllDownloadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUploadedFilePath">
+      <wsdl:input message="tns:SaveUploadedFilePathSoapIn" />
+      <wsdl:output message="tns:SaveUploadedFilePathSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadedEnclosureCnt">
+      <wsdl:input message="tns:GetUploadedEnclosureCntSoapIn" />
+      <wsdl:output message="tns:GetUploadedEnclosureCntSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsSpaceAvailableonDrive">
+      <wsdl:input message="tns:IsSpaceAvailableonDriveSoapIn" />
+      <wsdl:output message="tns:IsSpaceAvailableonDriveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEnclosureFileSize">
+      <wsdl:input message="tns:GetEnclosureFileSizeSoapIn" />
+      <wsdl:output message="tns:GetEnclosureFileSizeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExistAndNotRescanningEnabled">
+      <wsdl:input message="tns:IsFileExistAndNotRescanningEnabledSoapIn" />
+      <wsdl:output message="tns:IsFileExistAndNotRescanningEnabledSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExistAndNotRescanningEnabledMP">
+      <wsdl:input message="tns:IsFileExistAndNotRescanningEnabledMPSoapIn" />
+      <wsdl:output message="tns:IsFileExistAndNotRescanningEnabledMPSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunkAllFormIII">
+      <wsdl:input message="tns:AppendChunkAllFormIIISoapIn" />
+      <wsdl:output message="tns:AppendChunkAllFormIIISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLogAllFormIII">
+      <wsdl:input message="tns:updateServerLogAllFormIIISoapIn" />
+      <wsdl:output message="tns:updateServerLogAllFormIIISoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FileUploaderSoap" type="tns:FileUploaderSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadScannedFile">
+      <soap:operation soapAction="http://tempuri.org/DownloadScannedFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunkAll">
+      <soap:operation soapAction="http://tempuri.org/AppendChunkAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunkAll">
+      <soap:operation soapAction="http://tempuri.org/GetChunkAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSizeAll">
+      <soap:operation soapAction="http://tempuri.org/GetFileSizeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLogAll">
+      <soap:operation soapAction="http://tempuri.org/updateServerLogAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScannedPhotoThumb">
+      <soap:operation soapAction="http://tempuri.org/DownloadScannedPhotoThumb" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PhotoThumbUpload">
+      <soap:operation soapAction="http://tempuri.org/PhotoThumbUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPhotoThumbAvailable">
+      <soap:operation soapAction="http://tempuri.org/IsPhotoThumbAvailable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunk">
+      <soap:operation soapAction="http://tempuri.org/AppendChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunk">
+      <soap:operation soapAction="http://tempuri.org/GetChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <soap:operation soapAction="http://tempuri.org/GetFileSize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLog">
+      <soap:operation soapAction="http://tempuri.org/updateServerLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidUpload">
+      <soap:operation soapAction="http://tempuri.org/IsValidUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupportAllUpload">
+      <soap:operation soapAction="http://tempuri.org/SupportAllUpload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExists">
+      <soap:operation soapAction="http://tempuri.org/IsFileExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupportAllDownload">
+      <soap:operation soapAction="http://tempuri.org/SupportAllDownload" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUploadedFilePath">
+      <soap:operation soapAction="http://tempuri.org/SaveUploadedFilePath" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadedEnclosureCnt">
+      <soap:operation soapAction="http://tempuri.org/GetUploadedEnclosureCnt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsSpaceAvailableonDrive">
+      <soap:operation soapAction="http://tempuri.org/IsSpaceAvailableonDrive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnclosureFileSize">
+      <soap:operation soapAction="http://tempuri.org/GetEnclosureFileSize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExistAndNotRescanningEnabled">
+      <soap:operation soapAction="http://tempuri.org/IsFileExistAndNotRescanningEnabled" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExistAndNotRescanningEnabledMP">
+      <soap:operation soapAction="http://tempuri.org/IsFileExistAndNotRescanningEnabledMP" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunkAllFormIII">
+      <soap:operation soapAction="http://tempuri.org/AppendChunkAllFormIII" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLogAllFormIII">
+      <soap:operation soapAction="http://tempuri.org/updateServerLogAllFormIII" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FileUploaderSoap12" type="tns:FileUploaderSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="DownloadScannedFile">
+      <soap12:operation soapAction="http://tempuri.org/DownloadScannedFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunkAll">
+      <soap12:operation soapAction="http://tempuri.org/AppendChunkAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunkAll">
+      <soap12:operation soapAction="http://tempuri.org/GetChunkAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSizeAll">
+      <soap12:operation soapAction="http://tempuri.org/GetFileSizeAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLogAll">
+      <soap12:operation soapAction="http://tempuri.org/updateServerLogAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadScannedPhotoThumb">
+      <soap12:operation soapAction="http://tempuri.org/DownloadScannedPhotoThumb" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PhotoThumbUpload">
+      <soap12:operation soapAction="http://tempuri.org/PhotoThumbUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsPhotoThumbAvailable">
+      <soap12:operation soapAction="http://tempuri.org/IsPhotoThumbAvailable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunk">
+      <soap12:operation soapAction="http://tempuri.org/AppendChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChunk">
+      <soap12:operation soapAction="http://tempuri.org/GetChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <soap12:operation soapAction="http://tempuri.org/GetFileSize" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLog">
+      <soap12:operation soapAction="http://tempuri.org/updateServerLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsValidUpload">
+      <soap12:operation soapAction="http://tempuri.org/IsValidUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupportAllUpload">
+      <soap12:operation soapAction="http://tempuri.org/SupportAllUpload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExists">
+      <soap12:operation soapAction="http://tempuri.org/IsFileExists" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SupportAllDownload">
+      <soap12:operation soapAction="http://tempuri.org/SupportAllDownload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUploadedFilePath">
+      <soap12:operation soapAction="http://tempuri.org/SaveUploadedFilePath" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUploadedEnclosureCnt">
+      <soap12:operation soapAction="http://tempuri.org/GetUploadedEnclosureCnt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsSpaceAvailableonDrive">
+      <soap12:operation soapAction="http://tempuri.org/IsSpaceAvailableonDrive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEnclosureFileSize">
+      <soap12:operation soapAction="http://tempuri.org/GetEnclosureFileSize" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExistAndNotRescanningEnabled">
+      <soap12:operation soapAction="http://tempuri.org/IsFileExistAndNotRescanningEnabled" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsFileExistAndNotRescanningEnabledMP">
+      <soap12:operation soapAction="http://tempuri.org/IsFileExistAndNotRescanningEnabledMP" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AppendChunkAllFormIII">
+      <soap12:operation soapAction="http://tempuri.org/AppendChunkAllFormIII" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateServerLogAllFormIII">
+      <soap12:operation soapAction="http://tempuri.org/updateServerLogAllFormIII" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FileUploader">
+    <wsdl:port name="FileUploaderSoap" binding="tns:FileUploaderSoap">
+      <soap:address location="http://localhost:1817/FileUploader.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FileUploaderSoap12" binding="tns:FileUploaderSoap12">
+      <soap12:address location="http://localhost:1817/FileUploader.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

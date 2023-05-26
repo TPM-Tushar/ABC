@@ -1,0 +1,459 @@
+﻿@model CustomModels.Models.Remittance.MasterData.MasterDataReportModel
+@using ECDataUI.Helper
+
+<html>
+<head>
+    <script src="~/Areas/Remittance/Scripts/MasterData/MasterData.js"></script>
+
+
+    <style>
+
+        .th {
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            vertical-align: middle !important;
+        }
+
+        .containerRadio {
+            display: block;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 11px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            margin-top: 4%;
+        }
+
+        .dataTables_wrapper {
+            font-size: 12px;
+            font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+
+        /* Hide the browser's default radio button */
+        .containerRadio input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        td {
+            /*font-size: 50px;*/
+            word-break: break-word !important;
+        }
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 19px;
+            width: 19px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .containerRadio:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .containerRadio input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .containerRadio input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .containerRadio .checkmark:after {
+            top: 6px;
+            left: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        thead, th {
+            text-align: center;
+        }
+
+        .multiselect b.caret {
+            display: none;
+        }
+
+        .btn-group {
+            position: relative;
+            width: 100%;
+        }
+
+        .multiselect {
+            width: 100%;
+            text-align: left;
+        }
+
+        .CheckBoxClass {
+            transform: scale(1.5);
+            -ms-transform: scale(1.5);
+            -webkit-transform: scale(1.5);
+            padding: 10px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+        }
+
+        .multiselect-container {
+            position: absolute;
+            width: inherit;
+        }
+
+            .multiselect-container > li > a {
+                white-space: normal;
+            }
+
+
+        .minimal {
+            background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+            background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+            background-size: 5px 5px, 5px 5px, 1px 1.5em;
+            background-repeat: no-repeat;
+        }
+
+        /*td {
+            word-wrap: break-word;
+        }*/
+
+        .textAlignLeft {
+            text-align: left;
+        }
+
+        th {
+            vertical-align: middle;
+        }
+
+        table thead th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .containerRadio .checkmark:after {
+            top: 6px;
+            left: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        .containerRadio {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            /*// width:35px;*/
+        }
+
+
+
+        tbody tr.selected {
+            color: #6aa0ce;
+            background-color: whitesmoke !important; /* Not working */
+        }
+
+
+        table.dataTable tbody th {
+            white-space: nowrap;
+        }
+
+        table td {
+            font-family: KNB-TTUmaEN;
+            font-weight: 500;
+            font-size: medium;
+        }
+
+        .BTNwrapper {
+            text-align: center;
+        }
+
+        .button {
+            position: absolute;
+            top: 50%;
+        }
+
+
+
+        .dataTables_scrollBody {
+            overflow-x: visible !important;
+            overflow-y: auto;
+        }
+    </style>
+
+
+
+
+
+
+
+</head>
+<body>
+    <div class="container">
+
+   
+
+
+        <div class="col-md-offset-0">
+
+            <h3 style="text-align:center;color:#3177b4 ;">Master Data Report <span style="color:black"></span></h3>
+            <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+               
+                <div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                        <span class="" style="color: #FFF; font-size: 120%;">
+                            Search Parameters
+                        </span>
+                    </div>
+
+                    @*added by vijay on 19-01-2023*@
+                <div class="col-md-12" id="divDocumentType" style="display: table; cursor: pointer;margin-top:50px;">
+                    <div class="col-md-6">
+                   
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.DBName, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                        </div>
+                    
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.DBName,  @Model.DBName, new { @class = "form-control minimal", id = "DBId", autocomplete = "off", tabindex = 1 })
+                        @Html.ValidationMessageFor(model => model.DBName, "", new { @class = "text-danger" })
+
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                    
+                        <div class="col-md-3">      
+                            @Html.LabelFor(model => model.TableName, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                        </div>
+                    
+                    <div class="col-md-9">
+                        @Html.DropDownListFor(model => model.TableName, @Model.TableName, new { @class = "form-control minimal EC", id = "TableId", autocomplete = "off", tabindex = 1 })
+
+                        @Html.DropDownListFor(model => model.TableName_KG, @Model.TableName_KG, new { @class = "form-control minimal KG", id = "TableId", autocomplete = "off", tabindex =1 })
+
+                        @Html.ValidationMessageFor(model => model.TableName, "", new { @class = "text-danger" })
+                        @Html.ValidationMessageFor(model => model.TableName_KG, "", new { @class = "text-danger" })
+
+
+                    </div>
+                        </div>
+                </div>
+
+
+                    
+                    
+                    
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                        <div class="row">
+                            <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+                                <div class="col-md-4">
+                                </div>
+                                <div class="col-md-4" id="divDocumentType" style="display: table; cursor: pointer;">
+                                  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                </div>
+            </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-offset-2">
+
+                    <div class="form-group col-md-8">
+                        <div class='BTNwrapper' style="padding-left:25%;margin-top:1%;margin-bottom:2%;">
+
+                            <button type="button" class="btn btn-group-md btn-success" onclick="GetMasterData()" tabindex="8">Search</button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">Master Data Report Details</span>
+
+            </div>
+            <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                    <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span>@*Note : This report is based on pre processed data considered upto*@ @*@Model.MaxDate*@</b> </h6></i></div>
+                    @*<table id="MasterDataID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">*@
+
+                <div style="overflow-x:auto">
+                    <table id="MasterDataID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle; background-color: aliceblue; overflow: auto;border-collapse:collapse; border: solid; width: 100%;">
+                        <thead>
+                            
+                            <tr>
+                                <th style="vertical-align:middle;text-align:center">SrNo</th>
+                                @*villagemaster*@
+                                <th style="vertical-align:middle;text-align:center">Village Code.</th>
+                                <th style="vertical-align:middle;text-align:center">SRO Code</th>
+                                <th style="vertical-align:middle;text-align:center">Hobli Code</th>
+                                <th style="vertical-align:middle;text-align:center">CensusCode</th>
+                                <th style="vertical-align:middle;text-align:center">Taluk Code</th>
+                                <th style="vertical-align:middle;text-align:center">village NameK</th>
+                                <th style="vertical-align:middle;text-align:center">village Name E</th>
+                                <th style="vertical-align:middle;text-align:center">Isurban</th>
+                                <th style="vertical-align:middle;text-align:center">BhoomiTalukCode</th>
+                                <th style="vertical-align:middle;text-align:center">BhoomiVillageCode</th>
+                                <th style="vertical-align:middle;text-align:center">BhoomiVillageName</th>
+                                @*Hoblimaster*@
+                                <th style="vertical-align:middle;text-align:center">Hobli Code</th>
+                                <th style="vertical-align:middle;text-align:center">Taluk Code</th>
+                                <th style="vertical-align:middle;text-align:center">Hobli Name K</th>
+                                <th style="vertical-align:middle;text-align:center">Hobli Name E</th>
+                                <th style="vertical-align:middle;text-align:center">Short Name K</th>
+                                <th style="vertical-align:middle;text-align:center">Short Name E</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Hobli Code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Hobli Name</th>
+                                @*bhooomiMapping*@
+
+                                <th style="vertical-align:middle;text-align:center">Bhoomi mappinng Id</th>
+                                <th style="vertical-align:middle;text-align:center">District Code</th>
+                                <th style="vertical-align:middle;text-align:center">District NameE</th>
+                                <th style="vertical-align:middle;text-align:center">Kaveri SRO Code</th>
+                                <th style="vertical-align:middle;text-align:center">Kaveri SRO Name</th>
+                                <th style="vertical-align:middle;text-align:center">Kaveri Village Code</th>
+                                <th style="vertical-align:middle;text-align:center">Kaveri Village Name</th>
+                                <th style="vertical-align:middle;text-align:center">Kaveri hobli code</th>
+                                <th style="vertical-align:middle;text-align:center">Kaveri hobli Name</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi District Code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Taluk Code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Taluk Name</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Hobli code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Hobli Name</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi village code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi village Name</th>
+                                <th style="vertical-align:middle;text-align:center">Is Updated</th>
+
+                                @*districtmaster*@
+                                <th style="vertical-align:middle;text-align:center">District Code</th>
+                                <th style="vertical-align:middle;text-align:center">District NameK</th>
+                                <th style="vertical-align:middle;text-align:center">District NameE</th>
+                                <th style="vertical-align:middle;text-align:center">Short NameK</th>
+                                <th style="vertical-align:middle;text-align:center">Short NameE</th>
+                                <th style="vertical-align:middle;text-align:center">DigCode</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Distrct Code</th>
+                                @*//villagemasterMergingMapping*@
+                                <th style="vertical-align:middle;text-align:center">ID</th>
+                                <th style="vertical-align:middle;text-align:center">SRO CODE</th>
+                                <th style="vertical-align:middle;text-align:center">village code</th>
+                                <th style="vertical-align:middle;text-align:center"> merged village code</th>
+                                @*sromaster*@
+
+                                <th style="vertical-align:middle;text-align:center">SRO Code</th>
+                                <th style="vertical-align:middle;text-align:center">District Code</th>
+                                <th style="vertical-align:middle;text-align:center">Sro Name K</th>
+                                <th style="vertical-align:middle;text-align:center">Sro Name E</th>
+                                <th style="vertical-align:middle;text-align:center">Short Name K</th>
+                                <th style="vertical-align:middle;text-align:center">Short Name E</th>
+                                <th style="vertical-align:middle;text-align:center">Get Bhoomi Data</th>
+                                <th style="vertical-align:middle;text-align:center">Is Village Matching</th>
+                                @*MAS_office_Master*@
+                                <th style="vertical-align:middle;text-align:center">OfficeID</th>
+                                <th style="vertical-align:middle;text-align:center">OfficeTypeID</th>
+                                <th style="vertical-align:middle;text-align:center">OfficeName</th>
+                                <th style="vertical-align:middle;text-align:center">OfficeNameR</th>
+                                <th style="vertical-align:middle;text-align:center">ShortName</th>
+                                <th style="vertical-align:middle;text-align:center">ShortNameR</th>
+                                <th style="vertical-align:middle;text-align:center">DistrictID</th>
+                                <th style="vertical-align:middle;text-align:center">ParentOfficeID</th>
+                                <th style="vertical-align:middle;text-align:center">KaveriCode</th>
+                                <th style="vertical-align:middle;text-align:center">BhoomiCensusCode</th>
+                                <th style="vertical-align:middle;text-align:center">AnyWhereRegEnabled</th>
+                                <th style="vertical-align:middle;text-align:center">OfficeAddress</th>
+                                <th style="vertical-align:middle;text-align:center">Landline</th>
+                                <th style="vertical-align:middle;text-align:center">Mobile</th>
+                                <th style="vertical-align:middle;text-align:center">OnlineBookingEnabled</th>
+                                @*MAS_villages*@
+                                <th style="vertical-align:middle;text-align:center">village ID</th>
+                                <th style="vertical-align:middle;text-align:center">Office ID</th>
+                                <th style="vertical-align:middle;text-align:center">Hobli ID</th>
+                                <th style="vertical-align:middle;text-align:center">Taluka ID</th>
+                                <th style="vertical-align:middle;text-align:center">Village Name</th>
+                                <th style="vertical-align:middle;text-align:center">Village Name R</th>
+                                <th style="vertical-align:middle;text-align:center">Is Urban</th>
+                                <th style="vertical-align:middle;text-align:center">CensusCode</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Taluka Code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Village Code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Village Name</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi District Code</th>
+                                <th style="vertical-align:middle;text-align:center">UP Or Town ID</th>
+                                @*MAS_Hoblis*@
+                                <th style="vertical-align:middle;text-align:center">Hobli ID</th>
+                                <th style="vertical-align:middle;text-align:center">Taluka ID</th>
+                                <th style="vertical-align:middle;text-align:center">Hobli Name</th>
+                                <th style="vertical-align:middle;text-align:center">Hobli Name R</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Hobli Code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Hobli Name</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Taluka Code</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi Taluka Name</th>
+                                <th style="vertical-align:middle;text-align:center">Bhoomi District Code</th>
+
+
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+                </div>
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-md-5"></div>
+                    <div class='BTNwrapper col-md-2' style="text-align:left;">
+                        <span id="EXCELSPANID"></span>
+
+                    </div>
+
+                    <div class="col-md-5" style="padding-left:19%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    </div>
+
+</body>
+</html>
+
+
+
+
+

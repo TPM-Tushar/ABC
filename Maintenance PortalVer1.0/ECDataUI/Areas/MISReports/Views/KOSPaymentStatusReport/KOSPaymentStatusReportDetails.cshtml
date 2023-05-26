@@ -1,0 +1,151 @@
+﻿@model  CustomModels.Models.MISReports.KOSPaymentStatusReport.KOSPaymentStatusRptResModel
+
+<style>
+
+    a:link {
+        color: #0000FF;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    
+</style>
+
+<div class="container">
+    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+        <span class="" style="color: #FFF; font-size: 120%;">
+            KOS Payment Status Summary
+        </span>
+    </div>
+    <div class="panel panel-default" id="SearchResult2" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <table id="KOSPaymentStatusReportDetailsTable" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; width: 60%;margin-left:15%;margin-top:1%;border-bottom: 1px solid black !important;border-top: 2px solid black !important;">
+
+                    @if (@Model != null)
+                    {
+                        foreach (var item in @Model.KOSPaymentStatusDetailsList)
+                        {
+
+                            <tr>
+
+                                <th style="text-align:left; font-weight:900; width:60%">Application : @item.ApplicationTypeId</th>
+
+                                <td style="text-align:center"></td>
+                            </tr>
+
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total Payment Request Submitted</th>
+
+                                <td style="text-align:center">  @item.TotalPaymentReqSubmitted  </td>
+
+                            </tr>
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total Payments Successful <br /></th>
+
+                                <td style="text-align:center"><u> <a onclick="LoadKOSPaymentStatusReportDataTable(1)"> @item.TotalPaymentsSuccessful </a> </u></td>
+
+
+
+                            </tr>
+
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Total Payments Failed <br /></th>
+
+                                <td style="text-align:center"> <u> <a onclick="LoadKOSPaymentStatusReportDataTable(2)"> @item.TotalPaymentsFailed </a> </u></td>
+
+
+
+                            </tr>
+                            <tr>
+                                <th style="width:60% ; text-align:left;"> Total Payments Expired<br /></th>
+
+                                <td style="text-align:center"><u>  <a onclick="LoadKOSPaymentStatusReportDataTable(3)"> @item.TotalPaymentsExpired </a></u></td>
+
+
+
+                            </tr>
+                            <tr>
+                                <th style="width:60% ; text-align:left;"> Total Payments Pending <br /></th>
+
+                                <td style="text-align:center"><u>  <a onclick="LoadKOSPaymentStatusReportDataTable(4)"> @item.TotalPaymentsPending </a></u></td>
+
+
+                            </tr>
+                            <tr>
+                                <th style="width:60% ; text-align:left;"> Payment With No  Status<br /></th>
+
+                                <td style="text-align:center"> <u> <a onclick="LoadKOSPaymentStatusReportDataTable(5)"> @item.PaymentWithNoStatus </a></u></td>
+
+
+                            </tr>
+                            <tr>
+                                <th style="width:60% ; text-align:left">
+
+                                    Payment Pending Since &#8195;  &#8195;  &#8195;
+
+                                    <select id="paymentpendingsince" style="text-align:right" onchange="PaymentPendingsinceChanged()">
+
+                                        <option style="text-align:right" value="4">More than 3 days</option>
+                                        <option style="text-align:right" value="3"> 3 days</option>
+                                        <option style="text-align:right" value="2">2 days</option>
+                                        <option style="text-align:right" value="1">1 day</option>
+                                        @*<option style="text-align:right" value="3">More than 3 days</option>
+                <option style="text-align:right" value="2"> 3 days</option>
+                <option style="text-align:right" value="1">2 days</option>
+                <option style="text-align:right" value="0">1 day</option>*@
+                                    </select>
+
+
+                                </th>
+
+
+
+                                <td style="text-align:center" id="paymentpendingsinceted"><u>  <a id="paymentpendingsincetd" onclick="LoadKOSPaymentStatusReportDataTable(6,@item.PaymentPendingSince)"> @item.PaymentPendingSince </a> </u></td>
+
+
+                            </tr>
+                            <tr>
+                                <th style="width:60% ; text-align:left;"> Longest Payment Pending Since <br /></th>
+                                <td style="text-align:center"><u>  <a id="paymentpendingsincetd" onclick="LoadKOSPaymentStatusReportDataTable(7,@item.LongestPaymentPendingSinceDays,'@item.LongestPaymentPendingSinceDate')">  @item.LongestPaymentPendingSince </a></u></td>
+
+                            </tr>
+                            <tr>
+                                <th style="width:60% ; text-align:left;">Average Payment Realization Span<br /></th>
+                                <td style="text-align:center">@item.AvgPaymentRealizationSpan</td>
+
+                            </tr>
+
+                            @*<tbody>
+                    <tr style="background-color:blue;"></tr>
+                </tbody>*@
+                        }
+
+                    }
+                    else
+                    {
+                        <p>  No Data Available for current input </p>
+                    }
+
+                </table>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 2%;">
+        <div class="col-md-5"></div>
+
+        <div class='BTNwrapper col-md-2' style="text-align:left;">
+
+
+            <button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="excelDownload" onclick="EXCELDownloadFun()"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as Excel</button>            
+        </div>
+        <div class="col-md-5" style="padding-left:19%;">
+            <h6> <i>  </i></h6>
+
+        </div>
+
+    </div>
+</div>

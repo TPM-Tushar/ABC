@@ -1,0 +1,600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KAIGR_SEARCHDBModelStoreContainer" CdmEntityContainer="KaigrSearchDB">
+    <EntitySetMapping Name="ApplicationDetails">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.ApplicationDetails">
+        <MappingFragment StoreEntitySet="ApplicationDetails">
+          <ScalarProperty Name="ApplicationID" ColumnName="ApplicationID" />
+          <ScalarProperty Name="ApplicationNumber" ColumnName="ApplicationNumber" />
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+          <ScalarProperty Name="ApplicantName" ColumnName="ApplicantName" />
+          <ScalarProperty Name="ApplicationDate" ColumnName="ApplicationDate" />
+          <ScalarProperty Name="RequestFromSRO" ColumnName="RequestFromSRO" />
+          <ScalarProperty Name="RequestToSRO" ColumnName="RequestToSRO" />
+          <ScalarProperty Name="SearchFromDate" ColumnName="SearchFromDate" />
+          <ScalarProperty Name="SearchToDate" ColumnName="SearchToDate" />
+          <ScalarProperty Name="VillageCode" ColumnName="VillageCode" />
+          <ScalarProperty Name="IsCertificateGenerated" ColumnName="IsCertificateGenerated" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="OwnerNo" ColumnName="OwnerNo" />
+          <ScalarProperty Name="PropertySchedule" ColumnName="PropertySchedule" />
+          <ScalarProperty Name="SROApplicationNumber" ColumnName="SROApplicationNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ApplicationTypeMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.ApplicationTypeMaster">
+        <MappingFragment StoreEntitySet="ApplicationTypeMaster">
+          <ScalarProperty Name="ApplicationTypeID" ColumnName="ApplicationTypeID" />
+          <ScalarProperty Name="ApplicationType" ColumnName="ApplicationType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DistrictMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.DistrictMaster">
+        <MappingFragment StoreEntitySet="DistrictMaster">
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="DistrictNameE" ColumnName="DistrictNameE" />
+          <ScalarProperty Name="DistrictNameK" ColumnName="DistrictNameK" />
+          <ScalarProperty Name="ShortNameE" ColumnName="ShortNameE" />
+          <ScalarProperty Name="ShortNameK" ColumnName="ShortNameK" />
+          <ScalarProperty Name="DIGCode" ColumnName="DIGCode" />
+          <ScalarProperty Name="BhoomiDistrictCode" ColumnName="BhoomiDistrictCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.DocumentMaster">
+        <MappingFragment StoreEntitySet="DocumentMaster">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="srocode" ColumnName="srocode" />
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="Stamp5DateTime" ColumnName="Stamp5DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HobliMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.HobliMaster">
+        <MappingFragment StoreEntitySet="HobliMaster">
+          <ScalarProperty Name="HobliCode" ColumnName="HobliCode" />
+          <ScalarProperty Name="TalukCode" ColumnName="TalukCode" />
+          <ScalarProperty Name="HobliNameK" ColumnName="HobliNameK" />
+          <ScalarProperty Name="HobliNameE" ColumnName="HobliNameE" />
+          <ScalarProperty Name="ShortNameK" ColumnName="ShortNameK" />
+          <ScalarProperty Name="ShortNameE" ColumnName="ShortNameE" />
+          <ScalarProperty Name="BhoomiHobliCode" ColumnName="BhoomiHobliCode" />
+          <ScalarProperty Name="BhoomiHobliName" ColumnName="BhoomiHobliName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartyInfo">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.PartyInfo">
+        <MappingFragment StoreEntitySet="PartyInfo">
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+          <ScalarProperty Name="PartyTypeID" ColumnName="PartyTypeID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="RelativeName" ColumnName="RelativeName" />
+          <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.PropertyMaster">
+        <MappingFragment StoreEntitySet="PropertyMaster">
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="RegSROCode" ColumnName="RegSROCode" />
+          <ScalarProperty Name="VillageCode" ColumnName="VillageCode" />
+          <ScalarProperty Name="LandMark" ColumnName="LandMark" />
+          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
+          <ScalarProperty Name="Consideration" ColumnName="Consideration" />
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertySchedules">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.PropertySchedules">
+        <MappingFragment StoreEntitySet="PropertySchedules">
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RegistrationArticles">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.RegistrationArticles">
+        <MappingFragment StoreEntitySet="RegistrationArticles">
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="ArticleNameK" ColumnName="ArticleNameK" />
+          <ScalarProperty Name="ArticleNameE" ColumnName="ArticleNameE" />
+          <ScalarProperty Name="UserArticleNo" ColumnName="UserArticleNo" />
+          <ScalarProperty Name="BookId" ColumnName="BookId" />
+          <ScalarProperty Name="GetBhoomidata" ColumnName="GetBhoomidata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RPT_ProcessingIterationMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.RPT_ProcessingIterationMaster">
+        <MappingFragment StoreEntitySet="RPT_ProcessingIterationMaster">
+          <ScalarProperty Name="IterationID" ColumnName="IterationID" />
+          <ScalarProperty Name="IsDro" ColumnName="IsDro" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RPT_RegistrationSummaryDocumentWise">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.RPT_RegistrationSummaryDocumentWise">
+        <MappingFragment StoreEntitySet="RPT_RegistrationSummaryDocumentWise">
+          <ScalarProperty Name="RS_RowID" ColumnName="RS_RowID" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="SROName" ColumnName="SROName" />
+          <ScalarProperty Name="RegMonth" ColumnName="RegMonth" />
+          <ScalarProperty Name="RegYear" ColumnName="RegYear" />
+          <ScalarProperty Name="RegFYear" ColumnName="RegFYear" />
+          <ScalarProperty Name="RegTypeID" ColumnName="RegTypeID" />
+          <ScalarProperty Name="PresentationDate" ColumnName="PresentationDate" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="RegistrationDateABS" ColumnName="RegistrationDateABS" />
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="RegArticleName" ColumnName="RegArticleName" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="StampDutyCollected" ColumnName="StampDutyCollected" />
+          <ScalarProperty Name="RegFeesCollected" ColumnName="RegFeesCollected" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="IterationID" ColumnName="IterationID" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RPT_RegistrationSummaryDocumentWise_04112019">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.RPT_RegistrationSummaryDocumentWise_04112019">
+        <MappingFragment StoreEntitySet="RPT_RegistrationSummaryDocumentWise_04112019">
+          <ScalarProperty Name="RS_RowID" ColumnName="RS_RowID" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="SROName" ColumnName="SROName" />
+          <ScalarProperty Name="JSROCode" ColumnName="JSROCode" />
+          <ScalarProperty Name="JSROName" ColumnName="JSROName" />
+          <ScalarProperty Name="RegMonth" ColumnName="RegMonth" />
+          <ScalarProperty Name="RegYear" ColumnName="RegYear" />
+          <ScalarProperty Name="RegFYear" ColumnName="RegFYear" />
+          <ScalarProperty Name="RegTypeID" ColumnName="RegTypeID" />
+          <ScalarProperty Name="PresentationDate" ColumnName="PresentationDate" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="RegistrationDateABS" ColumnName="RegistrationDateABS" />
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="RegArticleName" ColumnName="RegArticleName" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
+          <ScalarProperty Name="Consideration" ColumnName="Consideration" />
+          <ScalarProperty Name="StampDutyCollected" ColumnName="StampDutyCollected" />
+          <ScalarProperty Name="RegFeesCollected" ColumnName="RegFeesCollected" />
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="IterationID" ColumnName="IterationID" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RPT_RegistrationSummaryPropertyWise">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.RPT_RegistrationSummaryPropertyWise">
+        <MappingFragment StoreEntitySet="RPT_RegistrationSummaryPropertyWise">
+          <ScalarProperty Name="RS_RowID" ColumnName="RS_RowID" />
+          <ScalarProperty Name="IterationID" ColumnName="IterationID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="RegistrationDateABS" ColumnName="RegistrationDateABS" />
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+          <ScalarProperty Name="Consideration" ColumnName="Consideration" />
+          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
+          <ScalarProperty Name="StampDuty" ColumnName="StampDuty" />
+          <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+          <ScalarProperty Name="JSROCODE" ColumnName="JSROCODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SROMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.SROMaster">
+        <MappingFragment StoreEntitySet="SROMaster">
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="SRONameK" ColumnName="SRONameK" />
+          <ScalarProperty Name="SRONameE" ColumnName="SRONameE" />
+          <ScalarProperty Name="ShortnameK" ColumnName="ShortnameK" />
+          <ScalarProperty Name="ShortNameE" ColumnName="ShortNameE" />
+          <ScalarProperty Name="GetBhoomiData" ColumnName="GetBhoomiData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STG_RPT_RegistrationSummaryDocumentWise">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.STG_RPT_RegistrationSummaryDocumentWise">
+        <MappingFragment StoreEntitySet="STG_RPT_RegistrationSummaryDocumentWise">
+          <ScalarProperty Name="RS_RowID" ColumnName="RS_RowID" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="SROName" ColumnName="SROName" />
+          <ScalarProperty Name="RegMonth" ColumnName="RegMonth" />
+          <ScalarProperty Name="RegYear" ColumnName="RegYear" />
+          <ScalarProperty Name="RegFYear" ColumnName="RegFYear" />
+          <ScalarProperty Name="RegTypeID" ColumnName="RegTypeID" />
+          <ScalarProperty Name="PresentationDate" ColumnName="PresentationDate" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="RegistrationDateABS" ColumnName="RegistrationDateABS" />
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="RegArticleName" ColumnName="RegArticleName" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="StampDutyCollected" ColumnName="StampDutyCollected" />
+          <ScalarProperty Name="RegFeesCollected" ColumnName="RegFeesCollected" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STG_RPT_RegistrationSummaryPropertyWise">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.STG_RPT_RegistrationSummaryPropertyWise">
+        <MappingFragment StoreEntitySet="STG_RPT_RegistrationSummaryPropertyWise">
+          <ScalarProperty Name="RS_RowID" ColumnName="RS_RowID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="RegistrationDateABS" ColumnName="RegistrationDateABS" />
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+          <ScalarProperty Name="Consideration" ColumnName="Consideration" />
+          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
+          <ScalarProperty Name="StampDuty" ColumnName="StampDuty" />
+          <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+          <ScalarProperty Name="JSROCODE" ColumnName="JSROCODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VillageMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.VillageMaster">
+        <MappingFragment StoreEntitySet="VillageMaster">
+          <ScalarProperty Name="VillageCode" ColumnName="VillageCode" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="HobliCode" ColumnName="HobliCode" />
+          <ScalarProperty Name="CensusCode" ColumnName="CensusCode" />
+          <ScalarProperty Name="TalukCode" ColumnName="TalukCode" />
+          <ScalarProperty Name="VillageNameK" ColumnName="VillageNameK" />
+          <ScalarProperty Name="VillageNameE" ColumnName="VillageNameE" />
+          <ScalarProperty Name="IsUrban" ColumnName="IsUrban" />
+          <ScalarProperty Name="BhoomiTalukCode" ColumnName="BhoomiTalukCode" />
+          <ScalarProperty Name="BhoomiVillageCode" ColumnName="BhoomiVillageCode" />
+          <ScalarProperty Name="BhoomiVillageName" ColumnName="BhoomiVillageName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Query">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.Query">
+        <MappingFragment StoreEntitySet="Query">
+          <ScalarProperty Name="PartyID" ColumnName="PartyID" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="RelativeName" ColumnName="RelativeName" />
+          <ScalarProperty Name="Phonenumber" ColumnName="Phonenumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RPT_DB_RegistrationSummaryMonthwise">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.RPT_DB_RegistrationSummaryMonthwise">
+        <MappingFragment StoreEntitySet="RPT_DB_RegistrationSummaryMonthwise">
+          <ScalarProperty Name="districtcode" ColumnName="districtcode" />
+          <ScalarProperty Name="districtname" ColumnName="districtname" />
+          <ScalarProperty Name="srocode" ColumnName="srocode" />
+          <ScalarProperty Name="sroname" ColumnName="sroname" />
+          <ScalarProperty Name="regmonth" ColumnName="regmonth" />
+          <ScalarProperty Name="regyear" ColumnName="regyear" />
+          <ScalarProperty Name="regfyear" ColumnName="regfyear" />
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="RegArticleName" ColumnName="RegArticleName" />
+          <ScalarProperty Name="DocsRegistered" ColumnName="DocsRegistered" />
+          <ScalarProperty Name="StampDutyCollected" ColumnName="StampDutyCollected" />
+          <ScalarProperty Name="RegFeesCollected" ColumnName="RegFeesCollected" />
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="temp19112018">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.temp19112018">
+        <MappingFragment StoreEntitySet="temp19112018">
+          <ScalarProperty Name="AvgWorkerTime" ColumnName="AvgWorkerTime" />
+          <ScalarProperty Name="TotalWorkerTime" ColumnName="TotalWorkerTime" />
+          <ScalarProperty Name="AvgElapsedTime" ColumnName="AvgElapsedTime" />
+          <ScalarProperty Name="TotalElapsedTime" ColumnName="TotalElapsedTime" />
+          <ScalarProperty Name="AvgIO" ColumnName="AvgIO" />
+          <ScalarProperty Name="TotalIO" ColumnName="TotalIO" />
+          <ScalarProperty Name="Query" ColumnName="Query" />
+          <ScalarProperty Name="Batch" ColumnName="Batch" />
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="execution_count" ColumnName="execution_count" />
+          <ScalarProperty Name="last_execution_time" ColumnName="last_execution_time" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="KAIGR_SEARCHDBModel.Store.FN_GetPropertyType" FunctionImportName="FN_GetPropertyType">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.FN_GetPropertyType_Result">
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="Consideration" ColumnName="Consideration" />
+          <ScalarProperty Name="MarketValue" ColumnName="MarketValue" />
+          <ScalarProperty Name="PropertyValue" ColumnName="PropertyValue" />
+          <ScalarProperty Name="PropertyTypeID" ColumnName="PropertyTypeID" />
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+          <ScalarProperty Name="StampDuty" ColumnName="StampDuty" />
+          <ScalarProperty Name="JSROCODE" ColumnName="JSROCODE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="KAIGR_SEARCHDBModel.Store.FN_MONTHYEAR" FunctionImportName="FN_MONTHYEAR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.FN_MONTHYEAR_Result">
+          <ScalarProperty Name="DISPSEQ" ColumnName="DISPSEQ" />
+          <ScalarProperty Name="MONTHID" ColumnName="MONTHID" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="year" ColumnName="year" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="KAIGR_SEARCHDBModel.Store.UDF_GETallDatesOfMonth" FunctionImportName="UDF_GETallDatesOfMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.UDF_GETallDatesOfMonth_Result">
+          <ScalarProperty Name="SelDate" ColumnName="SelDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetECDailyReceiptDetails" FunctionName="KAIGR_SEARCHDBModel.Store.GetECDailyReceiptDetails" />
+    <FunctionImportMapping FunctionImportName="GetECUserLog" FunctionName="KAIGR_SEARCHDBModel.Store.GetECUserLog" />
+    <FunctionImportMapping FunctionImportName="GetScannedFileUploadStatusReport" FunctionName="KAIGR_SEARCHDBModel.Store.GetScannedFileUploadStatusReport" />
+    <FunctionImportMapping FunctionImportName="SearchByAddress" FunctionName="KAIGR_SEARCHDBModel.Store.SearchByAddress">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.SearchByAddress_Result">
+          <ScalarProperty Name="finalregistrationnumber" ColumnName="finalregistrationnumber" />
+          <ScalarProperty Name="articlenamee" ColumnName="articlenamee" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchByAddress_20112018" FunctionName="KAIGR_SEARCHDBModel.Store.SearchByAddress_20112018">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.SearchByAddress_20112018_Result">
+          <ScalarProperty Name="finalregistrationnumber" ColumnName="finalregistrationnumber" />
+          <ScalarProperty Name="articlenamee" ColumnName="articlenamee" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchByName" FunctionName="KAIGR_SEARCHDBModel.Store.SearchByName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.SearchByName_Result">
+          <ScalarProperty Name="finalregistrationnumber" ColumnName="finalregistrationnumber" />
+          <ScalarProperty Name="articlenamee" ColumnName="articlenamee" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchByName_20112018" FunctionName="KAIGR_SEARCHDBModel.Store.SearchByName_20112018">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.SearchByName_20112018_Result">
+          <ScalarProperty Name="finalregistrationnumber" ColumnName="finalregistrationnumber" />
+          <ScalarProperty Name="articlenamee" ColumnName="articlenamee" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchByPAN" FunctionName="KAIGR_SEARCHDBModel.Store.SearchByPAN">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.SearchByPAN_Result">
+          <ScalarProperty Name="finalregistrationnumber" ColumnName="finalregistrationnumber" />
+          <ScalarProperty Name="articlenamee" ColumnName="articlenamee" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchByPAN_20112018" FunctionName="KAIGR_SEARCHDBModel.Store.SearchByPAN_20112018">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.SearchByPAN_20112018_Result">
+          <ScalarProperty Name="finalregistrationnumber" ColumnName="finalregistrationnumber" />
+          <ScalarProperty Name="articlenamee" ColumnName="articlenamee" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SearchByProperty" FunctionName="KAIGR_SEARCHDBModel.Store.SearchByProperty">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.SearchByProperty_Result">
+          <ScalarProperty Name="finalregistrationnumber" ColumnName="finalregistrationnumber" />
+          <ScalarProperty Name="articlenamee" ColumnName="articlenamee" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ExportDetails" FunctionName="KAIGR_SEARCHDBModel.Store.SP_ExportDetails" />
+    <FunctionImportMapping FunctionImportName="SP_ExportDetails_20112018" FunctionName="KAIGR_SEARCHDBModel.Store.SP_ExportDetails_20112018" />
+    <FunctionImportMapping FunctionImportName="USP_DB_HIGHVALUE_SUMMARY" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_HIGHVALUE_SUMMARY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_HIGHVALUE_SUMMARY_Result">
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+          <ScalarProperty Name="PropertyValueRange" ColumnName="PropertyValueRange" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED" ColumnName="NO_OF_DOCUMENTS_REGISTERED" />
+          <ScalarProperty Name="STAMPDUTY_LACS" ColumnName="STAMPDUTY_LACS" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS" ColumnName="REGISTRATIONFEE_LACS" />
+          <ScalarProperty Name="TOTAL_REVENUE_COLLECTED" ColumnName="TOTAL_REVENUE_COLLECTED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_THISFYEAR" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_THISFYEAR" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_THISFYEAR_07102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_THISFYEAR_07102019" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_THISMONTH" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_THISMONTH" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_THISMONTH_07102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_THISMONTH_07102019" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_Today" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_Today" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_Today_07102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_Today_07102019" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_UPTODATE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_UPTODATE" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_SUMMARY_UPTODATE_07102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_SUMMARY_UPTODATE_07102019" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_Trend_FYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_Trend_FYWISE" />
+    <FunctionImportMapping FunctionImportName="USP_DB_REG_Trend_monthWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_REG_Trend_monthWISE" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_DAYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_DAYWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_DAYWISE_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_DAYWISE_01102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_DAYWISE_01102019">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_DAYWISE_01102019_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_DOCUMENTWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_DOCUMENTWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_DOCUMENTWISE_Result">
+          <ScalarProperty Name="FinancialYear" ColumnName="FinancialYear" />
+          <ScalarProperty Name="RegArticleName" ColumnName="RegArticleName" />
+          <ScalarProperty Name="SROName" ColumnName="SROName" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="PurchaseValue" ColumnName="PurchaseValue" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_MONTHWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_MONTHWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_MONTHWISE_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="registrationMonth" ColumnName="registrationMonth" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_MONTHWISE_01102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_MONTHWISE_01102019">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_MONTHWISE_01102019_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="registrationMonth" ColumnName="registrationMonth" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_RANGEWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_RANGEWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_RANGEWISE_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_RANGEWISE_01102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_RANGEWISE_01102019">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_RANGEWISE_01102019_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_HIGHVALUE_PROPERTIES" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_HIGHVALUE_PROPERTIES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_HIGHVALUE_PROPERTIES_Result">
+          <ScalarProperty Name="FinancialYear" ColumnName="FinancialYear" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="DocsRegistered" ColumnName="DocsRegistered" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_HIGHVALUE_PROPERTIES_01102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_HIGHVALUE_PROPERTIES_01102019" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_OLAP_GETRegistrationSummaryDocumentwise_04112019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_OLAP_GETRegistrationSummaryDocumentwise_04112019" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_OLAP_GETRegistrationSummaryDocumentwise_07122019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_OLAP_GETRegistrationSummaryDocumentwise_07122019" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_OLAP_GETRegistrationSummaryMonthwise" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_OLAP_GETRegistrationSummaryMonthwise" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_SALEDEED_REGISTERED" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_SALEDEED_REGISTERED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_SALEDEED_REGISTERED_Result">
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_SALEDEED_REGISTERED_01102019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_SALEDEED_REGISTERED_01102019" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_SALEDEED_REGISTERED_04112019" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_SALEDEED_REGISTERED_04112019" />
+    <FunctionImportMapping FunctionImportName="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_Result">
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="SRONAMEE" ColumnName="SRONAMEE" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_JurisdictionalWiseDetail" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_JurisdictionalWiseDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_JurisdictionalWiseDetail_Result">
+          <ScalarProperty Name="JSRONameE" ColumnName="JSRONameE" />
+          <ScalarProperty Name="SRONameE" ColumnName="SRONameE" />
+          <ScalarProperty Name="FINALREGISTRATIONNUMBER" ColumnName="FINALREGISTRATIONNUMBER" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

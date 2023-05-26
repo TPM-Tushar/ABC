@@ -1,0 +1,62 @@
+﻿@using ECDataUI.Helper
+
+
+
+@{
+
+    //string ToDate = Model.ToDate;
+
+    //string FromDate = Model.FromDate;
+    //DateTime MaxDate = Model.MaxDate;
+}
+<style>
+
+</style>
+<script>
+
+    function EXCELDownloadFun() {
+        window.location.href = '/Remittance/BlockingProcesses/DownloadBlockingProcessDetails';
+    }
+
+</script>
+
+<div class="container">
+
+    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id="PanelID">
+                <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                    <span style="cursor: pointer; margin-bottom: 20px;">
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">Blocking Processes</span>
+                </div>
+
+                <div id="DtlscollapseSearchPara" class="row collapse">
+
+                </div>
+
+
+
+
+
+                <br />
+                <br />
+                <br />
+
+                <div class="row" style="padding-bottom:1%;">
+                    <div class="col-md-5"></div>
+                    @*<div class='BTNwrapper col-md-2' style="">
+                        <span id="PDFSPANID"></span>
+                        </div>*@
+                    <div class='BTNwrapper col-md-2' style="text-align:left;margin-top:1%;">
+                        <button type='button' style='width:75%;' class='btn btn-group-md btn-success' onclick="EXCELDownloadFun()"><i style='padding-right:3%;' class='fa fa-file-excel-o'></i>Download as Excel</button>
+
+                    </div>
+                    <div class="col-md-5" style="padding-left:19%;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />

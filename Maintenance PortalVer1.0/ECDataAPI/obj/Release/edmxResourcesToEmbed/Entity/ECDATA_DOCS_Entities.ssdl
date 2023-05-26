@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ECDATA_DOCSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+    <Key>
+      <PropertyRef Name="DETAIL_ID" />
+    </Key>
+    <Property Name="DETAIL_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FUNCTIONALITY_ID" Type="int" Nullable="false" />
+    <Property Name="LOG_DESCRIPTION" Type="varchar(max)" />
+    <Property Name="INSERT_DATETIME" Type="datetime" Nullable="false" />
+    <Property Name="CLASSNAME" Type="varchar" MaxLength="500" />
+    <Property Name="METHODNAME" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="ECLOG_FUNCTIONALITY_MASTER">
+    <Key>
+      <PropertyRef Name="FUNCTIONALITY_ID" />
+    </Key>
+    <Property Name="FUNCTIONALITY_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FUNCTIONALITY_NAME" Type="varchar" MaxLength="5000" Nullable="false" />
+    <Property Name="FUNCTIONALITY_DESC" Type="varchar" MaxLength="8000" />
+    <Property Name="LEVEL_ID" Type="int" Nullable="false" />
+    <Property Name="PARENT_FUNCTIONALITY_ID" Type="int" />
+    <Property Name="STATUS" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MAS_SchedulerMaster">
+    <Key>
+      <PropertyRef Name="SchedulerID" />
+    </Key>
+    <Property Name="SchedulerID" Type="int" Nullable="false" />
+    <Property Name="Scheduler Name" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SROCentralTransSchedularRuntimeDetails">
+    <Key>
+      <PropertyRef Name="IDetailID" />
+    </Key>
+    <Property Name="IDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="SROName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="SchedularRuntime" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="XELAuditSpecificationDetail">
+    <Key>
+      <PropertyRef Name="IDetailID" />
+    </Key>
+    <Property Name="IDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JobID" Type="bigint" Nullable="false" />
+    <Property Name="EVENT_TIME" Type="datetime" Nullable="false" />
+    <Property Name="LOGIN_NAME" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="SERVER_NAME" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="DATABASE_NAME" Type="varchar" MaxLength="1000" />
+    <Property Name="APPLICATION_NAME" Type="varchar" MaxLength="8000" />
+    <Property Name="STATEMENT" Type="varchar(max)" />
+    <Property Name="KEYVALUE" Type="varbinary" MaxLength="200" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="HOST_NAME" Type="varchar" MaxLength="2000" />
+    <Property Name="TransmissionID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="XELReadJobDetails">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="FromYear" Type="int" Nullable="false" />
+    <Property Name="FromMonth" Type="int" Nullable="false" />
+    <Property Name="ToYear" Type="int" Nullable="false" />
+    <Property Name="ToMonth" Type="int" Nullable="false" />
+    <Property Name="JobRegisterDateTime" Type="datetime" Nullable="false" />
+    <Property Name="IsJobCompleted" Type="bit" Nullable="false" />
+    <Property Name="JobCompletionDateTime" Type="datetime" />
+    <Property Name="NumberFilesRead" Type="bigint" />
+    <Property Name="IsErrorOccured" Type="bit" Nullable="false" />
+    <Property Name="ErrorMessage" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="XELSchedulersExceptionLog">
+    <Key>
+      <PropertyRef Name="LogID" />
+    </Key>
+    <Property Name="LogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SROCode" Type="int" />
+    <Property Name="ExceptionType" Type="nvarchar(max)" />
+    <Property Name="InnerExceptionMsg" Type="nvarchar(max)" />
+    <Property Name="ExceptionMsg" Type="nvarchar(max)" />
+    <Property Name="ExceptionStackTrace" Type="nvarchar(max)" />
+    <Property Name="ExceptionMethodName" Type="nvarchar" MaxLength="150" />
+    <Property Name="LogDate" Type="datetime" />
+    <Property Name="SchedulerID" Type="int" />
+  </EntityType>
+  <EntityType Name="XELTransmissionLog">
+    <Key>
+      <PropertyRef Name="TransmissionID" />
+    </Key>
+    <Property Name="TransmissionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="AbsolutePath" Type="varchar(max)" />
+    <Property Name="RelativePath" Type="varchar(max)" />
+    <Property Name="FileName" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Checksum" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="isSuccessfullUpload" Type="bit" Nullable="false" />
+    <Property Name="TransmissionInitiateDateTime" Type="datetime" Nullable="false" />
+    <Property Name="TransmissionCompleteDateTime" Type="datetime" />
+    <Property Name="Year" Type="int" Nullable="false" />
+    <Property Name="Month" Type="int" Nullable="false" />
+    <Property Name="FileSize" Type="bigint" />
+    <Property Name="IsFileReadSuccessful" Type="bit" Nullable="false" />
+    <Property Name="FileReadDateTime" Type="datetime" />
+    <Property Name="EventStartDate" Type="datetime" />
+    <Property Name="EventEndDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER">
+    <End Role="ECLOG_FUNCTIONALITY_MASTER" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="1" />
+    <End Role="ECLOG_FUNCTIONALITY_DEBUG_LOG" Type="Self.ECLOG_FUNCTIONALITY_DEBUG_LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ECLOG_FUNCTIONALITY_MASTER">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Principal>
+      <Dependent Role="ECLOG_FUNCTIONALITY_DEBUG_LOG">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER">
+    <End Role="ECLOG_FUNCTIONALITY_MASTER" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="0..1" />
+    <End Role="ECLOG_FUNCTIONALITY_MASTER1" Type="Self.ECLOG_FUNCTIONALITY_MASTER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ECLOG_FUNCTIONALITY_MASTER">
+        <PropertyRef Name="FUNCTIONALITY_ID" />
+      </Principal>
+      <Dependent Role="ECLOG_FUNCTIONALITY_MASTER1">
+        <PropertyRef Name="PARENT_FUNCTIONALITY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XELAuditSpecificationDetail_XELReadJobDetails">
+    <End Role="XELReadJobDetails" Type="Self.XELReadJobDetails" Multiplicity="1" />
+    <End Role="XELAuditSpecificationDetail" Type="Self.XELAuditSpecificationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XELReadJobDetails">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="XELAuditSpecificationDetail">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XELAuditSpecificationDetail_XELTransmissionLog">
+    <End Role="XELTransmissionLog" Type="Self.XELTransmissionLog" Multiplicity="1" />
+    <End Role="XELAuditSpecificationDetail" Type="Self.XELAuditSpecificationDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="XELTransmissionLog">
+        <PropertyRef Name="TransmissionID" />
+      </Principal>
+      <Dependent Role="XELAuditSpecificationDetail">
+        <PropertyRef Name="TransmissionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_XELSchedulersExceptionLog_MAS_SchedulerMaster">
+    <End Role="MAS_SchedulerMaster" Type="Self.MAS_SchedulerMaster" Multiplicity="0..1" />
+    <End Role="XELSchedulersExceptionLog" Type="Self.XELSchedulersExceptionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAS_SchedulerMaster">
+        <PropertyRef Name="SchedulerID" />
+      </Principal>
+      <Dependent Role="XELSchedulersExceptionLog">
+        <PropertyRef Name="SchedulerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="USP_XEL_EXCEPTION_LOG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="srocode" Type="int" Mode="In" />
+    <Parameter Name="frmDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="USP_XEL_TRANSMISSION_LOG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="srocode" Type="int" Mode="In" />
+    <Parameter Name="frmDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+  </Function>
+  <EntityContainer Name="ECDATA_DOCSModelStoreContainer">
+    <EntitySet Name="ECLOG_FUNCTIONALITY_DEBUG_LOG" EntityType="Self.ECLOG_FUNCTIONALITY_DEBUG_LOG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ECLOG_FUNCTIONALITY_MASTER" EntityType="Self.ECLOG_FUNCTIONALITY_MASTER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MAS_SchedulerMaster" EntityType="Self.MAS_SchedulerMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SROCentralTransSchedularRuntimeDetails" EntityType="Self.SROCentralTransSchedularRuntimeDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XELAuditSpecificationDetail" EntityType="Self.XELAuditSpecificationDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XELReadJobDetails" EntityType="Self.XELReadJobDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XELSchedulersExceptionLog" EntityType="Self.XELSchedulersExceptionLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="XELTransmissionLog" EntityType="Self.XELTransmissionLog" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER" Association="Self.FK_ECLOG_FUNCTIONALITY_DEBUG_LOG_ECLOG_FUNCTIONALITY_MASTER">
+      <End Role="ECLOG_FUNCTIONALITY_MASTER" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+      <End Role="ECLOG_FUNCTIONALITY_DEBUG_LOG" EntitySet="ECLOG_FUNCTIONALITY_DEBUG_LOG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER" Association="Self.FK_ECLOG_FUNCTIONALITY_MASTER_ECLOG_FUNCTIONALITY_MASTER">
+      <End Role="ECLOG_FUNCTIONALITY_MASTER" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+      <End Role="ECLOG_FUNCTIONALITY_MASTER1" EntitySet="ECLOG_FUNCTIONALITY_MASTER" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XELAuditSpecificationDetail_XELReadJobDetails" Association="Self.FK_XELAuditSpecificationDetail_XELReadJobDetails">
+      <End Role="XELReadJobDetails" EntitySet="XELReadJobDetails" />
+      <End Role="XELAuditSpecificationDetail" EntitySet="XELAuditSpecificationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XELAuditSpecificationDetail_XELTransmissionLog" Association="Self.FK_XELAuditSpecificationDetail_XELTransmissionLog">
+      <End Role="XELTransmissionLog" EntitySet="XELTransmissionLog" />
+      <End Role="XELAuditSpecificationDetail" EntitySet="XELAuditSpecificationDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_XELSchedulersExceptionLog_MAS_SchedulerMaster" Association="Self.FK_XELSchedulersExceptionLog_MAS_SchedulerMaster">
+      <End Role="MAS_SchedulerMaster" EntitySet="MAS_SchedulerMaster" />
+      <End Role="XELSchedulersExceptionLog" EntitySet="XELSchedulersExceptionLog" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

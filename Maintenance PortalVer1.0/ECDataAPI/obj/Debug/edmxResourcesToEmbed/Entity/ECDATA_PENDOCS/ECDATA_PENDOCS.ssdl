@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ECDATA_PENDOCS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DocPendingHistory">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="PendingReasonID" />
+      <PropertyRef Name="PendingDate" />
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="PendingReasonID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="2500" Nullable="false" />
+    <Property Name="PendingDate" Type="datetime" Nullable="false" />
+    <Property Name="IsCleared" Type="bit" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocumentMaster">
+    <Key>
+      <PropertyRef Name="DocumentID" />
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="DocumentID" Type="bigint" Nullable="false" />
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="BookID" Type="int" Nullable="false" />
+    <Property Name="StampArticleCode" Type="int" Nullable="false" />
+    <Property Name="RegArticleCode" Type="int" Nullable="false" />
+    <Property Name="DocumentNumber" Type="int" />
+    <Property Name="FinalRegistrationNumber" Type="varchar" MaxLength="50" />
+    <Property Name="PresentDateTime" Type="datetime" />
+    <Property Name="ExecutionDateTime" Type="datetime" />
+    <Property Name="DateOfStamp" Type="datetime" />
+    <Property Name="ConsiderationAmount" Type="money" />
+    <Property Name="RequiredStampDuty" Type="money" />
+    <Property Name="PaidStampDuty" Type="money" />
+    <Property Name="Stamp1DateTime" Type="datetime" />
+    <Property Name="Stamp2DateTime" Type="datetime" />
+    <Property Name="Stamp3DateTime" Type="datetime" />
+    <Property Name="Stamp4DateTime" Type="datetime" />
+    <Property Name="Stamp5DateTime" Type="datetime" />
+    <Property Name="WithdrawalDate" Type="datetime" />
+    <Property Name="PageCount" Type="int" />
+    <Property Name="Index2Shera" Type="varchar" MaxLength="250" />
+    <Property Name="IsVisited" Type="bit" Nullable="false" />
+    <Property Name="IsFiling" Type="bit" Nullable="false" />
+    <Property Name="IsPending" Type="bit" Nullable="false" />
+    <Property Name="IsScanned" Type="bit" Nullable="false" />
+    <Property Name="IsRefused" Type="bit" Nullable="false" />
+    <Property Name="IsPaymentOfMoney" Type="bit" Nullable="false" />
+    <Property Name="IsAdjudicated" Type="bit" Nullable="false" />
+    <Property Name="IsWithdrawn" Type="bit" Nullable="false" />
+    <Property Name="RefusalDate" Type="datetime" />
+    <Property Name="RefusalReason" Type="varchar" MaxLength="250" />
+    <Property Name="RemarksByUser" Type="varchar" MaxLength="2000" />
+    <Property Name="RemarksBySystem" Type="varchar" MaxLength="250" />
+    <Property Name="CorrectionReference" Type="bigint" />
+    <Property Name="OldDocReference" Type="varchar" MaxLength="50" />
+    <Property Name="AdjudicationDetails" Type="varchar" MaxLength="2500" />
+    <Property Name="CDNumber" Type="varchar" MaxLength="50" />
+    <Property Name="IsXMLTransferredTOBHOOMI" Type="bit" />
+    <Property Name="uid" Type="int" />
+    <Property Name="PendingDocumentNumber" Type="varchar" MaxLength="20" />
+    <Property Name="istransmitted" Type="bit" />
+    <Property Name="IsPhotoThumbTransmitted" Type="bit" />
+    <Property Name="InsertedDateTime" Type="datetime" />
+    <Property Name="InitialTransmitted" Type="bit" />
+    <Property Name="ExpiryDate" Type="date" />
+  </EntityType>
+  <EntityType Name="NoticeMaster">
+    <Key>
+      <PropertyRef Name="NoticeID" />
+      <PropertyRef Name="PSROCode" />
+    </Key>
+    <Property Name="NoticeID" Type="bigint" Nullable="false" />
+    <Property Name="PSROCode" Type="int" Nullable="false" />
+    <Property Name="NoticeNo" Type="nvarchar" MaxLength="25" />
+    <Property Name="NoticeIssuedDate" Type="datetime" Nullable="false" />
+    <Property Name="Bride" Type="int" Nullable="false" />
+    <Property Name="BrideGroom" Type="int" Nullable="false" />
+    <Property Name="Fees" Type="int" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="200" />
+    <Property Name="MarriageType" Type="int" />
+    <Property Name="CDNumber" Type="varchar" MaxLength="50" />
+    <Property Name="SROCode" Type="int" />
+    <Property Name="Pages" Type="int" />
+    <Property Name="IsScanned" Type="int" />
+    <Property Name="dateofmarriage" Type="datetime" />
+    <Property Name="IsSolamenised" Type="bit" />
+    <Property Name="IsTransmitted" Type="bit" />
+  </EntityType>
+  <EntityType Name="PendingReasonMaster">
+    <Key>
+      <PropertyRef Name="PendingReasonID" />
+    </Key>
+    <Property Name="PendingReasonID" Type="int" Nullable="false" />
+    <Property Name="ReasonInKannada" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="ReasonInEnglish" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="DocumentStage" Type="varchar" MaxLength="75" />
+    <Property Name="Severity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SROMaster">
+    <Key>
+      <PropertyRef Name="SROCode" />
+    </Key>
+    <Property Name="SROCode" Type="int" Nullable="false" />
+    <Property Name="DistrictCode" Type="int" />
+    <Property Name="SRONameK" Type="nvarchar" MaxLength="100" />
+    <Property Name="SRONameE" Type="nvarchar" MaxLength="150" />
+    <Property Name="ShortnameK" Type="nvarchar" MaxLength="50" />
+    <Property Name="ShortNameE" Type="nvarchar" MaxLength="15" />
+    <Property Name="GetBhoomiData" Type="bit" Nullable="false" />
+    <Property Name="IsVillageMatching" Type="bit" />
+  </EntityType>
+  <Association Name="FK_DocPendingHistory_DocumentMaster">
+    <End Role="DocumentMaster" Type="Self.DocumentMaster" Multiplicity="1" />
+    <End Role="DocPendingHistory" Type="Self.DocPendingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocumentMaster">
+        <PropertyRef Name="DocumentID" />
+        <PropertyRef Name="SROCode" />
+      </Principal>
+      <Dependent Role="DocPendingHistory">
+        <PropertyRef Name="DocumentID" />
+        <PropertyRef Name="SROCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DocPendingHistory_PendingReasonMaster">
+    <End Role="PendingReasonMaster" Type="Self.PendingReasonMaster" Multiplicity="1" />
+    <End Role="DocPendingHistory" Type="Self.DocPendingHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PendingReasonMaster">
+        <PropertyRef Name="PendingReasonID" />
+      </Principal>
+      <Dependent Role="DocPendingHistory">
+        <PropertyRef Name="PendingReasonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NoticeMaster_SROMaster1">
+    <End Role="SROMaster" Type="Self.SROMaster" Multiplicity="0..1" />
+    <End Role="NoticeMaster" Type="Self.NoticeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SROMaster">
+        <PropertyRef Name="SROCode" />
+      </Principal>
+      <Dependent Role="NoticeMaster">
+        <PropertyRef Name="SROCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ECDATA_PENDOCSStoreContainer">
+    <EntitySet Name="DocPendingHistory" EntityType="Self.DocPendingHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocumentMaster" EntityType="Self.DocumentMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NoticeMaster" EntityType="Self.NoticeMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PendingReasonMaster" EntityType="Self.PendingReasonMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SROMaster" EntityType="Self.SROMaster" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DocPendingHistory_DocumentMaster" Association="Self.FK_DocPendingHistory_DocumentMaster">
+      <End Role="DocumentMaster" EntitySet="DocumentMaster" />
+      <End Role="DocPendingHistory" EntitySet="DocPendingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DocPendingHistory_PendingReasonMaster" Association="Self.FK_DocPendingHistory_PendingReasonMaster">
+      <End Role="PendingReasonMaster" EntitySet="PendingReasonMaster" />
+      <End Role="DocPendingHistory" EntitySet="DocPendingHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NoticeMaster_SROMaster1" Association="Self.FK_NoticeMaster_SROMaster1">
+      <End Role="SROMaster" EntitySet="SROMaster" />
+      <End Role="NoticeMaster" EntitySet="NoticeMaster" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

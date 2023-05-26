@@ -1,0 +1,49 @@
+﻿@model CustomModels.Models.LogAnalysis.ValuationDifferenceReport.ValuationDiffFileModel
+
+
+
+
+<style>
+    #outerContainer #mainContainer div.toolbar {
+        display: none !important; /* hide PDF viewer toolbar */
+    }
+
+</style>
+<script>
+    var heading = '@Model.Heading';
+    var OfficeName = $("#spnDetailTblHeader").html();
+
+    $("#dvPopupViewHeading").html("Details for  <i>" + OfficeName +" </i> and Registration number : <i>" +heading+" </i>");
+
+</script>
+
+
+<div>
+
+
+    @{
+        string urlAction = "/LogAnalysis/ValuationDifferenceReport/GetValuationDocument?EncryptedId=" + Model.encryptedId;
+    }
+
+    <object id="objValDetails" data="@urlAction#toolbar=1&amp;navpanes=0&amp;scrollbar=1&amp;page=1&amp;view=FitH" type="application/pdf" style="width:98%;height:520px;"></object>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+
+        //$("#objValDetails").on("load", function () {
+        //    setTimeout(function () {
+        //        //alert($("#toolbarViewerRight").length);
+        //       // alert($("#objValDetails").html());
+        //    }, 3000);
+         
+        //    $("#toolbarViewerRight").css('display', 'none');
+        //});
+
+    });
+
+</script>
+
+
+

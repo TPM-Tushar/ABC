@@ -1,0 +1,341 @@
+﻿@model CustomModels.Models.UserManagement.WorkFlowConfigurationModel
+@using ECDataUI.Helper;
+
+<style>
+    .verticalLine1 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 77%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 12%;
+    }
+    /*.verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;
+        left: 0px;
+        height: 88%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 5%;
+    }*/
+    /* Create a custom checkbox */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+    }
+        /* Create the checkmark/indicator (hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+</style>
+
+@{
+
+    int IsUpdate = Model.IsForUpdate ? 1 : 0;
+}
+<script>
+
+    // 26-12-2018 For Update Issue
+    var vIsUpdate = '@IsUpdate';
+    //alert(vIsUpdate)
+</script>
+
+@*<script src="~/Areas/UserManagement/Scripts/WorkFlowConfiguration/CreateUpdateWorkFlowConfiguration.js"></script>*@
+<script src="~/Areas/UserManagement/Scripts/WorkFlowConfiguration/CreateUpdateWorkFlowConfiguration.min.js"></script>
+
+
+<div class="col-md-offset-0">
+
+    <div class="panel panel-default" id="panelWorkFlowAction" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+
+        <div class="panel-body">
+            <div class='row well-custom' style="height: 35px; padding-top: 10px; margin-right: 0px; margin-left: 0px;">
+                <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                @if (Model.IsForUpdate)
+                {
+                    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Update Office configuration Details </span>
+                }
+                else
+                {
+                    <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">New Office configuration Details</span>
+                }
+
+
+
+                <span id="closeWorkFlowConfigurationForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>
+            </div>
+            <form id="WorkFlowConfigurationDetailsForm">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="" style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; padding-left: 1%;padding-right: 1%;padding-bottom: 1%; overflow-y: auto;">
+                    <div class="row">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;">
+                                    <div class="col-md-5">
+                                        <br>
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(m => m.EncryptedId)
+                                        @Html.HiddenFor(m => m.FromRoleId_Hidden, new { @id = "FromRoleId_Hidden" })
+                                        @Html.HiddenFor(m => m.ToRoleId_Hidden, new { @id = "ToRoleId_Hidden" })
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.ActionId, new { @class = "control-label " }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.DropDownListFor(model => model.ActionId, Model.ActionList, new { @class = "form-control minimal", @id = "ActionDropDwonList", tabindex = 1 })
+                                                    @Html.ValidationMessageFor(model => model.ActionId, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.FromRoleId, new { @class = "control-label " }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.FromRoleId, Model.FromRoleList, new { @class = "form-control minimal", @id = "FromRoleId", tabindex = 3 })
+                                                    @Html.ValidationMessageFor(model => model.FromRoleId, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.ToRoleId, new { @class = "control-label" }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.ToRoleId, Model.ToRoleList, new { @class = "form-control minimal", @id = "ToRoleId", tabindex = 5 })
+                                                    @Html.ValidationMessageFor(model => model.ToRoleId, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-2 " style="text-align: center;">
+                                        <div class="verticalLine1"></div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <br>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.OfficeId, new { @class = "control-label " }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.OfficeId, Model.OfficeList, new { @class = "form-control minimal", @id = "OfficeId", tabindex = 2 })
+                                                    @Html.ValidationMessageFor(model => model.OfficeId, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.ServiceId, new { @class = "control-label " }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.ServiceId, Model.ServiceList, new { @class = "form-control minimal", @id = "ServiceId", tabindex = 4 })
+                                                    @Html.ValidationMessageFor(model => model.ServiceId, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @Html.LabelFor(model => model.IsActive, new { @class = "control-label " }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.CheckBoxFor(model => model.IsActive, new { @Id = "IsActiveId",tabindex = 6 })
+                                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            @*<div class="row">
+                                                <div class="col-md-6">
+                                                    @Html.LabelFor(model => model.IsActive, new { @class = "control-label " }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { tabindex = 6, @Id = "IsActive" } })
+                                                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>*@
+
+
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            @if (Model.IsForUpdate)
+                            {
+                            }
+                            else
+                            {
+                                <div class="row">
+                                    <div class="col-md-12" style="margin-bottom:1%;margin-top:1%;border:thick 1px;">
+                                        @Html.HiddenFor(model => model.ToAddReverseOfficeConfiguration, new { @id = "ToAddReverseOfficeConfigurationId" })
+
+                                        <div class="col-md-6">
+                                            @*@Html.CheckBoxFor(model => model.ToAddReverseOfficeConfiguration, new { @id = "ToAddReverseOfficeConfiguration",@onChange= "IsCheckboxCheck=$(this).is(':checked');alert(IsCheckboxCheck);" })*@
+                                            <input type="checkbox" class="checkmark" id="ToAddReverseOfficeConfiguration2" onchange="onchangeToAdd()">&nbsp;&nbsp;&nbsp;&nbsp;
+                                            @Html.LabelFor(model => model.ToAddReverseOfficeConfiguration, new { @class = "control-label ", @style = "font-size:125%;font-weight:bold;padding-top: 1%;" })
+                                        </div>
+
+
+                                    </div>
+                                    <br>
+                                </div>
+                            }
+                        </fieldset>
+                    </div>
+
+
+                    <div class="row" id="OfficeReverseConfigurationDivIdTwo" style="border: solid 1px #d1d1d1;border-radius:12px;background: #fff;overflow-y: auto; margin-top:1%;margin-bottom:1%;">
+                        @Html.HiddenFor(m => m.ActionId_ReverseofficeConfiguration_Hidden, new { @id = "ActionId_ReverseofficeConfiguration_HiddenId" })
+                        @Html.HiddenFor(m => m.FromRoleId_ReverseofficeConfiguration_Hidden, new { @id = "FromRoleId_ReverseofficeConfiguration_HiddenId" })
+                        @Html.HiddenFor(m => m.ToRoleId_ReverseofficeConfiguration_Hidden, new { @id = "ToRoleId_ReverseofficeConfiguration_HiddenId" })
+                        @Html.HiddenFor(m => m.OfficeId_ReverseofficeConfiguration_Hidden, new { @id = "OfficeId_ReverseofficeConfiguration_HiddenId" })
+                        @Html.HiddenFor(m => m.ServiceId_ReverseofficeConfiguration_Hidden, new { @id = "ServiceId_ReverseofficeConfiguration_HiddenId" })
+                        @Html.HiddenFor(m => m.IsActive_ReverseofficeConfiguration_Hidden, new { @id = "IsActive_ReverseofficeConfiguration_HiddenId" })
+
+
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;">
+                                    <div class="col-md-5">
+                                        <br />
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.ActionId_ReverseofficeConfiguration, new { @class = "control-label " }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.DropDownListFor(model => model.ActionId_ReverseofficeConfiguration, Model.ActionList_ForReverseofficeConfiguration, new { @class = "form-control minimal", @id = "ActionId_ReverseofficeConfigurationId", tabindex = 1 })
+                                                    @Html.ValidationMessageFor(model => model.ActionId_ReverseofficeConfiguration, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.FromRoleId_ReverseofficeConfiguration, new { @class = "control-label " }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.FromRoleId_ReverseofficeConfiguration, Model.FromRoleList_ForReverseofficeConfiguration, new { @class = "form-control minimal", @id = "FromRoleId_ReverseofficeConfigurationId", tabindex = 3 })
+                                                    @Html.ValidationMessageFor(model => model.FromRoleId_ReverseofficeConfiguration, "", new { @class = "text-danger" })
+                                                </div>
+
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.ToRoleId_ReverseofficeConfiguration, new { @class = "control-label" }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.ToRoleId_ReverseofficeConfiguration, Model.ToRoleList_ForReverseofficeConfiguration, new { @class = "form-control minimal", @id = "ToRoleId_ReverseofficeConfigurationId", tabindex = 5 })
+                                                    @Html.ValidationMessageFor(model => model.ToRoleId_ReverseofficeConfiguration, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-md-2 " style="text-align: center;">
+                                        <div class="verticalLine1"></div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <br>
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.OfficeId_ReverseofficeConfiguration, new { @class = "control-label " }, Mandatory.Yes)
+
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.OfficeId_ReverseofficeConfiguration, Model.OfficeList_ForReverseofficeConfiguration, new { @class = "form-control minimal", @id = "OfficeReverseOfficeConfigurationId", tabindex = 2 })
+                                                    @Html.ValidationMessageFor(model => model.OfficeId_ReverseofficeConfiguration, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="col-md-6 PaddingTop10">
+                                                    @Html.LabelFor(model => model.ServiceId_ReverseofficeConfiguration, new { @class = "control-label " }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.DropDownListFor(model => model.ServiceId_ReverseofficeConfiguration, Model.ServiceList_ForReverseofficeConfiguration, new { @class = "form-control minimal", @id = "ServiceReverseOfficeConfigurationId", tabindex = 4 })
+                                                    @Html.ValidationMessageFor(model => model.ServiceId_ReverseofficeConfiguration, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <br>
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    @Html.LabelFor(model => model.IsActive_ReverseofficeConfiguration, new { @class = "control-label " }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-6">
+                                                    @Html.EditorFor(model => model.IsActive_ReverseofficeConfiguration, new { htmlAttributes = new { tabindex = 6, @id = "IsActiveReverseOfficeConfigurationId" } })
+                                                    @Html.ValidationMessageFor(model => model.IsActive_ReverseofficeConfiguration, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </fieldset>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-5" style="margin-top:1%;">
+                            @if (Model.IsForUpdate)
+                            {
+                                <button type="button" class="btn btn-group-md btn-success" id="btnUpdate" title="Update">Update</button>
+                                <i>&nbsp;</i>
+                            }
+                            else
+                            {
+                                <button type="reset" class="btn btn-group-md btn-warning " id="btnReset" title="Reset">Reset</button>
+                                <i>&nbsp;</i>
+                                <button type="button" class="btn btn-group-md btn-success" id="btnSave" title="Save">Save</button>
+                                <i>&nbsp;</i>
+
+                            }
+
+                            <button type="reset" class="btn btn-group-md btn-danger " id="btnCancel" title="Cancel">Cancel</button>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

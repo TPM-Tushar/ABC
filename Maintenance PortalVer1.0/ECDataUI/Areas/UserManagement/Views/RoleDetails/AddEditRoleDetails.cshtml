@@ -1,0 +1,112 @@
+﻿@model CustomModels.Models.UserManagement.RoleDetailsModel
+@using ECDataUI.Helper;
+
+<script src="~/Areas/UserManagement/Scripts/RoleDetails/AddEditRoleDetails.js"></script>
+@*<script src="~/Areas/UserManagement/Scripts/RoleDetails/AddEditRoleDetails.min.js"></script>*@
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 75%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+</style>
+<div class="col-md-12" style="margin-top:0px;padding-left:20px; background: #fff; border: 1px solid #ECF0F1;">
+    <br />
+    <div class="col-md-offset-0">
+        <form method="post" id="RoleDetailsFormID">
+
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <div class="form-group">
+                <div class="col-md-8">
+                    @Html.HiddenFor(model => model.EncryptedID, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:50px;">
+                <div class="col-md-5">
+                    <br />
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.RoleName, "Role Name", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control", @placeholder = "Role Name", @id = "RoleNameId", tabindex = 1 } })
+                                @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                @Html.LabelFor(model => model.IsActive, "Is Active", htmlAttributes: new { @class = "control-label " })
+                            </div>
+                            <div class="col-md-6" style="padding-left:20px;">
+                                @Html.EditorFor(model => model.IsActive, new { htmlAttributes = new { tabindex = 3, @id = "IsActiveId" } })
+                                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                    </fieldset>
+                </div>
+
+                <div class="col-md-2" style="text-align:center;">
+                    <div class="verticalLine2"></div>
+                </div>
+                <div class="col-md-5">
+                    <br />
+                    <fieldset>
+                        <div class="row">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.RoleNameR, "Role Name (R)", htmlAttributes: new { @class = "control-label  required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.RoleNameR, new { htmlAttributes = new { @class = "form-control", @placeholder = "Role Name R", tabindex = 2 } })
+                                @Html.ValidationMessageFor(model => model.RoleNameR, "", new { @class = "text-danger" })
+                            </div>
+                        </div><br />
+                        <div class="row">
+                            <div class='col-md-6 PaddingTop10'>
+                                @Html.LabelFor(x => x.LevelID, new { @class = "control-label" }, Mandatory.Yes)
+                            </div>
+                            <div class='col-md-6'>
+                                @Html.DropDownListFor(x => x.LevelID, Model.LevelList, new { @class = "form-control minimal dropdown-toggle minimal", @id = "LevelDropDownListId", tabindex = 4 })
+                                @Html.ValidationMessageFor(x => x.LevelID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <br>
+
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12" style="text-align:center;">
+                    @if (Model.IsForUpdate == true)
+                    {
+                        <button type="button" class="btn btn-group-md btn-success" id="btnSubmit" title="Update" onclick="updateRoleDetail()">Update</button><i>&nbsp;</i>
+                        <button type="button" class="btn btn-group-md btn-danger resizeGrid btnCancelClass" id="btnCancelForEdit" title="Cancel">Cancel</button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-group-md btn-success" id="btnSubmit" title="Save" onclick="addRoleDetail()">Save</button><i>&nbsp;</i>
+                        <button type="reset" class="btn btn-group-md btn-warning btnResetClass" id="btnReset" title="Reset">Reset</button><i>&nbsp;</i>
+                        <button type="button" class="btn btn-group-md btn-danger btnCancelClass" id="btnCancelForAdd" title="Cancel">Cancel</button>
+                    }
+                </div>
+            </div><br /><br />
+        </form>
+    </div>
+</div>

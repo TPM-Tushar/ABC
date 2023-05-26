@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ECDATA_PENDOCSStoreContainer" CdmEntityContainer="ECDATA_PENDOCSEntities">
+    <EntitySetMapping Name="DocPendingHistory_PENDOCS">
+      <EntityTypeMapping TypeName="ECDATA_PENDOCS.DocPendingHistory_PENDOCS">
+        <MappingFragment StoreEntitySet="DocPendingHistory">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="PendingReasonID" ColumnName="PendingReasonID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PendingDate" ColumnName="PendingDate" />
+          <ScalarProperty Name="IsCleared" ColumnName="IsCleared" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DocumentMaster_PENDOCS">
+      <EntityTypeMapping TypeName="ECDATA_PENDOCS.DocumentMaster_PENDOCS">
+        <MappingFragment StoreEntitySet="DocumentMaster">
+          <ScalarProperty Name="DocumentID" ColumnName="DocumentID" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="BookID" ColumnName="BookID" />
+          <ScalarProperty Name="StampArticleCode" ColumnName="StampArticleCode" />
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="DocumentNumber" ColumnName="DocumentNumber" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="PresentDateTime" ColumnName="PresentDateTime" />
+          <ScalarProperty Name="ExecutionDateTime" ColumnName="ExecutionDateTime" />
+          <ScalarProperty Name="DateOfStamp" ColumnName="DateOfStamp" />
+          <ScalarProperty Name="ConsiderationAmount" ColumnName="ConsiderationAmount" />
+          <ScalarProperty Name="RequiredStampDuty" ColumnName="RequiredStampDuty" />
+          <ScalarProperty Name="PaidStampDuty" ColumnName="PaidStampDuty" />
+          <ScalarProperty Name="Stamp1DateTime" ColumnName="Stamp1DateTime" />
+          <ScalarProperty Name="Stamp2DateTime" ColumnName="Stamp2DateTime" />
+          <ScalarProperty Name="Stamp3DateTime" ColumnName="Stamp3DateTime" />
+          <ScalarProperty Name="Stamp4DateTime" ColumnName="Stamp4DateTime" />
+          <ScalarProperty Name="Stamp5DateTime" ColumnName="Stamp5DateTime" />
+          <ScalarProperty Name="WithdrawalDate" ColumnName="WithdrawalDate" />
+          <ScalarProperty Name="PageCount" ColumnName="PageCount" />
+          <ScalarProperty Name="Index2Shera" ColumnName="Index2Shera" />
+          <ScalarProperty Name="IsVisited" ColumnName="IsVisited" />
+          <ScalarProperty Name="IsFiling" ColumnName="IsFiling" />
+          <ScalarProperty Name="IsPending" ColumnName="IsPending" />
+          <ScalarProperty Name="IsScanned" ColumnName="IsScanned" />
+          <ScalarProperty Name="IsRefused" ColumnName="IsRefused" />
+          <ScalarProperty Name="IsPaymentOfMoney" ColumnName="IsPaymentOfMoney" />
+          <ScalarProperty Name="IsAdjudicated" ColumnName="IsAdjudicated" />
+          <ScalarProperty Name="IsWithdrawn" ColumnName="IsWithdrawn" />
+          <ScalarProperty Name="RefusalDate" ColumnName="RefusalDate" />
+          <ScalarProperty Name="RefusalReason" ColumnName="RefusalReason" />
+          <ScalarProperty Name="RemarksByUser" ColumnName="RemarksByUser" />
+          <ScalarProperty Name="RemarksBySystem" ColumnName="RemarksBySystem" />
+          <ScalarProperty Name="CorrectionReference" ColumnName="CorrectionReference" />
+          <ScalarProperty Name="OldDocReference" ColumnName="OldDocReference" />
+          <ScalarProperty Name="AdjudicationDetails" ColumnName="AdjudicationDetails" />
+          <ScalarProperty Name="CDNumber" ColumnName="CDNumber" />
+          <ScalarProperty Name="IsXMLTransferredTOBHOOMI" ColumnName="IsXMLTransferredTOBHOOMI" />
+          <ScalarProperty Name="uid" ColumnName="uid" />
+          <ScalarProperty Name="PendingDocumentNumber" ColumnName="PendingDocumentNumber" />
+          <ScalarProperty Name="istransmitted" ColumnName="istransmitted" />
+          <ScalarProperty Name="IsPhotoThumbTransmitted" ColumnName="IsPhotoThumbTransmitted" />
+          <ScalarProperty Name="InsertedDateTime" ColumnName="InsertedDateTime" />
+          <ScalarProperty Name="InitialTransmitted" ColumnName="InitialTransmitted" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoticeMaster_PENDOCS">
+      <EntityTypeMapping TypeName="ECDATA_PENDOCS.NoticeMaster_PENDOCS">
+        <MappingFragment StoreEntitySet="NoticeMaster">
+          <ScalarProperty Name="NoticeID" ColumnName="NoticeID" />
+          <ScalarProperty Name="PSROCode" ColumnName="PSROCode" />
+          <ScalarProperty Name="NoticeNo" ColumnName="NoticeNo" />
+          <ScalarProperty Name="NoticeIssuedDate" ColumnName="NoticeIssuedDate" />
+          <ScalarProperty Name="Bride" ColumnName="Bride" />
+          <ScalarProperty Name="BrideGroom" ColumnName="BrideGroom" />
+          <ScalarProperty Name="Fees" ColumnName="Fees" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="MarriageType" ColumnName="MarriageType" />
+          <ScalarProperty Name="CDNumber" ColumnName="CDNumber" />
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="Pages" ColumnName="Pages" />
+          <ScalarProperty Name="IsScanned" ColumnName="IsScanned" />
+          <ScalarProperty Name="dateofmarriage" ColumnName="dateofmarriage" />
+          <ScalarProperty Name="IsSolamenised" ColumnName="IsSolamenised" />
+          <ScalarProperty Name="IsTransmitted" ColumnName="IsTransmitted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PendingReasonMaster_PENDOCS">
+      <EntityTypeMapping TypeName="ECDATA_PENDOCS.PendingReasonMaster_PENDOCS">
+        <MappingFragment StoreEntitySet="PendingReasonMaster">
+          <ScalarProperty Name="PendingReasonID" ColumnName="PendingReasonID" />
+          <ScalarProperty Name="ReasonInKannada" ColumnName="ReasonInKannada" />
+          <ScalarProperty Name="ReasonInEnglish" ColumnName="ReasonInEnglish" />
+          <ScalarProperty Name="DocumentStage" ColumnName="DocumentStage" />
+          <ScalarProperty Name="Severity" ColumnName="Severity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SROMaster_PENDOCS">
+      <EntityTypeMapping TypeName="ECDATA_PENDOCS.SROMaster_PENDOCS">
+        <MappingFragment StoreEntitySet="SROMaster">
+          <ScalarProperty Name="SROCode" ColumnName="SROCode" />
+          <ScalarProperty Name="DistrictCode" ColumnName="DistrictCode" />
+          <ScalarProperty Name="SRONameK" ColumnName="SRONameK" />
+          <ScalarProperty Name="SRONameE" ColumnName="SRONameE" />
+          <ScalarProperty Name="ShortnameK" ColumnName="ShortnameK" />
+          <ScalarProperty Name="ShortNameE" ColumnName="ShortNameE" />
+          <ScalarProperty Name="GetBhoomiData" ColumnName="GetBhoomiData" />
+          <ScalarProperty Name="IsVillageMatching" ColumnName="IsVillageMatching" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

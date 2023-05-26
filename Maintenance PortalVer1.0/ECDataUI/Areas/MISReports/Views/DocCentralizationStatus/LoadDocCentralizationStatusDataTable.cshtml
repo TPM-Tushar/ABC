@@ -1,0 +1,281 @@
+﻿@model CustomModels.Models.MISReports.DocCentralizationStatus.DocCentrStatusResModel
+@using ECDataUI.Helper
+
+@{
+
+    int RecordCount = 0;
+
+}
+
+<style>
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    table, td, tr {
+        word-break: break-all !important;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+    .tblWordWrap {
+        /*width:70% !important;
+        align-self:center;*/
+        word-wrap: break-word;
+    }
+
+    .td {
+        font-size: 50px;
+    }
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    td {
+        word-wrap: break-word;
+    }
+
+    .textAlignLeft {
+        text-align: left;
+    }
+
+    th {
+        word-wrap: normal;
+        vertical-align: middle;
+    }
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        // width:35px;
+    }
+
+    /*tbody tr.selected {
+            color: #6aa0ce;
+            background-color: whitesmoke !important;
+        }*/
+
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }
+
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    .button {
+        position: absolute;
+        top: 50%;
+    }
+
+    .th {
+        word-wrap: break-word !important;
+    }
+</style>
+@*<script src="~/Areas/MISReports/Scripts/DocCentralizationStatus/LoadDocCentralizationDataTable.js"></script>*@
+<script src="~/Areas/MISReports/Scripts/DocCentralizationStatus/LoadDocCentralizationDataTable.min.js"></script>
+<div class="container">
+    @*<div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span>Note : This report is based on pre processed data considered upto @Model.MaxDate</b> </h6></i></div>*@
+    @*<div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span></b> </h6></i></div>*@
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover tblWordWrap" style="width:50%; padding-top:1% ;  white-space:normal;vertical-align: middle;background-color: #99CFF7; overflow: hidden; border: solid; width: 100%;">
+                <thead>
+                    <tr>
+                        <th style="width:8%;vertical-align:middle;">S.No</th>
+                        <th style="width:8%;vertical-align:middle;">SRO Code<br /></th>
+                        <th style="width:25%;vertical-align:middle; ">SRO Name<br /></th>
+                        <th style="width:20%;vertical-align:middle;word-break:break-word">Number of documents registered today and centralized today<br /></th>
+                        <th style="width:20%;word-break:break-word;vertical-align:middle;">Number of documents Registered Previously and centralized today<br /></th>
+                        <th style="width:20%;word-break:break-word;vertical-align:middle;">Last Document Centralized Date Time<br /></th>
+
+                    </tr>
+                </thead>
+
+                @if (@Model.DetailsList != null)
+                {
+                    foreach (var item in @Model.DetailsList)
+                    {
+                        RecordCount++;
+                        <tbody>
+                            <tr style="background-color:blue;">
+                                <td style="width:8%;"><label>@item.SerialNo</label></td>
+                                <td style="width:8%;"><label></label>@item.SROCode</td>
+                                <td style="width:25%;text-align:left;"><label>@item.SROName</label></td>
+                                <td style="text-align:right;width:20%;"><label>@item.DocsCentlzdToday</label></td>
+                                <td style="text-align:right;width:20%;"><label>@item.DocsRegdPreviouslyCrtlzdToday</label></td>
+                                <td style="text-align:right;width:20%;"><label>@item.LatestCentralizationDate</label></td>
+
+                            </tr>
+                        </tbody>
+                    }
+                    if (@Model.DetailsList.Count != 0)
+                    {
+                        <tfoot>
+                            <tr class="" style="background-color: #ECF0F1 !important">
+                                <td style="width:8%;"><label></label></td>
+                                <td style="width:8%;"><label></label></td>
+                                <td style="width:25%;text-align:left;text-align:center;"><label><b>Total</b></label></td>
+                                <td style="text-align:right;width:20%;"><label><b>@Model.TotalDocsCentralized</b></label></td>
+                                <td style="text-align:right;width:20%;"><label><b>@Model.TotalDocsRegdPreviously</b></label></td>
+                                <td style="text-align:right;width:20%;"><label></label></td>
+
+                            </tr>
+                        </tfoot>
+                    }
+                    else
+                    {
+                        <div><span> No Data Available for current input</span></div>
+                    }
+                }
+                else
+                {
+                    <div><span> No Data Available for current input</span></div>
+                }
+
+            </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        @*<div class='BTNwrapper col-md-2' style="">
+                <button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="PdfDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as PDF</button>
+            </div>*@
+        <div class='BTNwrapper col-md-2' style="text-align:left;">
+            @Html.Raw(Model.ExcelDownloadBtn)
+
+            @*<button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="excelDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as Excel</button>*@
+        </div>
+        <div class="col-md-5" style="padding-left:19%;">
+            <h6> <i>  </i></h6>
+
+        </div>
+
+    </div>
+</div>
+<div id="MasterTableModel" style="margin-left: 31%;" class="modal fade " role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

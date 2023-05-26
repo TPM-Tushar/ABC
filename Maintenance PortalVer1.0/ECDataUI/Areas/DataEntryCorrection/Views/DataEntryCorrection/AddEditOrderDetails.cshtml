@@ -1,0 +1,182 @@
+﻿
+
+@model CustomModels.Models.DataEntryCorrection.DataEntryCorrectionOrderViewModel
+
+@using ECDataUI.Helper
+
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .panel-body {
+        padding: unset !important;
+    }
+
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+</style>
+
+<script type="text/javascript">
+
+        var filename ='@Model.ExistingFileName';
+        
+</script>
+
+<script src="~/Areas/DataEntryCorrection/Scripts/AddEditOrderDetails.js"></script>
+
+<div class="panel panel-default" id="panelAddEditOrderDetails" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;border: none;">
+
+    <form id="OrderDetailForm">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="panel-body">
+            <div class='row well-custom' style="height: 35px; padding-top: 10px;border-top-left-radius: 0px;">
+                <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                <span class="" style="color: #FFF; font-size: 120%;">
+                    Add Order Details
+                </span>
+            </div>
+            <div style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                <div class='row'>
+
+                    <div class="col-md-12 textAlignLeft" style="padding-top:1%;">
+
+                        @*@Html.HiddenFor(model => model.EncryptedDocumentID, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+        @Html.HiddenFor(model => model.EncryptedPropertyID, new { @class = "PaddingTop10", style = "padding-left:4px;" })
+        @Html.HiddenFor(model => model.SROCode, new { @class = "PaddingTop10", style = "padding-left:4px;" })*@
+                        <div class="col-md-1"></div>
+                        <div class="col-md-3" id="SRODropDownListID">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 1 })
+                                @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-3" id="DRODropDownListID">
+
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.OrderNo, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control", id = "idOrdeNo", autocomplete = "off", tabindex = 2 })
+                                @Html.ValidationMessageFor(model => model.OrderNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="col-md-4">
+                                @Html.LabelFor(model => model.OrderDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                            </div>
+                            <div class="col-md-8">
+                                <div class="date" id="divFromDate" style="display: table; width: 102%; cursor: pointer;">
+                                    @Html.TextBoxFor(model => model.OrderDate, new { @class = "form-control", @id = "txtOrderDate", @placeholder = "dd/mm/yyyy", @title = "Order Date", @maxlength = 10, tabindex = 3 })
+                                    <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+
+                <div class="row" style="text-align:center;margin-top:3rem;">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <div class="row">
+
+                            @*@if (@Model.IsOrderInEditMode)*@
+                            @if (@Model.IsOrderInEditMode && Model.ExistingFileName != "--")
+                            {
+                                <div class='col-md-6' style="padding-top: 1%;text-align: right;">
+                                    @*<button type="button" class="btn btn-group-md btn-success" id="btnViewPrevOrder" name="btnViewPrevOrder" tabindex="3"> View </button>*@
+                                    <span id="spnOrderFileName"></span>
+                                </div>
+                                <div class='col-md-6' style="padding-top: 1%;text-align: left;">
+                                    <button type="button" class="btn btn-group-md btn-danger" id="btnDeleteCurrentOrderFile" name="btnDeleteCurrentOrderFile" tabindex="4"> Delete </button>
+                                </div>
+                            }
+                            else
+                            {
+                                <span hidden id="spnOrderFileName"></span>
+                                <div class='col-md-6' style="padding-top: 1%;text-align: right;">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.OrderNoteFile, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                    </div>
+                                </div>
+                                <div class='col-md-6' style="padding-top:0.4%">
+
+                                    <div class="form-group">
+                                        <input type="file" class="form-control-file" id="decOrderFile" tabindex="4" accept="application/pdf">
+                                        @Html.HiddenFor(x => x.FilePath, new { id = "hdnfileContent" })
+                                        @Html.HiddenFor(x => x.RelativeFilePath, new { id = "hdnRelativeFilePath" })
+                                        @Html.HiddenFor(x => x.ExistingFileName, new { id = "hdnExistingFileName" })
+                                        @Html.HiddenFor(x => x.OrderID, new { id = "hdnNewOrderID" })
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
+
+                </div>
+                <div class="row" style="margin-top: 2rem;">
+                    <div class="col-md-12">
+                        <div class=" col-md-5"></div>
+                        <div class="form-group col-md-2">
+
+                            @if (@Model.IsOrderInEditMode)
+                            {
+                                @*Added by Madhusoodan on 16/08/2021*@
+                                <div class='BTNwrapper' style="margin-top:2%;">
+                                    @*<button type="button" class="btn btn-group-md btn-success" id="UploadOrderBtn" tabindex="6">Upload</button>*@
+                                    <button type="button" class="btn btn-group-md btn-success" id="UpdateOrderBtn" tabindex="5">Update</button>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class='BTNwrapper' style="margin-top:2%;">
+                                    @*<button type="button" class="btn btn-group-md btn-success" id="UploadOrderBtn" tabindex="6">Upload</button>*@
+                                    <button type="button" class="btn btn-group-md btn-success" id="SaveOrderBtn" tabindex="5">Save</button>
+                                </div>
+                            }
+                            <style>
+                                .BTNwrapper {
+                                    text-align: center;
+                                }
+
+                                .button {
+                                    position: absolute;
+                                    top: 50%;
+                                }
+                            </style>
+                        </div>
+                        <div class=" col-md-5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

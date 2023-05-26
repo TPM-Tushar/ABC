@@ -1,0 +1,167 @@
+﻿@model CustomModels.Models.Remittance.REMDashboard.RemittanceOfficeListSummaryModel
+
+@using ECDataUI.Helper
+@*<script src="~/Areas/Remittance/Scripts/REMDiagnostics/GetOfficeListSummary.js"></script>*@
+<script src="~/Areas/Remittance/Scripts/REMDiagnostics/GetOfficeListSummary.min.js"></script>
+<style>
+    .TFtable {
+        width: 100%;
+        /*border-collapse: collapse;*/
+    }
+
+        .TFtable td, th {
+            padding: .25%;
+            border: #000000 1px solid;
+            text-align: center;
+        }
+        /* provide some minimal visual accomodation for IE8 and below */
+        .TFtable tr {
+            /*background: #b8d1f3;*/
+        }
+            /*  Define the background color for all the ODD background rows  */
+            .TFtable tr:nth-child(odd) {
+                /*background: #ff9999;*/
+            }
+    /*  Define the background color for all the EVEN background rows  */
+    /*.TFtable tr:nth-child(even) {
+            background: #dae5f4;
+    }*/
+    .TdColor {
+        background-color: #cce6ff;
+    }
+
+
+</style>
+@{
+    var counter = 0;
+    var counterForDRO = 0;
+
+    int NoOfRecords = 0;
+}
+
+@functions {
+    public int SubtractNumbers(int number1, int number2)
+    {
+        return number1 - number2;
+    }
+}
+
+<div class="container">
+    <div class="col-md-offset-0">
+        <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div id='SROfficeWiseSummaryTableCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#SROfficeWiseSummaryTablePara" aria-expanded="false" aria-controls="SROfficeWiseSummaryTablePara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                    <span style="cursor: pointer; margin-bottom: 20px;">
+                        <span id="DtlsToggleIconSROfficeWiseSummaryTable" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">SR Office Wise Summary</span>
+                </div>
+
+                <div id="SROfficeWiseSummaryTablePara" class="collapse" style="max-height:250px; overflow-y:auto; text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                    <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                        <table id="SROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>SR NO (1)</th>
+                                    <th>SRO Code        <br/>                    (2)</th>
+                                    <th>SR Office Name  <br />         (3)</th>
+                                    <th>Total Receipts Generated<br />            (4)</th>
+                                    <th>Total Receipts Submitted for Remittance            <br />     (5)</th>
+                                    <th>Total Receipts Remitted to Khajane <br /> (6)</th>
+                                    <th>Total Challans Generated <br /> (7)</th>
+                                    <th>Total Payments Reconciled <br /> (8)</th>
+                                    <th>Receipts Not Submitted for Remittance <br /> (4 - 5)</th>
+                                    <th>Receipts Submitted but Not Remitted <br /> ( 5 - 6 )</th>
+                                    <th>Challan Not Generated <br /> ( 5 - 7 )</th>
+                                    <th>Bank Reconcilation Pending <br /> (5 - 8)</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in @Model.SROfficeDetailList)
+                              {
+                        <tbody>
+                            <tr>
+
+
+                                <td><label>@{counter++;}@counter</label></td>
+                                <td>@item.SROCode</td>
+                                @*<td><label> <i><a href=""@Url.Action("MISReportsDetailsView", "REMDaignostics",new { Area="Remittance" } )?Id="+ @item.SROCode" tabindex="6" style="color: #FA6541;font-weight: bold;text-decoration: underline;">@item.SROfficeName</a></i></label></td>*@
+                                @*<td><label> <i style="font-size:20px;"> @Html.Raw(item.BtnToRedirectToDetails)</i></label></td>*@
+                                <td>@item.SROfficeName</td>
+                                <td><label>@item.TotalReceiptsGenerated </label></td>
+                                <td><label>@item.SubmittedForRemittance</label></td>
+                                <td><label>@item.TotalReceiptsRemitted</label></td>
+                                <td><label>@item.TotalChallanGenerated</label></td>
+                                <td><label>@item.TotalPaymentsReconciled</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForReceiptsNotSubmittedForRemittance)</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForReceiptsNotRemitted)</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForChallanNotGenerated)</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForBankReconcilationPending)</label></td>
+                            </tr>
+                         </tbody>
+                                }
+                     
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+            <div class="panel-body">
+                <div id='DROfficeWiseSummaryTableCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DROfficeWiseSummaryTablePara" aria-expanded="false" aria-controls="DROfficeWiseSummaryTablePara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                    <span style="cursor: pointer; margin-bottom: 20px;">
+                        <span id="DtlsToggleIconDROfficeWiseSummaryTable" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                    </span>
+                    <span class="" style="color: #fff; font-size: 120%;">DR Office Wise Summary</span>
+                </div>
+                <div id="DROfficeWiseSummaryTablePara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                    <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">
+                        <table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>SR. NO (1)</th>
+                                    <th>DRO Code        <br />                    (2)</th>
+                                    <th>DR Office Name  <br />         (3)</th>
+                                    <th>Total Receipts Generated<br />            (4)</th>
+                                    <th>Total Receipts Submitted for Remittance            <br />     (5)</th>
+                                    <th>Total Receipts Remitted to Khajane <br /> (6)</th>
+                                    <th>Total Challans Generated <br /> (7)</th>
+                                    <th>Total Payments Reconciled <br /> (8)</th>
+                                    <th>Receipts Not Submitted for Remittance <br /> (4 - 5)</th>
+                                    <th>Receipts Submitted but Not Remitted <br /> ( 5 - 6 )</th>
+                                    <th>Challan Not Generated <br /> ( 5 - 7 )</th>
+                                    <th>Bank Reconcilation Pending <br /> (5 - 8)</th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in @Model.DROfficeDetailList)
+                            {
+                        <tbody>
+                            <tr>
+                                <td><label>@{counterForDRO++;}@counterForDRO</label></td>
+                                <td>@item.DROCode</td>
+                                @*<td><label> <a tabindex="8" href="@Url.Action("AccountActivation", "Account")">@item.DROfficeName</a></label></td>*@
+                                <td>@item.DROfficeName</td>
+                                <td><label>@item.TotalReceiptsGenerated </label></td>
+                                <td><label>@item.SubmittedForRemittance</label></td>
+                                <td><label>@item.TotalReceiptsRemitted</label></td>
+                                <td><label>@item.TotalChallanGenerated</label></td>
+                                <td><label>@item.TotalPaymentsReconciled</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForReceiptsNotSubmittedForRemittance)</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForReceiptsNotRemitted)</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForChallanNotGenerated)</label></td>
+                                <td class="TdColor"><label>@Html.Raw(@item.LinkForBankReconcilationPending)</label></td>
+                            </tr>
+                        </tbody>
+}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

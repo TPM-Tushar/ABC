@@ -1,0 +1,264 @@
+﻿
+
+
+@using CustomModels.Models.UserManagement
+@using ECDataUI.Helper;
+
+
+@model CustomModels.Models.KaveriSupport.AppDeveloperViewModel
+
+
+
+@*<script src="~/Areas/KaveriSupport/Scripts/TicketDetailsList.js"></script>*@
+
+<script src="~/Areas/KaveriSupport/Scripts/TicketDetailsList.min.js"></script>
+
+
+
+
+
+
+
+
+
+@*<script src="~/Areas/KaveriSupport/Scripts/KaveriSupport.js"></script>*@
+<script src="~/Areas/KaveriSupport/Scripts/KaveriSupport.min.js"></script>
+
+
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 132px;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    table, td {
+        word-break: break-all !important;
+    }
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+</style>
+
+<div class="container">
+    <div class="col-md-offset-0">
+        @*col-md-offset-0 well*@
+        <div class="">
+            <div class="row">
+                <br />
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+                    @*<div class="panel-body">*@
+                    <div class='row well-custom' id='' data-toggle="collapse in" data-target="" aria-expanded="false" aria-controls="" style="height: 35px; padding-top: 10px;">
+                        @*<span style="cursor:pointer;margin-bottom:20px;">
+                                <span id="ToggleIconID" class="fa fa-minus-square-o fa-pull-left" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+                            </span>*@
+
+
+
+                        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                        <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Ticket Registration</span>
+                        @*<span id="closeFirmSearchForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>*@
+                    </div>
+                    <div style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; overflow-y: auto;">
+                        <div id="">
+                            <form method="POST" id="TicketRegForm" style="margin-left: 10px;margin-right: 10px;">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                <fieldset>
+                                    <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;">
+                                        <div class="col-md-5 col-xs-5">
+                                            <br>
+                                            <div class="form-group">
+                                                @*@Html.HiddenFor(model => model.UserID)*@
+                                            </div>
+                                            <fieldset>
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(x => x.SRONameID, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(x => x.SRONameID, @Model.SRONameDropDown, new { @class = "form-control dropdown-toggle minimal", @id = "ddlSROName", @title = "SRO Name", @placeholder = "SRO Name", @tabindex = 1 })
+                                                            @Html.ValidationMessageFor(x => x.SRONameID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(model => model.TicketNumber, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6'>
+                                                            @Html.TextBoxFor(model => model.TicketNumber, new { @class = "form-control AllowOnlyNumber", @id = "TicketNumber", @tabindex = 3, @title = "Ticket Number", @maxlength = 8, @placeholder = "Ticket Number" })
+                                                            @Html.ValidationMessageFor(model => model.TicketNumber, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <br />
+
+                                            </fieldset>
+                                        </div>
+
+
+                                        <div class="col-md-2 col-xs-2" style="text-align: center;">
+                                            <div class="verticalLine2"></div>
+                                        </div>
+
+                                        <div class="col-md-5 col-xs-5">
+                                            <br>
+                                            <fieldset>
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(x => x.ModuleID, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(x => x.ModuleID, @Model.ModuleNameDropDown, new { @class = "form-control dropdown-toggle minimal", @id = "ddlModuleID", @title = "Module Name", @placeholder = "Module Name", @tabindex = 2 })
+                                                            @Html.ValidationMessageFor(x => x.ModuleID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 14px;">
+                                                            @Html.LabelFor(model => model.TicketDescription, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top:4px">
+                                                            @Html.TextAreaFor(model => model.TicketDescription, new { @class = "form-control ", @id = "TicketDescription", @placeholder = "Ticket Description", @maxlength = 200, @tabindex = 4 })
+                                                            @Html.ValidationMessageFor(model => model.TicketDescription, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <br />
+
+                                            </fieldset>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12" style="text-align:center;margin-top:1%;">
+                                        <button type="button" class="btn btn-group-md btn-success" id="btnRegister" title="Register Ticket Details">Register</button><i>&nbsp;</i>
+                                        <button type="reset" class="btn btn-group-md btn-warning btnResetClass" id="btnReset" title="Reset">Reset</button><i>&nbsp;</i>
+                                        @*<button type="button" class="btn btn-group-md btn-danger btnCancelClass" id="btnCancelForAdd" title="Cancel">Cancel</button>*@
+                                    </div>
+                                </fieldset>
+
+
+                                <br /><br />
+
+
+
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+
+
+                @* Datatable for existing ticket details *@
+
+
+                <div class="panel panel-default" style="width: 100%;margin-left:0px;margin-right:0px; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC;">
+                    <div class="panel-body">
+                        <div class='row well-custom' id='ticketDetailsListCollapse' data-toggle="collapse" data-target="#collapseRoleDetailsList" aria-expanded="false" aria-controls="collapseRoleDetailsList" style="height: 35px; padding-top: 10px;margin-left:0px;margin-right:0px;">
+                            <span style="cursor:pointer;margin-bottom:20px;">
+                                <span id="ToggleIconID" class="fa fa-minus-square-o fa-pull-left" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+                            </span>
+                            <span class="" style="color: #fff;font-size:120%;">Existing Ticket Details</span>
+
+                        </div>
+                        <div id="collapseRoleDetailsList" class="collapse" style="text-align: center;margin-left:0px; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;">
+                            <div class="container-fluid">
+                                <div class="data-table-wrapper table-responsive col-md-12" style="max-height:inherit;">
+                                    <table id="TicketDetailsListTable" class="datatable table-responsive full-width table table-striped table-bordered table-condensed table-hover" style="background-color: aliceblue; overflow: hidden; border: solid; text-align:center; width:100%">
+                                        <thead style="text-align:center;">
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                <th>Ticket Number</th>
+                                                <th style="width:100px;">Description</th>
+                                                <th>Module</th>
+                                                <th>Office</th>
+                                                <th>Registration DateTime</th>
+                                                <th>Active Status</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+@*<span>
+        <button type="button" class="btn btn-primary btn-lg" style="margin-top:1px;margin-left:600px;" id="btnGeneratekeyPair" title="Generate KeyPair">Generate KeyPair</button><i>&nbsp;</i>
+    </span>*@
+
+
+
+@*<div style="background-image: url(~/Content/images/key-pair-keys-hi.png);opacity:0.2;background-size:cover; height: 1100px; width: 1400px;">*@
+
+
+@*</div>*@

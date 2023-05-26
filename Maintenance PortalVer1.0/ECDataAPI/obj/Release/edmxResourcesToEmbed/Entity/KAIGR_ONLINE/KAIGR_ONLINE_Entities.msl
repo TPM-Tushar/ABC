@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KAIGR_ONLINEModelStoreContainer" CdmEntityContainer="KAIGR_ONLINEEntities">
+    <EntitySetMapping Name="MAS_Hoblis">
+      <EntityTypeMapping TypeName="KAIGR_ONLINEModel.MAS_Hoblis">
+        <MappingFragment StoreEntitySet="MAS_Hoblis">
+          <ScalarProperty Name="HobliID" ColumnName="HobliID" />
+          <ScalarProperty Name="TalukaID" ColumnName="TalukaID" />
+          <ScalarProperty Name="HobliName" ColumnName="HobliName" />
+          <ScalarProperty Name="HobliNameR" ColumnName="HobliNameR" />
+          <ScalarProperty Name="BhoomiHobliCode" ColumnName="BhoomiHobliCode" />
+          <ScalarProperty Name="BhoomiHobliName" ColumnName="BhoomiHobliName" />
+          <ScalarProperty Name="BhoomiTalukCode" ColumnName="BhoomiTalukCode" />
+          <ScalarProperty Name="BhoomiTalukName" ColumnName="BhoomiTalukName" />
+          <ScalarProperty Name="BhoomiDistrictCode" ColumnName="BhoomiDistrictCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_OfficeMaster">
+      <EntityTypeMapping TypeName="KAIGR_ONLINEModel.MAS_OfficeMaster">
+        <MappingFragment StoreEntitySet="MAS_OfficeMaster">
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="OfficeTypeID" ColumnName="OfficeTypeID" />
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="OfficeNameR" ColumnName="OfficeNameR" />
+          <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+          <ScalarProperty Name="ShortNameR" ColumnName="ShortNameR" />
+          <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+          <ScalarProperty Name="ParentOfficeID" ColumnName="ParentOfficeID" />
+          <ScalarProperty Name="KaveriCode" ColumnName="KaveriCode" />
+          <ScalarProperty Name="BhoomiCensusCode" ColumnName="BhoomiCensusCode" />
+          <ScalarProperty Name="AnyWhereRegEnabled" ColumnName="AnyWhereRegEnabled" />
+          <ScalarProperty Name="OfficeAddress" ColumnName="OfficeAddress" />
+          <ScalarProperty Name="Landline" ColumnName="Landline" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="OnlineBookingEnabled" ColumnName="OnlineBookingEnabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAS_Villages">
+      <EntityTypeMapping TypeName="KAIGR_ONLINEModel.MAS_Villages">
+        <MappingFragment StoreEntitySet="MAS_Villages">
+          <ScalarProperty Name="VillageID" ColumnName="VillageID" />
+          <ScalarProperty Name="OfficeID" ColumnName="OfficeID" />
+          <ScalarProperty Name="HobliID" ColumnName="HobliID" />
+          <ScalarProperty Name="TalukaID" ColumnName="TalukaID" />
+          <ScalarProperty Name="VillageName" ColumnName="VillageName" />
+          <ScalarProperty Name="VillageNameR" ColumnName="VillageNameR" />
+          <ScalarProperty Name="IsUrban" ColumnName="IsUrban" />
+          <ScalarProperty Name="CensusCode" ColumnName="CensusCode" />
+          <ScalarProperty Name="BhoomiTalukCode" ColumnName="BhoomiTalukCode" />
+          <ScalarProperty Name="BhoomiVillageCode" ColumnName="BhoomiVillageCode" />
+          <ScalarProperty Name="BhoomiVillageName" ColumnName="BhoomiVillageName" />
+          <ScalarProperty Name="BhoomiDistrictCode" ColumnName="BhoomiDistrictCode" />
+          <ScalarProperty Name="UPORTownID" ColumnName="UPORTownID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

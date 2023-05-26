@@ -1,0 +1,228 @@
+﻿
+
+@model CustomModels.Models.BhoomiMapping.BhoomiMappingViewModel
+@using ECDataUI.Helper
+
+
+<script src="~/Areas/BhoomiMapping/Scripts/BhoomiMapping.js"></script>
+<script>
+
+</script>
+<style>
+
+    .PaddingTop7 {
+        padding-top: 7px;
+    }
+
+    .ShorterTextClass {
+        max-width: 115px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+    }
+
+    td.dt-center {
+        font-weight: 600;
+        font-size: 1.8rem;
+    }
+
+    input[type="checkbox"] {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
+
+    .tooltiptext {
+        visibility: hidden;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        height: 100%;
+    }
+
+    .ShorterTextClass:hover .tooltiptext {
+        visibility: visible;
+        overflow: hidden;
+    }
+
+    .fa-file-pdf-o {
+        color: red;
+    }
+
+    .fa-check {
+        color: green;
+    }
+
+    .modalCloseBtn {
+        background-color: transparent !important;
+        color: #4c8ef5 !important;
+    }
+
+        .modalCloseBtn:hover {
+            color: #f5544c !important;
+        }
+
+
+    .BTNwrapper {
+        text-align: center;
+        margin-top: 1%;
+        margin-top: 1%;
+    }
+
+    table td {
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    table.dataTable tbody th {
+        white-space: nowrap;
+    }
+
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .well-custom {
+        box-shadow: 2px 2px 2px #ccc;
+    }
+
+
+
+
+    .thead_Color {
+        background-color: #99CFF7;
+    }
+
+
+
+    .pull-left {
+        float: left !important;
+    }
+
+    .subMenuDivClass {
+        background-color: #F5F5F5;
+        color: black;
+    }
+
+        .active, .subMenuDivClass:hover {
+            background-color: #73A9D9;
+            color: white;
+            font-weight: 700;
+            border: 1px solid #73A9D9 !important;
+            border-radius: 10px 10px 0 0 !important;
+            font-size: 14px !important;
+        }
+
+    table, th {
+        text-align: center;
+        font-family: KNB-TTUmaEN;
+        font-weight: 500;
+        font-size: medium;
+    }
+
+    .KannadFontClass {
+        font-family: KNB-TTUmaEN !important;
+        font-size: initial !important;
+    }
+
+    .label-span {
+        width: 100%;
+        margin-left: auto;
+        float: right;
+        padding-top: 1rem;
+    }
+
+    span.label-span::before {
+        content: '*';
+        color: #3d77ab;
+        font-size: 1.5rem;
+        margin-left: 6px;
+        float: left;
+        margin-top: -0.4rem;
+    }
+
+    span.label-span p {
+        padding-left: 15px;
+        text-align: left;
+    }
+
+    #resultLoading {
+        background-color: #00000096;
+    }
+</style>
+
+
+
+
+
+
+
+<div class="col-md-offset-0">
+
+    <h3 style="text-align:center;color:#3177b4;font-weight: 600;">Bhoomi Mapping Upload</h3>
+    <div class="panel panel-default" id="panelDROrderDetails" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div id='DROrderDetailsCollapse' class="row well-custom" data-toggle="collapse" data-target="#DROrderDetailsList" aria-expanded="false" aria-controls="DROrderDetailsList" style="height: 35px; padding-top: 10px; cursor: pointer;">
+            <span style="cursor: pointer; margin-bottom: 20px;">
+                <span id="DtlsToggleIconSearchPara" class="fa fa-minus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+            </span>
+            <span class="" style="color: #fff; font-size: 120%;">Upload Panel</span>
+        </div>
+
+
+        <div id="DROrderDetailsList" class="collapse in row" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important;">
+            <div class="row" style="padding-top:3%; padding-bottom:2%">
+                <div class="col-md-3"></div>
+                @Html.AntiForgeryToken()
+                <div class="col-md-3">
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.SROfficeOrderList, new { @class = "PaddingTop7" }, Mandatory.Yes)
+                    </div>
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.SROOrderCode, @Model.SROfficeOrderList, new { @class = "form-control minimal", id = "SROOfficeOrderListID", autocomplete = "off", tabindex = 2 })
+                        @Html.ValidationMessageFor(model => model.SROOrderCode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="col-md-4">
+                        @Html.LabelFor(model => model.ExcelInput, new { @class = "PaddingTop7" }, Mandatory.Yes)
+                    </div>
+                    <div class="col-md-8" style="display:inline-block;">
+                        <span>
+                            @Html.TextBoxFor(model => model.ExcelInput, null, new { type = "file", @class = "form-control minimal", id = "excel_input", tabindex = 2, accept = ".xls, .xlsx" })
+                        </span>
+                        <span class="label-span">
+                            <p style="color:#3d77ab;">Excel File should not contain more than 101 rows including column names</p>
+                            <p style="color:#3d77ab;">
+                                Download Sample Excel file <a style="color:red;" href="javascript:void(0)" id="DownloadExcel" download>here.</a>
+                            </p>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="col-md-2 "></div>
+
+            </div>
+
+            <div class="row" style="padding-bottom:1%;">
+                <div class='BTNwrapper col-md-offset-0' style="text-align:center;">
+                    <button class='btn btn-success' name='btnUpload' id='btnUpload' onclick="Upload()" style="padding: 1rem;">Upload</button>
+                </div>
+                <div class="col-md-5"></div>
+            </div>
+            <div class="row" style="padding-bottom:1%;">
+
+                <p style="width:100%;color:#6e6ea1;text-align:left;" id="StatusDiv">
+
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</div>

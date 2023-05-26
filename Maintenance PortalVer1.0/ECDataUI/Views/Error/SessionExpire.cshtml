@@ -1,0 +1,57 @@
+﻿
+
+
+
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+
+
+
+@{
+    ECDataUI.Session.KaveriSession.Current.EndSession();
+    new ECDataUI.Common.CommonFunctions().RegenerateSessionId();
+    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+}
+
+<link href="~/Content/SessionExpired.css" rel="stylesheet" />
+<script src="~/Scripts/Login/SessionExpired.js"></script>
+<style>
+     .verticalLine {
+        border-top: 1px solid black;
+        border-bottom: 75px solid black;
+        border-radius: 100%;
+        position: absolute;
+        left: 0px;
+        height: 71px;
+        width: 2px;
+        opacity: 0.2;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: auto;
+        margin-top: 3%;
+    }
+
+</style>
+<div id="boxes">
+    <input type="hidden" id="ajaxexpiry" value="@ViewData["IsAJAXRequest"]">
+    <!-- #customize your modal window here -->
+    <div id="dialog" class="window" style="height: auto">
+        <span style="font-weight:bold">
+            Session Expired. because
+            <br />
+            <br />
+            <ul style="list-style-type: disc;font-weight:normal">
+                <li> Either Duplicate Session Found</li>
+                <li> Some Error Occured</li>
+                <li> Session Timeout</li>
+            </ul>
+            <br />
+            Please
+            @Html.ActionLink(" Click here to login again", "UserLogin", "Login", new object(), new { style = "color:red" })
+        </span>
+    </div>
+    <div id="mask">
+    </div>
+</div>
+

@@ -1,0 +1,261 @@
+﻿@model CustomModels.Models.Dashboard.LineChartModel
+@using ECDataUI.Helper
+@using ECDataUI.Session;
+@using ECDataUI.Common;
+
+<script src="~/Areas/Dashboard/Scripts/Chart.min.js"></script>
+@*<link href="~/Content/HomePage/css/DashBoard.css" rel="stylesheet" />*@
+
+<script src="~/Areas/Dashboard/Scripts/jquery.twbs-toggle-buttons.js"></script>
+<script src="~/Areas/Dashboard/Scripts/TwbsToggleButtons.js"></script>
+<script src="~/Areas/Dashboard/Scripts/DashBoardView.js"></script>
+
+@* // BELOW CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 18-12-2020*@
+@{
+    short currentRoleID = (short)KaveriSession.Current.RoleID;
+    short srRoleID = (short)CommonEnum.RoleDetails.SR;
+}
+<script>
+    var currentRoleIDVAR = @currentRoleID;
+    var srRoleIDVAR = @srRoleID;
+</script>
+@* // ABOVE CODE COMMENTED AND CHANGED BY SHUBHAM BHAGAT ON 18-12-2020*@
+<style>
+    .datepicker {
+        z-index: 1600 !important;
+    }
+    /* Customize the label (the container) */
+    .th {
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+        vertical-align: middle !important;
+    }
+
+    .containerRadio {
+        display: block;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 11px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        margin-top: 4%;
+    }
+
+    .dataTables_wrapper {
+        font-size: 12px;
+        font-family: " Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+
+    /* Hide the browser's default radio button */
+    .containerRadio input {
+        position: absolute;
+        opacity: 0;
+    }
+
+
+    /* Create a custom radio button */
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 19px;
+        width: 19px;
+        background-color: #eee;
+        border-radius: 50%;
+    }
+
+    /* On mouse-over, add a grey background color */
+    .containerRadio:hover input ~ .checkmark {
+        background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    .containerRadio input:checked ~ .checkmark {
+        background-color: #2196F3;
+    }
+
+    /* Create the indicator (the dot/circle - hidden when not checked) */
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    /* Show the indicator (dot/circle) when checked */
+    .containerRadio input:checked ~ .checkmark:after {
+        display: block;
+    }
+
+    /* Style the indicator (dot/circle) */
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+
+
+    .multiselect b.caret {
+        display: none;
+    }
+
+    .btn-group {
+        position: relative;
+        width: 100%;
+    }
+
+    .multiselect {
+        width: 100%;
+        text-align: left;
+    }
+
+    .CheckBoxClass {
+        transform: scale(1.5);
+        -ms-transform: scale(1.5);
+        -webkit-transform: scale(1.5);
+        padding: 10px;
+        box-shadow: inset 0 2px 5px rgba(0,0,0,0.25);
+    }
+
+    .multiselect-container {
+        position: absolute;
+        width: inherit;
+    }
+
+        .multiselect-container > li > a {
+            white-space: normal;
+        }
+
+
+    .minimal {
+        background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
+        background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
+        background-size: 5px 5px, 5px 5px, 1px 1.5em;
+        background-repeat: no-repeat;
+    }
+
+    /*td {
+        word-wrap: break-word;
+    }*/
+
+
+
+    .containerRadio .checkmark:after {
+        top: 6px;
+        left: 6px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+    }
+
+    .containerRadio {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        /*// width:35px;*/
+    }
+
+    /*table.dataTable tbody th,
+    table.dataTable tbody td {
+        white-space: nowrap;
+    }*/
+
+
+
+
+
+
+
+
+    .dataTables_scrollBody {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+    .ExpandOnHover:hover {
+        box-shadow: 10px 10px 10px 10px #d0d3d4 !important;
+        height: 100% !important;
+        /*padding: 5px 5px 5px 5px;
+        border-radius: 10px;
+        height: 49px;
+        width: 22%;
+        margin: 5px 1% 5px 1%;
+        float: left;
+        position: relative;
+        transition: height 0.5s;
+        /*-webkit-transition: height 0.5s;*/
+        /*text-align: center;
+        overflow: hidden;*/
+    }
+
+    li.active > a {
+        /*background-color: #5F6F81 !important;*/
+        /*color: #FFF !important;*/
+        background-color: #74a9db !important;
+        color: black !important;
+        border-radius: 10px 10px 0px 0px;
+        height: 100% !important;
+        color: whitesmoke !important;
+    }
+
+    .nav-tabs {
+        /*border-bottom: 5px solid #74a9db !important;*/
+    }
+
+    .box box-primary {
+        border-top-color: #86afd6;
+    }
+</style>
+
+<div class="row" id="TabListDivID">
+    <ul class="nav nav-tabs" role="tablist">
+
+        @if (KaveriSession.Current.RoleID == (short)CommonEnum.RoleDetails.SR)
+        {
+            <li class="active" id="DashboardDetailsID2" onclick="LoadDashboardDetailsView()"><a role="tab" data-toggle="tab" aria-controls="" style="font-variant:petite-caps;font-weight: bold;font-size: 113%;" href="#">Document Registration Details</a></li>
+
+
+        }
+        else
+        {
+            <li class="active" id="DashboardSummaryID" onclick="LoadDashboardSummaryView()"><a role="tab" data-toggle="tab" aria-controls="" style="font-variant:petite-caps;font-weight: bold;font-size: 113%;" href="#">Document Registration Summary</a></li>
+            <li class="" id="DashboardDetailsID2" onclick="LoadDashboardDetailsView()"><a role="tab" data-toggle="tab" aria-controls="" style="font-variant:petite-caps;font-weight: bold;font-size: 113%;" href="#">Document Registration Details</a></li>
+
+        }
+
+        @*Above line commented by shubham bhagat on 19-06-2020 for deployment without dashboard tab2 *@
+    </ul>
+</div>
+@*COMMENTED AND ADDED BY SHUBHAM BHAGAT ON 20-10-2020*@
+@*<div class="row" style="border:solid #74A9DB 1px;box-shadow:0px 1px 1px;padding-top:1%;padding-bottom:1%;padding-right:0%;">*@
+<div class="row" style="border:solid #74A9DB 1px;box-shadow:0px 1px 1px;padding-bottom:1%;padding-right:0%;">
+
+
+    <div id="DashboardSummaryDivID">
+
+    </div>
+
+
+
+    <div id="DashboardDetailsDivID">
+
+    </div>
+
+
+</div>
+
+
+
+

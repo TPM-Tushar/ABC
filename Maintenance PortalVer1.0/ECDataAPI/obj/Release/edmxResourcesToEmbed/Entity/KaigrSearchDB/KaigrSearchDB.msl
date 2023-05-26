@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KAIGR_SEARCHDBModelStoreContainer" CdmEntityContainer="KaigrSearchDB">
+    <EntitySetMapping Name="RPT_ProcessingIterationMaster">
+      <EntityTypeMapping TypeName="KAIGR_SEARCHDBModel.RPT_ProcessingIterationMaster">
+        <MappingFragment StoreEntitySet="RPT_ProcessingIterationMaster">
+          <ScalarProperty Name="IterationID" ColumnName="IterationID" />
+          <ScalarProperty Name="IsDro" ColumnName="IsDro" />
+          <ScalarProperty Name="InsertDateTime" ColumnName="InsertDateTime" />
+          <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="KAIGR_SEARCHDBModel.Store.FN_MONTHYEAR" FunctionImportName="FN_MONTHYEAR">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.FN_MONTHYEAR_Result">
+          <ScalarProperty Name="DISPSEQ" ColumnName="DISPSEQ" />
+          <ScalarProperty Name="MONTHID" ColumnName="MONTHID" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="year" ColumnName="year" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_DAYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_DAYWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_DAYWISE_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="registrationDate" ColumnName="registrationDate" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_DOCUMENTWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_DOCUMENTWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_DOCUMENTWISE_Result">
+          <ScalarProperty Name="FinancialYear" ColumnName="FinancialYear" />
+          <ScalarProperty Name="RegArticleName" ColumnName="RegArticleName" />
+          <ScalarProperty Name="SROName" ColumnName="SROName" />
+          <ScalarProperty Name="FinalRegistrationNumber" ColumnName="FinalRegistrationNumber" />
+          <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+          <ScalarProperty Name="PurchaseValue" ColumnName="PurchaseValue" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_HIGHVALUE_PROPERTIES" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_HIGHVALUE_PROPERTIES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_HIGHVALUE_PROPERTIES_Result">
+          <ScalarProperty Name="FinancialYear" ColumnName="FinancialYear" />
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="DocsRegistered" ColumnName="DocsRegistered" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_JurisdictionalWiseDetail" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_JurisdictionalWiseDetail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_JurisdictionalWiseDetail_Result">
+          <ScalarProperty Name="JSRONameE" ColumnName="JSRONameE" />
+          <ScalarProperty Name="SRONameE" ColumnName="SRONameE" />
+          <ScalarProperty Name="FINALREGISTRATIONNUMBER" ColumnName="FINALREGISTRATIONNUMBER" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_SALEDEED_REGISTERED" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_SALEDEED_REGISTERED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_SALEDEED_REGISTERED_Result">
+          <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_RANGEWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_RANGEWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_RANGEWISE_Result">
+          <ScalarProperty Name="DISTRICT_NAME" ColumnName="DISTRICT_NAME" />
+          <ScalarProperty Name="OFFICE_NAME" ColumnName="OFFICE_NAME" />
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_DAILY_REVENUE_MONTHWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_DAILY_REVENUE_MONTHWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_DAILY_REVENUE_MONTHWISE_Result">
+          <ScalarProperty Name="ARTICLENAMEE" ColumnName="ARTICLENAMEE" />
+          <ScalarProperty Name="registrationMonth" ColumnName="registrationMonth" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UPS_DB_GET_TARGET_ACHIEVED_FYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.UPS_DB_GET_TARGET_ACHIEVED_FYWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.UPS_DB_GET_TARGET_ACHIEVED_FYWISE_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_STR" ColumnName="FYEAR_STR" />
+          <ScalarProperty Name="REVENUETARGET" ColumnName="REVENUETARGET" />
+          <ScalarProperty Name="REVENUECOLLECTED" ColumnName="REVENUECOLLECTED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_ARTICLELIST_TOP10WISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_ARTICLELIST_TOP10WISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_ARTICLELIST_TOP10WISE_Result">
+          <ScalarProperty Name="RegArticleCode" ColumnName="RegArticleCode" />
+          <ScalarProperty Name="ArticleNameE" ColumnName="ArticleNameE" />
+          <ScalarProperty Name="GROUPCODE" ColumnName="GROUPCODE" />
+          <ScalarProperty Name="DISPLAYORDER" ColumnName="DISPLAYORDER" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_CURRENT_REVENUE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_CURRENT_REVENUE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_CURRENT_REVENUE_Result">
+          <ScalarProperty Name="OFFICE_NAME" ColumnName="OFFICE_NAME" />
+          <ScalarProperty Name="REVENUECOLLECTED" ColumnName="REVENUECOLLECTED" />
+          <ScalarProperty Name="HIERARCHY" ColumnName="HIERARCHY" />
+          <ScalarProperty Name="seqno" ColumnName="seqno" />
+          <ScalarProperty Name="PERCENT_ACHIEVED" ColumnName="PERCENT_ACHIEVED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_CURRENT_REVENUE_DETAILS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_CURRENT_REVENUE_DETAILS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_CURRENT_REVENUE_DETAILS_Result">
+          <ScalarProperty Name="OFFICE_NAME" ColumnName="OFFICE_NAME" />
+          <ScalarProperty Name="REVENUECOLLECTED" ColumnName="REVENUECOLLECTED" />
+          <ScalarProperty Name="PERCENT_ACHIEVED" ColumnName="PERCENT_ACHIEVED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_CURRENT_STATUS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_CURRENT_STATUS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_CURRENT_STATUS_Result">
+          <ScalarProperty Name="TOTAL_REV_COLLECTED" ColumnName="TOTAL_REV_COLLECTED" />
+          <ScalarProperty Name="TOTAL_REV_COLLECTED_WRT_LY" ColumnName="TOTAL_REV_COLLECTED_WRT_LY" />
+          <ScalarProperty Name="TOTAL_SD_COLLECTED" ColumnName="TOTAL_SD_COLLECTED" />
+          <ScalarProperty Name="TOTAL_SD_COLLECTED_WRT_LY" ColumnName="TOTAL_SD_COLLECTED_WRT_LY" />
+          <ScalarProperty Name="TOTAL_RF_COLLECTED" ColumnName="TOTAL_RF_COLLECTED" />
+          <ScalarProperty Name="TOTAL_RF_COLLECTED_WRT_LY" ColumnName="TOTAL_RF_COLLECTED_WRT_LY" />
+          <ScalarProperty Name="TOTAL_DOCS_REGISTERED" ColumnName="TOTAL_DOCS_REGISTERED" />
+          <ScalarProperty Name="TOTAL_DOCS_REGISTERED_WRT_LY" ColumnName="TOTAL_DOCS_REGISTERED_WRT_LY" />
+          <ScalarProperty Name="AVG_DOCS_REGISTERED_PER_MONTH" ColumnName="AVG_DOCS_REGISTERED_PER_MONTH" />
+          <ScalarProperty Name="AVG_DOCS_REGISTERED_PER_MONTH_WRT_LY" ColumnName="AVG_DOCS_REGISTERED_PER_MONTH_WRT_LY" />
+          <ScalarProperty Name="AVG_REVENUE_COLLECTED_PER_MONTH" ColumnName="AVG_REVENUE_COLLECTED_PER_MONTH" />
+          <ScalarProperty Name="AVG_REVENUE_COLLECTED_PER_MONTH_WRT_LY" ColumnName="AVG_REVENUE_COLLECTED_PER_MONTH_WRT_LY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_FYWISE_PROGRESS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_FYWISE_PROGRESS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_FYWISE_PROGRESS_Result">
+          <ScalarProperty Name="REGFYEAR" ColumnName="REGFYEAR" />
+          <ScalarProperty Name="FYEAR_STR" ColumnName="FYEAR_STR" />
+          <ScalarProperty Name="NO_OF_DOCS_REGISTERED" ColumnName="NO_OF_DOCS_REGISTERED" />
+          <ScalarProperty Name="TOTAL_REVENUE" ColumnName="TOTAL_REVENUE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_HIGH_VALUE_REVENUE_COLLECTED_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_TEXT" ColumnName="FYEAR_TEXT" />
+          <ScalarProperty Name="C1_TO_10_LAKHS" ColumnName="1_TO_10_LAKHS" />
+          <ScalarProperty Name="C10_LAKHS_TO_1CRORE" ColumnName="10_LAKHS_TO_1CRORE" />
+          <ScalarProperty Name="C1CRORE_TO_5CRORE" ColumnName="1CRORE_TO_5CRORE" />
+          <ScalarProperty Name="C5CRORE_TO_10CRORE" ColumnName="5CRORE_TO_10CRORE" />
+          <ScalarProperty Name="ABOVE_10CRORE" ColumnName="ABOVE_10CRORE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_Get_HIGHLIGHTS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_Get_HIGHLIGHTS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_Get_HIGHLIGHTS_Result">
+          <ScalarProperty Name="INFORMATION" ColumnName="INFORMATION" />
+          <ScalarProperty Name="SEQ_ID" ColumnName="SEQ_ID" />
+          <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+          <ScalarProperty Name="DURATION_FLAG" ColumnName="DURATION_FLAG" />
+          <ScalarProperty Name="IS_STATE" ColumnName="IS_STATE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_OFFICESTARTTIME" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_OFFICESTARTTIME">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_OFFICESTARTTIME_Result">
+          <ScalarProperty Name="OFFICE_NAME" ColumnName="OFFICE_NAME" />
+          <ScalarProperty Name="AVG_START_TIME" ColumnName="AVG_START_TIME" />
+          <ScalarProperty Name="HIERARCHY" ColumnName="HIERARCHY" />
+          <ScalarProperty Name="seqno" ColumnName="seqno" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_OFFICESTARTTIME_DETAILS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_OFFICESTARTTIME_DETAILS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_OFFICESTARTTIME_DETAILS_Result">
+          <ScalarProperty Name="OFFICE_NAME" ColumnName="OFFICE_NAME" />
+          <ScalarProperty Name="AVG_START_TIME" ColumnName="AVG_START_TIME" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SALES_STASTICS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SALES_STASTICS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SALES_STASTICS_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_TEXT" ColumnName="FYEAR_TEXT" />
+          <ScalarProperty Name="RANGE_NAME" ColumnName="RANGE_NAME" />
+          <ScalarProperty Name="DOCS_REGISTERED" ColumnName="DOCS_REGISTERED" />
+          <ScalarProperty Name="REVENUE_COLLECTED_LAKHS" ColumnName="REVENUE_COLLECTED_LAKHS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SALES_STASTICS_REVENUE_COLLECTED_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_TEXT" ColumnName="FYEAR_TEXT" />
+          <ScalarProperty Name="AGRI_LT_10LAKHS" ColumnName="AGRI_LT_10LAKHS" />
+          <ScalarProperty Name="AGRI_GT_10LAKHS" ColumnName="AGRI_GT_10LAKHS" />
+          <ScalarProperty Name="NONAGRI_LT_10LAKHS" ColumnName="NONAGRI_LT_10LAKHS" />
+          <ScalarProperty Name="NONAGRI_GT_10LAKHS" ColumnName="NONAGRI_GT_10LAKHS" />
+          <ScalarProperty Name="APARTMENT" ColumnName="APARTMENT" />
+          <ScalarProperty Name="LEASE" ColumnName="LEASE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SUMMARY_TABLE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SUMMARY_TABLE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_Result">
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED" ColumnName="NO_OF_DOCUMENTS_REGISTERED" />
+          <ScalarProperty Name="STAMPDUTY_LACS" ColumnName="STAMPDUTY_LACS" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS" ColumnName="REGISTRATIONFEE_LACS" />
+          <ScalarProperty Name="TOTAL_LACS" ColumnName="TOTAL_LACS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SURCHARGE_CESS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SURCHARGE_CESS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SURCHARGE_CESS_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_TEXT" ColumnName="FYEAR_TEXT" />
+          <ScalarProperty Name="SURCHARGE" ColumnName="SURCHARGE" />
+          <ScalarProperty Name="CESS" ColumnName="CESS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_TARGET_ACHIEVED_FYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_TARGET_ACHIEVED_FYWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_TARGET_ACHIEVED_FYWISE_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_STR" ColumnName="FYEAR_STR" />
+          <ScalarProperty Name="REVENUETARGET" ColumnName="REVENUETARGET" />
+          <ScalarProperty Name="REVENUECOLLECTED" ColumnName="REVENUECOLLECTED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_TARGET_LINE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_TARGET_LINE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_TARGET_LINE_Result">
+          <ScalarProperty Name="FYEAR_TARGET" ColumnName="FYEAR_TARGET" />
+          <ScalarProperty Name="FYEAR_ACHIEVEMENT" ColumnName="FYEAR_ACHIEVEMENT" />
+          <ScalarProperty Name="FYEAR_FORCAST" ColumnName="FYEAR_FORCAST" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_HIGHVALUE_SUMMARY" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_HIGHVALUE_SUMMARY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_HIGHVALUE_SUMMARY_Result">
+          <ScalarProperty Name="PropertyValueRangeID" ColumnName="PropertyValueRangeID" />
+          <ScalarProperty Name="PropertyValueRange" ColumnName="PropertyValueRange" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED" ColumnName="NO_OF_DOCUMENTS_REGISTERED" />
+          <ScalarProperty Name="STAMPDUTY_LACS" ColumnName="STAMPDUTY_LACS" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS" ColumnName="REGISTRATIONFEE_LACS" />
+          <ScalarProperty Name="TOTAL_REVENUE_COLLECTED" ColumnName="TOTAL_REVENUE_COLLECTED" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_INSERT_HIGHLIGHTS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_INSERT_HIGHLIGHTS" />
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SUMMARY_TABLE_DAYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SUMMARY_TABLE_DAYWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_DAYWISE_Result">
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_TODAY" ColumnName="NO_OF_DOCUMENTS_PRESENTED_TODAY" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_TODAY" ColumnName="NO_OF_DOCUMENTS_REGISTERED_TODAY" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_TODAY" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_TODAY" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_NEITHER_REGISTERED_NOR_PENDING_TODAY" ColumnName="NO_OF_DOCUMENTS_NEITHER_REGISTERED_NOR_PENDING_TODAY" />
+          <ScalarProperty Name="STAMP_DUTY_COLLECTED_TODAY" ColumnName="STAMP_DUTY_COLLECTED_TODAY" />
+          <ScalarProperty Name="REGFEE_COLLECTD_TODAY" ColumnName="REGFEE_COLLECTD_TODAY" />
+          <ScalarProperty Name="TOTAL_COLLECTED_TODAY" ColumnName="TOTAL_COLLECTED_TODAY" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_YESTERDAY" ColumnName="NO_OF_DOCUMENTS_PRESENTED_YESTERDAY" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_YESTERDAY" ColumnName="NO_OF_DOCUMENTS_REGISTERED_YESTERDAY" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_YESTERDAY" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_YESTERDAY" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_NEITHER_REGISTERED_NOR_PENDING_YESTERDAY" ColumnName="NO_OF_DOCUMENTS_NEITHER_REGISTERED_NOR_PENDING_YESTERDAY" />
+          <ScalarProperty Name="STAMP_DUTY_COLLECTED_YESTERDAY" ColumnName="STAMP_DUTY_COLLECTED_YESTERDAY" />
+          <ScalarProperty Name="REGFEE_COLLECTD_YESTERDAY" ColumnName="REGFEE_COLLECTD_YESTERDAY" />
+          <ScalarProperty Name="TOTAL_COLLECTED_YESTERDAY" ColumnName="TOTAL_COLLECTED_YESTERDAY" />
+          <ScalarProperty Name="DOCS_PRESENTED_WRT_YESTERDAY" ColumnName="DOCS_PRESENTED_WRT_YESTERDAY" />
+          <ScalarProperty Name="DOCS_REGISTERED_WRT_YESTERDAY" ColumnName="DOCS_REGISTERED_WRT_YESTERDAY" />
+          <ScalarProperty Name="DOCS_PENDING_WRT_YESTERDAY" ColumnName="DOCS_PENDING_WRT_YESTERDAY" />
+          <ScalarProperty Name="NPNR_WRT_YESTERDAY" ColumnName="NPNR_WRT_YESTERDAY" />
+          <ScalarProperty Name="STAMP_DUTY_WRT_YESTERDAY" ColumnName="STAMP_DUTY_WRT_YESTERDAY" />
+          <ScalarProperty Name="REG_FEE_WRT_YESTERDAY" ColumnName="REG_FEE_WRT_YESTERDAY" />
+          <ScalarProperty Name="TOTAL_COLLECTED_WRT_YESTERDAY" ColumnName="TOTAL_COLLECTED_WRT_YESTERDAY" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SUMMARY_TABLE_FYEARWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SUMMARY_TABLE_FYEARWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_FYEARWISE_Result">
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_CURR_FYEAR" ColumnName="NO_OF_DOCUMENTS_PRESENTED_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_CURR_FYEAR" ColumnName="NO_OF_DOCUMENTS_REGISTERED_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_CURR_FYEAR" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_CURR_FYEAR" ColumnName="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_CURR_FYEAR" />
+          <ScalarProperty Name="STAMPDUTY_LACS_CURR_FYEAR" ColumnName="STAMPDUTY_LACS_CURR_FYEAR" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_CURR_FYEAR" ColumnName="REGISTRATIONFEE_LACS_CURR_FYEAR" />
+          <ScalarProperty Name="TOTAL_LACS_CURR_FYEAR" ColumnName="TOTAL_LACS_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_PREV_FYEAR" ColumnName="NO_OF_DOCUMENTS_PRESENTED_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_PREV_FYEAR" ColumnName="NO_OF_DOCUMENTS_REGISTERED_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_PREV_FYEAR" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_PREV_FYEAR" ColumnName="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_PREV_FYEAR" />
+          <ScalarProperty Name="STAMPDUTY_LACS_PREV_FYEAR" ColumnName="STAMPDUTY_LACS_PREV_FYEAR" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_PREV_FYEAR" ColumnName="REGISTRATIONFEE_LACS_PREV_FYEAR" />
+          <ScalarProperty Name="TOTAL_LACS_PREV_FYEAR" ColumnName="TOTAL_LACS_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_PRESENTED_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCS_PRESENTED_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_REGISTERED_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCS_REGISTERED_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_NRNP_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCS_NRNP_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="STAMPDUTY_WRT_PREV_FYEAR" ColumnName="STAMPDUTY_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_WRT_PREV_FYEAR" ColumnName="REGISTRATIONFEE_LACS_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="TOTAL_LACS_WRT_PREV_FYEAR" ColumnName="TOTAL_LACS_WRT_PREV_FYEAR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SUMMARY_TABLE_MONTHWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SUMMARY_TABLE_MONTHWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_MONTHWISE_Result">
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_CURR_MONTH" ColumnName="NO_OF_DOCUMENTS_PRESENTED_CURR_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_CURR_MONTH" ColumnName="NO_OF_DOCUMENTS_REGISTERED_CURR_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_CURR_MONTH" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_CURR_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_CURR_MONTH" ColumnName="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_CURR_MONTH" />
+          <ScalarProperty Name="STAMPDUTY_LACS_CURR_MONTH" ColumnName="STAMPDUTY_LACS_CURR_MONTH" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_CURR_MONTH" ColumnName="REGISTRATIONFEE_LACS_CURR_MONTH" />
+          <ScalarProperty Name="TOTAL_LACS_CURR_MONTH" ColumnName="TOTAL_LACS_CURR_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_PREV_MONTH" ColumnName="NO_OF_DOCUMENTS_PRESENTED_PREV_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_PREV_MONTH" ColumnName="NO_OF_DOCUMENTS_REGISTERED_PREV_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_PREV_MONTH" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_PREV_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_PREV_MONTH" ColumnName="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_PREV_MONTH" />
+          <ScalarProperty Name="STAMPDUTY_LACS_PREV_MONTH" ColumnName="STAMPDUTY_LACS_PREV_MONTH" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_PREV_MONTH" ColumnName="REGISTRATIONFEE_LACS_PREV_MONTH" />
+          <ScalarProperty Name="TOTAL_LACS_PREV_MONTH" ColumnName="TOTAL_LACS_PREV_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCS_PRESENTED_WRT_PREV_MONTH" ColumnName="NO_OF_DOCS_PRESENTED_WRT_PREV_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCS_REGISTERED_WRT_PREV_MONTH" ColumnName="NO_OF_DOCS_REGISTERED_WRT_PREV_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCS_KEPT_PENDING_WRT_PREV_MONTH" ColumnName="NO_OF_DOCS_KEPT_PENDING_WRT_PREV_MONTH" />
+          <ScalarProperty Name="NO_OF_DOCS_NRNP_WRT_PREV_MONTH" ColumnName="NO_OF_DOCS_NRNP_WRT_PREV_MONTH" />
+          <ScalarProperty Name="STAMPDUTY_WRT_PREV_MONTH" ColumnName="STAMPDUTY_WRT_PREV_MONTH" />
+          <ScalarProperty Name="REGISTRATIONFEE_WRT_PREV_MONTH" ColumnName="REGISTRATIONFEE_WRT_PREV_MONTH" />
+          <ScalarProperty Name="TOTAL_WRT_PREV_MONTH" ColumnName="TOTAL_WRT_PREV_MONTH" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SUMMARY_TABLE_UPTODATE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SUMMARY_TABLE_UPTODATE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SUMMARY_TABLE_UPTODATE_Result">
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_UPTO_UPTO_CURR_FYEAR" ColumnName="NO_OF_DOCUMENTS_PRESENTED_UPTO_UPTO_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_UPTO_CURR_FYEAR" ColumnName="NO_OF_DOCUMENTS_REGISTERED_UPTO_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_UPTO_CURR_FYEAR" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_UPTO_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_UPTO_CURR_FYEAR" ColumnName="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_UPTO_CURR_FYEAR" />
+          <ScalarProperty Name="STAMPDUTY_LACS_UPTO_CURR_FYEAR" ColumnName="STAMPDUTY_LACS_UPTO_CURR_FYEAR" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_UPTO_CURR_FYEAR" ColumnName="REGISTRATIONFEE_LACS_UPTO_CURR_FYEAR" />
+          <ScalarProperty Name="TOTAL_LACS_UPTO_CURR_FYEAR" ColumnName="TOTAL_LACS_UPTO_CURR_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_PRESENTED_UPTO_PREV_FYEAR" ColumnName="NO_OF_DOCUMENTS_PRESENTED_UPTO_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_REGISTERED_UPTO_PREV_FYEAR" ColumnName="NO_OF_DOCUMENTS_REGISTERED_UPTO_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS_KEPT_PENDING_UPTO_PREV_FYEAR" ColumnName="NO_OF_DOCUMENTS_KEPT_PENDING_UPTO_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_UPTO_PREV_FYEAR" ColumnName="NO_OF_DOCS_NEIGHTER_REGISTERED_NOR_PENDING_UPTO_PREV_FYEAR" />
+          <ScalarProperty Name="STAMPDUTY_LACS_UPTO_PREV_FYEAR" ColumnName="STAMPDUTY_LACS_UPTO_PREV_FYEAR" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_UPTO_PREV_FYEAR" ColumnName="REGISTRATIONFEE_LACS_UPTO_PREV_FYEAR" />
+          <ScalarProperty Name="TOTAL_LACS_UPTO_PREV_FYEAR" ColumnName="TOTAL_LACS_UPTO_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_PRESENTED_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCS_PRESENTED_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_REGISTERED_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCS_REGISTERED_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_KEPT_PENDING_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCS_KEPT_PENDING_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="NO_OF_DOCS_NRNP_WRT_PREV_FYEAR" ColumnName="NO_OF_DOCS_NRNP_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="STAMPDUTY_LACS_WRT_PREV_FYEAR" ColumnName="STAMPDUTY_LACS_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="REGISTRATIONFEE_LACS_WRT_PREV_FYEAR" ColumnName="REGISTRATIONFEE_LACS_WRT_PREV_FYEAR" />
+          <ScalarProperty Name="TOTAL_LACS_WRT_PREV_FYEAR" ColumnName="TOTAL_LACS_WRT_PREV_FYEAR" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_HIGH_VALUE_DOCS_REGISTERED_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_TEXT" ColumnName="FYEAR_TEXT" />
+          <ScalarProperty Name="C1_TO_10_LAKHS" ColumnName="1_TO_10_LAKHS" />
+          <ScalarProperty Name="C10_LAKHS_TO_1CRORE" ColumnName="10_LAKHS_TO_1CRORE" />
+          <ScalarProperty Name="C1CRORE_TO_5CRORE" ColumnName="1CRORE_TO_5CRORE" />
+          <ScalarProperty Name="C5CRORE_TO_10CRORE" ColumnName="5CRORE_TO_10CRORE" />
+          <ScalarProperty Name="ABOVE_10CRORE" ColumnName="ABOVE_10CRORE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_SALES_STASTICS_DOCS_REGISTERED_Result">
+          <ScalarProperty Name="FYEAR" ColumnName="FYEAR" />
+          <ScalarProperty Name="FYEAR_TEXT" ColumnName="FYEAR_TEXT" />
+          <ScalarProperty Name="AGRI_LT_10LAKHS" ColumnName="AGRI_LT_10LAKHS" />
+          <ScalarProperty Name="AGRI_GT_10LAKHS" ColumnName="AGRI_GT_10LAKHS" />
+          <ScalarProperty Name="NONAGRI_LT_10LAKHS" ColumnName="NONAGRI_LT_10LAKHS" />
+          <ScalarProperty Name="NONAGRI_GT_10LAKHS" ColumnName="NONAGRI_GT_10LAKHS" />
+          <ScalarProperty Name="APARTMENT" ColumnName="APARTMENT" />
+          <ScalarProperty Name="LEASE" ColumnName="LEASE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_TOP3BOTTOM3_AVG_REGISTRASTION_TIME_FYWISE_Result">
+          <ScalarProperty Name="OfficeName" ColumnName="OfficeName" />
+          <ScalarProperty Name="DOCS_Registered" ColumnName="DOCS_Registered" />
+          <ScalarProperty Name="ART" ColumnName="ART" />
+          <ScalarProperty Name="PERCENT_ART" ColumnName="PERCENT_ART" />
+          <ScalarProperty Name="seqNo" ColumnName="seqNo" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE" />
+    <FunctionImportMapping FunctionImportName="USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS" FunctionName="KAIGR_SEARCHDBModel.Store.USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_DB_GET_AVG_REGISTRASTION_TIME_FYWISE_DETAILS_Result">
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="Docs_Registered" ColumnName="Docs_Registered" />
+          <ScalarProperty Name="ART" ColumnName="ART" />
+          <ScalarProperty Name="PERCENT_ART" ColumnName="PERCENT_ART" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_TODAYPRESENTED_Result">
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="SRONAMEE" ColumnName="SRONAMEE" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY" FunctionName="KAIGR_SEARCHDBModel.Store.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KAIGR_SEARCHDBModel.USP_RPT_TODAYS_TOTAL_DOCUMENTS_REGISTERED_SUMMARY_Result">
+          <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+          <ScalarProperty Name="SRONAMEE" ColumnName="SRONAMEE" />
+          <ScalarProperty Name="NO_OF_DOCUMENTS" ColumnName="NO_OF_DOCUMENTS" />
+          <ScalarProperty Name="STAMPDUTY" ColumnName="STAMPDUTY" />
+          <ScalarProperty Name="REGISTRATIONFEE" ColumnName="REGISTRATIONFEE" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

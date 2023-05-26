@@ -1,0 +1,48 @@
+﻿@model CustomModels.Models.MISReports.JurisdictionalWise.JurisdictionalWiseSummary
+@using ECDataUI.Helper
+
+<style>
+    /*td:nth-last-child(1), td:nth-last-child(2), td:nth-last-child(3) {
+        text-align: right;
+    }
+
+    td:nth-last-child(5){
+        text-align: left;
+    }
+
+    td:nth-last-child(4), td:nth-last-child(6) {
+        text-align: center;
+    }*/
+
+</style>
+
+<div class="container">
+
+
+    <table id="DROfficeWiseSummaryTableID" class="table table-striped table-bordered table-condensed table-hover" style="padding-top:1% ;vertical-align: middle;background-color: #99CFF7; overflow: hidden; border: solid; width: 80%;margin-left:10%;">
+        <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Jurisdictional Office<br /></th>
+                @*CHANGES DONE BY SHUBHAM BHAGAT ON 03-10-2019 FOR DATA ISSUES*@
+                @*<th>SRO Name<br /></th>*@
+                <th>Documents<br /></th>
+                <th>Stamp Duty<br /></th>
+                <th>Registration Fees<br /></th>
+                <th>Total<br /></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align:center">@Model.SerialNo</td>
+                <td style="text-align:left">@Model.JurisdictionalOffice</td>
+                @*CHANGES DONE BY SHUBHAM BHAGAT ON 03-10-2019 FOR DATA ISSUES*@
+                @*<td style="text-align:left">@Model.SROName</td>*@
+                <td style="text-align:center">@Model.Documents</td>
+                <td style="text-align:right">@Model.StumpDuty.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</td>
+                <td style="text-align:right">@Model.RegistrationFees.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</td>
+                <td style="text-align:right">@Model.Total.ToString("N2", System.Globalization.CultureInfo.CreateSpecificCulture("hi-IN"))</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

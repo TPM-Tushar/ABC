@@ -1,0 +1,254 @@
+﻿
+@using ECDataUI.Helper;
+@model CustomModels.Models.SROScriptManager.AppVersionDetailsModel
+
+<script src="~/Areas/SROScriptManager/Scripts/EditAppVersion.js"></script>
+
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 70%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .HorizontalLine2 {
+        border-bottom: 1px solid gray;
+        border-radius: 100%;
+        /*position: absolute;*/
+        margin-left: 4.5%;
+        height: 0%;
+        width: 90%;
+        opacity: 0.5;
+        background-color: #aaa;
+        margin-top: 6.5%;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    table, td {
+        word-break: break-all !important;
+    }
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+</style>
+
+
+<div class="container">
+
+    <div class="col-md-offset-0">
+
+        <h3 style="text-align:center;color:#3177b4;">App Version Details</h3>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+            <form id="dvEditAppVersionForm">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                @Html.HiddenFor(x => x.IsDROOffice, new { id = "hdnIsDRO" })
+                @Html.HiddenFor(x => x.DROfficeID, new { id = "hdnDROfficeID" })
+                @Html.HiddenFor(x => x.SROfficeID, new { id = "hdnSROfficeID" })
+                @Html.HiddenFor(x => x.VersionID, new { id = "hdnVersionID" })
+                <div class="panel-body">
+                    <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                        <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                        <span class="" style="color: #FFF; font-size: 120%;">
+                            Update/ Edit Details
+                        </span>
+                    </div>
+                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+
+                        <div class='row'>
+
+                            <div class="col-md-4">
+
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="col-md-6">
+                                    <span>@Html.RadioButtonFor(model => model.IsDROOfficestr, "11", new { @class = "hidden", @id = "rdoSROOffice", @tabindex = 1, @title = "Enable" })</span> <label style="font-weight :bold"></label>
+                                </div>
+                                <div class="col-md-6">
+
+                                    <span>@Html.RadioButtonFor(model => model.IsDROOfficestr, "22", new { @class = "hidden", @id = "rdoDROOffice", @tabindex = 1, @title = "Disable" })</span> <label style="font-weight :bold"></label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                @Html.HiddenFor(x => x.IsDROOfficestr, new { id = "hdnIsDROOfficestr" })
+                            </div>
+
+                        </div>
+                        <br />
+                        <div class='row'>
+
+                            <div class="col-md-3">
+
+                            </div>
+
+                            <div class="col-md-3" id="DRODropDownListID">
+                                <div class="col-md-4">
+
+                                    @*@Html.LabelFor(model => model.DROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)*@
+                                </div>
+                                <div class="col-md-8">
+                                    @*@Html.DisplayFor(model => model.SROfficeList);*@
+                                    @*@Html.HiddenFor(x => x.DROfficeID, new { id = "DROOfficeListnID" })*@
+
+                                    @Html.DropDownListFor(model => model.DROfficeID, @Model.DROfficeList, new { @class = "hidden", id = "DROOfficeListnID", autocomplete = "off", tabindex = 2 })
+                                    @Html.ValidationMessageFor(model => model.DROfficeID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" id="SRODropDownListID">
+                                <div class="col-md-4">
+                                    @*@Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)*@
+                                </div>
+                                <div class="col-md-8">
+                                    @*@Html.DisplayFor(model => model.SROfficeID);*@
+                                    @*@Html.HiddenFor(x => x.DROfficeID, new { id = "DROOfficeListnID" })*@
+
+                                    @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "hidden", id = "SROOfficeListnID", autocomplete = "off", tabindex = 3 })
+                                    @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+
+                            </div>
+
+                        </div>
+                        <br />
+                        <br />
+                        <div class='row'>
+
+                            <div class="col-md-4">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.AppName, new { @class = "PaddingTop10", style = "padding-left:4px;" },Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                   
+                                     @Html.TextBoxFor(model => model.AppName, new { @class = "form-control", @id = "txtAppName", @placeholder = "Application Name", @title = "From Date", @maxlength = 50, tabindex = 4 })
+                                     
+                                    
+                                    @Html.ValidationMessageFor(model => model.AppName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.AppMajor, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    @Html.TextBoxFor(model => model.AppMajor, new { @class = "form-control", @id = "txtAppMajor", @placeholder = "App Major Version", @title = "Major Version", @maxlength = 10, tabindex = 5 })
+                                    @Html.ValidationMessageFor(model => model.AppMajor, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.AppMinor, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(model => model.AppMinor, new { @class = "form-control AllowOnlyNumber", @id = "txtAppMinor", @placeholder = "App Minor Version", @title = "Minor Version", @maxlength = 10, tabindex = 6 })
+                                    @Html.ValidationMessageFor(model => model.AppMinor, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row" style="padding-top:3%;">
+
+                            <div class="col-md-4">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.ReleaseDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="date" id="divnReleaseDate" style="display: table; width: 102%; cursor: pointer;">
+                                        @Html.TextBoxFor(model => model.ReleaseDate, new { @class = "form-control", @id = "dtnReleaseDate", @placeholder = "dd/mm/yyyy", @title = "Release Date", @maxlength = 10, tabindex = 7 })
+                                        <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="col-md-5">
+                                    @Html.LabelFor(model => model.LastDateForPatchUpdate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="date" id="divnLastDateForPatchUpdate" style="display: table; width: 102%; cursor: pointer;">
+                                        @Html.TextBoxFor(model => model.LastDateForPatchUpdate, new { @class = "form-control AllowOnlyNumber", @id = "dtnLastDateForPatchUpdate", @placeholder = "dd/mm/yyyy", @title = "Last Date For Patch Update", @maxlength = 10, tabindex = 8 })
+                                        <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="col-md-5">
+                                    @Html.LabelFor(model => model.SPExecutionDateTime, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="date" id="divnSPExecutionDateTime" style="display: table; width: 102%; cursor: pointer;">
+                                        @Html.TextBoxFor(model => model.SPExecutionDateTime, new { @class = "form-control AllowOnlyNumber", @id = "dtnSPExecutionDateTimen", @placeholder = "dd/mm/yyyy", @title = "SP Execution DateTime", @maxlength = 10, tabindex = 9 })
+                                        <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="col-md-offset-2">
+
+                                <div class="form-group col-md-8">
+                                    <div class='BTNwrapper' style="padding-left:13%;margin-top:2%;">
+                                        <button type="button" class="btn btn-group-md btn-success" id="btnUpdateAppVersion" tabindex="10">Update App Version</button>
+                                    </div>
+                                    <style>
+                                        .BTNwrapper {
+                                            text-align: center;
+                                        }
+
+                                        .button {
+                                            position: absolute;
+                                            top: 50%;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

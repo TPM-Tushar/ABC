@@ -1,0 +1,164 @@
+﻿@model CustomModels.Models.Remittance.XELFileStorageDetails.XELFileStorageViewModel
+@using ECDataUI.Helper
+@{
+
+}
+
+<script>
+</script>
+
+
+<style>
+    .BTNwrapper {
+        text-align: center;
+    }
+
+    thead, th {
+        text-align: center;
+    }
+
+    td:nth-last-child(4) {
+        text-align: left;
+    }
+</style>
+<script src="~/Areas/Remittance/Scripts/XELFileStorageDetails/XELFileStorageView.js"></script>
+<div class="container">
+
+    <div class="col-md-offset-0">
+        <h3 style="text-align:center;color:#3177b4 ;">XEL File Storage Details Report<span style="color:black"></span></h3>
+        <div class="panel panel-default" id="panelNewBranch" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+
+            <div class="panel-body">
+
+                <div class='row well-custom' style="height: 35px; padding-top: 10px;">
+                    <span id="" style="margin-left: 05px; font-size: 120%; padding-left: 1%;"></span>
+                    <span class="" style="color: #FFF; font-size: 120%;">
+                        Search Parameters
+                    </span>
+                </div>
+                <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:1%;">
+                    @*<div style="" id="RdoBtnId">
+                            <input type="radio" name="RDOBtnFilter" value="DR" /> <label>DRO</label>
+                            <input style="margin-left:5%;" value="SR" type="radio" name="RDOBtnFilter" /> <label>SRO</label>
+                        </div>*@
+                    <div>
+                        <input type="radio" value="SR" id="OfficeTypeID" name="OfficeTypeName" /><span><label>SR </label></span>
+                        <input type="radio" value="DR" id="OfficeTypeID" name="OfficeTypeName" style="margin-left:5%;" /><span><label>DR</label></span>
+                    </div>
+                    <form id="SearchParametersForm">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        @*<div class="row" style="padding-top:1%;padding-bottom:1%;" id="DRRowId">
+                            </div>*@
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-offset-2">
+                        <div class="form-group col-md-8">
+                            <div class='BTNwrapper' style="padding-left:13%;margin-top:1%;margin-bottom:1%">
+                                <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="6">View</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+        <div class="panel-body">
+            <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                <span style="cursor: pointer; margin-bottom: 20px;">
+                    <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                </span>
+                <span class="" style="color: #fff; font-size: 120%;">XEL File Storage Details Report</span>
+            </div>
+            <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                @*<div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%; margin-bottom: 1%;">*@
+                <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+                    <div id="rootDirectoryDivID">
+                    </div>
+                    @*<table class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 50%;margin-left:25%;">
+                            <tr>
+                                <th>Root Directory  </th>
+                                <th>@Model.RootDirectory </th>
+                            </tr>
+                            <tr>
+                                <th>Total Space  </th>
+                                <th> @Model.TotalSpace</th>
+                            </tr>
+                            <tr>
+                                <th>Used Space </th>
+                                <th> @Model.UsedSpace</th>
+                            </tr>
+                            <tr>
+                                <th>Free Space </th>
+                                <th>@Model.FreeSpace</th>
+                            </tr>
+                        </table>*@
+
+                    <br />
+                    <div class="row" style="text-align:right;"><i><h6><span class="Blink" style="text-align:right"> </span><b><span style="color:red;"></span>@*Note : This report is based on pre processed data considered upto*@ @*@Model.MaxDate*@</b> </h6></i></div>
+
+                    <table id="XELFileOfficeListTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;margin-top:2%;">
+                        <thead>
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>Office Name</th>
+                                <th>No. of files</th>
+                                <th>Total Size on disk (MB)</th>
+                                <th>Last Centralized on</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <div class="row" style="padding-bottom:1%;">
+                        <div class="col-md-5"></div>
+                        <div class='BTNwrapper col-md-2' style="text-align:left;">
+                            <span id="EXCELSPANIDOfficeList"></span>
+                        </div>
+                        <div class="col-md-5"></div>
+                        @*<div class='BTNwrapper col-md-2' style="">
+                                <span id="PDFSPANID"></span>
+                            </div>*@
+                        @*<div class="col-md-4" style="padding-left:19%;">
+                            </div>*@
+                    </div>
+
+                    <table id="XELFileListOfficeWiseTableID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Serial No.</th>
+                                <th>File Name</th>
+                                <th>File Size (MB)</th>
+                                <th>File Create Date time</th>
+                                <th>Path</th>
+                                <th>Event Start Date Time</th>
+                                <th>Event End Date Time</th>
+                                <th>FIle Read Date Time</th>
+                            </tr>
+                        </thead>
+                    </table>
+
+                    <div class="row" style="padding-bottom:1%;">
+                        <div class="col-md-5"></div>
+                        <div class='BTNwrapper col-md-2' style="text-align:left;">
+                            <span id="EXCELSPANIDFileListOfficeWise"></span>
+                        </div>
+                        <div class="col-md-5"></div>
+                        @*<div class='BTNwrapper col-md-2' style="">
+                                <span id="PDFSPANID"></span>
+                            </div>*@
+                        @*<div class="col-md-4" style="padding-left:19%;">
+                            </div>*@
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

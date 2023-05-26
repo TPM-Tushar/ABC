@@ -1,0 +1,126 @@
+﻿@model CustomModels.Models.UserManagement.MenuDetailsModel
+
+@*<script src="~/Areas/UserManagement/Scripts/MenuDetails/MenuActionMapping.js"></script>*@
+<script src="~/Areas/UserManagement/Scripts/MenuDetails/MenuActionMapping.min.js"></script>
+
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 75%;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+     .required:after {
+        content: "*";
+        font-weight: bold;
+        color: red;
+    }
+    
+</style>
+
+
+<div class="col-md-12" style="margin-top:0px;padding-left:20px; background: #fff; border: 1px solid #ECF0F1;">
+    <br />
+    <div class="col-md-offset-0">
+        <form method="post" id="MenuActionFormID">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            @Html.HiddenFor(model => model.EncryptedID, new { htmlAttributes = new { @class = "form-control", @id = "EncryptedID" } })
+            @*@Html.HiddenFor(model => model.IsParentMenuMapped, new { htmlAttributes = new { @class = "form-control", @id = "IsParentMenuMapped" } })*@
+
+            <div class="row" id="MenuActionMappingHeadingDIVid">
+                @*<div class="col-md-6">
+                    <h4 style="font:bold;">
+                        Do you want to map/unmap action with @Model.MenuName menu.
+                    </h4>
+                </div>*@
+                <div class="col-md-12">
+                    <div class="alert form-control alert-info" style="padding-bottom:30px;">
+                        <span>
+                            <i class="fa fa-exclamation-circle fa-1x" aria-hidden="true"></i> Note: Map/Unmap Action with <b>"@Model.MenuName"</b> menu.
+                        </span>
+                    </div>
+                </div>
+            </div><br />
+            <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;margin-bottom:10px">
+                <div class="col-md-5">
+                    <br />
+
+                    <fieldset>
+
+                        <div class="row" id="MAS_Modules_ModuleListDIVid">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.MAS_Modules_ModuleList, "Modules", htmlAttributes: new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(model => model.MAS_Modules_ModuleListId, @Model.MAS_Modules_ModuleList, new { @class = "form-control minimal", @id = "MAS_Modules_ModuleList" })
+                            </div>
+                        </div><br />
+
+                        <div class="row" id="ControllerActionDetails_ControllerListDIVid">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.ControllerActionDetails_ControllerList, "Controller", htmlAttributes: new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(model => model.ControllerActionDetails_ControllerListId, @Model.ControllerActionDetails_ControllerList, new { @class = "form-control minimal", @id = "ControllerActionDetails_ControllerList" })
+                            </div>
+                        </div><br />
+
+                    </fieldset>
+
+                </div>
+
+                <div class="col-md-2" style="text-align:center;">
+                    <div class="verticalLine2"></div>
+                </div>
+
+                <div class="col-md-5">
+                    <br />
+                    <fieldset>
+                        <div class="row" id="ControllerActionDetails_AreaListDIVid">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.ControllerActionDetails_AreaList, "Area", htmlAttributes: new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-6 ">
+                                @Html.DropDownListFor(model => model.ControllerActionDetails_AreaListId, @Model.ControllerActionDetails_AreaList, new { @class = "form-control minimal", @id = "ControllerActionDetails_AreaList" })
+                            </div>
+                        </div><br />
+
+
+                        <div class="row" id="ControllerActionDetails_ActionListDIVid">
+                            <div class="col-md-6 PaddingTop10">
+                                @Html.LabelFor(model => model.ControllerActionDetails_ActionList, "Action", htmlAttributes: new { @class = "control-label required" })
+                            </div>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(model => model.ControllerActionDetails_ActionListId, @Model.ControllerActionDetails_ActionList, new { @class = "form-control minimal", @id = "ControllerActionDetails_ActionList" })
+                            </div>
+                            @*<div class="col-md-2" id="secondChildMenuDetailsMapButtonId" style="text-align:center;">
+                                </div>*@
+                        </div><br />
+                    </fieldset>
+                </div>
+               
+            </div>
+             <div class="row" id="MapUnmapMenuActionButtonId" style="text-align:center;">
+
+             </div>
+            @*<div class="row" id="" style="text-align:center;">
+                <button type="button" class="btn btn-group-md btn-success" id="btnSubmit" title="Save & Proceed" onclick="MapMenuToAction()">Map Menu To Action</button><i>&nbsp;</i>
+            </div><br />*@
+
+           <br />
+
+
+
+        </form>
+    </div>
+</div>
+

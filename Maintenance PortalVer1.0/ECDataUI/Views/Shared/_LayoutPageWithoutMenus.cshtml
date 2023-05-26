@@ -1,0 +1,191 @@
+﻿@using ECDataUI.Helper
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" ">
+    <title>ECDATA PORTAL</title>
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+
+
+
+    <link href="~/Content/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/Content/jvectormap/jquery-jvectormap.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/Content/dist/css/skins/_all-skins.min.css" rel="stylesheet" />
+
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+
+
+
+    @*<script src="~/Content/DataTables/Js_New/jquery-3.3.1.js"></script>*@
+    <script src="~/Content/DataTables/Js_New/jquery-3.3.1.min.js"></script>
+
+
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/bootstrap/font-awesome-4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/Content/bootstrap/js/bootstrap-datepicker.min.js"></script>
+    <link href="~/Content/bootstrap/css/datepicker3.min.css" rel="stylesheet" />
+    <link href="~/Content/iCheckCss/all.css" rel="stylesheet" />
+    <script src="~/Scripts/iCheck/icheck.min.js"></script>
+
+    @*<link href="~/Content/website.css" rel="stylesheet" />*@
+    <link href="~/Content/website.min.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap/js/bootbox.min.js"></script>
+
+    @*<script src="~/Scripts/CommonJS/jquery.blockUI.js"></script>*@
+    <script src="~/Scripts/CommonJS/jquery.blockUI.min.js"></script>
+
+
+    <script src="~/Scripts/busywait.js"></script>
+
+    <link href="~/Content/DataTables/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <link href="~/Content/DataTablesResponsive/css/datatables.responsive.css" rel="stylesheet" />
+    <link href="~/Content/DataTables/css/dataTables.fixedColumns.min.css" rel="stylesheet" />
+
+    <script src="~/Content/DataTables/js/jquery.dataTables.js"></script>
+    <script src="~/Content/DataTables/js/dataTables.bootstrap.js"></script>
+    <script src="~/Content/DataTables/js/dataTables.fixedColumns.min.js"></script>
+    <script src="~/Content/DataTablesResponsive/js/datatables.responsive.js"></script>
+
+
+    <script src="~/Scripts/CommonJS/jquery.validate.min.js"></script>
+    @*<script src="~/Scripts/CommonJS/jquery.validate.unobtrusive.js"></script>*@
+    <script src="~/Scripts/CommonJS/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <script src="~/Scripts/CommonJS/Captcha.min.js"></script>
+
+    <script src="~/Content/bootstrap/js/bootstrap-multiselect.js"></script>
+    <link href="~/Content/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet" />
+
+
+
+
+
+
+</head>
+
+
+<body>
+    <header>
+        <nav role="navigation" class="navbar navbar-inverse navbar-fixed-top">
+            <div id="top-header">
+                <span id="top1" style="margin-left: 2%;float:right;">
+                    @*           <img class="india-flag-img" src="../../Content/images/flag.png" />*@
+                    @*<img src="../../Content/images/Icon_Karnataka.svg.png" style="height: 20px;width: 26px;">*@
+
+                    &nbsp;
+                    <a id="href_color" rel="noopener noreferrer" target="_blank" title="Government of Karnataka" href="https://www.Karnataka.gov.in">
+                        <span id="gov_of_india_txt" class="SmallCaps" style="font-weight:700">
+                            Government of Karnataka
+                        </span>
+                    </a>&nbsp;&nbsp;
+                </span>
+
+                <!-- Top Heaader -->
+                <span style="font-size: 12px; color: #FFFFFF;" class="SmallCaps">
+                    @*<div style="min-height: 5px;"></div>
+                    Technical Help :
+                    <i style="font-size: 14px;" class="fa fa-phone"></i>18001-18005 (Toll Free)*@
+                </span>&nbsp;&nbsp;
+
+
+            </div>
+            @*<div class="container" style="border-bottom: 1px solid #E5E4E2 !important;">
+                <span id="header-icon">
+                    <div class="main-icon-1 SmallCaps" style="color: #3177B4 !important;">
+                        <span class="KaveriSangam-icon-img">
+                            <img src="../../Content/images/KaveriSangamLogo.png" style="width: 10%;">
+                        </span>
+                        <span class="goa-icon-img">
+                            <img src="../../Content/images/Icon_Karnataka.svg.png" style="height: 100px;width: 130px;">
+                        </span>
+                    </div>
+                    <div class="" style="font-size: 150%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;">
+                        DEPARTMENT OF STAMPS AND REGISTRATION
+                    </div>
+                    <div class="" style="font-size: 120%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;">
+                        GOVERNMENT OF KARNATAKA
+                    </div>
+                </span>
+            </div>*@
+            <div class="col-md-12 col-xs-12 row" style="margin-top: 7px;">
+                <div class="col-md-8 col-xs-8">
+                    <div class="col-md-2 col-xs-2">
+                        <span class="KaveriSangam-icon-img">
+                            @*<img src="~/Content/images/Icon_Karnataka.svg.png" style="height: 98px;width: 117px;padding-top: 0%;padding-bottom: 3%;">*@
+                            <img src="~/Content/images/KaveriReports.png" style="width: 180px;margin-left:-20%;padding-left:0%;" />
+
+                        </span>
+                    </div>
+                    <div class="col-md-1 col-xs-1" style="margin-left: -5%;">
+                        <div class="verticalLine"></div>
+                    </div>
+                    <div class="col-md-9 col-xs-9" style="margin-left: -6%;">
+                        <div class="" style="font-size: 180%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;margin-bottom:0.5%;">
+                            @*KAVERI REPORTS*@
+                            DEPARTMENT OF STAMPS AND REGISTRATION
+
+                        </div>
+                        <div class="" style="font-size: 126%;font-weight: bold;margin-left: 0.75%;color: #5f5f6b;">
+                            @*DEPARTMENT OF STAMPS AND REGISTRATION, KARNATAKA*@
+                            GOVERNMENT OF KARNATAKA
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                    <span class="goa-icon-img">
+                        <img src="~/Content/images/Icon_Karnataka.svg.png" style="height: 98px;width: 117px;padding-top: 0%;padding-bottom: 3%;">
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <div class="space-50"></div>
+        <div class="space-50"></div>
+        <div class="space-30"></div>
+    </header>
+
+
+    <div class="wrapper row-offcanvas row-offcanvas-left" style="height:77% !important;">
+        <!-- Left side column. contains the logo and sidebar -->
+
+        @RenderBody()
+
+
+
+        @* <div id="footer">
+                <strong>&copy; 2015 C-DAC</strong> All rights reserved.
+            </div>*@
+    </div>
+
+
+
+
+    <div class="container-4">
+        <div class="row" id="bottom-footer">
+            <div class="col-md-12">
+                <div style="margin-top:14px;">
+
+                    <span id="footer_msg_1" class="SmallCaps">@*Designed and Developed by e-Governance Solution Group, C-DAC Pune*@</span>
+                </div>
+                @*<span><span id = "last_updated">Last Updated</span>: Friday, 23 December 2016</span>*@
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>

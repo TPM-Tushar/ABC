@@ -1,0 +1,225 @@
+﻿@model CustomModels.Models.XELFiles.XELFilesViewModel
+@using ECDataUI.Helper;
+
+<script src="~/Areas/XELFiles/Scripts/AuditSpecificationDetails.js"></script>
+
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 132px;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    table.center-all td, th {
+        text-align: center;
+    }
+
+    /*table, td {
+        word-break: break-all !important;
+    }*/
+
+    .dataTables_scrollHeadInner {
+        min-width: 100%;
+    }
+
+    .datatable {
+        min-width: 100%;
+    }
+
+    .table {
+        table-layout: auto !important;
+    }
+
+    tr:nth-child(even) {
+        background-color: aliceblue !important;
+    }
+</style>
+
+<div class="container">
+    <div class="col-md-offset-0">
+        @*col-md-offset-0 well*@
+        <div class="">
+            <div class="row">
+                <br />
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+                    @*<div class="panel-body">*@
+                    <div class='row well-custom' id='' data-toggle="collapse in" data-target="" aria-expanded="false" aria-controls="" style="height: 35px; padding-top: 10px;">
+                        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                        <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Audit Trails Search Filters</span>
+                    </div>
+                    <div style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; overflow-y: auto;">
+                        <div id="">
+                            <form method="POST" id="AuditSpecificationDetailsForm" style="margin-left: 10px;margin-right: 10px;">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                @Html.HiddenFor(model => model.OfficeType)
+
+                                <div class="col-md-12">
+                                    <br>
+                                    <div class="form-group">
+                                        @*@Html.HiddenFor(model => model.UserID)*@
+                                    </div>
+
+                                    <div class="" style="text-align: center; background: #fff; border: 1px solid #ECF0F1; padding-top: 1%;padding-bottom:2%;">
+                                        <div class="row">
+                                            <div class="col-md-4"> </div>
+                                            <div class="col-md-4">
+                                                <div class="col-md-2"></div>
+                                                <div class="col-md-4">
+                                                    <label class="containerForRadio">
+                                                        <span style="vertical-align: middle;font-size:14px;font-weight:300;font-family:Arial, Helvetica, sans-serif;">SR Office</span>
+                                                        <input type="radio" name="OfficeTypeToGetDropDown" id="OfficeTypeToGetDropDown" value="SRO">
+                                                        <span class="checkmarkForRadio"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <label class="containerForRadio">
+                                                        <span style="vertical-align: middle;font-size:14px;font-weight:300;font-family:Arial, Helvetica, sans-serif;">DR Office</span>
+                                                        <input type="radio" name="OfficeTypeToGetDropDown" id="OfficeTypeToGetDropDown" value="DRO">
+                                                        <span class="checkmarkForRadio"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="col-md-2"></div>
+                                            </div>
+                                            <div class="col-md-4"> </div>
+                                        </div>
+
+                                        <div class="row">
+
+
+                                            <div class="col-md-4" id="SRODropDownListID">
+                                                <div class="col-md-4">
+                                                    @Html.LabelFor(model => model.SROfficeList, new { @class = "PaddingTop10" }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-8">
+                                                    @Html.DropDownListFor(model => model.SROfficeID, @Model.SROfficeList, new { @class = "form-control minimal", id = "SROOfficeListID", autocomplete = "off", tabindex = 2 })
+                                                    @Html.ValidationMessageFor(model => model.SROfficeID, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="col-md-4">
+                                                    @Html.LabelFor(model => model.FromDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="date" id="divFromDate" style="display: table; width: 102%; cursor: pointer;">
+                                                        @Html.TextBoxFor(model => model.FromDate, new { @class = "form-control", @id = "txtFromDate", @placeholder = "dd/mm/yyyy", @title = "From Date", @maxlength = 10, tabindex = 5 })
+                                                        <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="col-md-4">
+                                                    @Html.LabelFor(model => model.ToDate, new { @class = "PaddingTop10", style = "padding-left:4px;" }, Mandatory.Yes)
+                                                </div>
+                                                <div class="col-md-8">
+                                                    <div class="date" id="divToDate" style="display: table; width: 102%; cursor: pointer;">
+                                                        @Html.TextBoxFor(model => model.ToDate, new { @class = "form-control AllowOnlyNumber", @id = "txtToDate", @placeholder = "dd/mm/yyyy", @title = "To Date", @maxlength = 10, tabindex = 6 })
+                                                        <span class="input-group-addon" style="margin-left: 2px; border: 1px solid #ccc; border-radius: 5px;"><span class="glyphicon glyphicon-calendar CalendarIcon" style=""></span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="col-md-offset-2">
+
+                                                <div class="form-group col-md-8">
+                                                    <div class='BTNwrapper' style="padding-left:13%;margin-top:2%;">
+                                                        <button type="button" class="btn btn-group-md btn-success" id="SearchBtn" tabindex="7">Search</button>
+                                                    </div>
+                                                    <style>
+                                                        .BTNwrapper {
+                                                            text-align: center;
+                                                        }
+
+                                                        .button {
+                                                            position: absolute;
+                                                            top: 50%;
+                                                        }
+                                                    </style>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br />
+
+
+
+                <div class="panel panel-default" id="SearchResult" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; display: block;">
+                    <div class="panel-body">
+                        <div id='DtlsSearchParaListCollapse' class="row well-custom collapsed" data-toggle="collapse" data-target="#DtlscollapseSearchPara" aria-expanded="false" aria-controls="DtlscollapseSearchPara" style="height: 35px; padding-top: 10px; cursor: pointer;">
+                            <span style="cursor: pointer; margin-bottom: 20px;">
+                                <span id="DtlsToggleIconSearchPara" class="fa fa-plus-square-o fa-pull-left fa-2x" style="margin-left: 05px; font-size: 103%; padding-top: 2px; color: #FFF"></span>
+                            </span>
+                            <span class="" style="color: #fff; font-size: 120%;">Database Server Audit Trails</span>
+                        </div>
+                        <div id="DtlscollapseSearchPara" class="collapse" style="text-align: center; background: #fff; border: 1px solid #ECF0F1 !important; padding-top: 1%; border-radius: 5px;">
+                            <div class="clsTblWrapper" style="text-align: center; margin-left: 1%; margin-right: 1%;">
+
+                                <table id="AuditSpecificationDtlsTblID" class="table table-striped table-bordered table-condensed table-hover" style="vertical-align: middle;background-color: aliceblue; overflow: hidden; border: solid; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr No.</th>
+                                            <th>Office Name</th>
+                                            <th>Server Name</th>
+                                            <th>Database Name</th>
+                                            <th>Login Name</th>
+                                            <th>Host Name</th>
+                                            <th>Accessed by App Name</th>
+                                            <th>Event Time</th>
+                                            <th>Statement</th>
+                                            <th>Office Type</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+
+
+                            <div class="row" style="padding-bottom:1%;">
+                                <div class="col-md-5"></div>
+
+                                <div class='BTNwrapper col-md-3' style="text-align:left;">
+                                    <span id="EXCELSPANID"></span>
+                                    @*<button type="button" style="width:75%;" class="btn btn-group-md btn-success" id="excelDownload"><i style="padding-right:3%;" class="fa fa-file-pdf-o"></i>Download as Excel</button>*@
+                                </div>
+                                <div class="col-md-4" style="">
+                                    @*<div class="col-md-4" style="padding-left:19%;">
+                    <h6> <i> This Report is generated on:   </i></h6>
+                </div>*@
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E146153C-343F-4B18-BF4B-F738D208BF1F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CustomModels</RootNamespace>
+    <AssemblyName>CustomModels</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CaptchaLib">
+      <HintPath>..\..\..\..\..\GauriOnline\GauriOnline\KaveriOnlineUI\bin\CaptchaLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CommonEnum.cs" />
+    <Compile Include="Common\MenuHighlightReqModel.cs" />
+    <Compile Include="Common\MenuHighlightResponseModel.cs" />
+    <Compile Include="Common\PreventMultipleLogin.cs" />
+    <Compile Include="CustomValidations\IDProofValidation.cs" />
+    <Compile Include="Models\Alerts\ChangePasswordModel.cs" />
+    <Compile Include="Models\Alerts\OTPValidationModel.cs" />
+    <Compile Include="Models\Alerts\SendOTPRequestModel.cs" />
+    <Compile Include="Models\Alerts\SendSMSRequestModel.cs" />
+    <Compile Include="Models\Alerts\SendSMSResponseModel.cs" />
+    <Compile Include="Models\Alerts\ValidateOTPResponseModel.cs" />
+    <Compile Include="Models\AnywhereEC\ForgotPasswordRequestModel.cs" />
+    <Compile Include="Models\AnywhereEC\ForgotPasswordResponseModel.cs" />
+    <Compile Include="Models\BhoomiMapping\BhoomiMappingViewModel.cs" />
+    <Compile Include="Models\Blockchain\BlockchainViewModel.cs" />
+    <Compile Include="Models\ChallanNoDataEntryCorrection\ChallanDetailsModel.cs" />
+    <Compile Include="Models\ChallanNoDataEntryCorrection\ChallanNoDataEntryCorrectionViewModel.cs" />
+    <Compile Include="Models\Common\XMLResModel.cs" />
+    <Compile Include="Models\Common\EMailModel.cs" />
+    <Compile Include="Models\Common\EnumDropDownListModel.cs" />
+    <Compile Include="Models\Common\ErrorPageModel.cs" />
+    <Compile Include="Models\Common\EventAuditLoging.cs" />
+    <Compile Include="Models\Common\FileDisplayModel.cs" />
+    <Compile Include="Models\Common\FirmCertificateReportToAddMetadataModel.cs" />
+    <Compile Include="Models\Common\KioskOnlineUserInfo.cs" />
+    <Compile Include="Models\Common\MetaDataFileDetailsModel.cs" />
+    <Compile Include="Models\Common\MetaDataInfoModel.cs" />
+    <Compile Include="Models\Common\RequiredFeeModel.cs" />
+    <Compile Include="Models\Dashboard\AverageRegTimeDetailsModel.cs" />
+    <Compile Include="Models\Dashboard\CurrentAchievementsModel.cs" />
+    <Compile Include="Models\Dashboard\DashboardDetailsViewModel.cs" />
+    <Compile Include="Models\Dashboard\DashboardPopupViewModel.cs" />
+    <Compile Include="Models\Dashboard\DashboardSummaryModel.cs" />
+    <Compile Include="Models\Dashboard\DashboardSummaryRecData.cs" />
+    <Compile Include="Models\Dashboard\DashboardSummaryTblResModel.cs" />
+    <Compile Include="Models\Dashboard\DashboardTileModel.cs" />
+    <Compile Include="Models\Dashboard\GraphTableResponseModel.cs" />
+    <Compile Include="Models\Dashboard\HighValPropLineChartModel.cs" />
+    <Compile Include="Models\Dashboard\LineChartModel.cs" />
+    <Compile Include="Models\Dashboard\ProgressBarTargetVsAchieved.cs" />
+    <Compile Include="Models\Dashboard\ProgressChartModel.cs" />
+    <Compile Include="Models\Dashboard\RevenueCollectionModel.cs" />
+    <Compile Include="Models\Dashboard\RevenueCollectionWrapperModel.cs" />
+    <Compile Include="Models\Dashboard\RevenueTargetVsAchieved.cs" />
+    <Compile Include="Models\Dashboard\SalesStatisticsLineChartModel.cs" />
+    <Compile Include="Models\Dashboard\SurchargeAndCessBarChartModel.cs" />
+    <Compile Include="Models\Dashboard\TableDataWrapper.cs" />
+    <Compile Include="Models\Dashboard\TilesReqModel.cs" />
+    <Compile Include="Models\DataEntryCorrection\DataEntryCorrectionOrderResultModel.cs" />
+    <Compile Include="Models\DataEntryCorrection\DataEntryCorrectionOrderViewModel.cs" />
+    <Compile Include="Models\DataEntryCorrection\DataEntryCorrectionResultModel.cs" />
+    <Compile Include="Models\DataEntryCorrection\DataEntryCorrectionViewModel.cs" />
+    <Compile Include="Models\DataEntryCorrection\ReScanningApplicationViewModel.cs" />
+    <Compile Include="Models\DisableKaveri\DisableKaveriViewModel.cs" />
+    <Compile Include="Models\DynamicDataReader\DataReadingHistoryModel.cs" />
+    <Compile Include="Models\DynamicDataReader\ReadNewDataModel.cs" />
+    <Compile Include="Models\HomePage\HomePageModel.cs" />
+    <Compile Include="Models\HomePage\PasswordDetailsModel.cs" />
+    <Compile Include="Models\KaveriIntegration\KaveriIntegrationModel.cs" />
+    <Compile Include="Models\KaveriSupport\AppDeveloperViewModel.cs" />
+    <Compile Include="Models\KaveriSupport\FileModel.cs" />
+    <Compile Include="Models\KaveriSupport\TicketDetailsModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\ECDataAuditDetailsRequestModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\ECDataAuditDetailsResponseModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\ECDataAuditDetailsWrapperModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\ECDatatAuditDetailsWrapperModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\MasterTableModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\OfficeModificationOccurenceModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\SROModificationDetailsRequestModel.cs" />
+    <Compile Include="Models\LogAnalysis\ECDataAuditDetails\SROModificationDetailsViewModel.cs" />
+    <Compile Include="Models\LogAnalysis\ValuationDifferenceReport\ValuationDiffFileModel.cs" />
+    <Compile Include="Models\LogAnalysis\ValuationDifferenceReport\ValuationDiffReportDataModel.cs" />
+    <Compile Include="Models\LogAnalysis\ValuationDifferenceReport\ValuationDiffReportViewModel.cs" />
+    <Compile Include="Models\MenuHelper\LoadMenuModel.cs" />
+    <Compile Include="Models\Common\MasterDropDownModel.cs" />
+    <Compile Include="Models\Common\ScanDetails.cs" />
+    <Compile Include="Models\Common\SSRReportToBytesModel.cs" />
+    <Compile Include="Models\Common\SupportDocuments.cs" />
+    <Compile Include="Models\Common\ValidateFirmDetailsModel.cs" />
+    <Compile Include="Models\MenuHelper\MenuItems.cs" />
+    <Compile Include="Models\MISReports\AnywhereECLog\AnywhereECLogResModel.cs" />
+    <Compile Include="Models\MISReports\AnywhereECLog\AnywhereECLogView.cs" />
+    <Compile Include="Models\MISReports\AnywhereRegistrationStatistics\AnywhereRegStatiResModel.cs" />
+    <Compile Include="Models\MISReports\AnywhereRegistrationStatistics\AnywhereRegStatViewModel.cs" />
+    <Compile Include="Models\MISReports\ARegisterGenerationDetails\ARegisterGenerationDetailsModel .cs" />
+    <Compile Include="Models\MISReports\ARegister\ARegisterResultModel.cs" />
+    <Compile Include="Models\MISReports\ARegister\ARegisterViewModel.cs" />
+    <Compile Include="Models\MISReports\ARegister\HeaderModel.cs" />
+    <Compile Include="Models\MISReports\BhoomiFileUploadReport\BhoomiFileUploadRptResModel.cs" />
+    <Compile Include="Models\MISReports\BhoomiFileUploadReport\BhoomiFileUploadRptViewModel.cs" />
+    <Compile Include="Models\MISReports\CDWrittenReport\CDWrittenReportResModel.cs" />
+    <Compile Include="Models\MISReports\CDWrittenReport\CDWrittenReportViewModel.cs" />
+    <Compile Include="Models\MISReports\CourtOrderDetails\CourtOrderDetailsResModel.cs" />
+    <Compile Include="Models\MISReports\CourtOrderDetails\CourtOrderDetailsViewModel.cs" />
+    <Compile Include="Models\MISReports\DailyReceiptDetails\DailyReceiptDetailsResModel.cs" />
+    <Compile Include="Models\MISReports\DailyReceiptDetails\DailyReceiptDetailsViewModel.cs" />
+    <Compile Include="Models\MISReports\DailyRevenue\DailyRevenueReportDetailModel.cs" />
+    <Compile Include="Models\MISReports\DailyRevenue\DailyRevenueReportReqModel.cs" />
+    <Compile Include="Models\MISReports\DataRestorationReport\DataRestorationReportViewModel.cs" />
+    <Compile Include="Models\MISReports\DataTransmissionDetails\DataTransReqModel.cs" />
+    <Compile Include="Models\MISReports\DigilockerStatistics\DigilockerStatisticsDetailsModel.cs" />
+    <Compile Include="Models\MISReports\DigilockerStatistics\DigilockerStatisticsResponseModel.cs" />
+    <Compile Include="Models\MISReports\DigilockerStatistics\DigiLockerStatisticsViewModel.cs" />
+    <Compile Include="Models\MISReports\DiskUtilization\DiskUtilizationREQModel.cs" />
+    <Compile Include="Models\MISReports\DocCentralizationStatus\DocCentrStatusReqModel.cs" />
+    <Compile Include="Models\MISReports\DocCentralizationStatus\DocCentrStatusResModel.cs" />
+    <Compile Include="Models\MISReports\DocumentReferences\DocumentReferencesREQModel.cs" />
+    <Compile Include="Models\MISReports\DocumentScanAndDeliveryReport\DocumentScanAndDeliveryREQModel.cs" />
+    <Compile Include="Models\MISReports\ECCCSearchStatistics\ECCCSearchStatisticsResultModel.cs" />
+    <Compile Include="Models\MISReports\ECCCSearchStatistics\ECCCSearchStatisticsViewModel.cs" />
+    <Compile Include="Models\MISReports\ECDailyReceiptReport\ECDailyReceiptRptResModel.cs" />
+    <Compile Include="Models\MISReports\ECDailyReceiptReport\ECDailyReceiptRptView.cs" />
+    <Compile Include="Models\MISReports\ESignConsumptionReport\ESignConsumptionReportViewModel.cs" />
+    <Compile Include="Models\MISReports\ESignConsumptionReport\ESignStatusDetailsResModel.cs" />
+    <Compile Include="Models\MISReports\ESignConsumptionReport\ESignTotalConsumptionResModel.cs" />
+    <Compile Include="Models\MISReports\ExemptionDocument\ExemptionDocumentModel.cs" />
+    <Compile Include="Models\MISReports\FirmCentralizationReport\FirmCentralizationReportResultModel.cs" />
+    <Compile Include="Models\MISReports\FirmCentralizationReport\FirmCentralizationReportViewModel.cs" />
+    <Compile Include="Models\MISReports\FRUITSIntegration\KaveriFruitsIntegrationResultModel.cs" />
+    <Compile Include="Models\MISReports\FRUITSIntegration\KaveriFruitsIntegrationViewModel.cs" />
+    <Compile Include="Models\MISReports\HighValueProperties\HighValuePropDetailsReqModel.cs" />
+    <Compile Include="Models\MISReports\HighValueProperties\HighValuePropDetailsModel.cs" />
+    <Compile Include="Models\MISReports\HighValueProperties\HighValuePropDetailsResModel.cs" />
+    <Compile Include="Models\MISReports\HighValueProperties\HighValuePropertiesReqModel.cs" />
+    <Compile Include="Models\MISReports\IncomeTaxReport\IncomeTaxReportDetailsModel.cs" />
+    <Compile Include="Models\MISReports\IncomeTaxReport\IncomeTaxReportResponseModel.cs" />
+    <Compile Include="Models\MISReports\IncomeTaxReport\IncomeTaxReportResultModel.cs" />
+    <Compile Include="Models\MISReports\IndexIIReports\IndexIIReportsDetailsModel.cs" />
+    <Compile Include="Models\MISReports\IndexIIReports\IndexIIReportsRequestModel.cs.cs" />
+    <Compile Include="Models\MISReports\IndexIIReports\IndexIIReportsResponseModel.cs" />
+    <Compile Include="Models\MISReports\JSlipUploadReport\JSlipUploadRptViewModel.cs" />
+    <Compile Include="Models\MISReports\JSlipUploadReport\JSlipUploadRptResModel.cs" />
+    <Compile Include="Models\MISReports\JurisdictionalWise\JurisdictionalWiseModel.cs" />
+    <Compile Include="Models\MISReports\KOSPaymentStatusReport\KOSPaymentStattusRptViewModel.cs" />
+    <Compile Include="Models\MISReports\KOSPaymentStatusReport\KOSPaymentStatusRptResModel.cs" />
+    <Compile Include="Models\MISReports\KOSPaymentStatusReport\KOSPaymentStatusRptResTableModel.cs" />
+    <Compile Include="Models\MISReports\OtherDepartmentImport\OtherDepartmentImportREQModel.cs" />
+    <Compile Include="Models\MISReports\OtherDepartmentImport\TransactionDetailModel.cs" />
+    <Compile Include="Models\MISReports\OtherDepartmentImport\TransactionDetails.cs" />
+    <Compile Include="Models\MISReports\OtherDepartmentStatus\OtherDepartmentStatusModel.cs" />
+    <Compile Include="Models\MISReports\PaymmentModeWiseCollectionSummary\PaymentModeWiseCollectionSummaryResModel.cs" />
+    <Compile Include="Models\MISReports\PaymmentModeWiseCollectionSummary\PaymmentModeWiseCollectionSummaryView.cs" />
+    <Compile Include="Models\MISReports\PendingDocumentsSummary\PendingDocsSummaryDetailsReqModel.cs" />
+    <Compile Include="Models\MISReports\PendingDocumentsSummary\PendingDocsSummaryDetailsResModel.cs" />
+    <Compile Include="Models\MISReports\PendingDocumentsSummary\PendingDocsSummaryResModel.cs" />
+    <Compile Include="Models\MISReports\PendingDocumentsSummary\PendingDocSummaryViewModel.cs" />
+    <Compile Include="Models\MISReports\PropertyWthoutImportBypassRDPR\ReportModel.cs" />
+    <Compile Include="Models\MISReports\RegistrationSummary\RegistrationSummaryDetailModel.cs" />
+    <Compile Include="Models\MISReports\RegistrationSummary\RegistrationSummaryREQModel.cs" />
+    <Compile Include="Models\MISReports\RegistrationSummary\RegistrationSummaryRESModel.cs" />
+    <Compile Include="Models\MISReports\ReScanningDetails\ReScanningDetailsResModel.cs" />
+    <Compile Include="Models\MISReports\ReScanningDetails\ReScanningDetailsViewModel.cs" />
+    <Compile Include="Models\MISReports\SAKALAUpload_PendencyReport\SAKALAUploadRptViewModel.cs" />
+    <Compile Include="Models\MISReports\SAKALAUpload_PendencyReport\SAKALAUploadRptResModel.cs" />
+    <Compile Include="Models\MISReports\SAKALAUpload_PendencyReport\XMLInputForSAKALAUploadModel.cs" />
+    <Compile Include="Models\MISReports\SaleDeedRevCollection\SaleDeedRevCollectionModel.cs" />
+    <Compile Include="Models\MISReports\SaleDeedRevCollection\SaleDeedRevCollectionOuterModel.cs" />
+    <Compile Include="Models\MISReports\ScanningStatisticsConsolidated\ScanningStatisticsConsolidatedReqModel.cs" />
+    <Compile Include="Models\MISReports\ScanningStatistics\ScanningStatisticsReqModel.cs" />
+    <Compile Include="Models\MISReports\ServicePackStatus\ServicePackStatusModel.cs" />
+    <Compile Include="Models\MISReports\SevaSidhuApplicationDetails\SevaSindhuApplicationDetailsReportModel.cs" />
+    <Compile Include="Models\MISReports\SevaSindhuStatistics\SevaSindhuStatisticsReportDetailModel.cs" />
+    <Compile Include="Models\MISReports\SevaSindhuStatistics\SevaSindhuStatisticsReportModel.cs" />
+    <Compile Include="Models\MISReports\SROChallanCollection\SROChallanCollectionDetailsModel.cs" />
+    <Compile Include="Models\MISReports\SROChallanCollection\SROChallanCollectionResponseModel.cs" />
+    <Compile Include="Models\MISReports\SroDD_POCollection\SroDD_POCollectionDetailsModel.cs" />
+    <Compile Include="Models\MISReports\SroDD_POCollection\SroDD_POCollectionResponseModel.cs" />
+    <Compile Include="Models\MISReports\SRODocCashCollection\SRODocCashCollectionResponseModel.cs" />
+    <Compile Include="Models\MISReports\SRODocCashCollection\SRODocCashDetailsModel.cs" />
+    <Compile Include="Models\MISReports\SurchargeCessDetails\SurchargeCessDetailsModel.cs" />
+    <Compile Include="Models\MISReports\TodaysDocumentsRegistered\TodaysDocumentsRegisteredDetailsModel.cs" />
+    <Compile Include="Models\MISReports\TodaysDocumentsRegistered\TodaysDocumentsRegisteredReqModel.cs" />
+    <Compile Include="Models\MISReports\TodaysDocumentsRegistered\TodaysTotalDocsRegDetailsTable.cs" />
+    <Compile Include="Models\PendingDocuments\PendingDocumentsViewModel.cs" />
+    <Compile Include="Models\PhotoThumb\PhotoThumbFailedModel.cs" />
+    <Compile Include="Models\PhotoThumb\PhotoThumbViewModel.cs" />
+    <Compile Include="Models\RefundChallan\RefundChallanApproveViewModel.cs" />
+    <Compile Include="Models\RefundChallan\RefundChallanDROrderResultModel.cs" />
+    <Compile Include="Models\RefundChallan\RefundChallanOrderResultModel.cs" />
+    <Compile Include="Models\RefundChallan\RefundChallanResultModel.cs" />
+    <Compile Include="Models\RefundChallan\RefundChallanViewModel.cs" />
+    <Compile Include="Models\Remittance\ARegisterAnalysisReport\ARegisterAnalysisReportModel.cs" />
+    <Compile Include="Models\Remittance\BatchCompletionDetails\BatchCompletionDetailsReportModel.cs" />
+    <Compile Include="Models\Remittance\BlockingProcessesForKOS\BlockingProcessesForKOSModel.cs" />
+    <Compile Include="Models\Remittance\BlockingProcesses\BlockingProcessResponseModel.cs" />
+    <Compile Include="Models\Remittance\CCConversionLog\CCConversionLogWrapperModel.cs" />
+    <Compile Include="Models\Remittance\ChallanDataEntryCorrectionDetails\ChallanDataEntryCorrectionDetailsReportModel.cs" />
+    <Compile Include="Models\Remittance\ChallanDetailsReport\ChallanDetailsModel.cs" />
+    <Compile Include="Models\Remittance\ChallanMatrixXMLLog\ChallanMatrixWrapperModel.cs" />
+    <Compile Include="Models\Remittance\DblVerificationXMLLog\DblVeriXMLLogWrapperModel.cs" />
+    <Compile Include="Models\Remittance\DiagnosticDataForGivenRegistration\DiagnosticDataForRegistrationModel.cs" />
+    <Compile Include="Models\Remittance\ErrorDetails\ErrorDetailsResponseModel.cs" />
+    <Compile Include="Models\Remittance\ErrorLogFiles\ErrorLogFilesViewModel.cs" />
+    <Compile Include="Models\Remittance\FirmCentralization\FirmCentralizationModel.cs" />
+    <Compile Include="Models\Remittance\IntegrationCallExceptions\IntegrationCallExceptionsModel.cs" />
+    <Compile Include="Models\Remittance\MarriageAnalysisReport\MarriageAnalysisReportModel.cs" />
+    <Compile Include="Models\Remittance\MasterData\MasterDataReportModel.cs" />
+    <Compile Include="Models\Remittance\MissingScanDocument\MissingScanDocumentModel.cs" />
+    <Compile Include="Models\Remittance\NotReadableDoc\NotReadableDocModel.cs" />
+    <Compile Include="Models\Remittance\OfficeWiseDiagnosticStatus\OfficeWiseDiagnosticStatusModel.cs" />
+    <Compile Include="Models\Remittance\QueryExecutionStatusReport\QueryExecutionStatusReportModel.cs" />
+    <Compile Include="Models\Remittance\RegistrationNoVerificationDetails\RegistrationNoVerificationDetailsModel.cs" />
+    <Compile Include="Models\Remittance\RegistrationNoVerificationSummaryReport\RegistrationNoVerificationSummaryReportModel.cs" />
+    <Compile Include="Models\Remittance\RegistrationScanningDetails\RegistrationScanningDetailsModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\BankTransactionAmountDetails.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\ChallanDetailsResponseModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\ChallanMatrixTransactionDetailsResponseModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\DoubleVerificationDetailsResponseModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\GetBankTransactionDetailsResponseModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\RemitanceDiagnosticsDetailsReqModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\RemittanceDetailsResponseModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\RemittanceDiagnosticsDetialsWrapperModel.cs" />
+    <Compile Include="Models\Remittance\REMDashboard\RemittanceOfficeListSummaryModel.cs" />
+    <Compile Include="Models\Remittance\RemittanceXMLLog\RemittXMLLogModel.cs" />
+    <Compile Include="Models\MISReports\ScannedFileUploadStatusReport\ScannedFileUploadStatusRptResModel.cs" />
+    <Compile Include="Models\MISReports\ScannedFileUploadStatusReport\ScannedFileUploadStatusRptReqModel.cs" />
+    <Compile Include="Models\Remittance\ScheduleAllocationAnalysis\ScheduleAllocationAnalysisDetailsModel.cs" />
+    <Compile Include="Models\Remittance\ScheduleAllocationAnalysis\ScheduleAllocationAnalysisResponseModel.cs" />
+    <Compile Include="Models\Remittance\ScheduleAllocationAnalysis\ScheduleAllocationAnalysisResultModel.cs" />
+    <Compile Include="Models\Remittance\XELFileStorageDetails\XELFileStorageViewModel.cs" />
+    <Compile Include="Models\ServicePackDetails\ServicePackViewModel.cs" />
+    <Compile Include="Models\SROScriptManager\ApplyAppVersionModel.cs" />
+    <Compile Include="Models\SROScriptManager\AppVersionDetailsModel.cs" />
+    <Compile Include="Models\SROScriptManager\DROScriptManagerModel.cs" />
+    <Compile Include="Models\SROScriptManager\EditAppVersionDetailsModel.cs" />
+    <Compile Include="Models\SROScriptManager\EditDROScriptManagerModel.cs" />
+    <Compile Include="Models\SROScriptManager\EditScriptManagerModel.cs" />
+    <Compile Include="Models\SROScriptManager\SROScriptManagerModel.cs" />
+    <Compile Include="Models\SupportEnclosure\SupportEnclosureDetailsResModel.cs" />
+    <Compile Include="Models\SupportEnclosure\SupportEnclosureDetailsViewModel.cs" />
+    <Compile Include="Models\UserManagement\ChangePasswordModel.cs" />
+    <Compile Include="Models\UserManagement\ChangePasswordResponseModel.cs" />
+    <Compile Include="Models\UserManagement\ControllerActionModel.cs" />
+    <Compile Include="Models\UserManagement\ControllerActionViewModel.cs" />
+    <Compile Include="Models\UserManagement\LoginResponseModel.cs" />
+    <Compile Include="Models\UserManagement\LoginViewModel.cs" />
+    <Compile Include="Models\UserManagement\MenuDetailsModel.cs" />
+    <Compile Include="Models\UserManagement\MenuDetailsResponseModel.cs" />
+    <Compile Include="Models\UserManagement\OfficeDetailsModel.cs" />
+    <Compile Include="Models\UserManagement\OfficeUserDetailsModel.cs" />
+    <Compile Include="Models\UserManagement\RoleDetailsModel.cs" />
+    <Compile Include="Models\UserManagement\RoleDetailsResponseModel.cs" />
+    <Compile Include="Models\UserManagement\UserActivationModel.cs" />
+    <Compile Include="Models\UserManagement\UserModel.cs" />
+    <Compile Include="Models\UserManagement\UserProfileDetailsResponseModel.cs" />
+    <Compile Include="Models\UserManagement\UserProfileModel.cs" />
+    <Compile Include="Models\UserManagement\WorkflowActionModel.cs" />
+    <Compile Include="Models\UserManagement\WorkFlowConfiguarationModel.cs" />
+    <Compile Include="Models\UserManagement\WorkFlowConfigurationResponseModel.cs" />
+    <Compile Include="Models\Utilities\ScannedfileDownload\CorrectedPdfModel.cs" />
+    <Compile Include="Models\Utilities\ScannedfileDownload\ImgMagickPDFConversionModel.cs" />
+    <Compile Include="Models\Utilities\ScannedfileDownload\ImgMagickPDFConversionRetModel.cs" />
+    <Compile Include="Models\Utilities\ScannedfileDownload\ScannedFileDownloadReqModel.cs" />
+    <Compile Include="Models\Utilities\ScannedfileDownload\ScannedFileDownloadResModel.cs" />
+    <Compile Include="Models\Utilities\ScannedfileDownload\ScannedFileDownloadView.cs" />
+    <Compile Include="Models\XELFiles\RegisteredJobsListModel.cs" />
+    <Compile Include="Models\XELFiles\XELFilesResModel.cs" />
+    <Compile Include="Models\XELFiles\XELFilesViewModel.cs" />
+    <Compile Include="Models\XELFiles\XELLogDetailsModel.cs" />
+    <Compile Include="Models\XELFiles\XELLogViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Security\CryptographyMethods.cs" />
+    <Compile Include="Security\CustomIdentity.cs" />
+    <Compile Include="Security\CustomPrincipal.cs" />
+    <Compile Include="Security\SHA512Checksum.cs" />
+    <Compile Include="Security\SHA512ChecksumWrapper.cs" />
+    <Compile Include="Security\URLEncrypt.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\IntegrationDashboard\" />
+    <Folder Include="Models\Reports\" />
+    <Folder Include="Models\TicketTracing\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="bin\Debug\CustomModels.dll.config" />
+    <None Include="bin\Release\CustomModels.dll.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\CaptchaLib.dll" />
+    <Content Include="bin\Debug\CustomModels.dll" />
+    <Content Include="bin\Debug\CustomModels.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Debug\System.Web.Helpers.dll" />
+    <Content Include="bin\Debug\System.Web.Helpers.xml" />
+    <Content Include="bin\Debug\System.Web.Mvc.dll" />
+    <Content Include="bin\Debug\System.Web.Mvc.xml" />
+    <Content Include="bin\Debug\System.Web.Razor.dll" />
+    <Content Include="bin\Debug\System.Web.Razor.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\Debug\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\Debug\System.Web.WebPages.xml" />
+    <Content Include="bin\Release\CaptchaLib.dll" />
+    <Content Include="bin\Release\CustomModels.dll" />
+    <Content Include="bin\Release\CustomModels.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Release\System.Web.Helpers.dll" />
+    <Content Include="bin\Release\System.Web.Helpers.xml" />
+    <Content Include="bin\Release\System.Web.Mvc.dll" />
+    <Content Include="bin\Release\System.Web.Mvc.xml" />
+    <Content Include="bin\Release\System.Web.Razor.dll" />
+    <Content Include="bin\Release\System.Web.Razor.xml" />
+    <Content Include="bin\Release\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\Release\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\Release\System.Web.WebPages.dll" />
+    <Content Include="bin\Release\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\Release\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\Release\System.Web.WebPages.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

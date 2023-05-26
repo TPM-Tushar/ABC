@@ -1,0 +1,255 @@
+﻿
+
+@using CustomModels.Models.UserManagement
+@using CaptchaLib
+@using ECDataUI.Helper;
+
+@model CustomModels.Models.UserManagement.UserProfileModel
+
+
+
+
+
+@{
+    int iTabIndex = 1;
+
+}
+
+<script>
+
+    var vOldMobileNumber = '@Model.MobileNumber';
+    var oldUserEmail = '@Model.Email';
+
+</script>
+
+
+@*<script src="~/Areas/UserManagement/Scripts/EditUserProfileDetails.js"></script>*@
+<script src="~/Areas/UserManagement/Scripts/EditUserProfileDetails.min.js"></script>
+
+<style>
+    .verticalLine2 {
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        border-radius: 100%;
+        /*position: absolute;*/
+        left: 0px;
+        height: 268px;
+        width: 2px;
+        opacity: 0.7;
+        background-color: #aaa;
+        margin: auto;
+        margin-top: 10%;
+    }
+</style>
+
+<div class="container">
+    <div class="col-md-offset-0">
+        @*col-md-offset-0 well*@
+        <div class="">
+            <div class="row">
+                <br />
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; ">
+                    @*<div class="panel-body">*@
+                    <div class='row well-custom' id='' data-toggle="collapse in" data-target="" aria-expanded="false" aria-controls="" style="height: 35px; padding-top: 10px;">
+                        @*<span style="cursor:pointer;margin-bottom:20px;">
+                                <span id="ToggleIconID" class="fa fa-minus-square-o fa-pull-left" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+                            </span>*@
+
+
+
+                        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+                        <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Edit User Profile</span>
+                        @*<span id="closeFirmSearchForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>*@
+                    </div>
+                    <div style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; overflow-y: auto;">
+                        <div id="">
+                            <form method="POST" id="EditFormId" style="margin-left: 10px;margin-right: 10px;">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                <fieldset>
+                                    <div class="col-md-12" style="border: solid 1px #d1d1d1;border-radius:12px;display: flex;">
+                                        <div class="col-md-5 col-xs-5">
+                                            <br>
+                                            <div class="form-group">
+                                                @Html.HiddenFor(model => model.UserID)
+                                            </div>
+                                            <fieldset>
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(model => model.FirstName, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6'>
+                                                            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control ", @id = "FirstName", @placeholder = "First Name", @maxlength = 50, @tabindex = 1 })
+                                                            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(model => model.Username, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="font-style:italic;font-size:medium;">
+                                                        <div class='col-md-6'>
+                                                            @Html.TextBoxFor(model => model.Username, new { @class = "form-control", disabled = "disabled", @id = "Username", @maxlength = 6, @tabindex = 3 })
+                                                            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 14px;">
+                                                            @Html.LabelFor(model => model.MobileNumber, new { @class = "PaddingTop5" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top:4px">
+                                                            @Html.TextBoxFor(model => model.MobileNumber, new { @class = "form-control AllowOnlyNumber", @id = "MobileNo", @placeholder = "Mobile Number", @maxlength = 10, @tabindex = 4 })
+                                                            @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger" })
+                                                            @*<div class="row" style="display: none; margin-left:26%;margin-top:2%;">*@
+                                                            <span id="ErrorMessageID" style="color:red; font-size:100%;"></span>
+                                                            @*</div>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />                                               
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 14px;">
+                                                            @Html.LabelFor(model => model.Address1, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top:4px">
+                                                            @Html.TextAreaFor(model => model.Address1, new { @class = "form-control ", @id = "Address", @placeholder = "Address", @maxlength = 100, @tabindex = 8 })
+                                                            @Html.ValidationMessageFor(model => model.Address1, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(x => x.IDProofID, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(x => x.IDProofID, @Model.IdProofsTypeDropDown, new { @class = "form-control dropdown-toggle minimal", @id = "ddlIDProof", @title = "IDProof", @placeholder = "IDProof", @tabindex = 5 })
+                                                            @Html.ValidationMessageFor(x => x.IDProofID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                            </fieldset>
+                                        </div>
+
+
+                                        <div class="col-md-2 col-xs-2" style="text-align: center;">
+                                            <div class="verticalLine2"></div>
+                                        </div>
+
+                                        <div class="col-md-5 col-xs-5">
+                                            <br>
+                                            <fieldset>
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 14px;">
+                                                            @Html.LabelFor(model => model.LastName, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top:4px">
+                                                            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control ", @id = "LastName", @placeholder = "Last Name", @maxlength = 50, @tabindex = 2 })
+                                                            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(model => model.Email, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="font-style:italic;font-size:medium;">
+                                                        <div class='col-md-6'>
+                                                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @id = "Email", @maxlength = 50, @tabindex = 3 })
+                                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(model => model.CountryID, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6'>
+                                                            @Html.DropDownListFor(m => m.CountryID, Model.CountryDropDown, new { @class = "form-control ", @id = "Country", @placeholder = "Country", @tabindex = 7 })
+                                                            @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 10px;">
+                                                            @Html.LabelFor(model => model.Pincode, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" style="font-style:italic;font-size:medium;">
+                                                        <div class='col-md-6'>
+                                                            @Html.TextBoxFor(model => model.Pincode, new { @class = "form-control AllowOnlyNumber", @id = "PinCode", @placeholder = "Pin Code", @maxlength = 6, @tabindex = 9 })
+                                                            @Html.ValidationMessageFor(model => model.Pincode, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                                <div class="row">
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top: 14px;">
+                                                            @Html.LabelFor(x => x.IDProofNumber, new { @class = "PaddingTop5" }, Mandatory.Yes)
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class='col-md-6' style="padding-top:4px">
+                                                            @Html.TextBoxFor(x => x.IDProofNumber, new { @class = "form-control", @id = "IDProofNumber", @title = "IDProof Number", @placeholder = "IDProof Number", @tabindex = 6, @maxlength = 20 })
+                                                            @Html.ValidationMessageFor(x => x.IDProofNumber, "", new { @class = "text-danger" })
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <br /><br />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>

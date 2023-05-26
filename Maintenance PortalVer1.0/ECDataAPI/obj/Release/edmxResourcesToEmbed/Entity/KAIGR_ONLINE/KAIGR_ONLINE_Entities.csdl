@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KAIGR_ONLINEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="MAS_Hoblis">
+    <Key>
+      <PropertyRef Name="HobliID" />
+    </Key>
+    <Property Name="HobliID" Type="Int32" Nullable="false" />
+    <Property Name="TalukaID" Type="Int16" Nullable="false" />
+    <Property Name="HobliName" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HobliNameR" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BhoomiHobliCode" Type="Int32" />
+    <Property Name="BhoomiHobliName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BhoomiTalukCode" Type="Int32" />
+    <Property Name="BhoomiTalukName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BhoomiDistrictCode" Type="Int32" />
+    <NavigationProperty Name="MAS_Villages" Relationship="Self.FK_MAS_Villages_MAS_Hoblis" FromRole="MAS_Hoblis" ToRole="MAS_Villages" />
+  </EntityType>
+  <EntityType Name="MAS_OfficeMaster">
+    <Key>
+      <PropertyRef Name="OfficeID" />
+    </Key>
+    <Property Name="OfficeID" Type="Int16" Nullable="false" />
+    <Property Name="OfficeTypeID" Type="Int16" Nullable="false" />
+    <Property Name="OfficeName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OfficeNameR" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ShortName" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="ShortNameR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictID" Type="Int16" />
+    <Property Name="ParentOfficeID" Type="Int16" />
+    <Property Name="KaveriCode" Type="Int16" />
+    <Property Name="BhoomiCensusCode" Type="Int16" />
+    <Property Name="AnyWhereRegEnabled" Type="Boolean" />
+    <Property Name="OfficeAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Landline" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="OnlineBookingEnabled" Type="Boolean" />
+    <NavigationProperty Name="MAS_OfficeMaster1" Relationship="Self.FK_MAS_OfficeMaster_MAS_OfficeMaster" FromRole="MAS_OfficeMaster" ToRole="MAS_OfficeMaster1" />
+    <NavigationProperty Name="MAS_OfficeMaster2" Relationship="Self.FK_MAS_OfficeMaster_MAS_OfficeMaster" FromRole="MAS_OfficeMaster1" ToRole="MAS_OfficeMaster" />
+    <NavigationProperty Name="MAS_Villages" Relationship="Self.FK_MAS_Villages_MAS_OfficeMaster" FromRole="MAS_OfficeMaster" ToRole="MAS_Villages" />
+  </EntityType>
+  <EntityType Name="MAS_Villages">
+    <Key>
+      <PropertyRef Name="VillageID" />
+    </Key>
+    <Property Name="VillageID" Type="Int64" Nullable="false" />
+    <Property Name="OfficeID" Type="Int16" Nullable="false" />
+    <Property Name="HobliID" Type="Int32" />
+    <Property Name="TalukaID" Type="Int16" Nullable="false" />
+    <Property Name="VillageName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VillageNameR" Type="String" MaxLength="700" FixedLength="false" Unicode="true" />
+    <Property Name="IsUrban" Type="Boolean" Nullable="false" />
+    <Property Name="CensusCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="BhoomiTalukCode" Type="Int32" />
+    <Property Name="BhoomiVillageCode" Type="Int32" />
+    <Property Name="BhoomiVillageName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="BhoomiDistrictCode" Type="Int32" />
+    <Property Name="UPORTownID" Type="Int32" />
+    <NavigationProperty Name="MAS_Hoblis" Relationship="Self.FK_MAS_Villages_MAS_Hoblis" FromRole="MAS_Villages" ToRole="MAS_Hoblis" />
+    <NavigationProperty Name="MAS_OfficeMaster" Relationship="Self.FK_MAS_Villages_MAS_OfficeMaster" FromRole="MAS_Villages" ToRole="MAS_OfficeMaster" />
+  </EntityType>
+  <Association Name="FK_MAS_Villages_MAS_Hoblis">
+    <End Role="MAS_Hoblis" Type="Self.MAS_Hoblis" Multiplicity="0..1" />
+    <End Role="MAS_Villages" Type="Self.MAS_Villages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAS_Hoblis">
+        <PropertyRef Name="HobliID" />
+      </Principal>
+      <Dependent Role="MAS_Villages">
+        <PropertyRef Name="HobliID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAS_OfficeMaster_MAS_OfficeMaster">
+    <End Role="MAS_OfficeMaster" Type="Self.MAS_OfficeMaster" Multiplicity="0..1" />
+    <End Role="MAS_OfficeMaster1" Type="Self.MAS_OfficeMaster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAS_OfficeMaster">
+        <PropertyRef Name="OfficeID" />
+      </Principal>
+      <Dependent Role="MAS_OfficeMaster1">
+        <PropertyRef Name="ParentOfficeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAS_Villages_MAS_OfficeMaster">
+    <End Role="MAS_OfficeMaster" Type="Self.MAS_OfficeMaster" Multiplicity="1" />
+    <End Role="MAS_Villages" Type="Self.MAS_Villages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAS_OfficeMaster">
+        <PropertyRef Name="OfficeID" />
+      </Principal>
+      <Dependent Role="MAS_Villages">
+        <PropertyRef Name="OfficeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KAIGR_ONLINEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="MAS_Hoblis" EntityType="Self.MAS_Hoblis" />
+    <EntitySet Name="MAS_OfficeMaster" EntityType="Self.MAS_OfficeMaster" />
+    <EntitySet Name="MAS_Villages" EntityType="Self.MAS_Villages" />
+    <AssociationSet Name="FK_MAS_Villages_MAS_Hoblis" Association="Self.FK_MAS_Villages_MAS_Hoblis">
+      <End Role="MAS_Hoblis" EntitySet="MAS_Hoblis" />
+      <End Role="MAS_Villages" EntitySet="MAS_Villages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAS_OfficeMaster_MAS_OfficeMaster" Association="Self.FK_MAS_OfficeMaster_MAS_OfficeMaster">
+      <End Role="MAS_OfficeMaster" EntitySet="MAS_OfficeMaster" />
+      <End Role="MAS_OfficeMaster1" EntitySet="MAS_OfficeMaster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAS_Villages_MAS_OfficeMaster" Association="Self.FK_MAS_Villages_MAS_OfficeMaster">
+      <End Role="MAS_OfficeMaster" EntitySet="MAS_OfficeMaster" />
+      <End Role="MAS_Villages" EntitySet="MAS_Villages" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

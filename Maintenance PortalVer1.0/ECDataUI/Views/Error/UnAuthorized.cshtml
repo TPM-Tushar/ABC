@@ -1,0 +1,16 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutPageWithoutMenus.cshtml";
+}
+  
+
+@{
+    ECDataUI.Session.KaveriSession.Current.EndSession();
+    new ECDataUI.Common.CommonFunctions().RegenerateSessionId();
+    Response.Cache.SetCacheability(HttpCacheability.NoCache);
+}
+ <div id="dialog" class="alert alert-danger alert-error" style="margin-top:50px;">
+    <span style="font-weight:bold"> 
+        You are not authorized to access the requested URL. Please  @Html.ActionLink("Click here.", "UserLogin", "Login", new object(), new { style="color:blue" })
+    </span>
+</div>

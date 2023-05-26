@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetCCFileName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegistratioNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="documentType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="isSignedCopy" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCCFileNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCCFileNameResult" type="tns:CCFileDetailsModel" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CCFileDetailsModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CCFileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsTiffCurrupted" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentId" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="WaterMark" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFruitsCC" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPageCountIsReadable">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="finalRegistratioNumber" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sroCode" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="documentType" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPageCountIsReadableResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPageCountIsReadableResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Test">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestWebservice">
+        <s:complexType />
+      </s:element>
+      <s:element name="TestWebserviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TestWebserviceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCCChunk">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Offset" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="BufferSize" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMesage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DownloadCCChunkResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DownloadCCChunkResult" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="errorMesage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileSize">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFileSizeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetFileSizeResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFilesList">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFilesListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFilesListResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="DeleteFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="fileName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteFileResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckIfCCFileExist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="cCFileExistReqModel" type="tns:CCFileExistReqModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CCFileExistReqModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CCFileExistReqDetailList" type="tns:ArrayOfCCFileExistReqDetailModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCCFileExistReqDetailModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CCFileExistReqDetailModel" nillable="true" type="tns:CCFileExistReqDetailModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CCFileExistReqDetailModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="SroCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FinalRegistrationNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentTypeID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CCFileDetailsBy" type="tns:CCFileDetailsBy" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CCFileDetailsBy">
+        <s:restriction base="s:string">
+          <s:enumeration value="FileExist" />
+          <s:enumeration value="FileReadable" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CheckIfCCFileExistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckIfCCFileExistResult" type="tns:CCFileExistResModel" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CCFileExistResModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CCFileDetailList" type="tns:ArrayOfCCFileExistResDetailModel" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseMsg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResponseStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCCFileExistResDetailModel">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CCFileExistResDetailModel" nillable="true" type="tns:CCFileExistResDetailModel" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CCFileExistResDetailModel">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="DocumentID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="SroCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFileExist" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsFileReadable" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="PageCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataExist" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="FilePath" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetCCFileNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCCFileName" />
+  </wsdl:message>
+  <wsdl:message name="GetCCFileNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCCFileNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPageCountIsReadableSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPageCountIsReadable" />
+  </wsdl:message>
+  <wsdl:message name="GetPageCountIsReadableSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPageCountIsReadableResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapIn">
+    <wsdl:part name="parameters" element="tns:Test" />
+  </wsdl:message>
+  <wsdl:message name="TestSoapOut">
+    <wsdl:part name="parameters" element="tns:TestResponse" />
+  </wsdl:message>
+  <wsdl:message name="TestWebserviceSoapIn">
+    <wsdl:part name="parameters" element="tns:TestWebservice" />
+  </wsdl:message>
+  <wsdl:message name="TestWebserviceSoapOut">
+    <wsdl:part name="parameters" element="tns:TestWebserviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCCChunkSoapIn">
+    <wsdl:part name="parameters" element="tns:DownloadCCChunk" />
+  </wsdl:message>
+  <wsdl:message name="DownloadCCChunkSoapOut">
+    <wsdl:part name="parameters" element="tns:DownloadCCChunkResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSizeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFileSize" />
+  </wsdl:message>
+  <wsdl:message name="GetFileSizeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFileSizeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFilesList" />
+  </wsdl:message>
+  <wsdl:message name="GetFilesListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFilesListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteFile" />
+  </wsdl:message>
+  <wsdl:message name="DeleteFileSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckIfCCFileExistSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckIfCCFileExist" />
+  </wsdl:message>
+  <wsdl:message name="CheckIfCCFileExistSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckIfCCFileExistResponse" />
+  </wsdl:message>
+  <wsdl:portType name="PreRegCCServiceSoap">
+    <wsdl:operation name="GetCCFileName">
+      <wsdl:input message="tns:GetCCFileNameSoapIn" />
+      <wsdl:output message="tns:GetCCFileNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPageCountIsReadable">
+      <wsdl:input message="tns:GetPageCountIsReadableSoapIn" />
+      <wsdl:output message="tns:GetPageCountIsReadableSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <wsdl:input message="tns:TestSoapIn" />
+      <wsdl:output message="tns:TestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TestWebservice">
+      <wsdl:input message="tns:TestWebserviceSoapIn" />
+      <wsdl:output message="tns:TestWebserviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCCChunk">
+      <wsdl:input message="tns:DownloadCCChunkSoapIn" />
+      <wsdl:output message="tns:DownloadCCChunkSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <wsdl:input message="tns:GetFileSizeSoapIn" />
+      <wsdl:output message="tns:GetFileSizeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesList">
+      <wsdl:input message="tns:GetFilesListSoapIn" />
+      <wsdl:output message="tns:GetFilesListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <wsdl:input message="tns:DeleteFileSoapIn" />
+      <wsdl:output message="tns:DeleteFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfCCFileExist">
+      <wsdl:input message="tns:CheckIfCCFileExistSoapIn" />
+      <wsdl:output message="tns:CheckIfCCFileExistSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PreRegCCServiceSoap" type="tns:PreRegCCServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCCFileName">
+      <soap:operation soapAction="http://tempuri.org/GetCCFileName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPageCountIsReadable">
+      <soap:operation soapAction="http://tempuri.org/GetPageCountIsReadable" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap:operation soapAction="http://tempuri.org/Test" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestWebservice">
+      <soap:operation soapAction="http://tempuri.org/TestWebservice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCCChunk">
+      <soap:operation soapAction="http://tempuri.org/DownloadCCChunk" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <soap:operation soapAction="http://tempuri.org/GetFileSize" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesList">
+      <soap:operation soapAction="http://tempuri.org/GetFilesList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfCCFileExist">
+      <soap:operation soapAction="http://tempuri.org/CheckIfCCFileExist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="PreRegCCServiceSoap12" type="tns:PreRegCCServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetCCFileName">
+      <soap12:operation soapAction="http://tempuri.org/GetCCFileName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPageCountIsReadable">
+      <soap12:operation soapAction="http://tempuri.org/GetPageCountIsReadable" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Test">
+      <soap12:operation soapAction="http://tempuri.org/Test" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestWebservice">
+      <soap12:operation soapAction="http://tempuri.org/TestWebservice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DownloadCCChunk">
+      <soap12:operation soapAction="http://tempuri.org/DownloadCCChunk" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFileSize">
+      <soap12:operation soapAction="http://tempuri.org/GetFileSize" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFilesList">
+      <soap12:operation soapAction="http://tempuri.org/GetFilesList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteFile">
+      <soap12:operation soapAction="http://tempuri.org/DeleteFile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckIfCCFileExist">
+      <soap12:operation soapAction="http://tempuri.org/CheckIfCCFileExist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PreRegCCService">
+    <wsdl:port name="PreRegCCServiceSoap" binding="tns:PreRegCCServiceSoap">
+      <soap:address location="http://localhost:59045/PreRegCCService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="PreRegCCServiceSoap12" binding="tns:PreRegCCServiceSoap12">
+      <soap12:address location="http://localhost:59045/PreRegCCService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

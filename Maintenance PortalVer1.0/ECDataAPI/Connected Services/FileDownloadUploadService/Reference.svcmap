@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="dd335471-7be4-44dd-b99b-34d623c0ac56" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55333/DownloadUploadFiles.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DownloadUploadFiles.wsdl" MetadataType="Wsdl" ID="acbc1268-fcb4-40e4-a5fa-097a09bff59c" SourceId="1" SourceUrl="http://localhost:55333/DownloadUploadFiles.svc?wsdl" />
+    <MetadataFile FileName="DownloadUploadFiles.xsd" MetadataType="Schema" ID="fdd41e3f-6a8f-4a44-9dd9-258ba10eae3d" SourceId="1" SourceUrl="http://localhost:55333/DownloadUploadFiles.svc?xsd=xsd1" />
+    <MetadataFile FileName="DownloadUploadFiles1.xsd" MetadataType="Schema" ID="d3c134c7-1320-4143-869f-b5f9e64573f2" SourceId="1" SourceUrl="http://localhost:55333/DownloadUploadFiles.svc?xsd=xsd0" />
+    <MetadataFile FileName="DownloadUploadFiles.disco" MetadataType="Disco" ID="1262db0b-6acf-4337-81cd-823cc1b3f085" SourceId="1" SourceUrl="http://localhost:55333/DownloadUploadFiles.svc?disco" />
+    <MetadataFile FileName="DownloadUploadFiles2.xsd" MetadataType="Schema" ID="489f5fd7-53fb-4a23-ba4c-398cb61245d4" SourceId="1" SourceUrl="http://localhost:55333/DownloadUploadFiles.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

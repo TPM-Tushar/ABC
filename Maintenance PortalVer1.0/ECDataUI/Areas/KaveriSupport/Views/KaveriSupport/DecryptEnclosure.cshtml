@@ -1,0 +1,95 @@
+﻿@model CustomModels.Models.KaveriSupport.AppDeveloperViewModel
+
+
+<script src="~/Areas/KaveriSupport/Scripts/KaveriSupport.min.js"></script>
+
+
+
+<style>
+    ::placeholder {
+        color: #858281;
+        opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+        color: #858281;
+    }
+
+    ::-ms-input-placeholder { /* Microsoft Edge */
+        color: #858281;
+    }
+</style>
+
+
+@*<div>
+        <form id="frmDecryptEnclosure">
+
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Zip File to Decrypt</label>
+                <input type="file" class="form-control-file" id="zipFile">
+                @Html.HiddenFor(x => x.Filepath, new { id = "hdnFilePath" })
+
+                <button type="button" class="btn btn-primary btn-lg" style="margin-top:1px;margin-left:600px;" id="btnDecryptFile" title="Decrypt Enclosure">Decrypt Enclosure</button><i>&nbsp;</i>
+            </div>
+        </form>
+    </div>*@
+
+@*<div class="panel panel-default">
+    <div class="panel-heading" style="text-align: center; font-size: medium;">Decrypt Enclosure</div>
+    <div class="panel-body">*@
+
+
+
+<div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4; background: #FBFCFC; margin-left: 0.5%;">
+    @*<div class="panel-body">*@
+    <div class='row well-custom' id='' data-toggle="collapse in" data-target="" aria-expanded="false" aria-controls="" style="height: 35px; padding-top: 10px;">
+        @*<span style="cursor:pointer;margin-bottom:20px;">
+                <span id="ToggleIconID" class="fa fa-minus-square-o fa-pull-left" style="margin-left: 05px;font-size:120%;padding-top:2px; color: #FFF"></span>
+            </span>*@
+
+
+
+        <span id="" style="margin-left: 05px;font-size:120%;padding-left:1%;"></span>
+        <span class="" id="panelHeadingForForm" style="color: #FFF;font-size:120%;">Decrypt Enclosure</span>
+        @*<span id="closeFirmSearchForm"><i class="fa fa-times-circle text-danger removeIcon pull-right" style="cursor:pointer;font-size:165%;" title="Close"></i></span>*@
+    </div>
+    <div style="background: #fff; border: 1px solid #ECF0F1; padding-top: 1%; overflow-y: auto;">
+
+        <form id="frmDecryptEnclosure">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table class="table table-bordered">
+
+                <tr>
+                    <th style="width: 50%"><label for="exampleFormControlFile1">Ticket Number</label></th>
+                    <td>
+                        @Html.TextBoxFor(x => x.TicketNumber, new { @class = "AllowOnlyNumber", id = "txtticketNumber", maxlength = 8, @placeholder = "Ticket Number" })
+                        @*@Html.ValidationMessageFor(x => x.TicketNumber)*@
+                        @Html.ValidationMessageFor(x => x.TicketNumber, "", new { @class = "text-danger" })
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <th style="width: 50%"><label for="exampleFormControlFile1">Zip File to Decrypt</label></th>
+                    <td>
+                        <input type="file" class="form-control-file" id="zipFile">
+                        @Html.HiddenFor(x => x.Filepath, new { id = "hdnFilePath" })
+                    </td>
+
+                </tr>
+
+
+
+
+            </table>
+        </form>
+
+        <div class="col-md-12" style="text-align:center;margin-bottom:1%;">
+            <button type="button" class="btn btn-primary btn-lg" style="margin-top:1px;" id="btnDecryptFile" title="Decrypt Enclosure">Decrypt Enclosure</button><i>&nbsp;</i>
+
+        </div>
+    </div>
+</div>
+
+

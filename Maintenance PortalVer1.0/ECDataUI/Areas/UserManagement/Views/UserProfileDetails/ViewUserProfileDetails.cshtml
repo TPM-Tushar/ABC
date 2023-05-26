@@ -1,0 +1,125 @@
+﻿@using CustomModels.Models.UserManagement
+@using CaptchaLib
+@using ECDataUI.Helper;
+
+@model CustomModels.Models.UserManagement.UserProfileModel
+
+
+
+
+<script src="~/Scripts/CommonJS/md5.min.js"></script>
+<script src="~/Scripts/CommonJS/sha512.min.js"></script>
+@*<script src="~/Areas/UserManagement/Scripts/ViewUserProfileDetails.js"></script>*@
+<script src="~/Areas/UserManagement/Scripts/ViewUserProfileDetails.min.js"></script>
+
+<style>
+    .modal-open .modal {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    hr {
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        margin-left: auto;
+        margin-right: auto;
+        border-style: inset;
+        border-width: 1px;
+    }
+</style>
+
+<!------ Include the above in your HEAD tag ---------->
+<div class="container">
+    <div class="" style="width:100%; margin:0 auto;">
+        <div class="">
+            <div class="row">
+
+
+                <div class="panel panel-default" id="" style="width: 100%; box-shadow: 5px 5px 10px #d0d3d4;">
+
+                    <div class="panel-body">
+                        <form id="mainLoadDivID">
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+
+                            <div id="LoadUserProfile"></div>
+
+                            <div class="col-md-12">
+
+
+                                @*<div class="row" id="EditBtn">
+
+                <div class="col-md-6 col-md-offset-5">
+                    @*&nbsp;&nbsp;&nbsp;@Html.ActionLink("Edit Profile", "EditUserProfileDetails", "UserProfileDetails", new { area = "UserManagement" }, new { @class = "btn btn-primary" })
+                    <button type="button" id="EditUserProfile" class="btn btn-primary">Edit Profile</button>
+                    &nbsp;<button type="button" class="btn btn-danger" id="goToHome">Cancel</button>
+
+
+                </div>
+            </div>*@
+
+                                <div class='row' id="EditBtn">
+                                    <div class="col-md-12">
+                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center;">
+                                            <input type="button" class="btn btn-group-md btn-primary" id="EditUserProfile" value="Edit Profile" />
+                                            @*<input type="button" class="btn btn-group-md  btn-danger" id="goToHome" value="Cancel" />*@
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class='row' id="UpdateBtn">
+                                    <div class="col-md-12">
+                                        <div class="col-md-4">
+                                        </div>
+                                        <div class="col-md-4" style="text-align: center;">
+                                            <input type="button" class="btn btn-group-md btn-primary" id="EditUserProfileDetails" value="Update Profile" />
+                                            &nbsp;
+                                            @Html.ActionLink("Back", "ViewUserProfileDetails", "UserProfileDetails", new { area = "UserManagement" }, new { @class = " btn btn-group-md btn-danger btnCancelClass" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <br>
+
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!-- OTP pop up modal Shrinivas-->
+<div id="divViewOTPValidationModal" class="modal fade" role="dialog" style="overflow: auto!important; padding-left:15px; padding-right:15px;">
+    <div class="modal-dialog" style="margin-top:80px; width:45%; margin:10% auto !important;">
+        <div class="modal-content">
+            <div class="modal-header">
+                @*<button type="button"  class="close" id="btnCloseOTPModal" data-dissmiss="modal">&times;</button>*@
+                <i class="fa fa-times-circle text-danger removeIcon pull-right" id="btnCloseOTPModal" style="cursor: pointer; font-size: 150%;" title="Close"></i>
+                <h4 class="modal-title">
+                    <span class="" style="color: #5F6F81; font-size:100%;">Verify OTP</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div id="divLoadOTPValidationView" style="margin-left:10%;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- OTP pop up modal Shrinivas-->

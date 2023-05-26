@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a52fa8bfc19e44439b83debf7cca2a93" Name="Diagram1" ZoomLevel="17">
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_BankTransactionAmountDetails" Width="1.5" PointX="18" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_ChallanMatrixDetails" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_REG_KhajaneExceptionLog" Width="1.5" PointX="13" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_Remittance_Office_Status" Width="1.5" PointX="13" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.BookTypeMaster" Width="1.5" PointX="5.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.CDMaster" Width="1.5" PointX="2.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.FeesRuleMaster" Width="1.5" PointX="15.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.LBPASXML" Width="1.5" PointX="15.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_ServicePackChangeType" Width="1.5" PointX="18" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MojaniXML" Width="1.5" PointX="17.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.RDPRXML" Width="1.5" PointX="4.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.REG_LogTypes" Width="1.5" PointX="6.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.RegistrationArticles" Width="1.5" PointX="8" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ScannedFileUploadDetails" Width="1.5" PointX="10.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ScriptManager" Width="1.5" PointX="12.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ServicePackChangesDetails" Width="1.5" PointX="20.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ServicePackMaster" Width="1.5" PointX="19.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.SoftwareReleaseType" Width="1.5" PointX="15.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UPORXML" Width="1.5" PointX="19.75" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.CMN_AuditApiLoging" Width="1.5" PointX="20.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.CMN_AuditMvcEventLoging" Width="1.5" PointX="20.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.CMN_System_User_ActivityLog" Width="1.5" PointX="20.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Countries" Width="1.5" PointX="0.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_OfficeMaster" Width="1.5" PointX="13" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_ControllerActionDetails" Width="1.5" PointX="5.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_LevelDetails" Width="1.5" PointX="10.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_MenuActionAuthorizationMapping" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_MenuActionMapping" Width="1.5" PointX="8" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_MenuDetails" Width="1.5" PointX="5.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_OTP_VerificationDetails" Width="1.5" PointX="21.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_PasswordHistory" Width="1.5" PointX="21.75" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_RoleActionAuth" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_RoleDetails" Width="1.5" PointX="5.75" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_RoleDetails_Log" Width="1.5" PointX="22.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_RoleLevelMapping" Width="1.5" PointX="13" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_RoleMenuMapping" Width="1.5" PointX="8" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_UserProfile" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_UserProfile_Log" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_BankTransactionAmountDetails_AMS_BankTransactionAmountDetails1" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_BookTypeMaster_RegistrationArticle" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ServicePackChangesDetails_MASServicePackChangesDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_MAS_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_MAS_Countries_Log" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_OfficeMaster_MAS_OfficeMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_OfficeMaster_UMG_LevelDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuActionAuthorizationMapping_UMG_ControllerActionDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuActionMapping_UMG_ControllerActionDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_RoleActionAuth_CAID_UMG_ControllerActionDetails12" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_RoleLevelMapping_UMG_LevelDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuActionAuthorizationMapping_UMG_MenuDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuActionMapping_UMG_MenuActionMapping" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuActionMapping_UMG_MenuDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_RoleMenuMapping_UMG_MenuDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_ROLE_ACTION_MAPPING_MASUMG_UserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_RoleLevelMapping_UMG_RoleDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_MAS_IDProofType" ManuallyRouted="false" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_UMG_UserProfile" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.IntegrationDepartment" Width="1.5" PointX="23.375" PointY="9.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Districts" Width="1.5" PointX="5.25" PointY="27.5" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Gender" Width="1.5" PointX="0.75" PointY="2.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_IDProofTypes" Width="1.5" PointX="0.75" PointY="5.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_MaritalStatus" Width="1.5" PointX="23.375" PointY="14.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Nationality" Width="1.5" PointX="11.375" PointY="25.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_OfficeTypes" Width="1.5" PointX="10.75" PointY="9.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Profession" Width="1.5" PointX="13.375" PointY="25.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_RelationTypes" Width="1.5" PointX="15.375" PointY="25.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_States" Width="1.5" PointX="3" PointY="28.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Talukas" Width="1.5" PointX="15.25" PointY="7.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Titles" Width="1.5" PointX="24.375" PointY="17.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Villages" Width="1.5" PointX="20.5" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_API_Users" Width="1.5" PointX="24.375" PointY="20.875" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_States_MAS_Countries" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_Districts_MAS_States" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_OfficeMaster_MAS_Districts" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_MAS_Gender" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_MAS_Gender_Log" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfileMAS_IDProofTypes" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfileMAS_IDProofTypes_Log" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_OfficeMaster_MAS_OfficeTypes" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_OfficeMaster_MAS_Talukas" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_Talukas_MAS_Districts" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_Villages_MAS_OfficeMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_OfficeTypes_MAS_OfficeTypes" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MAS_Villages_MAS_Talukas" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_ServiceMaster" Width="1.5" PointX="11.125" PointY="17.5" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_ControllerActionDetails_Log" Width="1.5" PointX="24.75" PointY="23.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_RoleActionAuth_Log" Width="1.5" PointX="0.75" PointY="24.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_Remittance_Office_Status_MAS_ServiceMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_CMN_AuditApiLoging_MAS_ServiceMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_CMN_EventAuditLoging_MAS_ServiceMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_ActivityType" Width="1.5" PointX="18.5" PointY="17.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_Modules" Width="1.5" PointX="25.375" PointY="6.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_MenuActionMapping_Log" Width="1.5" PointX="17.5" PointY="38.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_MenuDetails_Log" Width="1.5" PointX="17.5" PointY="33.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_RoleMenuMapping_Log" Width="1.5" PointX="17.5" PointY="42.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_UserDetails" Width="1.5" PointX="15.25" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.UMG_UserDetails_Log" Width="1.5" PointX="18.25" PointY="1.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_CMN_EventAuditLoging_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK__CMN_Syste__Activ__10CB707D" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK__CMN_Syste__UserI__11BF94B6" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuActionMapping_MAS_Modules" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserDetails_MAS_OfficeMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserDetails_MAS_OfficeMaster_Log" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_ControllerActionDetails_Log_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserDetails_UMG_LevelDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserDetails_UMG_LevelDetails_Log" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuActionMapping_Log_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_MenuDetails_Log_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_OTP_Verification_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_RoleActionAuth_Log_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserDetails_UMG_RoleDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserDetails_UMG_RoleDetails_Log" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_RoleDetails_Log_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_RoleMenuMapping_Log_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_UMG_UserProfile_UMG_UserDetails_Log" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.STORAGE_SERVERMASTER" Width="1.5" PointX="25.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_ChallanMatrixTransDetails" Width="1.5" PointX="13" PointY="28.5" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_REG_PaymentDblVerificationLog" Width="1.5" PointX="7.375" PointY="25.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_REG_PaymentTransDetails" Width="1.5" PointX="25.375" PointY="9.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.SAKALA_UploadFileDetails" Width="1.5" PointX="26.375" PointY="14.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ServicePackReleaseDetails" Width="1.5" PointX="20.25" PointY="26.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.STORAGE_SERVERDETAILS" Width="1.5" PointX="27.625" PointY="5.375" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_ChallanMatrixDetails_AMS_ChallanMatrixTransDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_ChallanMatrixTransDetails_AMS_ChallanMatrixTransDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_STORAGE_SERVERDETAILS" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AppVersion" Width="1.5" PointX="13" PointY="36.25" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DROScriptManager" Width="1.5" PointX="17.375" PointY="26.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DistrictMaster" Width="1.5" PointX="26.375" PointY="19.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_ACTIVATION_KEY_OTP" Width="1.5" PointX="24.625" PointY="41.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_INITIATE_MASTER" Width="1.5" PointX="22.375" PointY="33.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_INSERT_SCRIPT_DETAILS" Width="1.5" PointX="24.625" PointY="31.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_SERVICE_COMM_DETAILS" Width="1.5" PointX="24.625" PointY="38.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_ACTIVATION_KEY_OTP_DB_RES_INITIATE_MASTER" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_INSERT_SCRIPT_DETAILS_INIT_MASTER" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_SERVICE_COMM_DETAILS_DB_RES_INITIATE_MASTER" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_TABLE_MASTER" Width="1.5" PointX="25.375" PointY="45.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_TABLEWISE_COUNT" Width="1.5" PointX="27.625" PointY="37.5" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_TABLEWISE_COUNT_INIT_MASTER" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_TABLEWISE_COUNT_DB_RES_TABLE_MASTER" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MarriageRegistration" Width="1.5" PointX="27.375" PointY="23.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.NoticeMaster" Width="1.5" PointX="27.375" PointY="9.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DocumentMaster" Width="1.5" PointX="9.375" PointY="28.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DiagnosticActionMaster" Width="1.5" PointX="27.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DiagnosticDetails" Width="1.5" PointX="22.375" PointY="27.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DiagnosticMaster" Width="1.5" PointX="28.375" PointY="14.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.QueryAnalyserDetails" Width="1.5" PointX="28.375" PointY="19.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_ACTIONS" Width="1.5" PointX="26.875" PointY="32.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DB_RES_ACTIONS_MASTER" Width="1.5" PointX="24.625" PointY="35.375" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_ACTIONS_DB_RES_ACTIONS_MASTER" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_ACTIONS_DB_RES_INITIATE_MASTER" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DB_RES_ACTIONS_DB_RES_INSERT_SCRIPT_DETAILS" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ReceiptMaster" Width="1.5" PointX="29.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.REG_EC_KaveriPortal_UserMapping" Width="1.5" PointX="17.5" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.REG_Users" Width="1.5" PointX="15.25" PointY="32.875" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_REG_EC_KaveriPortal_UserMapping_REG_Users" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_REG_EC_KaveriPortal_UserMapping_UMG_UserDetails" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DEC_DROrderMaster" Width="1.5" PointX="30.625" PointY="17.25" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DEC_DRPNDNote" Width="1.5" PointX="32.875" PointY="9.875" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DEC_DROrderMaster_DistrictMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DEC_DROrderMaster_DocumentMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DEC_DROrderMaster_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DEC_PNDNote_drORDERmASTER" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DEC_PNDNote_UserDetails" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PropertyMaster" Width="1.5" PointX="30.625" PointY="24.5" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.VillageMaster" Width="1.5" PointX="29.375" PointY="10.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.HobliMaster" Width="1.5" PointX="24.375" PointY="28.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PartyTypeMaster" Width="1.5" PointX="17.375" PointY="29.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PropertyNoTypeMaster" Width="1.5" PointX="15.375" PointY="29.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.FRUITS_DATA_RECV_DETAILS" Width="1.5" PointX="11.625" PointY="40.5" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.FRUITSXML" Width="1.5" PointX="19.375" PointY="29.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_FRUITS_DATA_RECV_DETAILS_DocumentMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ServicePackDetails" Width="1.5" PointX="23" PointY="0.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.Fk_ServicePackChangesDetails_ServicePackDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.Fk_ServicePackReleaseDetails_ServicePackDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.Fk_SoftwareReleaseType_ServicePackDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.Fk_UMG_UserDetails_ServicePackDetails_ServicePackIntegratedBy" />
+        <AssociationConnector Association="KaveriEntitiesModel.Fk_UMG_UserDetails_ServicePackDetails_ServicePackReleasedBy" />
+        <AssociationConnector Association="KaveriEntitiesModel.Fk_UMG_UserDetails_ServicePackDetails_ServicePackUploadedBy" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.BlockchainReasonDetails" Width="1.5" PointX="12.375" PointY="47.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.BlockchainRequestDetails" Width="1.5" PointX="14.625" PointY="40.875" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_BlockchainRequestDetails_BlockchainReasonDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_BlockchainRequestDetails_DocumentMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ECNameSearchKeyValues" Width="1.5" PointX="32.875" PointY="29.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ECPropertySearchKeyValues" Width="1.5" PointX="32.875" PointY="21.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECNameSearchKeyValues_DEC_DROrderMaster1" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECPropertySearchKeyValues_DEC_DRorderMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECNameSearchKeyValues_DocumentMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECPropertySearchKeyValues_DocumentMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECNameSearchKeyValues_PartyTypeMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECPropertySearchKeyValues_PropertyMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECPropertySearchKeyValues_PropertyNoTypeMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECPropertySearchKeyValues_PropertyNoTypeMaster1" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ECPropertySearchKeyValues_VillageMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.BhoomiMappingDetails" Width="1.5" PointX="31.375" PointY="1.25" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.SROMaster" Width="1.5" PointX="7" PointY="32" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_ChallanMatrixTransDetails_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.fk_SROCode_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_Remittance_Office_Status_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AppVersion_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DEC_DROrderMaster_SROMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.FirmDataCentralizationDetails" Width="1.5" PointX="0.75" PointY="31.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.FirmMaster" Width="1.5" PointX="2.75" PointY="31.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.SocietyFirmScanmaster" Width="1.5" PointX="33.75" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ARegisterFileDetails" Width="1.5" PointX="30.625" PointY="33.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ARegisterGenerationDetails" Width="1.5" PointX="9.25" PointY="40.875" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ARegisterFileDetails_ARegisterGenerationDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ARegisterFileDetails_DistrictMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ARegisterFileDetails_DistrictMaster1" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ARegisterFileDetails_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ARegisterFileDetails_SROMaster1" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ARegisterGenerationDetails_SROMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_EnclosureDownloadReasons" Width="1.5" PointX="15.25" PointY="50.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ScannedFileDownloadLog" Width="1.5" PointX="17.5" PointY="0.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ScannedFileDownloadLog_MAS_EnclosureDownloadReasons" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ScannedFileDownloadLog_UMG_UserDetails" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ReferenceMaster" Width="1.5" PointX="33.375" PointY="14.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_RefundChallanUsageDetails" Width="1.5" PointX="30" PointY="6.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK__AMS_Refun__FeeRu__39D87308" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_RefundChallanDetails" Width="1.5" PointX="17.5" PointY="47.75" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_RefundChallan_UserDetails_DROUserId" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_RefundChallan_UserDetails_SROUserId" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PartyInfo" Width="1.5" PointX="11.625" PointY="53.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PhotoThumbUploadDetails" Width="1.5" PointX="14.875" PointY="45.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PhotoThumbUploadStatus" Width="1.5" PointX="13.875" PointY="62.375" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK__AMS_Refun__RowId__5398450B" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PartyInfo_DocumentMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbUploadDetails_DocumentMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbUploadDetails_PartyInfo" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbUploadStatus_PartyInfo" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PhotoThumbCD_Failed" Width="1.5" PointX="16.875" PointY="54.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PhotoThumbCD_Success" Width="1.5" PointX="13.875" PointY="53.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PhotoThumbUploadLog" Width="1.5" PointX="9.25" PointY="44.5" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbCD_Failed_PartyInfo" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbCD_Success_PartyInfo" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbCD_Failed_PhotoThumbUploadLog" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbCD_Success_PhotoThumbUploadLog" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_PhotoThumbUploadLog_SROMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DocumentRescanDetails" Width="1.5" PointX="35.625" PointY="15.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MarriageRescanDetails" Width="1.5" PointX="35.625" PointY="9.625" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DocumentRescanDetails_DistrictMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MarriageRescanDetails_DistrictMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DocumentRescanDetails_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MarriageRescanDetails_UMG_UserDetails" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.PropertySchedules" Width="1.5" PointX="33.375" PointY="34.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.RPT_DocReg_NoCLBatchDetails" Width="1.5" PointX="9.25" PointY="68.5" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_RPT_DocReg_NoCLBatchDetails_SROMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.DocumentScanDocVerifyLog" Width="1.5" PointX="11.875" PointY="73.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MarriageScanDocVerifyLog" Width="1.5" PointX="29.875" PointY="45.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.NoticeScanDocVerifyLog" Width="1.5" PointX="29.875" PointY="41.25" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_DocumentScanDocVerifyLog_DocumentMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_MarriageScanDocVerifyLog_MarriageRegistration" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_NoticeScanDocVerifyLog_NoticeMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ScanMaster" Width="1.5" PointX="35.625" PointY="22.375" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.RPT_DocReg_NoCLDetails" Width="1.5" PointX="11.5" PointY="67.375" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_RPT_DocReg_NoCLDetails_RPT_DocReg_NoCLBatchDetails" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.SROBifurcationTriLetterDetails" Width="1.5" PointX="9.25" PointY="49.375" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_SROBifurcationTriLetterDetails_SROMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.RPT_PropertyAreaDetails" Width="1.5" PointX="11.5" PointY="78.125" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_RPT_PropertyAreaDetails_RPT_DocReg_NoCLBatchDetails" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.AMS_BankInstrumentNumberDetails" Width="1.5" PointX="20.375" PointY="38.625" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ChallanNumberDataEntryCorrection" Width="1.5" PointX="35.625" PointY="28.125" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.OnlineReceipts" Width="1.5" PointX="9.25" PointY="52.875" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.ReceiptPaymentDetails" Width="1.5" PointX="36.375" PointY="0.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.StampDetails" Width="1.5" PointX="11.625" PointY="82.875" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_BankInstrumentNumberDetails_MAS_ServiceMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_AMS_BankInstrumentNumberDetails_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ChallanNumberDataEntryCorrection_DistrictMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ChallanNumberDataEntryCorrection_OnlineReceipts" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ChallanNumberDataEntryCorrection_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_ChallanNumberDataEntryCorrection_UMG_UserDetails" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_StampDetails_DocumentMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_OnlineReceipts_SROMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.VillageMasterVillagesMergingMapping" Width="1.5" PointX="38.625" PointY="23" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_VillageMasterVillagesMergingMapping_SROMaster" />
+        <AssociationConnector Association="KaveriEntitiesModel.FK_VillageMasterVillagesMergingMapping_VillageMaster" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.SocietyFirmCDMaster" Width="1.5" PointX="36.375" PointY="4.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.RPT_DocReg_DateDetails" Width="1.5" PointX="35.375" PointY="37" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.INT_SEVASINDHU_MAR_DATA_RECV_DETAILS" Width="1.5" PointX="37.375" PointY="36.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.Kaveri2Pilot" Width="1.5" PointX="27.375" PointY="29.75" />
+        <EntityTypeShape EntityType="KaveriEntitiesModel.MAS_OfficeMaster_DisableInfo" Width="1.5" PointX="32.375" PointY="6.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
